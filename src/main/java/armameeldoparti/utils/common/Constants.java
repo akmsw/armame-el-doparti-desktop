@@ -22,7 +22,7 @@ import javax.swing.ImageIcon;
  */
 public final class Constants {
 
-  // --------------------------------------------------------------- Private constants ---------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private static final int EXIT_CODE_ERROR_BROWSER = -1;
   private static final int EXIT_CODE_ERROR_GUI = -2;
@@ -92,7 +92,7 @@ public final class Constants {
   private static final String TITLE_HELP_PAGE_7 = "Distribución por puntuaciones";
   private static final String TITLE_HELP_PAGE_8 = "Sugerencias, reportes y contacto";
 
-  // ---------------------------------------------------------------- Public constants ---------------------------------------------------------------
+  // ---------- Public constants ---------------------------------------------------------------------------------------------------------------------
 
   public static final int INDEX_HELP_PAGE_FILENAME = 1;
   public static final int INDEX_HELP_PAGE_TITLE = 0;
@@ -275,7 +275,7 @@ public final class Constants {
     RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_PURE
   );
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Empty, private constructor.

@@ -36,11 +36,11 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class ResultsController extends Controller<ResultsView> {
 
-  // --------------------------------------------------------------- Private constants ---------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private static final int TABLE_COLUMNS = 3;
 
-  // ---------------------------------------------------------------- Private fields -----------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private BySkillPointsMixer bySkillPointsMixer;
 
@@ -53,7 +53,7 @@ public class ResultsController extends Controller<ResultsView> {
 
   private List<Team> teams;
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the results view controller.
@@ -75,7 +75,7 @@ public class ResultsController extends Controller<ResultsView> {
     setUpListeners();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Creates the teams and the results table, applies the needed table format, fills the non-variable table cells and displays the distribution
@@ -193,7 +193,7 @@ public class ResultsController extends Controller<ResultsView> {
     return CommonFields.isAnchoragesEnabled() ? bySkillPointsMixer.withAnchorages(teams) : bySkillPointsMixer.withoutAnchorages(teams);
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   /**
    * Disposes the controlled view and creates a new one to control.
@@ -211,15 +211,19 @@ public class ResultsController extends Controller<ResultsView> {
     // Body not needed in this particular controller
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getBackButton()
-        .addActionListener(e -> backButtonEvent());
+        .addActionListener(_ -> backButtonEvent());
     view.getRemixButton()
-        .addActionListener(e -> remixButtonEvent());
+        .addActionListener(_ -> remixButtonEvent());
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Fills the table cells whose texts do not change.

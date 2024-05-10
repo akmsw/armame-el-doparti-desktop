@@ -39,12 +39,12 @@ import net.miginfocom.swing.MigLayout;
  */
 public class NamesInputView extends View {
 
-  // --------------------------------------------------------------- Private constants ---------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private static final int TEXT_AREA_ROWS = 14;
   private static final int TEXT_AREA_COLUMNS = 9;
 
-  // ---------------------------------------------------------------- Private fields -----------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private JButton mixButton;
   private JButton backButton;
@@ -65,7 +65,7 @@ public class NamesInputView extends View {
 
   private Map<Position, List<JTextField>> textFieldsMap;
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the names input view.
@@ -82,7 +82,7 @@ public class NamesInputView extends View {
     initializeInterface();
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void initializeInterface() {
@@ -111,7 +111,7 @@ public class NamesInputView extends View {
     rightPanel.add(backButton, Constants.MIG_LAYOUT_GROW);
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Adds the combobox.
@@ -145,13 +145,16 @@ public class NamesInputView extends View {
 
   /**
    * Builds, stores and configures each position text fields.
+   *
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
    */
+  @SuppressWarnings({"java:S1190", "java:S117"})
   private void addTextFields() {
     for (Position position : Position.values()) {
       textFieldsMap.get(position)
                    .addAll(IntStream.range(0, CommonFields.getPlayersAmountMap()
                                                           .get(position) * 2)
-                                                          .mapToObj(i -> new CustomTextField())
+                                                          .mapToObj(_ -> new CustomTextField())
                                                           .toList());
     }
   }
@@ -192,7 +195,7 @@ public class NamesInputView extends View {
     leftBottomPanel.add(new CustomSeparator(), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
   }
 
-  // -------------------------------------------------------------------- Getters --------------------------------------------------------------------
+  // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
 
   public JButton getBackButton() {
     return backButton;
@@ -242,7 +245,7 @@ public class NamesInputView extends View {
     return textFieldsMap;
   }
 
-  // -------------------------------------------------------------------- Setters --------------------------------------------------------------------
+  // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
 
   public void setBackButton(JButton backButton) {
     this.backButton = backButton;

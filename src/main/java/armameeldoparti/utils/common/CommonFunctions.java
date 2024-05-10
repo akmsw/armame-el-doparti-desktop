@@ -35,7 +35,7 @@ import javax.swing.SwingUtilities;
  */
 public final class CommonFunctions {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Empty, private constructor.
@@ -44,7 +44,7 @@ public final class CommonFunctions {
     // Body not needed
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Exits the program with the corresponding error message and error code according to the occurred exception.
@@ -89,13 +89,16 @@ public final class CommonFunctions {
   /**
    * Opens a new tab in the default web browser with the specified URL.
    *
+   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
+   *
    * @param url Destination URL.
    */
+  @SuppressWarnings("java:S1190")
   public static void browserRedirect(String url) {
     try {
       Desktop.getDesktop()
              .browse(new URI(url));
-    } catch (IOException | URISyntaxException e) {
+    } catch (IOException | URISyntaxException _) {
       CommonFunctions.exitProgram(Error.ERROR_BROWSER);
     }
   }

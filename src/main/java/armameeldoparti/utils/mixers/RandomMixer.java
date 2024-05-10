@@ -24,14 +24,14 @@ import java.util.function.Predicate;
  */
 public class RandomMixer implements PlayersMixer {
 
-  // ---------------------------------------------------------------- Private fields -----------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private int randomTeam1;
   private int randomTeam2;
 
   private Random randomGenerator;
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the random distributor.
@@ -40,7 +40,7 @@ public class RandomMixer implements PlayersMixer {
     randomGenerator = new Random();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Distributes the players randomly without considering anchorages.
@@ -146,7 +146,7 @@ public class RandomMixer implements PlayersMixer {
     return teams;
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Checks which team a given player can be added to.

@@ -29,7 +29,7 @@ import javax.swing.JPanel;
  */
 public class NamesInputController extends Controller<NamesInputView> {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the names input view controller.
@@ -42,7 +42,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     setUpInitialState();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Resets the combobox to the initial state and gives it the view focus.
@@ -155,7 +155,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     validateMixButtonEnable();
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {
@@ -187,12 +187,16 @@ public class NamesInputController extends Controller<NamesInputView> {
         .setEnabled(false);
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getMixButton()
-        .addActionListener(e -> mixButtonEvent(view));
+        .addActionListener(_ -> mixButtonEvent(view));
     view.getBackButton()
-        .addActionListener(e -> backButtonEvent());
+        .addActionListener(_ -> backButtonEvent());
     view.getRadioButtonRandom()
         .addItemListener(this::radioButtonEvent);
     view.getRadioButtonBySkillPoints()
@@ -200,7 +204,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.getComboBox()
         .addActionListener(e -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) e.getSource()).getSelectedItem())));
     view.getAnchoragesCheckbox()
-        .addActionListener(e -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
+        .addActionListener(_ -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
     view.getTextFieldsMap()
         .forEach((player, textFieldsSet) ->
           textFieldsSet.forEach(textField ->
@@ -251,7 +255,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.setVisible(true);
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * The mix button is enabled only when every condition needed to distribute the players is met.

@@ -24,16 +24,16 @@ import javax.swing.JTextArea;
  */
 public class HelpController extends Controller<HelpView> {
 
-  // --------------------------------------------------------------- Private constants ---------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private static final int TOTAL_HELP_PAGES = Constants.MAP_HELP_PAGES_FILES
                                                        .size();
 
-  // ---------------------------------------------------------------- Private fields -----------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private int currentPageNumber;
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the help view controller.
@@ -46,7 +46,7 @@ public class HelpController extends Controller<HelpView> {
     setUpInitialState();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Resets the page to the beginning, makes the controlled view invisible and shows the main menu view.
@@ -93,7 +93,10 @@ public class HelpController extends Controller<HelpView> {
    * Updates the displayed page in the text area.
    *
    * <p>Finds the text file corresponding to the page number and displays its content.
+   *
+   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
    */
+  @SuppressWarnings("java:S1190")
   public void updatePage() {
     JTextArea textArea = view.getTextArea();
 
@@ -122,12 +125,12 @@ public class HelpController extends Controller<HelpView> {
       textArea.read(reader, null);
       textArea.setCaretPosition(0);
       textArea.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
-    } catch (IOException e) {
+    } catch (IOException _) {
       CommonFunctions.exitProgram(Error.ERROR_FILES);
     }
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {
@@ -145,17 +148,21 @@ public class HelpController extends Controller<HelpView> {
         .setEnabled(false);
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getPreviousPageButton()
-        .addActionListener(e -> previousPageButtonEvent());
+        .addActionListener(_ -> previousPageButtonEvent());
     view.getNextPageButton()
-        .addActionListener(e -> nextPageButtonEvent());
+        .addActionListener(_ -> nextPageButtonEvent());
     view.getBackButton()
-        .addActionListener(e -> backButtonEvent());
+        .addActionListener(_ -> backButtonEvent());
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Updates the reading progress label text.
@@ -175,13 +182,13 @@ public class HelpController extends Controller<HelpView> {
         .setEnabled(true);
   }
 
-  // -------------------------------------------------------------------- Getters --------------------------------------------------------------------
+  // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
 
   public int getCurrentPageNumber() {
     return currentPageNumber;
   }
 
-  // -------------------------------------------------------------------- Setters --------------------------------------------------------------------
+  // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
 
   public void setCurrentPageNumber(int currentPageNumber) {
     this.currentPageNumber = currentPageNumber;

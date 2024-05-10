@@ -48,7 +48,7 @@ import javax.swing.plaf.FontUIResource;
  */
 public final class Main {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Empty, private constructor.
@@ -57,7 +57,7 @@ public final class Main {
     // Body not needed
   }
 
-  // --------------------------------------------------------------- Main entry point ----------------------------------------------------------------
+  // ---------- Main entry point ---------------------------------------------------------------------------------------------------------------------
 
   /**
    * Starts the program by initializing the fields needed along with the program's graphical properties, and making the main menu
@@ -87,17 +87,20 @@ public final class Main {
     SwingUtilities.invokeLater(((MainMenuController) CommonFunctions.getController(ProgramView.MAIN_MENU))::showView);
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Populates the players sets with empty players.
+   *
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
    */
+  @SuppressWarnings({"java:S1190", "java:S117"})
   private static void populatePlayersSets() {
     Arrays.stream(Position.values())
           .forEach(position -> CommonFields.getPlayersSets()
                                            .put(position, IntStream.range(0, CommonFields.getPlayersAmountMap()
                                                                                          .get(position) * 2)
-                                                                   .mapToObj(i -> new Player("", position))
+                                                                   .mapToObj(_ -> new Player("", position))
                                                                    .toList()));
   }
 
@@ -113,7 +116,10 @@ public final class Main {
    * trusts that what is found corresponds to the order in which the values in the Position enum are declared. Idem, if the order of the Position enum
    * values are changed, it should be noted that {@code Position.values()[index]} trusts the order in which the data will be retrieved from the .pda
    * file and, therefore, you should review the order of the important lines in the file.
+   *
+   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
    */
+  @SuppressWarnings("java:S1190")
   private static void setPlayersDistribution() {
     try (BufferedReader buff = new BufferedReader(
            new InputStreamReader(
@@ -132,7 +138,7 @@ public final class Main {
                                              .put(Position.values()[index],
                                                   Integer.parseInt(filteredLines.get(index)
                                                                                 .replaceAll(Constants.REGEX_PLAYERS_AMOUNT, ""))));
-    } catch (IOException e) {
+    } catch (IOException _) {
       CommonFunctions.exitProgram(Error.ERROR_FILES);
     }
   }
@@ -152,7 +158,10 @@ public final class Main {
 
   /**
    * Sets up the program's GUI properties.
+   *
+   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
    */
+  @SuppressWarnings("java:S1190")
   private static void setUpGeneralGraphicalProperties() {
     UIManager.put("Button.background", Constants.COLOR_GREEN_DARK);
     UIManager.put("Button.foreground", Color.WHITE);
@@ -188,7 +197,7 @@ public final class Main {
                          .registerFont(programFont);
 
       setProgramFont(programFont);
-    } catch (IOException | FontFormatException e) {
+    } catch (IOException | FontFormatException _) {
       CommonFunctions.exitProgram(Error.ERROR_GUI);
     }
   }

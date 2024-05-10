@@ -18,7 +18,7 @@ import armameeldoparti.views.SkillPointsInputView;
  */
 public class SkillPointsInputController extends Controller<SkillPointsInputView> {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the skill points input view controller.
@@ -30,7 +30,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     setUpListeners();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets the entered skill points for each player, makes the controlled view invisible and shows the results view.
@@ -81,7 +81,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     view.pack();
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {
@@ -93,17 +93,21 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     // Body not needed in this particular controller
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getBackButton()
-        .addActionListener(e -> backButtonEvent());
+        .addActionListener(_ -> backButtonEvent());
     view.getFinishButton()
-        .addActionListener(e -> finishButtonEvent());
+        .addActionListener(_ -> finishButtonEvent());
     view.getResetSkillPointsButton()
-        .addActionListener(e -> resetSkillPointsButtonEvent());
+        .addActionListener(_ -> resetSkillPointsButtonEvent());
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets 0 skill points to every player and resets every spinner value to the minimum skill point.

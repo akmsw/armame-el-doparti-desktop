@@ -26,7 +26,7 @@ import java.util.stream.IntStream;
  */
 public class BySkillPointsMixer implements PlayersMixer {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the by-skill-points players distributor.
@@ -35,7 +35,7 @@ public class BySkillPointsMixer implements PlayersMixer {
     // Body not needed
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Distributes the players by their skill points without considering anchorages.
@@ -155,7 +155,7 @@ public class BySkillPointsMixer implements PlayersMixer {
     return teams;
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Performs the subsets distribution in sets with 4+ players as explained in {@link #withoutAnchorages(List)}.

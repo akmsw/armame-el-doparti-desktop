@@ -25,12 +25,12 @@ import javax.swing.JOptionPane;
  */
 public class AnchoragesController extends Controller<AnchoragesView> {
 
-  // ---------------------------------------------------------------- Private fields -----------------------------------------------------------------
+  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
   private int anchoragesAmount;
   private int anchoredPlayersAmount;
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the anchorages view controller.
@@ -44,7 +44,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     toggleButtons();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Updates the checkboxes text with the players names.
@@ -180,7 +180,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                    .showView();
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   /**
    * Resets the controlled view to its default values.
@@ -205,7 +205,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
         .setEnabled(false);
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getFinishButton()
         .addActionListener(e -> finishButtonEvent(CommonFunctions.getComponentFromEvent(e)));
@@ -214,14 +218,14 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     view.getDeleteAnchorageButton()
         .addActionListener(e -> deleteAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(e)));
     view.getDeleteLastAnchorageButton()
-        .addActionListener(e -> deleteLastAnchorageButtonEvent());
+        .addActionListener(_ -> deleteLastAnchorageButtonEvent());
     view.getClearAnchoragesButton()
-        .addActionListener(e -> clearAnchoragesButtonEvent());
+        .addActionListener(_ -> clearAnchoragesButtonEvent());
     view.getBackButton()
-        .addActionListener(e -> backButtonEvent());
+        .addActionListener(_ -> backButtonEvent());
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets a new anchorage based on the players checked.
@@ -338,7 +342,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * Deletes a specific anchorage.
    *
    * <p>The players that have the specified anchorage now will have anchorage number 0. If the anchorage number to delete is not the last one, then
-   * the remaining players (from {@code anchorageToDelete + 1} to {@code anchoragesAmount}) will have their anchorage number decreased by 1.
+   * the remaining players (from {@code anchorageToDelete + 1} up to {@code anchoragesAmount}) will have their anchorage number decreased by 1.
    *
    * @param anchorageToDelete Anchorage number to delete.
    */

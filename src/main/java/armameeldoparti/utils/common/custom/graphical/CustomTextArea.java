@@ -20,7 +20,7 @@ import javax.swing.JTextArea;
  */
 public class CustomTextArea extends JTextArea {
 
-  // --------------------------------------------------------------- Constructors --------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic text area using the established program aesthetics.
@@ -41,14 +41,14 @@ public class CustomTextArea extends JTextArea {
     setUpGraphicalProperties();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   @Override
   public Insets getInsets() {
     return Constants.INSETS_GENERAL;
   }
 
-  // --------------------------------------------------------------- Private methods -----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Configures the graphical properties for the text area in order to fit the program aesthetics.

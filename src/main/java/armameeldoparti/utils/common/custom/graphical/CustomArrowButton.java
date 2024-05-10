@@ -34,14 +34,18 @@ public class CustomArrowButton extends BasicArrowButton {
     setUpGraphicalProperties();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   @Override
   public Insets getInsets() {
     return Constants.INSETS_GENERAL;
   }
 
+  /**
+   * The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings("java:S1190")
   public void paint(Graphics g) {
     try {
       int buttonHeight = getHeight();
@@ -134,12 +138,12 @@ public class CustomArrowButton extends BasicArrowButton {
       g2.dispose();
 
       super.paintComponent(g);
-    } catch (IllegalArgumentException e) {
+    } catch (IllegalArgumentException _) {
       CommonFunctions.exitProgram(Error.ERROR_INTERNAL);
     }
   }
 
-  // ---------------------------------------------------------------- Private methods ----------------------------------------------------------------
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
    * Configures the graphical properties of the arrow button in order to fit the program aesthetics.

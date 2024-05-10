@@ -16,7 +16,7 @@ import armameeldoparti.views.MainMenuView;
  */
 public class MainMenuController extends Controller<MainMenuView> {
 
-  // --------------------------------------------------------------- Constructor ---------------------------------------------------------------------
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the main menu view controller.
@@ -28,7 +28,7 @@ public class MainMenuController extends Controller<MainMenuView> {
     setUpListeners();
   }
 
-  // ---------------------------------------------------------------- Public methods -----------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   @Override
   public void showView() {
@@ -71,7 +71,7 @@ public class MainMenuController extends Controller<MainMenuView> {
     CommonFunctions.browserRedirect(Constants.URL_ISSUES);
   }
 
-  // --------------------------------------------------------------- Protected methods ---------------------------------------------------------------
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {
@@ -83,15 +83,19 @@ public class MainMenuController extends Controller<MainMenuView> {
     // Body not needed in this particular controller
   }
 
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   */
   @Override
+  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getStartButton()
-        .addActionListener(e -> startButtonEvent());
+        .addActionListener(_ -> startButtonEvent());
     view.getHelpButton()
-        .addActionListener(e -> helpButtonEvent());
+        .addActionListener(_ -> helpButtonEvent());
     view.getContactButton()
-        .addActionListener(e -> contactButtonEvent());
+        .addActionListener(_ -> contactButtonEvent());
     view.getIssuesButton()
-        .addActionListener(e -> issuesButtonEvent());
+        .addActionListener(_ -> issuesButtonEvent());
   }
 }
