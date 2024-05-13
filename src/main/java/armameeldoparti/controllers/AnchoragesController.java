@@ -380,14 +380,13 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                     if (replacement == 0) {
                       player.setAnchored(false);
 
-                      CommonFunctions.retrieveOptional(
-                        view.getCheckboxesMap()
-                            .get(player.getPosition())
-                            .stream()
-                            .filter(checkbox -> checkbox.getText()
-                                                        .equals(player.getName()))
-                            .findFirst()
-                      ).setVisible(true);
+                      CommonFunctions.retrieveOptional(view.getCheckboxesMap()
+                                                           .get(player.getPosition())
+                                                           .stream()
+                                                           .filter(checkbox -> checkbox.getText()
+                                                                                       .equals(player.getName()))
+                                                           .findFirst())
+                                     .setVisible(true);
 
                       anchoredPlayersAmount--;
                     }

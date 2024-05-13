@@ -9,12 +9,14 @@ import armameeldoparti.views.View;
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -71,18 +73,30 @@ public final class CommonFunctions {
   }
 
   /**
-   * Establishes the monitor where the given view is displayed, as the active monitor.
+   * Determines the monitor on which the majority of the given view is displayed and sets it as the active monitor.
    *
-   * @param view Reference view from which the active monitor will be retrieved.
+   * @param view Reference view from which the active monitor will be determined.
    */
   public static void updateActiveMonitorFromView(View view) {
     CommonFields.setActiveMonitor(
-      retrieveOptional(Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment()
-                                                        .getScreenDevices())
-                             .filter(screen -> screen.getDefaultConfiguration()
-                                                     .getBounds()
-                                                     .contains(view.getLocation()))
-                             .findFirst())
+      retrieveOptional(
+        Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment()
+                                         .getScreenDevices())
+              .filter(screen -> !screen.getDefaultConfiguration()
+                                       .getBounds()
+                                       .intersection(view.getBounds())
+                                       .isEmpty())
+              .max(Comparator.comparingDouble(
+                  screen -> {
+                    Rectangle intersection = screen.getDefaultConfiguration()
+                                                   .getBounds()
+                                                   .intersection(view.getBounds());
+
+                    return intersection.getWidth() * intersection.getHeight();
+                  }
+                )
+              )
+      )
     );
   }
 
