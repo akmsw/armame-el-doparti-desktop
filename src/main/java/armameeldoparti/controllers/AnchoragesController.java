@@ -3,13 +3,18 @@ package armameeldoparti.controllers;
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Position;
 import armameeldoparti.models.ProgramView;
+import armameeldoparti.models.Team;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.views.AnchoragesView;
 import java.awt.Component;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.EnumMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -72,8 +77,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
    */
   public void finishButtonEvent(Component parentComponent) {
-    if (!validAnchoragesCombination()) {
-      CommonFunctions.showErrorMessage("Error message", parentComponent);
+    if (!validAnchoragesCombination(0, Arrays.asList(new Team(0), new Team(1)))) {
+      CommonFunctions.showErrorMessage("Existen conflictos entre anclajes", parentComponent);
 
       return;
     }
@@ -489,11 +494,104 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * TODO.
    *
-   * @return WIP.
+   * @param recursiveVerificationIndex
+   * @param teams
+   *
+   * @return
    */
-  private boolean validAnchoragesCombination() {
+  private boolean validAnchoragesCombination(int recursiveVerificationIndex, List<Team> teams) {
+    if (recursiveVerificationIndex == CommonFunctions.getAnchoredPlayers()
+                                                     .size()) {
+      return validTeams(teams);
+    }
+
+    List<Player> anchorage = CommonFunctions.getAnchoredPlayers()
+                                            .get(recursiveVerificationIndex);
+
+    for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
+      Team team = teams.get(teamIndex);
+
+      if (!anchoragesConflictExists(team, anchorage)) {
+        anchorage.forEach(player -> team.getTeamPlayers()
+                                        .get(player.getPosition())
+                                        .add(player));
+
+        if (validAnchoragesCombination(recursiveVerificationIndex + 1, teams)) {
+          return true;
+        }
+
+        team.clear();
+      }
+    }
+
+    return false;
+  }
+
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   *
+   * @param team
+   * @param anchorage
+   *
+   * @return
+   */
+  @SuppressWarnings({"java:S1190", "java:S117"})
+  private boolean anchoragesConflictExists(Team team, List<Player> anchorage) {
+    Map<Position, Integer> playersPerPosition = team.getTeamPlayers()
+                                                    .values()
+                                                    .stream()
+                                                    .flatMap(List::stream)
+                                                    .collect(Collectors.toMap(
+                                                      Player::getPosition,
+                                                      _ -> 1,
+                                                      Integer::sum,
+                                                      () -> new EnumMap<>(Position.class))
+                                                    );
+
+    for (Player player : anchorage) {
+      int newCount = playersPerPosition.getOrDefault(player.getPosition(), 0) + 1;
+
+      if (newCount > CommonFields.getPlayersAmountMap()
+                                 .get(player.getPosition())) {
+        return true;
+      }
+
+      playersPerPosition.put(player.getPosition(), newCount);
+    }
+
+    return false;
+  }
+
+  /**
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   *
+   * @param teams
+   *
+   * @return
+   */
+  @SuppressWarnings({"java:S1190", "java:S117"})
+  private boolean validTeams(List<Team> teams) {
+    for (Team team : teams) {
+      Map<Position, Integer> playersPerPosition = team.getTeamPlayers()
+                                                      .values()
+                                                      .stream()
+                                                      .flatMap(List::stream)
+                                                      .collect(Collectors.toMap(
+                                                        Player::getPosition,
+                                                        _ -> 1,
+                                                        Integer::sum,
+                                                        () -> new EnumMap<>(Position.class))
+                                                      );
+
+      for (Map.Entry<Position, Integer> entry : CommonFields.getPlayersAmountMap()
+                                                            .entrySet()) {
+        if (playersPerPosition.getOrDefault(entry.getKey(), 0) > entry.getValue()) {
+          return false;
+        }
+      }
+    }
+
     return true;
   }
 }

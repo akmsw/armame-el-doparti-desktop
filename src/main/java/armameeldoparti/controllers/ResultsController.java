@@ -143,15 +143,15 @@ public class ResultsController extends Controller<ResultsView> {
     };
 
     teams.forEach(
-        team -> {
-          Arrays.stream(Position.values())
-                .forEach(position -> team.getTeamPlayers()
-                                         .get(position)
-                                         .forEach(player -> table.setValueAt(player.getName(), wrapper.row++, wrapper.column)));
+      team -> {
+        Arrays.stream(Position.values())
+              .forEach(position -> team.getTeamPlayers()
+                                       .get(position)
+                                       .forEach(player -> table.setValueAt(player.getName(), wrapper.row++, wrapper.column)));
 
-          wrapper.column++;
-          wrapper.row = 1;
-        }
+        wrapper.column++;
+        wrapper.row = 1;
+      }
     );
 
     if (CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS) {
