@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Team class.
@@ -27,6 +28,8 @@ public class Team {
 
   /**
    * Builds a basic team with empty position sets.
+   *
+   * @param teamNumber Integer identification for the team.
    */
   public Team(int teamNumber) {
     setTeamPlayers(new EnumMap<>(Position.class));
@@ -49,13 +52,26 @@ public class Team {
   }
 
   /**
-   * @return The amount of players in the team.
+   * @return The number of players in the team.
    */
   public int getPlayersCount() {
     return teamPlayers.values()
                       .stream()
                       .mapToInt(List::size)
                       .sum();
+  }
+
+  /**
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   *
+   * @return The number of players per position in the team.
+   */
+  @SuppressWarnings({"java:S1190", "java:S117"})
+  public Map<Position, Integer> getPlayersCountPerPosition() {
+    return teamPlayers.values()
+                      .stream()
+                      .flatMap(List::stream)
+                      .collect(Collectors.toMap(Player::getPosition, _ -> 1, Integer::sum, () -> new EnumMap<>(Position.class)));
   }
 
   /**
@@ -70,15 +86,13 @@ public class Team {
   }
 
   /**
-   * Checks if a particular position set in the team is full.
-   *
    * @param position The position of the set to check.
    *
    * @return Whether the specified position set in the team is full.
    */
   public boolean isPositionFull(Position position) {
     return teamPlayers.get(position)
-                      .size() == CommonFields.getPlayersAmountMap()
+                      .size() == CommonFields.getPlayersLimitPerPosition()
                                              .get(position);
   }
 

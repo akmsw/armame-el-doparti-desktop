@@ -89,7 +89,7 @@ public class BySkillPointsMixer implements PlayersMixer {
    * with the sets with most anchored players in order to avoid inconsistencies.
    *
    * <p>Then, the players that are not anchored are distributed between the teams as fair as possible based on their skill points. They will be added
-   * to a team only if the players per position or the players per team amounts are not exceeded.
+   * to a team only if the players per position or the players per team limits are not exceeded.
    *
    * @param teams Teams where to distribute the players.
    *

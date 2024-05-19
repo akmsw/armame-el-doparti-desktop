@@ -165,7 +165,7 @@ public final class Constants {
   public static final String PROGRAM_AUTHOR = "@" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String REGEX_NAMES_VALIDATION = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String REGEX_PDA_DATA_RETRIEVE = "[CLMFG].+>.+";
-  public static final String REGEX_PLAYERS_AMOUNT = "(?!(?<=" + PLAYERS_PER_TEAM + ")\\d).";
+  public static final String REGEX_PLAYERS_COUNT = "(?!(?<=" + PLAYERS_PER_TEAM + ")\\d).";
   public static final String URL_CONTACT = "https://github.com/" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String URL_ISSUES = URL_CONTACT + "/" + PROGRAM_TITLE.replace(" ", "-") + "/issues";
 

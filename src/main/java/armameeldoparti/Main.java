@@ -70,8 +70,8 @@ public final class Main {
     CommonFields.setActiveMonitor(GraphicsEnvironment.getLocalGraphicsEnvironment()
                                                      .getDefaultScreenDevice());
     CommonFields.setAnchoragesEnabled(false);
-    CommonFields.setControllerMap(new EnumMap<>(ProgramView.class));
-    CommonFields.setPlayersAmountMap(new EnumMap<>(Position.class));
+    CommonFields.setControllersMap(new EnumMap<>(ProgramView.class));
+    CommonFields.setPlayersLimitPerPosition(new EnumMap<>(Position.class));
     CommonFields.setPlayersSets(new TreeMap<>());
     CommonFields.setPositionsMap(Map.of(Position.CENTRAL_DEFENDER, Constants.POSITION_CENTRAL_DEFENDERS,
                                         Position.LATERAL_DEFENDER, Constants.POSITION_LATERAL_DEFENDERS,
@@ -98,7 +98,7 @@ public final class Main {
   private static void populatePlayersSets() {
     Arrays.stream(Position.values())
           .forEach(position -> CommonFields.getPlayersSets()
-                                           .put(position, IntStream.range(0, CommonFields.getPlayersAmountMap()
+                                           .put(position, IntStream.range(0, CommonFields.getPlayersLimitPerPosition()
                                                                                          .get(position) * 2)
                                                                    .mapToObj(_ -> new Player("", position))
                                                                    .toList()));
@@ -134,10 +134,10 @@ public final class Main {
                                        .toList();
 
       IntStream.range(0, filteredLines.size())
-               .forEach(index -> CommonFields.getPlayersAmountMap()
+               .forEach(index -> CommonFields.getPlayersLimitPerPosition()
                                              .put(Position.values()[index],
                                                   Integer.parseInt(filteredLines.get(index)
-                                                                                .replaceAll(Constants.REGEX_PLAYERS_AMOUNT, ""))));
+                                                                                .replaceAll(Constants.REGEX_PLAYERS_COUNT, ""))));
     } catch (IOException _) {
       CommonFunctions.exitProgram(Error.ERROR_FILES);
     }
@@ -147,7 +147,7 @@ public final class Main {
    * Creates the controllers and assigns their corresponding view to control.
    */
   private static void setUpControllers() {
-    CommonFields.getControllerMap()
+    CommonFields.getControllersMap()
                 .putAll(Map.of(ProgramView.MAIN_MENU, new MainMenuController(new MainMenuView()),
                                ProgramView.HELP, new HelpController(new HelpView()),
                                ProgramView.NAMES_INPUT, new NamesInputController(new NamesInputView()),

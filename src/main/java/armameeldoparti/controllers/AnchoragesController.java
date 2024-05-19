@@ -11,10 +11,8 @@ import armameeldoparti.views.AnchoragesView;
 import java.awt.Component;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -32,8 +30,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
 
   // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
-  private int anchoragesAmount;
-  private int anchoredPlayersAmount;
+  private int anchoragesCount;
+  private int anchoredPlayersCount;
 
   // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
@@ -101,14 +99,18 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       return;
     }
 
-    int playersToAnchorAmount = (int) view.getCheckboxesMap()
-                                          .values()
-                                          .stream()
-                                          .flatMap(List::stream)
-                                          .filter(JCheckBox::isSelected)
-                                          .count();
+    int playersToAnchorCount = (int) view.getCheckboxesMap()
+                                         .values()
+                                         .stream()
+                                         .flatMap(List::stream)
+                                         .filter(JCheckBox::isSelected)
+                                         .count();
 
-    if (!validChecksAmount(playersToAnchorAmount)) {
+    if (playersToAnchorCount == 0) {
+      CommonFunctions.showErrorMessage("No hay jugadores seleccionados para anclar", parentComponent);
+
+      return;
+    } else if (!validChecksCount(playersToAnchorCount)) {
       CommonFunctions.showErrorMessage(
         "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
         + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
@@ -119,7 +121,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       return;
     }
 
-    if (!validAnchoredPlayersAmount(playersToAnchorAmount)) {
+    if (!validAnchoredPlayersCount(playersToAnchorCount)) {
       CommonFunctions.showErrorMessage("No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total", parentComponent);
 
       return;
@@ -134,7 +136,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * Deletes the last anchorage made, updating the text area and the state of the buttons.
    */
   public void deleteLastAnchorageButtonEvent() {
-    deleteAnchorage(anchoragesAmount);
+    deleteAnchorage(anchoragesCount);
     updateTextArea();
     toggleButtons();
   }
@@ -145,7 +147,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
    */
   public void deleteAnchorageButtonEvent(Component parentComponent) {
-    String[] optionsDelete = IntStream.rangeClosed(1, anchoragesAmount)
+    String[] optionsDelete = IntStream.rangeClosed(1, anchoragesCount)
                                       .mapToObj(Integer::toString)
                                       .toArray(String[]::new);
 
@@ -203,15 +205,17 @@ public class AnchoragesController extends Controller<AnchoragesView> {
 
   @Override
   protected void setUpInitialState() {
-    anchoragesAmount = 0;
-    anchoredPlayersAmount = 0;
+    anchoragesCount = 0;
+    anchoredPlayersCount = 0;
 
     view.getFinishButton()
         .setEnabled(false);
   }
 
   /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * Sets up the GUI components event listeners.
+   *
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
    */
   @Override
   @SuppressWarnings({"java:S1190", "java:S117"})
@@ -238,7 +242,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @see #setAnchorages(List)
    */
   private void newAnchorage() {
-    anchoragesAmount++;
+    anchoragesCount++;
 
     view.getCheckboxesMap()
         .values()
@@ -247,12 +251,12 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                               .anyMatch(JCheckBox::isSelected))
         .forEach(this::setAnchorages);
 
-    anchoredPlayersAmount = (int) CommonFields.getPlayersSets()
-                                              .values()
-                                              .stream()
-                                              .flatMap(List::stream)
-                                              .filter(Player::isAnchored)
-                                              .count();
+    anchoredPlayersCount = (int) CommonFields.getPlayersSets()
+                                             .values()
+                                             .stream()
+                                             .flatMap(List::stream)
+                                             .filter(Player::isAnchored)
+                                             .count();
   }
 
   /**
@@ -266,7 +270,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     view.getTextArea()
         .setText("");
 
-    IntStream.range(0, anchoragesAmount)
+    IntStream.range(0, anchoragesCount)
              .forEach(anchorageNumber -> {
                view.getTextArea()
                    .append("ANCLAJE " + (anchorageNumber + 1) + System.lineSeparator());
@@ -286,7 +290,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                      .append((anchorage.indexOf(player) + 1) + ". " + player.getName() + System.lineSeparator());
                }
 
-               if ((anchorageNumber + 1) != anchoragesAmount) {
+               if ((anchorageNumber + 1) != anchoragesCount) {
                  view.getTextArea()
                      .append(System.lineSeparator());
                }
@@ -300,19 +304,19 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     view.getAnchorageButtons()
         .forEach(button -> button.setEnabled(false));
 
-    if (anchoragesAmount == 1) {
+    if (anchoragesCount == 1) {
       view.getFinishButton()
           .setEnabled(true);
       view.getDeleteLastAnchorageButton()
           .setEnabled(true);
       view.getClearAnchoragesButton()
           .setEnabled(true);
-    } else if (anchoragesAmount > 1) {
+    } else if (anchoragesCount > 1) {
       view.getAnchorageButtons()
           .forEach(button -> button.setEnabled(true));
     }
 
-    if (Constants.MAX_ANCHORED_PLAYERS - anchoredPlayersAmount < 2) {
+    if (Constants.MAX_ANCHORED_PLAYERS - anchoredPlayersCount < 2) {
       view.getNewAnchorageButton()
           .setEnabled(false);
       view.getCheckboxesMap()
@@ -338,8 +342,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @see #deleteAnchorage(int)
    */
   private void clearAnchorages() {
-    while (anchoragesAmount > 0) {
-      deleteAnchorage(anchoragesAmount);
+    while (anchoragesCount > 0) {
+      deleteAnchorage(anchoragesCount);
     }
   }
 
@@ -347,27 +351,27 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * Deletes a specific anchorage.
    *
    * <p>The players that have the specified anchorage now will have anchorage number 0. If the anchorage number to delete is not the last one, then
-   * the remaining players (from {@code anchorageToDelete + 1} up to {@code anchoragesAmount}) will have their anchorage number decreased by 1.
+   * the remaining players (from {@code anchorageToDelete + 1} up to {@code anchoragesCount}) will have their anchorage number decreased by 1.
    *
    * @param anchorageToDelete Anchorage number to delete.
    */
   private void deleteAnchorage(int anchorageToDelete) {
     changeAnchorage(anchorageToDelete, 0);
 
-    if (anchorageToDelete != anchoragesAmount) {
-      for (int anchorageNumber = anchorageToDelete + 1; anchorageNumber <= anchoragesAmount; anchorageNumber++) {
+    if (anchorageToDelete != anchoragesCount) {
+      for (int anchorageNumber = anchorageToDelete + 1; anchorageNumber <= anchoragesCount; anchorageNumber++) {
         changeAnchorage(anchorageNumber, anchorageNumber - 1);
       }
     }
 
-    anchoragesAmount--;
+    anchoragesCount--;
   }
 
   /**
    * Changes the anchorage number of certain players.
    *
    * <p>If the replacement is 0 (an anchorage must be removed), then those players will be set as not-anchored, the players corresponding checkboxes
-   * will be visible and enabled again, and the anchored players amount will be decreased as needed.
+   * will be visible and enabled again, and the anchored players count will be decreased as needed.
    *
    * @param target      Anchorage number to replace.
    * @param replacement New anchorage number to set.
@@ -393,7 +397,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                                            .findFirst())
                                      .setVisible(true);
 
-                      anchoredPlayersAmount--;
+                      anchoredPlayersCount--;
                     }
                   }
                 );
@@ -433,7 +437,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                        .anyMatch(checkbox -> checkbox.getText()
                                                                      .equals(player.getName())))
                 .forEach(player -> {
-                  player.setAnchorageNumber(anchoragesAmount);
+                  player.setAnchorageNumber(anchoragesCount);
                   player.setAnchored(true);
                 });
 
@@ -458,19 +462,15 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * Checks if the selected players amount is at least 2 and at most MAX_PLAYERS_PER_ANCHORAGE.
+   * @param playersToAnchorCount Selected players to anchor.
    *
-   * @param playersToAnchorAmount Checked players to anchor.
-   *
-   * @return Whether the checked players amount is at least 2 and at most MAX_PLAYERS_PER_ANCHORAGE.
+   * @return Whether the number of selected players is at least 2 and at most MAX_PLAYERS_PER_ANCHORAGE.
    */
-  private boolean validChecksAmount(int playersToAnchorAmount) {
-    return playersToAnchorAmount <= Constants.MAX_PLAYERS_PER_ANCHORAGE && playersToAnchorAmount >= 2;
+  private boolean validChecksCount(int playersToAnchorCount) {
+    return playersToAnchorCount <= Constants.MAX_PLAYERS_PER_ANCHORAGE && playersToAnchorCount >= 2;
   }
 
   /**
-   * Checks if more than half of any players set is selected.
-   *
    * @return Whether more than half of any players set is checked.
    */
   private boolean validCheckedPlayersPerPosition() {
@@ -483,22 +483,27 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * Checks if the selected players amount is at most the maximum allowed per anchorage.
+   * @param playersToAnchorCount Number of checked players.
    *
-   * @param playersToAnchorAmount Checked players amount.
-   *
-   * @return Whether the selected players amount is at most the maximum allowed per anchorage.
+   * @return Whether the number of selected players is at most the maximum allowed per anchorage.
    */
-  private boolean validAnchoredPlayersAmount(int playersToAnchorAmount) {
-    return anchoredPlayersAmount + playersToAnchorAmount <= Constants.MAX_ANCHORED_PLAYERS;
+  private boolean validAnchoredPlayersCount(int playersToAnchorCount) {
+    return anchoredPlayersCount + playersToAnchorCount <= Constants.MAX_ANCHORED_PLAYERS;
   }
 
   /**
+   * Verifies recursively if the existing anchorages combination is possible to distribute (i.e.: no anchorages conflict exists) prior to perform the
+   * distribution itself.
    *
-   * @param recursiveVerificationIndex
-   * @param teams
+   * <p>It starts by gathering the first anchorage: if there's no conflict in the first team, then it is added to it. If not, it tries to add it to
+   * the second team. If the anchorage can't be added successfully to any team, then an anchorages conflict exists. This procedure is repeated
+   * recursively with every anchorage. When the final anchorage is reached, the resulting temporary teams are validated to return that as the
+   * recursion break condition.
    *
-   * @return
+   * @param recursiveVerificationIndex Recursive index used to iterate through the existing anchorages.
+   * @param teams                      Empty, temporary teams.
+   *
+   * @return Whether the existing anchorages combination is possible to distribute.
    */
   private boolean validAnchoragesCombination(int recursiveVerificationIndex, List<Team> teams) {
     if (recursiveVerificationIndex == CommonFunctions.getAnchoredPlayers()
@@ -529,69 +534,39 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * @param team      Temporary team.
+   * @param anchorage Anchorage to validate.
    *
-   * @param team
-   * @param anchorage
-   *
-   * @return
+   * @return Whether a given anchorage can be added to a given team without exceeding any players limit for their position sets.
    */
-  @SuppressWarnings({"java:S1190", "java:S117"})
   private boolean anchoragesConflictExists(Team team, List<Player> anchorage) {
-    Map<Position, Integer> playersPerPosition = team.getTeamPlayers()
-                                                    .values()
-                                                    .stream()
-                                                    .flatMap(List::stream)
-                                                    .collect(Collectors.toMap(
-                                                      Player::getPosition,
-                                                      _ -> 1,
-                                                      Integer::sum,
-                                                      () -> new EnumMap<>(Position.class))
-                                                    );
+    Map<Position, Integer> playersCountPerPosition = team.getPlayersCountPerPosition();
 
     for (Player player : anchorage) {
-      int newCount = playersPerPosition.getOrDefault(player.getPosition(), 0) + 1;
+      int newCount = playersCountPerPosition.getOrDefault(player.getPosition(), 0) + 1;
 
-      if (newCount > CommonFields.getPlayersAmountMap()
+      if (newCount > CommonFields.getPlayersLimitPerPosition()
                                  .get(player.getPosition())) {
         return true;
       }
 
-      playersPerPosition.put(player.getPosition(), newCount);
+      playersCountPerPosition.put(player.getPosition(), newCount);
     }
 
     return false;
   }
 
   /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * @param teams Temporary teams.
    *
-   * @param teams
-   *
-   * @return
+   * @return Whether any of the given teams has any position set with more than its allowed players limit.
    */
-  @SuppressWarnings({"java:S1190", "java:S117"})
   private boolean validTeams(List<Team> teams) {
-    for (Team team : teams) {
-      Map<Position, Integer> playersPerPosition = team.getTeamPlayers()
-                                                      .values()
-                                                      .stream()
-                                                      .flatMap(List::stream)
-                                                      .collect(Collectors.toMap(
-                                                        Player::getPosition,
-                                                        _ -> 1,
-                                                        Integer::sum,
-                                                        () -> new EnumMap<>(Position.class))
-                                                      );
-
-      for (Map.Entry<Position, Integer> entry : CommonFields.getPlayersAmountMap()
-                                                            .entrySet()) {
-        if (playersPerPosition.getOrDefault(entry.getKey(), 0) > entry.getValue()) {
-          return false;
-        }
-      }
-    }
-
-    return true;
+    return teams.stream()
+                .allMatch(team -> CommonFields.getPlayersLimitPerPosition()
+                                              .entrySet()
+                                              .stream()
+                                              .noneMatch(positionLimit -> team.getPlayersCountPerPosition()
+                                                                              .getOrDefault(positionLimit.getKey(), 0) > positionLimit.getValue()));
   }
 }

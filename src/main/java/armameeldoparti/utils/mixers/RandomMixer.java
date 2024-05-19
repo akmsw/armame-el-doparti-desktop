@@ -97,7 +97,7 @@ public class RandomMixer implements PlayersMixer {
    * <p>First, the anchored players are grouped in different lists by their anchorage number, and they are distributed randomly starting with the sets
    * with most anchored players in order to avoid inconsistencies. If a set of anchored players cannot be added to one team, it will be added to the
    * other. Then, the players that are not anchored are distributed randomly. They will be added to a team only if the players per position or the
-   * players per team amounts are not exceeded.
+   * players per team limits are not exceeded.
    *
    * @param teams Teams where to distribute the players.
    *
@@ -149,6 +149,83 @@ public class RandomMixer implements PlayersMixer {
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
 
   /**
+   * Randomly shuffles the team numbers.
+   *
+   * @param range Upper limit (exclusive) for the random number generator.
+   */
+  private void shuffleTeamNumbers(int range) {
+    randomTeam1 = randomGenerator.nextInt(range);
+    randomTeam2 = 1 - randomTeam1;
+  }
+
+  /**
+   * @param team   Team where the player should be added.
+   * @param player The players to add.
+   *
+   * @return Whether a player can be added to the specified team.
+   */
+  private boolean playerCanBeAdded(Team team, Player player) {
+    return !team.isPositionFull(player.getPosition());
+  }
+
+  /**
+   * Checks if a set of anchored players can be added to a team.
+   *
+   * <p>First, checks if any of the positions of the anchored players in the destination team is already complete. If not, checks if adding them does
+   * not exceed the number of players allowed per position per team. This is done in order to avoid more than half of the registered players of the
+   * same position remaining on the same team.
+   *
+   * @param team            Team where the anchored players should be added.
+   * @param anchoredPlayers List containing the players with the same anchorage number.
+   *
+   * @return Whether a set of anchored players can be added to a team.
+   */
+  private boolean anchorageCanBeAdded(Team team, List<Player> anchoredPlayers) {
+    return !(anchorageOverflowsTeamSize(team, anchoredPlayers) || anchorageOverflowsAnyPositionSet(team, anchoredPlayers));
+  }
+
+  /**
+   * @param team            Team to check if the anchored players can be added.
+   * @param anchoredPlayers Anchored players to check.
+   *
+   * @return Whether the number of anchored players to be added to a team would exceed the limit of players per team.
+   */
+  private boolean anchorageOverflowsTeamSize(Team team, List<Player> anchoredPlayers) {
+    return team.getPlayersCount() + anchoredPlayers.size() > Constants.PLAYERS_PER_TEAM;
+  }
+
+  /**
+   * @param team            Team to check if the anchored players can be added.
+   * @param anchoredPlayers Anchored players to check.
+   *
+   * @return Whether the number of anchored players to be added to a team would exceed the limit of players per team in any position set.
+   */
+  private boolean anchorageOverflowsAnyPositionSet(Team team, List<Player> anchoredPlayers) {
+    return anchoredPlayers.stream()
+                          .anyMatch(player -> team.isPositionFull(player.getPosition())
+                                              || anchorageOverflowsPositionSet(team, anchoredPlayers, player.getPosition()));
+  }
+
+  /**
+   * @param team            Team to check if the anchored players can be added.
+   * @param anchoredPlayers Anchored players to check.
+   * @param position        Anchored players position.
+   *
+   * @return Whether the number of anchored players to be added to a position set in a team would exceed the limit of players per team for that
+   *         particular position.
+   */
+  private boolean anchorageOverflowsPositionSet(Team team, List<Player> anchoredPlayers, Position position) {
+    return team.getTeamPlayers()
+               .get(position)
+               .size()
+           + anchoredPlayers.stream()
+                            .filter(player -> player.getPosition() == position)
+                            .count()
+           > CommonFields.getPlayersLimitPerPosition()
+                         .get(position);
+  }
+
+  /**
    * Checks which team a given player can be added to.
    *
    * @param teams               The possible teams where to add the player.
@@ -176,92 +253,5 @@ public class RandomMixer implements PlayersMixer {
     }
 
     return -1;
-  }
-
-  /**
-   * Randomly shuffles the team numbers.
-   *
-   * @param range Upper limit (exclusive) for the random number generator.
-   */
-  private void shuffleTeamNumbers(int range) {
-    randomTeam1 = randomGenerator.nextInt(range);
-    randomTeam2 = 1 - randomTeam1;
-  }
-
-  /**
-   * Checks if the given player position in the given team is already complete and, therefore, if the player can be added to it.
-   *
-   * @param team   Team where the player should be added.
-   * @param player The players to add.
-   *
-   * @return Whether a player can be added to the specified team.
-   */
-  private boolean playerCanBeAdded(Team team, Player player) {
-    return !team.isPositionFull(player.getPosition());
-  }
-
-  /**
-   * Checks if a set of anchored players can be added to a team.
-   *
-   * <p>First, checks if any of the positions of the anchored players in the destination team is already complete. If not, checks if adding them does
-   * not exceed the number of players allowed per position per team. This is done in order to avoid more than half of the registered players of the
-   * same position remaining on the same team.
-   *
-   * @param team            Team where the anchored players should be added.
-   * @param anchoredPlayers List containing the players with the same anchorage number.
-   *
-   * @return Whether a set of anchored players can be added to a team.
-   */
-  private boolean anchorageCanBeAdded(Team team, List<Player> anchoredPlayers) {
-    return !(anchorageOverflowsTeamSize(team, anchoredPlayers) || anchorageOverflowsAnyPositionSet(team, anchoredPlayers));
-  }
-
-  /**
-   * Checks if the amount of anchored players to be added to a team would exceed the maximum allowed amount of players per team.
-   *
-   * @param team            Team to check if the anchored players can be added.
-   * @param anchoredPlayers Anchored players to check.
-   *
-   * @return Whether the amount of anchored players to be added to a team would exceed the maximum allowed amount of players per team.
-   */
-  private boolean anchorageOverflowsTeamSize(Team team, List<Player> anchoredPlayers) {
-    return team.getPlayersCount() + anchoredPlayers.size() > Constants.PLAYERS_PER_TEAM;
-  }
-
-  /**
-   * Checks if the amount of anchored players to be added to a team would exceed the maximum allowed amount of players per team in any position set.
-   *
-   * @param team            Team to check if the anchored players can be added.
-   * @param anchoredPlayers Anchored players to check.
-   *
-   * @return Whether the amount of anchored players to be added to a team would exceed the maximum allowed amount of players per team in any position
-   *         set.
-   */
-  private boolean anchorageOverflowsAnyPositionSet(Team team, List<Player> anchoredPlayers) {
-    return anchoredPlayers.stream()
-                          .anyMatch(player -> team.isPositionFull(player.getPosition())
-                                              || anchorageOverflowsPositionSet(team, anchoredPlayers, player.getPosition()));
-  }
-
-  /**
-   * Checks if the amount of anchored players to be added to a position set in a team would exceed the maximum allowed amount of players per team for
-   * that particular position.
-   *
-   * @param team            Team to check if the anchored players can be added.
-   * @param anchoredPlayers Anchored players to check.
-   * @param position        Anchored players position.
-   *
-   * @return Whether the amount of anchored players to be added to a position set in a team would exceed the maximum allowed amount of players per
-   *         team for that particular position.
-   */
-  private boolean anchorageOverflowsPositionSet(Team team, List<Player> anchoredPlayers, Position position) {
-    return team.getTeamPlayers()
-               .get(position)
-               .size()
-           + anchoredPlayers.stream()
-                            .filter(player -> player.getPosition() == position)
-                            .count()
-           > CommonFields.getPlayersAmountMap()
-                         .get(position);
   }
 }

@@ -28,10 +28,10 @@ public final class CommonFields {
 
   private static GraphicsDevice activeMonitor;
 
-  private static Map<Position, Integer> playersAmountMap;
+  private static Map<Position, Integer> playersLimitPerPosition;
   private static Map<Position, List<Player>> playersSets;
   private static Map<Position, String> positionsMap;
-  private static Map<ProgramView, Controller<? extends View>> controllerMap;
+  private static Map<ProgramView, Controller<? extends View>> controllersMap;
 
   // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
@@ -56,8 +56,8 @@ public final class CommonFields {
     return activeMonitor;
   }
 
-  public static Map<Position, Integer> getPlayersAmountMap() {
-    return playersAmountMap;
+  public static Map<Position, Integer> getPlayersLimitPerPosition() {
+    return playersLimitPerPosition;
   }
 
   public static Map<Position, List<Player>> getPlayersSets() {
@@ -72,8 +72,8 @@ public final class CommonFields {
    * The "java:S1452" warning is suppressed since the Java compiler can't know at runtime the type of the controlled view.
    */
   @SuppressWarnings("java:S1452")
-  public static Map<ProgramView, Controller<? extends View>> getControllerMap() {
-    return controllerMap;
+  public static Map<ProgramView, Controller<? extends View>> getControllersMap() {
+    return controllersMap;
   }
 
   // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
@@ -90,8 +90,8 @@ public final class CommonFields {
     CommonFields.activeMonitor = activeMonitor;
   }
 
-  public static void setPlayersAmountMap(Map<Position, Integer> playersAmountMap) {
-    CommonFields.playersAmountMap = playersAmountMap;
+  public static void setPlayersLimitPerPosition(Map<Position, Integer> playersLimitPerPosition) {
+    CommonFields.playersLimitPerPosition = playersLimitPerPosition;
   }
 
   public static void setPlayersSets(Map<Position, List<Player>> playersSets) {
@@ -102,7 +102,7 @@ public final class CommonFields {
     CommonFields.positionsMap = positionsMap;
   }
 
-  public static void setControllerMap(Map<ProgramView, Controller<? extends View>> controllerMap) {
-    CommonFields.controllerMap = controllerMap;
+  public static void setControllersMap(Map<ProgramView, Controller<? extends View>> controllerMap) {
+    CommonFields.controllersMap = controllerMap;
   }
 }

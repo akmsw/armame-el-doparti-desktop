@@ -205,7 +205,7 @@ public final class CommonFunctions {
    */
   @SuppressWarnings("java:S1452")
   public static Controller<? extends View> getController(ProgramView view) {
-    return CommonFields.getControllerMap()
+    return CommonFields.getControllersMap()
                        .get(view);
   }
 
