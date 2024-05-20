@@ -60,8 +60,7 @@ public final class Main {
   // ---------- Main entry point ---------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Starts the program by initializing the fields needed along with the program's graphical properties, and making the main menu
-   * view visible.
+   * Starts the program by initializing the fields needed along with the program's graphical properties, and making the main menu view visible.
    *
    * @param args Program arguments (not used).
    */
@@ -185,13 +184,12 @@ public final class Main {
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);
 
     try {
-      Font programFont = Font.createFont(
-        Font.TRUETYPE_FONT,
-        Objects.requireNonNull(CommonFunctions.class
-                                              .getClassLoader()
-                                              .getResourceAsStream(Constants.PATH_TTF + Constants.FILENAME_FONT),
-                               Constants.MSG_ERROR_NULL_RESOURCE)
-      ).deriveFont(Constants.FONT_SIZE);
+      Font programFont = Font.createFont(Font.TRUETYPE_FONT,
+                                         Objects.requireNonNull(CommonFunctions.class
+                                                                               .getClassLoader()
+                                                                               .getResourceAsStream(Constants.PATH_TTF + Constants.FILENAME_FONT),
+                                                                Constants.MSG_ERROR_NULL_RESOURCE))
+                             .deriveFont(Constants.FONT_SIZE);
 
       GraphicsEnvironment.getLocalGraphicsEnvironment()
                          .registerFont(programFont);

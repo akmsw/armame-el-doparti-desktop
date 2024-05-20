@@ -506,12 +506,12 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @return Whether the existing anchorages combination is possible to distribute.
    */
   private boolean validAnchoragesCombination(int recursiveVerificationIndex, List<Team> teams) {
-    if (recursiveVerificationIndex == CommonFunctions.getAnchoredPlayers()
+    if (recursiveVerificationIndex == CommonFunctions.getAnchorages()
                                                      .size()) {
       return validTeams(teams);
     }
 
-    List<Player> anchorage = CommonFunctions.getAnchoredPlayers()
+    List<Player> anchorage = CommonFunctions.getAnchorages()
                                             .get(recursiveVerificationIndex);
 
     for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {

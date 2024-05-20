@@ -214,7 +214,7 @@ public final class CommonFunctions {
    *
    * @return A list containing the anchored players grouped by their anchorage number.
   */
-  public static List<List<Player>> getAnchoredPlayers() {
+  public static List<List<Player>> getAnchorages() {
     return new ArrayList<>(CommonFields.getPlayersSets()
                                        .values()
                                        .stream()

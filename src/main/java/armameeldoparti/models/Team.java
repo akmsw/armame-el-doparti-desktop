@@ -48,6 +48,11 @@ public class Team {
    */
   public void clear() {
     teamPlayers.values()
+               .stream()
+               .flatMap(List::stream)
+               .forEach(player -> player.setTeamNumber(0));
+
+    teamPlayers.values()
                .forEach(List::clear);
   }
 

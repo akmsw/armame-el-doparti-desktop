@@ -59,23 +59,23 @@ public class BySkillPointsMixer implements PlayersMixer {
     Map<Position, List<Player>> playersMap = CommonFields.getPlayersSets();
 
     for (Position position : Position.values()) {
-      List<Player> currentPlayersSet = new ArrayList<>(playersMap.get(position));
+      List<Player> playersSet = new ArrayList<>(playersMap.get(position));
 
       // Players sorted highest to lowest
-      currentPlayersSet.sort(comparingInt(Player::getSkillPoints).reversed());
+      playersSet.sort(comparingInt(Player::getSkillPoints).reversed());
 
       // Teams sorted lowest to highest
       teams.sort(comparingInt(Team::getTeamSkill));
 
-      if (currentPlayersSet.size() == 2) {
+      if (playersSet.size() == 2) {
         for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
           teams.get(teamIndex)
                .getTeamPlayers()
                .get(position)
-               .add(currentPlayersSet.get(teamIndex));
+               .add(playersSet.get(teamIndex));
         }
       } else {
-        distributeSubsets(teams, currentPlayersSet, position);
+        distributeSubsets(teams, playersSet, position);
       }
     }
 
@@ -97,7 +97,7 @@ public class BySkillPointsMixer implements PlayersMixer {
    */
   @Override
   public List<Team> withAnchorages(List<Team> teams) {
-    for (List<Player> anchorage : CommonFunctions.getAnchoredPlayers()) {
+    for (List<Player> anchorage : CommonFunctions.getAnchorages()) {
       teams.sort(comparingInt(Team::getTeamSkill));
 
       for (Player player : anchorage) {
