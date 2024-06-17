@@ -3,6 +3,7 @@ package armameeldoparti.views;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
+import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
@@ -69,9 +70,21 @@ public class MainMenuView extends View {
    */
   private void addBackground() {
     addBackgroundImage();
-    addBackgroundLabel(Constants.SIZE_FONT_TITLE_LABEL, Constants.PROGRAM_TITLE, Constants.MIG_LAYOUT_ALIGN_CENTER, Constants.COLOR_GREEN_DARK);
-    addBackgroundLabel(Constants.SIZE_FONT_AUTHOR_LABEL, Constants.PROGRAM_AUTHOR, Constants.MIG_LAYOUT_ALIGN_CENTER, Color.WHITE);
-    addBackgroundLabel(Constants.SIZE_FONT_VERSION_LABEL, Constants.PROGRAM_VERSION, Constants.MIG_LAYOUT_ALIGN_RIGHT, Constants.COLOR_GREEN_DARK);
+    addLabel(Constants.PROGRAM_TITLE,
+             null,
+             Constants.MIG_LAYOUT_ALIGN_CENTER,
+             Constants.COLOR_GREEN_DARK,
+             Constants.SIZE_FONT_TITLE_LABEL);
+    addLabel(Constants.PROGRAM_AUTHOR,
+             null,
+             Constants.MIG_LAYOUT_ALIGN_CENTER,
+             Color.WHITE,
+             Constants.SIZE_FONT_AUTHOR_LABEL);
+    addLabel(Constants.PROGRAM_VERSION,
+             "Versión del programa",
+             Constants.MIG_LAYOUT_ALIGN_RIGHT,
+             Constants.COLOR_GREEN_DARK,
+             Constants.SIZE_FONT_VERSION_LABEL);
   }
 
   /**
@@ -82,18 +95,22 @@ public class MainMenuView extends View {
   }
 
   /**
-   * Creates a basic label for the main menu view that will be placed in the background.
+   * Creates a basic label for the main menu view.
    *
-   * @param fontSize    The font size for the label text.
-   * @param text        The label text.
-   * @param constraints The label MiG Layout constraints.
-   * @param color       The color used for the label foreground.
+   * @param text            The label text.
+   * @param tooltipText     The label tooltip text.
+   * @param constraints     The label MiG Layout constraints.
+   * @param foregroundColor The color used for the label foreground.
+   * @param fontSize        The font size for the label text.
    */
-  private void addBackgroundLabel(int fontSize, String text, String constraints, Color color) {
-    JLabel label = new JLabel(text.toLowerCase());
+  private void addLabel(String text, String tooltipText, String constraints, Color foregroundColor, int fontSize) {
+    JLabel label = switch (tooltipText) {
+                     case null -> new JLabel(text.toLowerCase());
+                     default -> new CustomLabel(text.toLowerCase(), tooltipText, SwingConstants.CENTER);
+                   };
 
     label.setHorizontalAlignment(SwingConstants.CENTER);
-    label.setForeground(color);
+    label.setForeground(foregroundColor);
     label.setFont(new Font(label.getFont()
                                 .getName(),
                            Font.PLAIN,

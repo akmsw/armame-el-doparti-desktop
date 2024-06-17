@@ -110,9 +110,11 @@ public final class Constants {
   public static final int ROUNDED_BORDER_ARC_SEPARATOR = 4;
   public static final int ROUNDED_BORDER_ARC_SPINNER = 10;
   public static final int ROUNDED_BORDER_ARC_TABLE_CELLS = 15;
+  public static final int ROUNDED_BORDER_ARC_TOOLTIP = 15;
   public static final int ROUNDED_BORDER_INSETS_COMBOBOX = 6;
   public static final int ROUNDED_BORDER_INSETS_GENERAL = 8;
   public static final int ROUNDED_BORDER_INSETS_SCROLLPANE = 18;
+  public static final int ROUNDED_BORDER_INSETS_TOOLTIP = 6;
   public static final int SIZE_FONT_TITLE_LABEL = 40;
   public static final int SIZE_FONT_AUTHOR_LABEL = 30;
   public static final int SIZE_FONT_VERSION_LABEL = 16;
@@ -121,6 +123,8 @@ public final class Constants {
   public static final int SKILL_MIN = 1;
   public static final int SKILL_STEP = 1;
   public static final int STROKE_BUTTON_ARROW = 5;
+  public static final int TOOLTIP_INITIAL_DELAY = 300;
+  public static final int TOOLTIP_DISMISS_DELAY = 5000;
 
   public static final float FONT_SIZE = 18f;
 
@@ -204,6 +208,10 @@ public final class Constants {
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL);
+  public static final Insets INSETS_TOOLTIP = new Insets(Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP);
 
   /**
    * Positions to show in the names input view combobox.

@@ -83,7 +83,7 @@ public class HelpView extends View {
    * Adds the text field where to display the current page title.
    */
   private void addPageTitleTextField() {
-    pageTitleTextField = new CustomLabel(null, SwingConstants.CENTER);
+    pageTitleTextField = new CustomLabel(null, null, SwingConstants.CENTER);
 
     masterPanel.add(pageTitleTextField, Constants.MIG_LAYOUT_GROW);
   }
@@ -101,7 +101,7 @@ public class HelpView extends View {
    * Adds the reading progress label.
    */
   private void addPagesLabel() {
-    pagesCounter = new CustomLabel(null, SwingConstants.CENTER);
+    pagesCounter = new CustomLabel(null, null, SwingConstants.CENTER);
 
     masterPanel.add(pagesCounter, Constants.MIG_LAYOUT_GROWX);
   }

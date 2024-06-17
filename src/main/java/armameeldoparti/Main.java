@@ -34,7 +34,9 @@ import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
 import javax.swing.SwingUtilities;
+import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.FontUIResource;
 
 /**
@@ -178,10 +180,18 @@ public final class Main {
     UIManager.put("Separator.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("Separator.foreground", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("Spinner.background", Constants.COLOR_GREEN_LIGHT_WHITE);
+    UIManager.put("ToolTip.background", Constants.COLOR_GREEN_DARK_MEDIUM);
+    UIManager.put("ToolTip.border", new EmptyBorder(Constants.INSETS_TOOLTIP));
+    UIManager.put("ToolTip.foreground", Color.WHITE);
     UIManager.put("FormattedTextField.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextArea.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);
+
+    ToolTipManager.sharedInstance()
+                  .setInitialDelay(Constants.TOOLTIP_INITIAL_DELAY);
+    ToolTipManager.sharedInstance()
+                  .setDismissDelay(Constants.TOOLTIP_DISMISS_DELAY);
 
     try {
       Font programFont = Font.createFont(Font.TRUETYPE_FONT,

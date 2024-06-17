@@ -188,7 +188,7 @@ public class NamesInputView extends View {
     radioButtonRandom = new CustomRadioButton("Aleatoria");
     radioButtonBySkillPoints = new CustomRadioButton("Por puntajes");
 
-    leftBottomPanel.add(new CustomLabel("Distribución", SwingConstants.CENTER),
+    leftBottomPanel.add(new CustomLabel("Distribución", null, SwingConstants.CENTER),
                         CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
     leftBottomPanel.add(radioButtonRandom);
     leftBottomPanel.add(radioButtonBySkillPoints);

@@ -4,6 +4,7 @@ import armameeldoparti.utils.common.Constants;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLabel;
+import javax.swing.JToolTip;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -24,12 +25,14 @@ public class CustomLabel extends JLabel {
   /**
    * Builds a basic label using the established program aesthetics.
    *
-   * @param text      The label text.
-   * @param alignment The label text alignment.
+   * @param text        The label text.
+   * @param tooltipText The label tooltip text
+   * @param alignment   The label text alignment.
    */
-  public CustomLabel(String text, int alignment) {
+  public CustomLabel(String text, String tooltipText, int alignment) {
     super(text);
     setUpGraphicalProperties(alignment);
+    setToolTipText(tooltipText);
   }
 
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
@@ -56,6 +59,11 @@ public class CustomLabel extends JLabel {
     g2.setColor(getBackground());
     g2.drawRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
     g2.dispose();
+  }
+
+  @Override
+  public JToolTip createToolTip() {
+    return new CustomToolTip(this);
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------

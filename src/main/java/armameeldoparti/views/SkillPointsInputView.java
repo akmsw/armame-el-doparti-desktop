@@ -84,7 +84,9 @@ public class SkillPointsInputView extends View {
   private void addSpinners() {
     for (Position position : Position.values()) {
       masterPanel.add(new CustomLabel(CommonFunctions.capitalize(CommonFields.getPositionsMap()
-                                                                             .get(position)), SwingConstants.CENTER),
+                                                                             .get(position)),
+                                      null,
+                                      SwingConstants.CENTER),
                       CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
 
       List<Player> players = new ArrayList<>(CommonFields.getPlayersSets()
