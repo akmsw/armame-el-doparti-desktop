@@ -49,6 +49,7 @@ public class HelpView extends View {
    */
   public HelpView() {
     super("Ayuda", Constants.MIG_LAYOUT_WRAP);
+
     initializeInterface();
   }
 
@@ -66,9 +67,9 @@ public class HelpView extends View {
 
   @Override
   protected void addButtons() {
-    previousPageButton = new CustomButton("Anterior", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    nextPageButton = new CustomButton("Siguiente", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    backButton = new CustomButton("Volver al menú principal", Constants.ROUNDED_BORDER_ARC_GENERAL);
+    setPreviousPageButton(new CustomButton("Anterior", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setNextPageButton(new CustomButton("Siguiente", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setBackButton(new CustomButton("Volver al menú principal", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
     masterPanel.add(previousPageButton, new CC().width("50%")
                                                 .split());
@@ -83,7 +84,7 @@ public class HelpView extends View {
    * Adds the text field where to display the current page title.
    */
   private void addPageTitleTextField() {
-    pageTitleTextField = new CustomLabel(null, null, SwingConstants.CENTER);
+    setPageTitleTextField(new CustomLabel(null, null, SwingConstants.CENTER));
 
     masterPanel.add(pageTitleTextField, Constants.MIG_LAYOUT_GROW);
   }
@@ -92,7 +93,7 @@ public class HelpView extends View {
    * Adds the text area where to display the instructions of the program.
    */
   private void addTextArea() {
-    textArea = new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
+    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
 
     masterPanel.add(new CustomScrollPane(textArea));
   }
@@ -101,7 +102,7 @@ public class HelpView extends View {
    * Adds the reading progress label.
    */
   private void addPagesLabel() {
-    pagesCounter = new CustomLabel(null, null, SwingConstants.CENTER);
+    setPagesCounter(new CustomLabel(null, null, SwingConstants.CENTER));
 
     masterPanel.add(pagesCounter, Constants.MIG_LAYOUT_GROWX);
   }

@@ -73,11 +73,10 @@ public class NamesInputView extends View {
   public NamesInputView() {
     super("Ingreso de jugadores", Constants.MIG_LAYOUT_WRAP_2);
 
-    leftPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP, Constants.MIG_LAYOUT_GROW));
-    leftTopPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP));
-    leftBottomPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP));
-    rightPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP));
-
+    setLeftPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP, Constants.MIG_LAYOUT_GROW)));
+    setLeftTopPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
+    setLeftBottomPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
+    setRightPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
     initializeTextFieldsMap();
     initializeInterface();
   }
@@ -104,8 +103,8 @@ public class NamesInputView extends View {
 
   @Override
   protected void addButtons() {
-    mixButton = new CustomButton("Distribuir", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    backButton = new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL);
+    setMixButton(new CustomButton("Distribuir", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
     rightPanel.add(mixButton, Constants.MIG_LAYOUT_GROW);
     rightPanel.add(backButton, Constants.MIG_LAYOUT_GROW);
@@ -117,8 +116,8 @@ public class NamesInputView extends View {
    * Adds the combobox.
    */
   private void addComboBox() {
-    comboBox = new CustomComboBox<>(Constants.OPTIONS_POSITIONS_COMBOBOX
-                                             .toArray(new String[0]));
+    setComboBox(new CustomComboBox<>(Constants.OPTIONS_POSITIONS_COMBOBOX
+                                              .toArray(new String[0])));
 
     leftTopPanel.add(comboBox, Constants.MIG_LAYOUT_GROWX);
   }
@@ -127,7 +126,7 @@ public class NamesInputView extends View {
    * Adds the read-only text area where the entered player names will be displayed in real time.
    */
   private void addTextArea() {
-    textArea = new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
+    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
 
     rightPanel.add(new CustomScrollPane(textArea), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH,
                                                                                              Constants.MIG_LAYOUT_GROW,
@@ -138,7 +137,7 @@ public class NamesInputView extends View {
    * Adds the anchorages enablement checkbox.
    */
   private void addAnchoragesCheckbox() {
-    anchoragesCheckbox = new CustomCheckBox("Anclar jugadores");
+    setAnchoragesCheckbox(new CustomCheckBox("Anclar jugadores"));
 
     leftBottomPanel.add(anchoragesCheckbox, Constants.MIG_LAYOUT_GROWX);
   }
@@ -163,7 +162,7 @@ public class NamesInputView extends View {
    * Initializes the text fields map.
    */
   private void initializeTextFieldsMap() {
-    textFieldsMap = new EnumMap<>(Position.class);
+    setTextFieldsMap(new EnumMap<>(Position.class));
 
     for (Position position : Position.values()) {
       textFieldsMap.put(position, new ArrayList<>());
@@ -185,8 +184,8 @@ public class NamesInputView extends View {
    * responsible for events handling.
    */
   private void addRadioButtons() {
-    radioButtonRandom = new CustomRadioButton("Aleatoria");
-    radioButtonBySkillPoints = new CustomRadioButton("Por puntajes");
+    setRadioButtonRandom(new CustomRadioButton("Aleatoria"));
+    setRadioButtonBySkillPoints(new CustomRadioButton("Por puntajes"));
 
     leftBottomPanel.add(new CustomLabel("Distribución", null, SwingConstants.CENTER),
                         CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));

@@ -32,13 +32,12 @@ public class Team {
    * @param teamNumber Integer identification for the team.
    */
   public Team(int teamNumber) {
+    setTeamNumber(teamNumber);
     setTeamPlayers(new EnumMap<>(Position.class));
 
     for (Position position : Position.values()) {
       teamPlayers.put(position, new ArrayList<>());
     }
-
-    setTeamNumber(teamNumber);
   }
 
   // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------

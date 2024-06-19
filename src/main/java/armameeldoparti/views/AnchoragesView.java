@@ -69,16 +69,12 @@ public class AnchoragesView extends View {
   public AnchoragesView() {
     super("Anclaje de jugadores", Constants.MIG_LAYOUT_WRAP_2);
 
-    leftPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP_2));
-    rightPanel = new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP));
-
-    textArea = new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS);
-
-    scrollPane = new CustomScrollPane(textArea);
-
-    anchorageButtons = new ArrayList<>();
-
-    checkboxesMap = new EnumMap<>(Position.class);
+    setLeftPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP_2)));
+    setRightPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
+    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setScrollPane(new CustomScrollPane(textArea));
+    setAnchorageButtons(new ArrayList<>());
+    setCheckboxesMap(new EnumMap<>(Position.class));
 
     for (Position position : Position.values()) {
       checkboxesMap.put(position, new ArrayList<>());
@@ -103,12 +99,12 @@ public class AnchoragesView extends View {
 
   @Override
   protected void addButtons() {
-    backButton = new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    clearAnchoragesButton = new CustomButton("Limpiar anclajes", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    deleteAnchorageButton = new CustomButton("Borrar un anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    deleteLastAnchorageButton = new CustomButton("Borrar último anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    finishButton = new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    newAnchorageButton = new CustomButton("Anclar", Constants.ROUNDED_BORDER_ARC_GENERAL);
+    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setClearAnchoragesButton(new CustomButton("Limpiar anclajes", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setDeleteAnchorageButton(new CustomButton("Borrar un anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setDeleteLastAnchorageButton(new CustomButton("Borrar último anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setFinishButton(new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setNewAnchorageButton(new CustomButton("Anclar", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
     anchorageButtons.add(finishButton);
     anchorageButtons.add(newAnchorageButton);

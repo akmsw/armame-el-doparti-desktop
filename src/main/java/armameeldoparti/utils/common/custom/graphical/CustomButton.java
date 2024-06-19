@@ -58,11 +58,8 @@ public class CustomButton extends JButton {
 
     Graphics2D g2 = (Graphics2D) g.create();
 
-    int buttonHeight = getHeight();
-    int buttonWidth = getWidth();
-
     g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.fillRoundRect(0, 0, (buttonWidth - 1), (buttonHeight - 1), arc, arc);
+    g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), arc, arc);
     g2.dispose();
 
     super.paintComponent(g);

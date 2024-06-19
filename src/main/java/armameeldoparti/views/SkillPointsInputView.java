@@ -47,9 +47,8 @@ public class SkillPointsInputView extends View {
   public SkillPointsInputView() {
     super("Ingreso de puntuaciones", "");
 
-    spinnersMap = new HashMap<>();
-    labelsMap = new HashMap<>();
-
+    setSpinnersMap(new HashMap<>());
+    setLabelsMap(new HashMap<>());
     initializeInterface();
   }
 
@@ -67,9 +66,9 @@ public class SkillPointsInputView extends View {
 
   @Override
   protected void addButtons() {
-    backButton = new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    finishButton = new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL);
-    resetSkillPointsButton = new CustomButton("Reiniciar puntuaciones", Constants.ROUNDED_BORDER_ARC_GENERAL);
+    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setFinishButton(new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setResetSkillPointsButton(new CustomButton("Reiniciar puntuaciones", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
     masterPanel.add(finishButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
     masterPanel.add(resetSkillPointsButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));

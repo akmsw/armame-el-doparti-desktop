@@ -134,15 +134,14 @@ public class HelpController extends Controller<HelpView> {
 
   @Override
   protected void resetView() {
-    currentPageNumber = 0;
-
+    setCurrentPageNumber(0);
     updatePage();
     resetButtons();
   }
 
   @Override
   protected void setUpInitialState() {
-    currentPageNumber = 0;
+    setCurrentPageNumber(0);
 
     view.getPreviousPageButton()
         .setEnabled(false);
