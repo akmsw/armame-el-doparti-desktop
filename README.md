@@ -45,7 +45,7 @@ Se ofrece la posibilidad de "anclar" dos o más jugadores entre sí, garantizand
 ## ⚙️ Requisitos para compilación manual
 ### 🪶 Apache Maven
 - #### Versión recomendada
-    🟢 [Apache Maven 3.9.7](https://maven.apache.org/download.cgi) *(o más reciente)*
+    🟢 [Apache Maven 3.9.8](https://maven.apache.org/download.cgi) *(o más reciente)*
 
 ## 📥 Descarga
 La versión estable más reciente del programa se encuentra disponible para descargar en la sección [releases](https://github.com/akmsw/armame-el-doparti/releases) de este proyecto.
@@ -103,11 +103,6 @@ No se pueden anclar a un mismo equipo todos los jugadores de un mismo tipo (por 
 - Importantes cambios generales de refactorización.
 
 ## 🛠️ Solución a problemas frecuentes
-### 🎛️ Generales
-- En caso de no poder construir el archivo `.jar` por tener instalada una versión distinta a la recomendada de Apache Maven, se puede modificar la línea del archivo `pom.xml` que especifica la versión a utilizar para la compilación manual:
-```xml
-<maven.version>3.9.7</maven.version> <!-- Reemplazá el 3.9.7 por la versión que tengas -->
-```
 ### 🐧 En Linux
 - Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, probá esto:
   - Click derecho sobre el archivo descargado
