@@ -29,7 +29,7 @@ public class HelpView extends View {
   private static final int TEXT_AREA_ROWS = 20;
   private static final int TEXT_AREA_COLUMNS = 30;
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private JButton previousPageButton;
   private JButton nextPageButton;

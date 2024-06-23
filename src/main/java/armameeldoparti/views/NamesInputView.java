@@ -44,7 +44,7 @@ public class NamesInputView extends View {
   private static final int TEXT_AREA_ROWS = 14;
   private static final int TEXT_AREA_COLUMNS = 9;
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private JButton mixButton;
   private JButton backButton;

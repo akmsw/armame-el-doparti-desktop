@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
  */
 public class AnchoragesController extends Controller<AnchoragesView> {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private int anchoragesCount;
   private int anchoredPlayersCount;

@@ -24,7 +24,7 @@ import java.util.function.Predicate;
  */
 public class RandomMixer implements PlayersMixer {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private int randomTeam1;
   private int randomTeam2;

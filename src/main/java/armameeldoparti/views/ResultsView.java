@@ -18,7 +18,7 @@ import javax.swing.JTable;
  */
 public class ResultsView extends View {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private JButton backButton;
   private JButton remixButton;

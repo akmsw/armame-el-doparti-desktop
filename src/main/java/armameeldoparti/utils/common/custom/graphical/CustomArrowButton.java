@@ -24,6 +24,8 @@ import javax.swing.plaf.basic.BasicArrowButton;
  */
 public class CustomArrowButton extends BasicArrowButton {
 
+  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+
   /**
    * Builds a basic arrow button pointing up or down, using the established program aesthetics.
    *

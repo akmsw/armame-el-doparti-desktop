@@ -30,7 +30,7 @@ import javax.swing.SwingConstants;
  */
 public class SkillPointsInputView extends View {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private JButton backButton;
   private JButton finishButton;

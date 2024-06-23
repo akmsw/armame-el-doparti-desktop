@@ -40,7 +40,7 @@ public class ResultsController extends Controller<ResultsView> {
 
   private static final int TABLE_COLUMNS = 3;
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private BySkillPointsMixer bySkillPointsMixer;
 

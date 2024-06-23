@@ -50,18 +50,6 @@ public class CustomLabel extends JLabel {
   }
 
   @Override
-  protected void paintBorder(Graphics g) {
-    g.setColor(Constants.COLOR_GREEN_LIGHT);
-
-    Graphics2D g2 = (Graphics2D) g.create();
-
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(getBackground());
-    g2.drawRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
-    g2.dispose();
-  }
-
-  @Override
   public JToolTip createToolTip() {
     return new CustomToolTip(this);
   }

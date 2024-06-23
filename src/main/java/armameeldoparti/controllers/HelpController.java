@@ -29,7 +29,7 @@ public class HelpController extends Controller<HelpView> {
   private static final int TOTAL_HELP_PAGES = Constants.MAP_HELP_PAGES_FILES
                                                        .size();
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private int currentPageNumber;
 

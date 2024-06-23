@@ -22,12 +22,12 @@ import net.miginfocom.layout.CC;
  */
 public class MainMenuView extends View {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
-  JButton startButton;
-  JButton helpButton;
-  JButton contactButton;
-  JButton issuesButton;
+  private JButton startButton;
+  private JButton helpButton;
+  private JButton contactButton;
+  private JButton issuesButton;
 
   // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 

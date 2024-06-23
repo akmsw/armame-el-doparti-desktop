@@ -38,7 +38,7 @@ public class AnchoragesView extends View {
   private static final int TEXT_AREA_ROWS = 10;
   private static final int TEXT_AREA_COLUMNS = 9;
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
   private JButton backButton;
   private JButton clearAnchoragesButton;
