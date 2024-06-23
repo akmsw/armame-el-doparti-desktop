@@ -286,7 +286,7 @@ public final class Constants {
   // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Empty, private constructor.
+   * Empty, private, unused constructor.
    */
   private Constants() {
     // Body not needed

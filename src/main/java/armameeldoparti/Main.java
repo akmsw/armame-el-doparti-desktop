@@ -172,7 +172,6 @@ public final class Main {
     UIManager.put("ComboBox.foreground", Color.WHITE);
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.selectionForeground", Color.WHITE);
-    UIManager.put("Label.background", Constants.COLOR_GREEN_MEDIUM_LIGHT);
     UIManager.put("OptionPane.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);

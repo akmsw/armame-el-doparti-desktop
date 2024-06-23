@@ -107,7 +107,11 @@ public class MainMenuView extends View {
   private void addLabel(String text, String tooltipText, String constraints, Color foregroundColor, int fontSize) {
     JLabel label = switch (tooltipText) {
                      case null -> new JLabel(text.toLowerCase());
-                     default -> new CustomLabel(text.toLowerCase(), tooltipText, SwingConstants.CENTER);
+                     default -> new CustomLabel(text.toLowerCase(),
+                                                tooltipText,
+                                                Constants.COLOR_GREEN_LIGHT,
+                                                Constants.COLOR_GREEN_DARK,
+                                                SwingConstants.CENTER);
                    };
 
     label.setHorizontalAlignment(SwingConstants.CENTER);

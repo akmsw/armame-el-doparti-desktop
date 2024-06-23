@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLabel;
@@ -20,7 +21,12 @@ import javax.swing.border.EmptyBorder;
  */
 public class CustomLabel extends JLabel {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
+
+  private Color backgroundColor;
+  private Color foregroundColor;
+
+  // ---------- Constructors -------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic label using the established program aesthetics.
@@ -31,6 +37,25 @@ public class CustomLabel extends JLabel {
    */
   public CustomLabel(String text, String tooltipText, int alignment) {
     super(text);
+    setBackgroundColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
+    setForegroundColor(getForeground());
+    setUpGraphicalProperties(alignment);
+    setToolTipText(tooltipText);
+  }
+
+  /**
+   * Builds a basic label using the established program aesthetics.
+   *
+   * @param text            The label text.
+   * @param tooltipText     The label tooltip text
+   * @param backgroundColor The background color for the label.
+   * @param foregroundColor The fireground color for the label.
+   * @param alignment       The label text alignment.
+   */
+  public CustomLabel(String text, String tooltipText, Color backgroundColor, Color foregroundColor, int alignment) {
+    super(text);
+    setBackgroundColor(backgroundColor);
+    setForegroundColor(foregroundColor);
     setUpGraphicalProperties(alignment);
     setToolTipText(tooltipText);
   }
@@ -42,7 +67,7 @@ public class CustomLabel extends JLabel {
     Graphics2D g2 = (Graphics2D) g.create();
 
     g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(getBackground());
+    g2.setColor(getBackgroundColor());
     g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
     g2.dispose();
 
@@ -65,5 +90,27 @@ public class CustomLabel extends JLabel {
     setHorizontalAlignment(alignment);
     setOpaque(false);
     setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
+    setBackground(getBackgroundColor());
+    setForeground(getForegroundColor());
+  }
+
+  // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
+
+  public Color getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public Color getForegroundColor() {
+    return foregroundColor;
+  }
+
+  // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
+
+  public void setBackgroundColor(Color backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
+  public void setForegroundColor(Color foregroundColor) {
+    this.foregroundColor = foregroundColor;
   }
 }
