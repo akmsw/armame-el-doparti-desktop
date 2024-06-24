@@ -13,7 +13,7 @@ import armameeldoparti.models.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
-import armameeldoparti.utils.common.custom.graphical.CustomOptionPaneUI;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
 import armameeldoparti.views.MainMenuView;

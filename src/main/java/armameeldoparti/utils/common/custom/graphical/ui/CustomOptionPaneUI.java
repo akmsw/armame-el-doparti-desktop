@@ -1,7 +1,9 @@
-package armameeldoparti.utils.common.custom.graphical;
+package armameeldoparti.utils.common.custom.graphical.ui;
 
 import armameeldoparti.utils.common.Constants;
+import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.util.Arrays;
 import javax.swing.JComponent;
 import javax.swing.JOptionPane;
@@ -53,6 +55,9 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    * object, an array is retrieved using the message type for the dialog. This array contains the strings that will be used in the buttons to be
    * placed in the dialog.
    *
+   * <p>A minimum button size is forced in order to ensure that the buttons showing only anchorages numbers have the same size, since the font used is
+   * not monospaced for user readability matters.
+   *
    * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
    *
    * @param container    A container for the buttons.
@@ -88,6 +93,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
     for (Object buttonText : buttons) {
       CustomButton customButton = new CustomButton((String) buttonText, Constants.ROUNDED_BORDER_ARC_BUTTON_DIALOG);
 
+      customButton.setMinimumSize(new Dimension(Constants.SIZE_BUTTON_DIALOG_MIN_WIDTH, Constants.SIZE_BUTTON_DIALOG_MIN_HEIGHT));
       customButton.addActionListener(_ -> {
         if (initialIndex >= 0 && initialIndex < buttonsNumber) {
           ((JOptionPane) SwingUtilities.getAncestorOfClass(JOptionPane.class, container))

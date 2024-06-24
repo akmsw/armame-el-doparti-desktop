@@ -117,6 +117,8 @@ public final class Constants {
   public static final int ROUNDED_BORDER_INSETS_LABEL = 8;
   public static final int ROUNDED_BORDER_INSETS_SCROLLPANE = 18;
   public static final int ROUNDED_BORDER_INSETS_TOOLTIP = 6;
+  public static final int SIZE_BUTTON_DIALOG_MIN_WIDTH = 28;
+  public static final int SIZE_BUTTON_DIALOG_MIN_HEIGHT = 36;
   public static final int SIZE_FONT_TITLE_LABEL = 44;
   public static final int SIZE_FONT_AUTHOR_LABEL = 30;
   public static final int SIZE_FONT_VERSION_LABEL = 16;
