@@ -128,7 +128,7 @@ public class BySkillPointsMixer implements PlayersMixer {
         teams.sort(comparingInt(Team::getTeamSkill));
 
         distributeSubsets(teams, players, players.get(0)
-                                                       .getPosition());
+                                                 .getPosition());
       } else {
         for (Player player : players) {
           teams.sort(comparingInt(Team::getTeamSkill));
