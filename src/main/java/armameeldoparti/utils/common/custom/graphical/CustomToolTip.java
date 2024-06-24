@@ -19,9 +19,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.plaf.ToolTipUI;
 
 /**
- * Custom tooltip class.
- *
- * <p>This class is used to instantiate a custom tooltip that fits the overall program aesthetics.
+ * A custom tooltip that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

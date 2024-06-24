@@ -5,10 +5,7 @@ import java.awt.Insets;
 import javax.swing.JTextArea;
 
 /**
- * Custom text area class.
- *
- * <p>This class is used to instantiate a custom text area that fits the overall program aesthetics. It is supposed to be used along with a custom
- * scroll pane to ensure its correct display.
+ * A custom text area that fits the overall program aesthetics. It must be used along with a custom scroll pane to ensure it is correctly displayed.
  *
  * @author Bonino, Francisco Ignacio.
  *

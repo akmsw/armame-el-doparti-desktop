@@ -49,9 +49,9 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Creates a button for each string in {@code buttons} and adds then to {@code container}. If {@code buttons} does not contain any string-instance
-   * object, an array is retrieved using the message type for the dialog. This array contains the strings
-   * that will be used in the buttons to be placed in the dialog.
+   * Creates a button for each string in {@code buttons} and adds them to {@code container}. If {@code buttons} does not contain any string-instance
+   * object, an array is retrieved using the message type for the dialog. This array contains the strings that will be used in the buttons to be
+   * placed in the dialog.
    *
    * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
    *

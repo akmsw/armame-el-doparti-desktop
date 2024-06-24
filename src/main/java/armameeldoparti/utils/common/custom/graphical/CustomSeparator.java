@@ -6,9 +6,7 @@ import java.awt.Graphics2D;
 import javax.swing.JSeparator;
 
 /**
- * Custom separator class.
- *
- * <p>This class is used to instantiate a custom separator that fits the overall program aesthetics.
+ * A custom separator that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

@@ -12,9 +12,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
- * Custom table class.
- *
- * <p>This class is used to instantiate a custom table that fits the overall program aesthetics.
+ * A custom table that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

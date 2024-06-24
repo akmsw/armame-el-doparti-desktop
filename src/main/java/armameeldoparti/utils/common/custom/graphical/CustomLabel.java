@@ -10,9 +10,7 @@ import javax.swing.JToolTip;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Custom label class.
- *
- * <p>This class is used to instantiate a custom label that fits the overall program aesthetics.
+ * A custom label that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

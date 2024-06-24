@@ -12,7 +12,7 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 
 /**
- * Commonly-used and useful constants class.
+ * Common-use constants class.
  *
  * @author Bonino, Francisco Ignacio.
  *

@@ -7,9 +7,7 @@ import java.awt.Insets;
 import javax.swing.JButton;
 
 /**
- * Custom button class.
- *
- * <p>This class is used to instantiate a custom button that fits the overall program aesthetics.
+ * A custom button that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

@@ -12,9 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.plaf.basic.BasicArrowButton;
 
 /**
- * Custom arrow button class.
- *
- * <p>This class is used to instantiate a custom arrow button that fits the overall program aesthetics.
+ * A custom arrow button that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

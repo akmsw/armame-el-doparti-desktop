@@ -4,9 +4,7 @@ import armameeldoparti.utils.common.Constants;
 import javax.swing.JRadioButton;
 
 /**
- * Custom radio button class.
- *
- * <p>This class is used to instantiate a custom radio button that fits the overall program aesthetics.
+ * A custom radio button that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

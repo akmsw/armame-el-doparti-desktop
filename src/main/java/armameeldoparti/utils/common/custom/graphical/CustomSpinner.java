@@ -14,9 +14,7 @@ import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.DefaultCaret;
 
 /**
- * Custom spinner class.
- *
- * <p>This class is used to instantiate a custom spinner that fits the overall program aesthetics.
+ * A custom spinner that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

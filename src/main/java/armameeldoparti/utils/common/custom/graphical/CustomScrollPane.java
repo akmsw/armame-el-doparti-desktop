@@ -13,9 +13,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 /**
- * Custom scroll pane class.
- *
- * <p>This class is used to instantiate a custom scroll pane that fits the overall program aesthetics.
+ * A custom scroll pane that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

@@ -19,9 +19,7 @@ import javax.swing.plaf.basic.BasicComboPopup;
 import javax.swing.plaf.basic.ComboPopup;
 
 /**
- * Custom combobox class.
- *
- * <p>This class is used to instantiate a custom combobox that fits the overall program aesthetics.
+ * A custom combobox that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *
