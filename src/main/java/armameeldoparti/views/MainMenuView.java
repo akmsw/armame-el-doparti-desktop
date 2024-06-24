@@ -5,7 +5,6 @@ import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -74,16 +73,19 @@ public class MainMenuView extends View {
     addLabel(Constants.PROGRAM_TITLE,
              null,
              Constants.MIG_LAYOUT_ALIGN_CENTER,
+             Constants.COLOR_GREEN_LIGHT,
              Constants.COLOR_GREEN_DARK,
              Constants.SIZE_FONT_TITLE_LABEL);
     addLabel(Constants.PROGRAM_AUTHOR,
              null,
              Constants.MIG_LAYOUT_ALIGN_CENTER,
+             Constants.COLOR_GREEN_LIGHT,
              Color.WHITE,
              Constants.SIZE_FONT_AUTHOR_LABEL);
     addLabel(Constants.PROGRAM_VERSION,
              "Versión del programa",
              Constants.MIG_LAYOUT_ALIGN_RIGHT,
+             Constants.COLOR_GREEN_LIGHT,
              Constants.COLOR_GREEN_DARK,
              Constants.SIZE_FONT_VERSION_LABEL);
   }
@@ -101,27 +103,12 @@ public class MainMenuView extends View {
    * @param text            The label text.
    * @param tooltipText     The label tooltip text.
    * @param constraints     The label MiG Layout constraints.
+   * @param backgroundColor The color used for the label background.
    * @param foregroundColor The color used for the label foreground.
    * @param fontSize        The font size for the label text.
    */
-  private void addLabel(String text, String tooltipText, String constraints, Color foregroundColor, int fontSize) {
-    JLabel label = switch (tooltipText) {
-                     case null -> new JLabel(text.toLowerCase());
-                     default -> new CustomLabel(text.toLowerCase(),
-                                                tooltipText,
-                                                Constants.COLOR_GREEN_LIGHT,
-                                                Constants.COLOR_GREEN_DARK,
-                                                SwingConstants.CENTER);
-                   };
-
-    label.setHorizontalAlignment(SwingConstants.CENTER);
-    label.setForeground(foregroundColor);
-    label.setFont(new Font(label.getFont()
-                                .getName(),
-                           Font.PLAIN,
-                           fontSize));
-
-    masterPanel.add(label, constraints);
+  private void addLabel(String text, String tooltipText, String constraints, Color backgroundColor, Color foregroundColor, int fontSize) {
+    masterPanel.add(new CustomLabel(text.toLowerCase(), tooltipText, backgroundColor, foregroundColor, SwingConstants.CENTER, fontSize), constraints);
   }
 
   // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------

@@ -2,6 +2,7 @@ package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JLabel;
@@ -21,11 +22,6 @@ import javax.swing.border.EmptyBorder;
  */
 public class CustomLabel extends JLabel {
 
-  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
-
-  private Color backgroundColor;
-  private Color foregroundColor;
-
   // ---------- Constructors -------------------------------------------------------------------------------------------------------------------------
 
   /**
@@ -37,9 +33,12 @@ public class CustomLabel extends JLabel {
    */
   public CustomLabel(String text, String tooltipText, int alignment) {
     super(text);
-    setBackgroundColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
-    setForegroundColor(getForeground());
-    setUpGraphicalProperties(alignment);
+    setOpaque(false);
+    setHorizontalAlignment(alignment);
+    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
+    setBackground(Constants.COLOR_GREEN_MEDIUM_LIGHT);
+    setForeground(getForeground());
+    setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.FONT_SIZE));
     setToolTipText(tooltipText);
   }
 
@@ -51,12 +50,16 @@ public class CustomLabel extends JLabel {
    * @param backgroundColor The background color for the label.
    * @param foregroundColor The fireground color for the label.
    * @param alignment       The label text alignment.
+   * @param fontSize        The font size for the label text.
    */
-  public CustomLabel(String text, String tooltipText, Color backgroundColor, Color foregroundColor, int alignment) {
+  public CustomLabel(String text, String tooltipText, Color backgroundColor, Color foregroundColor, int alignment, int fontSize) {
     super(text);
-    setBackgroundColor(backgroundColor);
-    setForegroundColor(foregroundColor);
-    setUpGraphicalProperties(alignment);
+    setOpaque(false);
+    setHorizontalAlignment(alignment);
+    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
+    setBackground(backgroundColor);
+    setForeground(foregroundColor);
+    setFont(new Font(getFont().getName(), Font.PLAIN, fontSize));
     setToolTipText(tooltipText);
   }
 
@@ -67,7 +70,7 @@ public class CustomLabel extends JLabel {
     Graphics2D g2 = (Graphics2D) g.create();
 
     g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(getBackgroundColor());
+    g2.setColor(getBackground());
     g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
     g2.dispose();
 
@@ -77,40 +80,5 @@ public class CustomLabel extends JLabel {
   @Override
   public JToolTip createToolTip() {
     return new CustomToolTip(this);
-  }
-
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * Configures the graphical properties of the label in order to fit the program aesthetics.
-   *
-   * @param alignment The label text alignment.
-   */
-  private void setUpGraphicalProperties(int alignment) {
-    setHorizontalAlignment(alignment);
-    setOpaque(false);
-    setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
-    setBackground(getBackgroundColor());
-    setForeground(getForegroundColor());
-  }
-
-  // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
-
-  public Color getBackgroundColor() {
-    return backgroundColor;
-  }
-
-  public Color getForegroundColor() {
-    return foregroundColor;
-  }
-
-  // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
-
-  public void setBackgroundColor(Color backgroundColor) {
-    this.backgroundColor = backgroundColor;
-  }
-
-  public void setForegroundColor(Color foregroundColor) {
-    this.foregroundColor = foregroundColor;
   }
 }

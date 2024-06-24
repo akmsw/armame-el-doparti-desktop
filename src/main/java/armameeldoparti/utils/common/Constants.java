@@ -113,9 +113,10 @@ public final class Constants {
   public static final int ROUNDED_BORDER_ARC_TOOLTIP = 15;
   public static final int ROUNDED_BORDER_INSETS_COMBOBOX = 6;
   public static final int ROUNDED_BORDER_INSETS_GENERAL = 8;
+  public static final int ROUNDED_BORDER_INSETS_LABEL = 8;
   public static final int ROUNDED_BORDER_INSETS_SCROLLPANE = 18;
   public static final int ROUNDED_BORDER_INSETS_TOOLTIP = 6;
-  public static final int SIZE_FONT_TITLE_LABEL = 40;
+  public static final int SIZE_FONT_TITLE_LABEL = 44;
   public static final int SIZE_FONT_AUTHOR_LABEL = 30;
   public static final int SIZE_FONT_VERSION_LABEL = 16;
   public static final int SKILL_INI = 1;
@@ -208,6 +209,10 @@ public final class Constants {
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL);
+  public static final Insets INSETS_LABEL = new Insets(Constants.ROUNDED_BORDER_INSETS_LABEL,
+                                                       Constants.ROUNDED_BORDER_INSETS_LABEL,
+                                                       Constants.ROUNDED_BORDER_INSETS_LABEL,
+                                                       Constants.ROUNDED_BORDER_INSETS_LABEL);
   public static final Insets INSETS_TOOLTIP = new Insets(Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
                                                          Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
                                                          Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
