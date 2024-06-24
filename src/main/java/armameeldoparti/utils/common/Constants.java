@@ -104,6 +104,7 @@ public final class Constants {
   public static final int MIN_PLAYERS_PER_ANCHORAGE = 2;
   public static final int MIX_BY_SKILL_POINTS = 1;
   public static final int MIX_RANDOM = 0;
+  public static final int ROUNDED_BORDER_ARC_BUTTON_DIALOG = 15;
   public static final int ROUNDED_BORDER_ARC_COMBOBOX = 10;
   public static final int ROUNDED_BORDER_ARC_GENERAL = 30;
   public static final int ROUNDED_BORDER_ARC_SCROLLBAR = 20;
@@ -171,6 +172,10 @@ public final class Constants {
   public static final String REGEX_NAMES_VALIDATION = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String REGEX_PDA_DATA_RETRIEVE = "[CLMFG].+>.+";
   public static final String REGEX_PLAYERS_COUNT = "(?!(?<=" + PLAYERS_PER_TEAM + ")\\d).";
+  public static final String TEXT_BUTTON_DIALOG_CANCEL = "Cancelar";
+  public static final String TEXT_BUTTON_DIALOG_NO = "No";
+  public static final String TEXT_BUTTON_DIALOG_OK = "Aceptar";
+  public static final String TEXT_BUTTON_DIALOG_YES = "Sí";
   public static final String URL_CONTACT = "https://github.com/" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String URL_ISSUES = URL_CONTACT + "/" + PROGRAM_TITLE.replace(" ", "-") + "/issues";
 

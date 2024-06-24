@@ -13,6 +13,7 @@ import armameeldoparti.models.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+import armameeldoparti.utils.common.custom.graphical.CustomOptionPaneUI;
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
 import armameeldoparti.views.MainMenuView;
@@ -172,7 +173,13 @@ public final class Main {
     UIManager.put("ComboBox.foreground", Color.WHITE);
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.selectionForeground", Color.WHITE);
+    UIManager.put("OptionPaneUI", CustomOptionPaneUI.class
+                                                    .getName());
     UIManager.put("OptionPane.background", Constants.COLOR_GREEN_LIGHT);
+    UIManager.put("OptionPane.cancelButtonText", Constants.TEXT_BUTTON_DIALOG_CANCEL);
+    UIManager.put("OptionPane.noButtonText", Constants.TEXT_BUTTON_DIALOG_NO);
+    UIManager.put("OptionPane.okButtonText", Constants.TEXT_BUTTON_DIALOG_OK);
+    UIManager.put("OptionPane.yesButtonText", Constants.TEXT_BUTTON_DIALOG_YES);
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);
