@@ -180,6 +180,10 @@ public final class Main {
     UIManager.put("OptionPane.noButtonText", Constants.TEXT_BUTTON_DIALOG_NO);
     UIManager.put("OptionPane.okButtonText", Constants.TEXT_BUTTON_DIALOG_OK);
     UIManager.put("OptionPane.yesButtonText", Constants.TEXT_BUTTON_DIALOG_YES);
+    UIManager.put("OptionPane.errorIcon", Constants.ICON_DIALOG_ERROR);
+    UIManager.put("OptionPane.informationIcon", Constants.ICON_DIALOG_INFORMATION);
+    UIManager.put("OptionPane.questionIcon", Constants.ICON_DIALOG_QUESTION);
+    UIManager.put("OptionPane.warningIcon", Constants.ICON_DIALOG_WARNING);
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);

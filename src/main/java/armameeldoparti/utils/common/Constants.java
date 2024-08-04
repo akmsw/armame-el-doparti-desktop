@@ -28,11 +28,8 @@ public final class Constants {
   private static final int EXIT_CODE_ERROR_GUI = -2;
   private static final int EXIT_CODE_ERROR_INTERNAL = -3;
   private static final int EXIT_CODE_ERROR_FILES = -4;
-
-  /**
-   * Size, in pixels, of the scaled program icon (height and width).
-   */
-  private static final int ICON_SCALE = 50;
+  private static final int SCALE_ICON_DIALOG = 32;
+  private static final int SCALE_ICON_MAIN = 50;
 
   private static final String FILENAME_HELP_PAGE_1 = "helpIntro.hlp";
   private static final String FILENAME_HELP_PAGE_2 = "helpCriteria.hlp";
@@ -50,6 +47,10 @@ public final class Constants {
   private static final String FILENAME_ICON_CB_ENABLED_UNSELECTED_FOCUSED = "cb_e_us_f.png";
   private static final String FILENAME_ICON_CB_ENABLED_UNSELECTED_PRESSED = "cb_e_us_p.png";
   private static final String FILENAME_ICON_CB_ENABLED_UNSELECTED_UNFOCUSED = "cb_e_us_uf.png";
+  private static final String FILENAME_ICON_OP_ERROR = "op_e.png";
+  private static final String FILENAME_ICON_OP_INFORMATION = "op_i.png";
+  private static final String FILENAME_ICON_OP_QUESTION = "op_q.png";
+  private static final String FILENAME_ICON_OP_WARNING = "op_w.png";
   private static final String FILENAME_ICON_RB_DISABLED_SELECTED = "rb_d_s.png";
   private static final String FILENAME_ICON_RB_DISABLED_UNSELECTED = "rb_d_us.png";
   private static final String FILENAME_ICON_RB_ENABLED_SELECTED_FOCUSED = "rb_e_s_f.png";
@@ -197,6 +198,10 @@ public final class Constants {
   public static final ImageIcon ICON_CB_E_US_F = CommonFunctions.createImageIcon(FILENAME_ICON_CB_ENABLED_UNSELECTED_FOCUSED);
   public static final ImageIcon ICON_CB_E_US_P = CommonFunctions.createImageIcon(FILENAME_ICON_CB_ENABLED_UNSELECTED_PRESSED);
   public static final ImageIcon ICON_CB_E_US_UF = CommonFunctions.createImageIcon(FILENAME_ICON_CB_ENABLED_UNSELECTED_UNFOCUSED);
+  public static final ImageIcon ICON_OP_ERROR = CommonFunctions.createImageIcon(FILENAME_ICON_OP_ERROR);
+  public static final ImageIcon ICON_OP_INFORMATION = CommonFunctions.createImageIcon(FILENAME_ICON_OP_INFORMATION);
+  public static final ImageIcon ICON_OP_QUESTION = CommonFunctions.createImageIcon(FILENAME_ICON_OP_QUESTION);
+  public static final ImageIcon ICON_OP_WARNING = CommonFunctions.createImageIcon(FILENAME_ICON_OP_WARNING);
   public static final ImageIcon ICON_RB_D_S = CommonFunctions.createImageIcon(FILENAME_ICON_RB_DISABLED_SELECTED);
   public static final ImageIcon ICON_RB_D_US = CommonFunctions.createImageIcon(FILENAME_ICON_RB_DISABLED_UNSELECTED);
   public static final ImageIcon ICON_RB_E_S_F = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_SELECTED_FOCUSED);
@@ -206,7 +211,23 @@ public final class Constants {
   public static final ImageIcon ICON_RB_E_US_P = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_UNSELECTED_PRESSED);
   public static final ImageIcon ICON_RB_E_US_UF = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_UNSELECTED_UNFOCUSED);
   public static final ImageIcon ICON_MAIN = CommonFunctions.createImageIcon(FILENAME_ICON_MAIN);
-  public static final ImageIcon ICON_DIALOG = CommonFunctions.scaleImageIcon(ICON_MAIN, ICON_SCALE, ICON_SCALE, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG = CommonFunctions.scaleImageIcon(ICON_MAIN, SCALE_ICON_MAIN, SCALE_ICON_MAIN, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_ERROR = CommonFunctions.scaleImageIcon(ICON_OP_ERROR,
+                                                                                   SCALE_ICON_DIALOG,
+                                                                                   SCALE_ICON_DIALOG,
+                                                                                   Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_INFORMATION = CommonFunctions.scaleImageIcon(ICON_OP_INFORMATION,
+                                                                                         SCALE_ICON_DIALOG,
+                                                                                         SCALE_ICON_DIALOG,
+                                                                                         Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_QUESTION = CommonFunctions.scaleImageIcon(ICON_OP_QUESTION,
+                                                                                      SCALE_ICON_DIALOG,
+                                                                                      SCALE_ICON_DIALOG,
+                                                                                      Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_WARNING = CommonFunctions.scaleImageIcon(ICON_OP_WARNING,
+                                                                                     SCALE_ICON_DIALOG,
+                                                                                     SCALE_ICON_DIALOG,
+                                                                                     Image.SCALE_SMOOTH);
 
   public static final Insets INSETS_COMBOBOX = new Insets(Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
                                                           Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
