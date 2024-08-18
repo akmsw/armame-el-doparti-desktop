@@ -79,6 +79,10 @@ public class BySkillPointsMixer implements PlayersMixer {
       }
     }
 
+    if (!teamsSkillPointsAreEqual(teams)) {
+      checkPlayerSwaps(teams);
+    }
+
     return teams;
   }
 
@@ -187,5 +191,27 @@ public class BySkillPointsMixer implements PlayersMixer {
                       .get(position)
                       .addAll(playersSubsets.get(1 - teamIndex));
              });
+  }
+
+  /**
+   * @param teams
+   */
+  private void checkPlayerSwaps(List<Team> teams) {
+    // TODO
+  }
+
+  /**
+   * Verifies whether the skill points of the teams are the same. This is done by getting each team skill points from the teams list and checking if
+   * there's more than one unique value.
+   *
+   * @param teams Teams to verify the skill points.
+   *
+   * @return Whether the skill points of the teams are the same.
+   */
+  private boolean teamsSkillPointsAreEqual(List<Team> teams) {
+    return teams.stream()
+                .map(Team::getTeamSkill)
+                .collect(Collectors.toSet())
+                .size() == 1;
   }
 }

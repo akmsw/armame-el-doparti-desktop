@@ -76,7 +76,10 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void finishButtonEvent(Component parentComponent) {
     if (!validAnchoragesCombination(0, Arrays.asList(new Team(0), new Team(1)))) {
-      CommonFunctions.showErrorMessage("Existen conflictos entre anclajes", parentComponent);
+      CommonFunctions.showMessage("Existen conflictos entre anclajes",
+                                  parentComponent,
+                                  JOptionPane.INFORMATION_MESSAGE,
+                                  Constants.TITLE_MESSAGE_INFORMATION);
 
       return;
     }
@@ -91,9 +94,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void newAnchorageButtonEvent(Component parentComponent) {
     if (!validCheckedPlayersPerPosition()) {
-      CommonFunctions.showErrorMessage(
+      CommonFunctions.showMessage(
         "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje",
-        parentComponent
+        parentComponent,
+        JOptionPane.INFORMATION_MESSAGE,
+        Constants.TITLE_MESSAGE_INFORMATION
       );
 
       return;
@@ -107,22 +112,30 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                          .count();
 
     if (playersToAnchorCount == 0) {
-      CommonFunctions.showErrorMessage("No hay jugadores seleccionados para anclar", parentComponent);
+      CommonFunctions.showMessage("No hay jugadores seleccionados para anclar",
+                                  parentComponent,
+                                  JOptionPane.INFORMATION_MESSAGE,
+                                  Constants.TITLE_MESSAGE_INFORMATION);
 
       return;
     } else if (!validChecksCount(playersToAnchorCount)) {
-      CommonFunctions.showErrorMessage(
+      CommonFunctions.showMessage(
         "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
         + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
         + " jugadores en un mismo anclaje",
-        parentComponent
+        parentComponent,
+        JOptionPane.INFORMATION_MESSAGE,
+        Constants.TITLE_MESSAGE_INFORMATION
       );
 
       return;
     }
 
     if (!validAnchoredPlayersCount(playersToAnchorCount)) {
-      CommonFunctions.showErrorMessage("No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total", parentComponent);
+      CommonFunctions.showMessage("No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total",
+                                  parentComponent,
+                                  JOptionPane.INFORMATION_MESSAGE,
+                                  Constants.TITLE_MESSAGE_INFORMATION);
 
       return;
     }

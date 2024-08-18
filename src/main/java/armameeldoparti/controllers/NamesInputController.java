@@ -16,6 +16,7 @@ import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import javax.naming.InvalidNameException;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -113,6 +114,10 @@ public class NamesInputController extends Controller<NamesInputView> {
    */
   public void textFieldEvent(int playerIndex, List<Player> playersSet, String text) throws IllegalArgumentException,
                                                                                            InvalidNameException {
+    if (text.isBlank()) {
+      throw new InvalidNameException();
+    }
+
     if (!validString(text)) {
       throw new IllegalArgumentException();
     }
@@ -211,7 +216,7 @@ public class NamesInputController extends Controller<NamesInputView> {
             textField.addActionListener(e -> {
                 /*
                  * If the entered text is both a valid string and name, it will be applied to the corresponding player.
-                 * If not, an error message will be shown and the text field will be reset to the player's name.
+                 * If not, a message will be shown and the text field will be reset to the player's name.
                  */
                 try {
                   textFieldEvent(textFieldsSet.indexOf(textField),
@@ -219,9 +224,11 @@ public class NamesInputController extends Controller<NamesInputView> {
                                              .get(player),
                                  textField.getText());
                 } catch (IllegalArgumentException | InvalidNameException ex) {
-                  CommonFunctions.showErrorMessage(
+                  CommonFunctions.showMessage(
                       ex instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING : Constants.MSG_ERROR_INVALID_NAME,
-                      CommonFunctions.getComponentFromEvent(e)
+                      CommonFunctions.getComponentFromEvent(e),
+                      JOptionPane.INFORMATION_MESSAGE,
+                      Constants.TITLE_MESSAGE_INFORMATION
                   );
 
                   textField.setText(CommonFields.getPlayersSets()
@@ -392,6 +399,6 @@ public class NamesInputController extends Controller<NamesInputView> {
    * @return Whether the given name is valid.
    */
   private boolean validName(String name) {
-    return !name.isBlank() && name.length() <= Constants.MAX_NAME_LEN && !alreadyExists(name);
+    return name.length() <= Constants.MAX_NAME_LEN && !alreadyExists(name);
   }
 }

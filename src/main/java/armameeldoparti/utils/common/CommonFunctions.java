@@ -54,9 +54,11 @@ public final class CommonFunctions {
    * @param error The error that caused the program to end.
    */
   public static void exitProgram(Error error) {
-    showErrorMessage(Constants.MAP_ERROR_MESSAGE
-                              .get(error),
-                     null);
+    showMessage(Constants.MAP_ERROR_MESSAGE
+                         .get(error),
+                null,
+                JOptionPane.ERROR_MESSAGE,
+                Constants.TITLE_MESSAGE_ERROR);
 
     System.exit(Constants.MAP_ERROR_CODE
                          .get(error));
@@ -67,9 +69,11 @@ public final class CommonFunctions {
    *
    * @param errorMessage    Custom error message to show.
    * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param messageType     Message severity.
+   * @param dialogTitle     The title to be shown in the dialog box.
    */
-  public static void showErrorMessage(String errorMessage, Component parentComponent) {
-    JOptionPane.showMessageDialog(parentComponent, errorMessage, Constants.ERROR_MESSAGE_TITLE, JOptionPane.ERROR_MESSAGE, null);
+  public static void showMessage(String errorMessage, Component parentComponent, int messageType, String dialogTitle) {
+    JOptionPane.showMessageDialog(parentComponent, errorMessage, dialogTitle, messageType, null);
   }
 
   /**

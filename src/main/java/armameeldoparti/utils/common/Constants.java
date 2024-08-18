@@ -133,7 +133,6 @@ public final class Constants {
 
   public static final float FONT_SIZE = 18f;
 
-  public static final String ERROR_MESSAGE_TITLE = "¡Error!";
   public static final String FILENAME_FONT = "comfortaa.ttf";
   public static final String FILENAME_PDA = "dist.pda";
   public static final String MIG_LAYOUT_CENTER = "center";
@@ -172,13 +171,17 @@ public final class Constants {
   public static final String PROGRAM_TITLE = "armame el doparti"; // Must be on lowercase
   public static final String PROGRAM_VERSION = "v3.0";
   public static final String PROGRAM_AUTHOR = "@" + PROGRAM_AUTHOR_GITHUB_USERNAME;
-  public static final String REGEX_NAMES_VALIDATION = "[a-z A-ZÁÉÍÓÚáéíóúñÑ]+";
+  public static final String REGEX_NAMES_VALIDATION = "[a-z\sA-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String REGEX_PDA_DATA_RETRIEVE = "[CLMFG].+>.+";
   public static final String REGEX_PLAYERS_COUNT = "(?!(?<=" + PLAYERS_PER_TEAM + ")\\d).";
   public static final String TEXT_BUTTON_DIALOG_CANCEL = "Cancelar";
   public static final String TEXT_BUTTON_DIALOG_NO = "No";
   public static final String TEXT_BUTTON_DIALOG_OK = "Aceptar";
   public static final String TEXT_BUTTON_DIALOG_YES = "Sí";
+  public static final String TITLE_MESSAGE_ERROR = "¡Error!";
+  public static final String TITLE_MESSAGE_INFORMATION = "Información";
+  public static final String TITLE_MESSAGE_QUESTION = "Seleccione una opción";
+  public static final String TITLE_MESSAGE_WARNING = "¡Advertencia!";
   public static final String URL_CONTACT = "https://github.com/" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String URL_ISSUES = URL_CONTACT + "/" + PROGRAM_TITLE.replace(" ", "-") + "/issues";
 
