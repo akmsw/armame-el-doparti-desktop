@@ -12,10 +12,10 @@ jobs:
     runs-on: ubuntu-latest # Verificar que corra en Ubuntu es suficiente.
     steps:
     - uses: actions/checkout@v3
-    - name: Set up JDK 22+
+    - name: Set up JDK 23+
       uses: actions/setup-java@v3
       with:
-        java-version: '22'
+        java-version: '23'
         distribution: 'temurin'
         cache: maven
     - name: Set up Maven version
