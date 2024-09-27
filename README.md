@@ -5,7 +5,7 @@
 [![buildBadge](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml/badge.svg?branch=develop-v3.0)](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml)
 [![issuesBadge](https://img.shields.io/github/issues/akmsw/armame-el-doparti.svg?logo=github)](https://github.com/akmsw/armame-el-doparti/issues)
 
-[![openJDKTargetBadge](https://img.shields.io/badge/jdk-22%2B-red?logo=openjdk)](https://openjdk.org/projects/jdk/22/)
+[![openJDKTargetBadge](https://img.shields.io/badge/jdk-23%2B-red?logo=openjdk)](https://openjdk.org/projects/jdk/23/)
 [![operatingSystemBadge](https://img.shields.io/badge/os-cross--platform-blueviolet?logo=windows-terminal)](https://en.wikipedia.org/wiki/Cross-platform_software)
 [![licenseBadge](https://img.shields.io/badge/gpl-3.0-blue?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
@@ -38,9 +38,9 @@ Se ofrece la posibilidad de "anclar" dos o más jugadores entre sí, garantizand
 ## 📦 Requisitos generales
 ### ☕ Java
 - #### Versión mínima
-    🟡 [Java 22](https://www.oracle.com/ar/java/technologies/javase/jdk22-archive-downloads.html)
+    🟡 [Java 23](https://jdk.java.net/23/)
 - #### Versión recomendada
-    🟢 [Java 22](https://www.oracle.com/java/technologies/javase/jdk22-archive-downloads.html) *(o más reciente)*
+    🟢 [Java 23](https://jdk.java.net/23/) *(o más reciente)*
 
 ## ⚙️ Requisitos para compilación manual
 ### 🪶 Apache Maven

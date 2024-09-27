@@ -61,11 +61,9 @@ public class BySkillPointsMixer implements PlayersMixer {
     for (Position position : Position.values()) {
       List<Player> playersSet = new ArrayList<>(playersMap.get(position));
 
-      // Players sorted highest to lowest
-      playersSet.sort(comparingInt(Player::getSkillPoints).reversed());
+      playersSet.sort(comparingInt(Player::getSkillPoints).reversed()); // Players sorted highest to lowest
 
-      // Teams sorted lowest to highest
-      teams.sort(comparingInt(Team::getTeamSkill));
+      teams.sort(comparingInt(Team::getTeamSkill)); // Teams sorted lowest to highest
 
       if (playersSet.size() == 2) {
         for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
