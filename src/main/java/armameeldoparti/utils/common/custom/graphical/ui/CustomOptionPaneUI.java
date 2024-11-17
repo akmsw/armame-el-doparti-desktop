@@ -69,11 +69,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
   @Override
   @SuppressWarnings({"java:S1190", "java:S117"})
   protected void addButtonComponents(Container container, Object[] buttons, int initialIndex) {
-    if (buttons == null) {
-      return;
-    }
-
-    if (buttons.length <= 0) {
+    if ((buttons == null) || (buttons.length <= 0)) {
       return;
     }
 

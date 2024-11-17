@@ -120,7 +120,7 @@ public class CustomArrowButton extends BasicArrowButton {
       }
 
       if (getModel().isPressed()) {
-        g.setColor(Constants.COLOR_GREEN_MEDIUM);
+        g.setColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
       } else if (getModel().isRollover()) {
         g.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
       } else {
