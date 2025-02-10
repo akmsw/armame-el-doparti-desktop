@@ -78,9 +78,7 @@ public class CustomTable extends JTable {
           public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-            if (comp instanceof JComponent) {
-              JComponent auxComp = (JComponent) comp;
-
+            if (comp instanceof JComponent auxComp) {
               auxComp.setOpaque(false);
               auxComp.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
 

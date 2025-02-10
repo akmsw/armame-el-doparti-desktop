@@ -1,9 +1,9 @@
 package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
-import armameeldoparti.models.Position;
-import armameeldoparti.models.ProgramView;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Position;
+import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
@@ -278,7 +278,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    *
    * <p>The order in which the players are displayed in this text area corresponds to the order of the Position enum.
    *
-   * @see armameeldoparti.models.Position
+   * @see armameeldoparti.models.enums.Position
    */
   private void updateTextArea() {
     view.getTextArea()

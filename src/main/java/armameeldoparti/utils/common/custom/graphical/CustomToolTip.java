@@ -1,6 +1,6 @@
 package armameeldoparti.utils.common.custom.graphical;
 
-import armameeldoparti.models.Error;
+import armameeldoparti.models.enums.Error;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomToolTipUI;
@@ -51,8 +51,8 @@ public class CustomToolTip extends JToolTip {
 
     Component parent = this.getParent();
 
-    if (parent instanceof JComponent) {
-      ((JComponent) parent).setOpaque(false);
+    if (parent instanceof JComponent auxComp) {
+      auxComp.setOpaque(false);
     }
 
     try {

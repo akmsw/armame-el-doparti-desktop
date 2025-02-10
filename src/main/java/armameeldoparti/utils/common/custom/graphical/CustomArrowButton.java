@@ -1,6 +1,6 @@
 package armameeldoparti.utils.common.custom.graphical;
 
-import armameeldoparti.models.Error;
+import armameeldoparti.models.enums.Error;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import java.awt.BasicStroke;

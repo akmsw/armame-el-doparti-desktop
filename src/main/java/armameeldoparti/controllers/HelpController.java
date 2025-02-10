@@ -1,7 +1,7 @@
 package armameeldoparti.controllers;
 
-import armameeldoparti.models.Error;
-import armameeldoparti.models.ProgramView;
+import armameeldoparti.models.enums.Error;
+import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.views.HelpView;

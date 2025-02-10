@@ -1,9 +1,9 @@
 package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
-import armameeldoparti.models.Position;
-import armameeldoparti.models.ProgramView;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Position;
+import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
@@ -134,7 +134,7 @@ public class ResultsController extends Controller<ResultsView> {
    *
    * <p>The table cells are filled trusting the positions order in the first column (same order as the Position enum).
    *
-   * @see armameeldoparti.models.Position
+   * @see armameeldoparti.models.enums.Position
    */
   public void updateTable() {
     var wrapper = new Object() {

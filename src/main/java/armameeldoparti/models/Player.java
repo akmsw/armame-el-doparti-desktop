@@ -1,5 +1,7 @@
 package armameeldoparti.models;
 
+import armameeldoparti.models.enums.Position;
+
 /**
  * Players class.
  *

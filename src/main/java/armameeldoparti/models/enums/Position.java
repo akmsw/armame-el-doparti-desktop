@@ -1,4 +1,4 @@
-package armameeldoparti.models;
+package armameeldoparti.models.enums;
 
 /**
  * Possible players positions.

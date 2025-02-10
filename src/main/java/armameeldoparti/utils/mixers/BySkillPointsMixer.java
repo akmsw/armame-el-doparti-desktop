@@ -3,8 +3,8 @@ package armameeldoparti.utils.mixers;
 import static java.util.Comparator.comparingInt;
 
 import armameeldoparti.models.Player;
-import armameeldoparti.models.Position;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Position;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;

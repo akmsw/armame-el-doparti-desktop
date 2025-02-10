@@ -1,6 +1,5 @@
 package armameeldoparti.utils.common;
 
-import armameeldoparti.models.Error;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
@@ -10,6 +9,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import javax.swing.ImageIcon;
+
+import armameeldoparti.models.enums.Error;
 
 /**
  * Common-use constants class.

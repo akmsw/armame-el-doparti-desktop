@@ -2,8 +2,8 @@ package armameeldoparti.utils.common;
 
 import armameeldoparti.controllers.Controller;
 import armameeldoparti.models.Player;
-import armameeldoparti.models.Position;
-import armameeldoparti.models.ProgramView;
+import armameeldoparti.models.enums.Position;
+import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.views.View;
 import java.awt.GraphicsDevice;
 import java.util.List;
