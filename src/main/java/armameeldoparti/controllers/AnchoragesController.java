@@ -76,10 +76,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void finishButtonEvent(Component parentComponent) {
     if (!validAnchoragesCombination(0, Arrays.asList(new Team(0), new Team(1)))) {
-      CommonFunctions.showMessage("Existen conflictos entre anclajes",
-                                  parentComponent,
-                                  JOptionPane.INFORMATION_MESSAGE,
-                                  Constants.TITLE_MESSAGE_INFORMATION);
+      CommonFunctions.showMessage(
+        parentComponent,
+        "Existen conflictos entre anclajes",
+        JOptionPane.WARNING_MESSAGE
+      );
 
       return;
     }
@@ -95,10 +96,9 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   public void newAnchorageButtonEvent(Component parentComponent) {
     if (!validCheckedPlayersPerPosition()) {
       CommonFunctions.showMessage(
-        "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje",
         parentComponent,
-        JOptionPane.INFORMATION_MESSAGE,
-        Constants.TITLE_MESSAGE_INFORMATION
+        "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje",
+        JOptionPane.WARNING_MESSAGE
       );
 
       return;
@@ -112,30 +112,31 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                          .count();
 
     if (playersToAnchorCount == 0) {
-      CommonFunctions.showMessage("No hay jugadores seleccionados para anclar",
-                                  parentComponent,
-                                  JOptionPane.INFORMATION_MESSAGE,
-                                  Constants.TITLE_MESSAGE_INFORMATION);
+      CommonFunctions.showMessage(
+        parentComponent,
+        "No hay jugadores seleccionados para anclar",
+        JOptionPane.INFORMATION_MESSAGE
+      );
 
       return;
     } else if (!validChecksCount(playersToAnchorCount)) {
       CommonFunctions.showMessage(
+        parentComponent,
         "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
         + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
         + " jugadores en un mismo anclaje",
-        parentComponent,
-        JOptionPane.INFORMATION_MESSAGE,
-        Constants.TITLE_MESSAGE_INFORMATION
+        JOptionPane.WARNING_MESSAGE
       );
 
       return;
     }
 
     if (!validAnchoredPlayersCount(playersToAnchorCount)) {
-      CommonFunctions.showMessage("No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total",
-                                  parentComponent,
-                                  JOptionPane.INFORMATION_MESSAGE,
-                                  Constants.TITLE_MESSAGE_INFORMATION);
+      CommonFunctions.showMessage(
+        parentComponent,
+        "No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total",
+        JOptionPane.INFORMATION_MESSAGE
+      );
 
       return;
     }
@@ -170,7 +171,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       "Antes de continuar...",
       JOptionPane.OK_CANCEL_OPTION,
       JOptionPane.QUESTION_MESSAGE,
-      Constants.ICON_DIALOG,
+      Constants.ICON_DIALOG_QUESTION,
       optionsDelete,
       optionsDelete[0]
     );
@@ -229,17 +230,17 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Sets up the GUI components event listeners.
    *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
   @Override
   @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getFinishButton()
-        .addActionListener(e -> finishButtonEvent(CommonFunctions.getComponentFromEvent(e)));
+        .addActionListener(event -> finishButtonEvent(CommonFunctions.getComponentFromEvent(event)));
     view.getNewAnchorageButton()
-        .addActionListener(e -> newAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(e)));
+        .addActionListener(event -> newAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
     view.getDeleteAnchorageButton()
-        .addActionListener(e -> deleteAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(e)));
+        .addActionListener(event -> deleteAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
     view.getDeleteLastAnchorageButton()
         .addActionListener(_ -> deleteLastAnchorageButtonEvent());
     view.getClearAnchoragesButton()

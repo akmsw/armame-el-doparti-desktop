@@ -193,7 +193,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
   @Override
   @SuppressWarnings({"java:S1190", "java:S117"})
@@ -207,34 +207,37 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.getRadioButtonBySkillPoints()
         .addItemListener(this::radioButtonEvent);
     view.getComboBox()
-        .addActionListener(e -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) e.getSource()).getSelectedItem())));
+        .addActionListener(event -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) event.getSource()).getSelectedItem())));
     view.getAnchoragesCheckbox()
         .addActionListener(_ -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
     view.getTextFieldsMap()
         .forEach((player, textFieldsSet) ->
           textFieldsSet.forEach(textField ->
-            textField.addActionListener(e -> {
+            textField.addActionListener(event -> {
                 /*
                  * If the entered text is both a valid string and name, it will be applied to the corresponding player.
                  * If not, a message will be shown and the text field will be reset to the player's name.
                  */
                 try {
-                  textFieldEvent(textFieldsSet.indexOf(textField),
-                                 CommonFields.getPlayersSets()
-                                             .get(player),
-                                 textField.getText());
-                } catch (IllegalArgumentException | InvalidNameException ex) {
+                  textFieldEvent(
+                    textFieldsSet.indexOf(textField),
+                    CommonFields.getPlayersSets()
+                                .get(player),
+                    textField.getText()
+                  );
+                } catch (IllegalArgumentException | InvalidNameException exception) {
                   CommonFunctions.showMessage(
-                      ex instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING : Constants.MSG_ERROR_INVALID_NAME,
-                      CommonFunctions.getComponentFromEvent(e),
-                      JOptionPane.INFORMATION_MESSAGE,
-                      Constants.TITLE_MESSAGE_INFORMATION
+                    CommonFunctions.getComponentFromEvent(event),
+                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING : Constants.MSG_ERROR_INVALID_NAME,
+                    JOptionPane.INFORMATION_MESSAGE
                   );
 
-                  textField.setText(CommonFields.getPlayersSets()
-                                                .get(player)
-                                                .get(textFieldsSet.indexOf(textField))
-                                                .getName());
+                  textField.setText(
+                    CommonFields.getPlayersSets()
+                                .get(player)
+                                .get(textFieldsSet.indexOf(textField))
+                                .getName()
+                  );
                 }
               }
             )

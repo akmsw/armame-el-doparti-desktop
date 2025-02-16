@@ -67,7 +67,7 @@ public class Team {
   }
 
   /**
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    *
    * @return The number of players per position in the team.
    */

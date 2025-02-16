@@ -22,6 +22,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -54,26 +55,49 @@ public final class CommonFunctions {
    * @param error The error that caused the program to end.
    */
   public static void exitProgram(Error error) {
-    showMessage(Constants.MAP_ERROR_MESSAGE
-                         .get(error),
-                null,
-                JOptionPane.ERROR_MESSAGE,
-                Constants.TITLE_MESSAGE_ERROR);
+    showMessage(
+      null,
+      Constants.MAP_ERROR_MESSAGE
+               .get(error),
+      JOptionPane.ERROR_MESSAGE
+    );
 
     System.exit(Constants.MAP_ERROR_CODE
                          .get(error));
   }
 
   /**
-   * Builds an error window with a custom message.
+   * Builds a dialog window with a custom message.
    *
-   * @param errorMessage    Custom error message to show.
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
-   * @param messageType     Message severity.
-   * @param dialogTitle     The title to be shown in the dialog box.
+   * @param dialogMessage     Custom error message to show.
+   * @param parentComponent   Graphical component where the dialogs associated with the event should be displayed.
+   * @param dialogMessageType Message severity.
    */
-  public static void showMessage(String errorMessage, Component parentComponent, int messageType, String dialogTitle) {
-    JOptionPane.showMessageDialog(parentComponent, errorMessage, dialogTitle, messageType, null);
+  public static void showMessage(Component parentComponent, String dialogMessage, int dialogMessageType) {
+    String dialogTitle = null;
+    Icon dialogIcon = null;
+
+    switch (dialogMessageType) {
+      case JOptionPane.INFORMATION_MESSAGE, JOptionPane.PLAIN_MESSAGE -> {
+        dialogTitle = Constants.TITLE_MESSAGE_INFORMATION;
+        dialogIcon = Constants.ICON_DIALOG_INFORMATION;
+      }
+      case JOptionPane.WARNING_MESSAGE -> {
+        dialogTitle = Constants.TITLE_MESSAGE_WARNING;
+        dialogIcon = Constants.ICON_DIALOG_WARNING;
+      }
+      case JOptionPane.ERROR_MESSAGE -> {
+        dialogTitle = Constants.TITLE_MESSAGE_ERROR;
+        dialogIcon = Constants.ICON_DIALOG_ERROR;
+      }
+      case JOptionPane.QUESTION_MESSAGE -> {
+        dialogTitle = Constants.TITLE_MESSAGE_QUESTION;
+        dialogIcon = Constants.ICON_DIALOG_QUESTION;
+      }
+      default -> CommonFunctions.exitProgram(Error.ERROR_GUI);
+    }
+
+    JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
   }
 
   /**
@@ -107,7 +131,7 @@ public final class CommonFunctions {
   /**
    * Opens a new tab in the default web browser with the specified URL.
    *
-   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
    *
    * @param url Destination URL.
    */
@@ -257,8 +281,8 @@ public final class CommonFunctions {
   public static <T> Position getCorrespondingPosition(Map<Position, T> map, T search) {
     return retrieveOptional(map.entrySet()
                                .stream()
-                               .filter(e -> e.getValue()
-                                             .equals(search))
+                               .filter(entry -> entry.getValue()
+                                                     .equals(search))
                                .map(Map.Entry::getKey)
                                .findFirst());
   }

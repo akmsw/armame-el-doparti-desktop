@@ -94,7 +94,7 @@ public class HelpController extends Controller<HelpView> {
    *
    * <p>Finds the text file corresponding to the page number and displays its content.
    *
-   * <p>The "java:S1190" warning is suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
    */
   @SuppressWarnings("java:S1190")
   public void updatePage() {
@@ -148,7 +148,7 @@ public class HelpController extends Controller<HelpView> {
   }
 
   /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
   @Override
   @SuppressWarnings({"java:S1190", "java:S117"})

@@ -145,7 +145,7 @@ public class NamesInputView extends View {
   /**
    * Builds, stores and configures each position text fields.
    *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
   @SuppressWarnings({"java:S1190", "java:S117"})
   private void addTextFields() {

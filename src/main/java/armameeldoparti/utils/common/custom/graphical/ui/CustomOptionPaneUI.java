@@ -6,6 +6,7 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.util.Arrays;
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -48,6 +49,20 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
     return new CustomOptionPaneUI();
   }
 
+  @Override
+  public void installUI(JComponent component) {
+      super.installUI(component);
+  
+      SwingUtilities.invokeLater(
+        () -> {
+          if (SwingUtilities.getWindowAncestor(optionPane) instanceof JDialog parentDialog) {
+            parentDialog.setIconImage(Constants.ICON_MAIN
+                                               .getImage());
+          }
+        }
+      );
+  }
+
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   /**
@@ -58,7 +73,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    * <p>A minimum button size is forced in order to ensure that the buttons showing only anchorages numbers have the same size, since the font used is
    * not monospaced for user readability matters.
    *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22 allows the use of unnamed variables.
+   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    *
    * @param container    A container for the buttons.
    * @param buttons      An array with the strings for each button of the dialog.
