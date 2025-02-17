@@ -55,7 +55,7 @@ public final class CommonFunctions {
    * @param error The error that caused the program to end.
    */
   public static void exitProgram(Error error) {
-    showMessage(
+    showMessageDialog(
       null,
       Constants.MAP_ERROR_MESSAGE
                .get(error),
@@ -73,7 +73,7 @@ public final class CommonFunctions {
    * @param dialogMessage     Custom message to show.
    * @param dialogMessageType Message severity.
    */
-  public static void showMessage(Component parentComponent, String dialogMessage, int dialogMessageType) {
+  public static void showMessageDialog(Component parentComponent, String dialogMessage, int dialogMessageType) {
     String dialogTitle = null;
     Icon dialogIcon = null;
 

@@ -226,7 +226,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                     textField.getText()
                   );
                 } catch (IllegalArgumentException | InvalidNameException exception) {
-                  CommonFunctions.showMessage(
+                  CommonFunctions.showMessageDialog(
                     CommonFunctions.getComponentFromEvent(event),
                     exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING : Constants.MSG_ERROR_INVALID_NAME,
                     JOptionPane.INFORMATION_MESSAGE
