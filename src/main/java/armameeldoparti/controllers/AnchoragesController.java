@@ -165,16 +165,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                       .mapToObj(Integer::toString)
                                       .toArray(String[]::new);
 
-    int anchorageToDelete = JOptionPane.showOptionDialog(
-      parentComponent,
-      "Seleccione qué anclaje desea borrar",
-      "Antes de continuar...",
-      JOptionPane.OK_CANCEL_OPTION,
-      JOptionPane.QUESTION_MESSAGE,
-      Constants.ICON_DIALOG_QUESTION,
-      optionsDelete,
-      optionsDelete[0]
-    );
+    int anchorageToDelete = CommonFunctions.showOptionDialog(parentComponent, "Seleccione qué anclaje desea borrar", optionsDelete);
 
     if (anchorageToDelete != JOptionPane.CLOSED_OPTION) {
       deleteAnchorage(anchorageToDelete + 1);

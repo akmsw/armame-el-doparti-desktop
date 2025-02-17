@@ -298,6 +298,12 @@ public class ResultsController extends Controller<ResultsView> {
 
               c.setOpaque(false);
               c.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
+              
+              if (row == 0 && column == 0) {
+                c.setBackground(Constants.COLOR_GREEN_MEDIUM);
+                
+                return c;
+              }
 
               if (row == 0) {
                 c.setBackground(Constants.COLOR_GREEN_DARK);

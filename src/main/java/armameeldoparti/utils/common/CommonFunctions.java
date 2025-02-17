@@ -67,10 +67,10 @@ public final class CommonFunctions {
   }
 
   /**
-   * Builds a dialog window with a custom message.
+   * Builds and displays a dialog window with a custom message.
    *
-   * @param dialogMessage     Custom error message to show.
    * @param parentComponent   Graphical component where the dialogs associated with the event should be displayed.
+   * @param dialogMessage     Custom message to show.
    * @param dialogMessageType Message severity.
    */
   public static void showMessage(Component parentComponent, String dialogMessage, int dialogMessageType) {
@@ -98,6 +98,30 @@ public final class CommonFunctions {
     }
 
     JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
+  }
+
+  /**
+   * Builds and displays a dialog window with options for the user to choose.
+   * 
+   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param dialogMessage   Custom message to show.
+   * @param dialogOptions   Options for the user to choose.
+   * 
+   * @return The integer indicating the option chosen by the user.
+   * 
+   * @see JOptionPane#showOptionDialog(Component, Object, String, int, int, Icon, Object[], Object)
+   */
+  public static int showOptionDialog(Component parentComponent, String dialogMessage, Object[] dialogOptions) {
+    return JOptionPane.showOptionDialog(
+      parentComponent,
+      dialogMessage,
+      Constants.TITLE_MESSAGE_QUESTION,
+      JOptionPane.OK_CANCEL_OPTION,
+      JOptionPane.QUESTION_MESSAGE,
+      Constants.ICON_DIALOG_QUESTION,
+      dialogOptions,
+      dialogOptions[0]
+    );
   }
 
   /**
