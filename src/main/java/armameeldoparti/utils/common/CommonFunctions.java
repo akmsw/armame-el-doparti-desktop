@@ -69,7 +69,7 @@ public final class CommonFunctions {
   /**
    * Builds and displays a dialog window with a custom message.
    *
-   * @param parentComponent   Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent   Graphical component where the dialog windows associated with the event should be displayed.
    * @param dialogMessage     Custom message to show.
    * @param dialogMessageType Message severity.
    */
@@ -103,7 +103,7 @@ public final class CommonFunctions {
   /**
    * Builds and displays a dialog window with options for the user to choose.
    * 
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    * @param dialogMessage   Custom message to show.
    * @param dialogOptions   Options for the user to choose.
    * 

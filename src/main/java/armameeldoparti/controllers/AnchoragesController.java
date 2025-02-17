@@ -72,7 +72,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Checks if the necessary anchorages conditions are met. If so, it proceeds with the distribution.
    *
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    */
   public void finishButtonEvent(Component parentComponent) {
     if (!validAnchoragesCombination(0, Arrays.asList(new Team(0), new Team(1)))) {
@@ -91,7 +91,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Checks if the necessary conditions to make a new anchorage are met. If so, it does it.
    *
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    */
   public void newAnchorageButtonEvent(Component parentComponent) {
     if (!validCheckedPlayersPerPosition()) {
@@ -158,7 +158,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Prompts the user for the number of the anchorage to delete, and removes it, updating the text area and the state of the buttons.
    *
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    */
   public void deleteAnchorageButtonEvent(Component parentComponent) {
     String[] optionsDelete = IntStream.rangeClosed(1, anchoragesCount)

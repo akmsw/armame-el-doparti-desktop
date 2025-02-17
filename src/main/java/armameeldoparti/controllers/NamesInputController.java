@@ -71,7 +71,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   /**
    * Asks the user for the players distribution method, makes the controlled view invisible and shows the corresponding following view.
    *
-   * @param parentComponent Graphical component where the dialogs associated with the event should be displayed.
+   * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    */
   public void mixButtonEvent(Component parentComponent) {
     hideView();
