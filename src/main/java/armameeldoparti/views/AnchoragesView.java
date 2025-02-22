@@ -161,10 +161,8 @@ public class AnchoragesView extends View {
    * @param labelText Label text.
    */
   private void addCheckboxesSet(List<JCheckBox> cbSet, String labelText) {
-    leftPanel.add(
-      new CustomLabel(labelText, null, SwingConstants.CENTER),
-      CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN)
-    );
+    leftPanel.add(new CustomLabel(labelText, null, SwingConstants.CENTER),
+                  CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN));
 
     cbSet.forEach(checkbox -> leftPanel.add(checkbox, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_ALIGN_LEFT,
                                                                                                 Constants.MIG_LAYOUT_PUSHX)));

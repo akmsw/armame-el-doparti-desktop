@@ -67,11 +67,9 @@ public class ResultsView extends View {
    * @return The updated frame title.
    */
   private static String getUpdatedFrameTitle() {
-    return String.join(
-      " - ",
-      CommonFields.getDistribution() == Constants.MIX_RANDOM ? "Aleatorio" : "Por puntuaciones",
-      CommonFields.isAnchoragesEnabled() ? "Con anclajes" : "Sin anclajes"
-    );
+    return String.join(" - ",
+                       CommonFields.getDistribution() == Constants.MIX_RANDOM ? "Aleatorio" : "Por puntuaciones",
+                       CommonFields.isAnchoragesEnabled() ? "Con anclajes" : "Sin anclajes");
   }
 
   /**

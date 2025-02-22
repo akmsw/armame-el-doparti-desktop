@@ -38,13 +38,13 @@ public class CustomScrollPane extends JScrollPane {
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
-  protected void paintBorder(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g.create();
+  protected void paintBorder(Graphics graphics) {
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(Constants.COLOR_GREEN_LIGHT_WHITE);
-    g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
-    g2.dispose();
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setColor(Constants.COLOR_GREEN_LIGHT_WHITE);
+    graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
+    graphics2d.dispose();
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
@@ -74,37 +74,33 @@ public class CustomScrollPane extends JScrollPane {
       }
 
       @Override
-      protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds) {
-        Graphics2D g2 = (Graphics2D) g.create();
+      protected void paintThumb(Graphics graphics, JComponent component, Rectangle thumbBounds) {
+        Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-        g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-        g2.setColor(Constants.COLOR_GREEN_DARK);
-        g2.fillRoundRect(
-          thumbBounds.x,
-          thumbBounds.y,
-          thumbBounds.width,
-          thumbBounds.height,
-          Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
-          Constants.ROUNDED_BORDER_ARC_SCROLLBAR
-        );
-        g2.dispose();
+        graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+        graphics2d.setColor(Constants.COLOR_GREEN_DARK);
+        graphics2d.fillRoundRect(thumbBounds.x,
+                                 thumbBounds.y,
+                                 thumbBounds.width,
+                                 thumbBounds.height,
+                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
+                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
+        graphics2d.dispose();
       }
 
       @Override
-      protected void paintTrack(Graphics g, JComponent c, Rectangle trackBounds) {
-        Graphics2D g2 = (Graphics2D) g.create();
+      protected void paintTrack(Graphics graphics, JComponent component, Rectangle trackBounds) {
+        Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-        g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-        g2.setColor(Constants.COLOR_GREEN_MEDIUM);
-        g2.fillRoundRect(
-          trackBounds.x,
-          trackBounds.y,
-          trackBounds.width,
-          trackBounds.height,
-          Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
-          Constants.ROUNDED_BORDER_ARC_SCROLLBAR
-        );
-        g2.dispose();
+        graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+        graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
+        graphics2d.fillRoundRect(trackBounds.x,
+                                 trackBounds.y,
+                                 trackBounds.width,
+                                 trackBounds.height,
+                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
+                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
+        graphics2d.dispose();
       }
     });
     getVerticalScrollBar().setOpaque(false);

@@ -19,10 +19,10 @@ public class CustomSeparator extends JSeparator {
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
-  protected void paintComponent(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g;
+  protected void paintComponent(Graphics graphics) {
+    Graphics2D graphics2d = (Graphics2D) graphics;
 
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.fillRoundRect(0, getHeight() / 2, getWidth(), 5, Constants.ROUNDED_BORDER_ARC_SEPARATOR, Constants.ROUNDED_BORDER_ARC_SEPARATOR);
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.fillRoundRect(0, (getHeight() / 2), getWidth(), 5, Constants.ROUNDED_BORDER_ARC_SEPARATOR, Constants.ROUNDED_BORDER_ARC_SEPARATOR);
   }
 }

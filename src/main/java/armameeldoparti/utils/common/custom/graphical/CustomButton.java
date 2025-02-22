@@ -45,22 +45,22 @@ public class CustomButton extends JButton {
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
-  protected void paintComponent(Graphics g) {
+  protected void paintComponent(Graphics graphics) {
     if (getModel().isPressed()) {
-      g.setColor(Constants.COLOR_GREEN_MEDIUM);
+      graphics.setColor(Constants.COLOR_GREEN_MEDIUM);
     } else if (getModel().isRollover()) {
-      g.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
+      graphics.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
     } else {
-      g.setColor(isEnabled() ? getBackground() : Constants.COLOR_GREEN_MEDIUM);
+      graphics.setColor(isEnabled() ? getBackground() : Constants.COLOR_GREEN_MEDIUM);
     }
 
-    Graphics2D g2 = (Graphics2D) g.create();
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), arc, arc);
-    g2.dispose();
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), arc, arc);
+    graphics2d.dispose();
 
-    super.paintComponent(g);
+    super.paintComponent(graphics);
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------

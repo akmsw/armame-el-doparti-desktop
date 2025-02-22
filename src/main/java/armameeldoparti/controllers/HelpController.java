@@ -109,19 +109,20 @@ public class HelpController extends Controller<HelpView> {
 
     updateLabel();
 
-    try (BufferedReader reader = new BufferedReader(
-        new InputStreamReader(
-          Objects.requireNonNull(
-            HelpController.class
-                          .getClassLoader()
-                          .getResourceAsStream(Constants.PATH_HELP_DOCS + Constants.MAP_HELP_PAGES_FILES
-                                                                                   .get(currentPageNumber)
-                                                                                   .get(Constants.INDEX_HELP_PAGE_FILENAME)),
-            Constants.MSG_ERROR_NULL_RESOURCE
-          ),
-          StandardCharsets.UTF_8
-        )
-    )) {
+    try (
+      BufferedReader reader = new BufferedReader(
+                                new InputStreamReader(
+                                  Objects.requireNonNull(HelpController.class
+                                                                       .getClassLoader()
+                                                                       .getResourceAsStream(Constants.PATH_HELP_DOCS
+                                                                                            + Constants.MAP_HELP_PAGES_FILES
+                                                                                                       .get(currentPageNumber)
+                                                                                                       .get(Constants.INDEX_HELP_PAGE_FILENAME)),
+                                                         Constants.MSG_ERROR_NULL_RESOURCE),
+                                  StandardCharsets.UTF_8
+                                )
+                              )
+    ) {
       textArea.read(reader, null);
       textArea.setCaretPosition(0);
       textArea.scrollRectToVisible(new Rectangle(0, 0, 1, 1));

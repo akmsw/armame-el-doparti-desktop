@@ -48,8 +48,8 @@ public class CustomTable extends JTable {
       for (int column = 0; column < getColumnCount(); column++) {
         Component cellComponent = prepareRenderer(getCellRenderer(row, column), row, column);
 
-        maxCellWidth = Math.max(maxCellWidth, cellComponent.getPreferredSize().width + getIntercellSpacing().width);
-        maxCellHeight = Math.max(maxCellHeight, cellComponent.getPreferredSize().height + getIntercellSpacing().height);
+        maxCellWidth = Math.max(maxCellWidth, (cellComponent.getPreferredSize().width + getIntercellSpacing().width));
+        maxCellHeight = Math.max(maxCellHeight, (cellComponent.getPreferredSize().height + getIntercellSpacing().height));
       }
     }
 
@@ -76,55 +76,53 @@ public class CustomTable extends JTable {
         new DefaultTableCellRenderer() {
           @Override
           public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component comp = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-            if (comp instanceof JComponent auxComp) {
-              auxComp.setOpaque(false);
-              auxComp.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
+            if (component instanceof JComponent tableCellRenderer) {
+              tableCellRenderer.setOpaque(false);
+              tableCellRenderer.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
 
               if (row == 0) {
-                auxComp.setBackground(Constants.COLOR_GREEN_DARK);
-                auxComp.setForeground(Color.WHITE);
+                tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
+                tableCellRenderer.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) auxComp).setHorizontalAlignment(SwingConstants.CENTER);
+                ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.CENTER);
 
-                return auxComp;
+                return tableCellRenderer;
               }
 
               if (column == 0) {
-                auxComp.setBackground(Constants.COLOR_GREEN_DARK);
-                auxComp.setForeground(Color.WHITE);
+                tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
+                tableCellRenderer.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) auxComp).setHorizontalAlignment(SwingConstants.LEFT);
+                ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.LEFT);
 
-                return auxComp;
+                return tableCellRenderer;
               }
 
-              auxComp.setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
-              auxComp.setForeground(Color.BLACK);
+              tableCellRenderer.setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
+              tableCellRenderer.setForeground(Color.BLACK);
             }
 
-            return comp;
+            return component;
           }
 
           @Override
-          protected void paintComponent(Graphics g) {
-            Graphics2D g2 = (Graphics2D) g.create();
+          protected void paintComponent(Graphics graphics) {
+            Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-            g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-            g2.setColor(getBackground());
-            g2.fillRoundRect(
-              0,
-              0,
-              (getWidth() - 1),
-              (getHeight() - 1),
-              Constants.ROUNDED_BORDER_ARC_TABLE_CELLS,
-              Constants.ROUNDED_BORDER_ARC_TABLE_CELLS
-            );
+            graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+            graphics2d.setColor(getBackground());
+            graphics2d.fillRoundRect(0,
+                                     0,
+                                     (getWidth() - 1),
+                                     (getHeight() - 1),
+                                     Constants.ROUNDED_BORDER_ARC_TABLE_CELLS,
+                                     Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
 
-            super.paintComponent(g2);
+            super.paintComponent(graphics2d);
 
-            g2.dispose();
+            graphics2d.dispose();
           }
       }
     );

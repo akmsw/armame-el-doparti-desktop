@@ -46,7 +46,7 @@ public class CustomArrowButton extends BasicArrowButton {
    */
   @Override
   @SuppressWarnings("java:S1190")
-  public void paint(Graphics g) {
+  public void paint(Graphics graphics) {
     try {
       int buttonHeight = getHeight();
       int buttonWidth = getWidth();
@@ -120,24 +120,24 @@ public class CustomArrowButton extends BasicArrowButton {
       }
 
       if (getModel().isPressed()) {
-        g.setColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
+        graphics.setColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
       } else if (getModel().isRollover()) {
-        g.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
+        graphics.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
       } else {
-        g.setColor(isEnabled() ? getBackground() : Constants.COLOR_GREEN_MEDIUM);
+        graphics.setColor(isEnabled() ? getBackground() : Constants.COLOR_GREEN_MEDIUM);
       }
 
       Polygon triangle = new Polygon(pointsX, pointsY, 3);
 
-      Graphics2D g2 = (Graphics2D) g.create();
+      Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-      g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-      g2.setStroke(new BasicStroke(Constants.STROKE_BUTTON_ARROW, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
-      g2.drawPolygon(triangle);
-      g2.fillPolygon(triangle);
-      g2.dispose();
+      graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+      graphics2d.setStroke(new BasicStroke(Constants.STROKE_BUTTON_ARROW, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
+      graphics2d.drawPolygon(triangle);
+      graphics2d.fillPolygon(triangle);
+      graphics2d.dispose();
 
-      super.paintComponent(g);
+      super.paintComponent(graphics);
     } catch (IllegalArgumentException _) {
       CommonFunctions.exitProgram(Error.ERROR_INTERNAL);
     }

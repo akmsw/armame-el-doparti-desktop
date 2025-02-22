@@ -51,8 +51,8 @@ public class CustomToolTip extends JToolTip {
 
     Component parent = this.getParent();
 
-    if (parent instanceof JComponent auxComp) {
-      auxComp.setOpaque(false);
+    if (parent instanceof JComponent parentComponent) {
+      parentComponent.setOpaque(false);
     }
 
     try {

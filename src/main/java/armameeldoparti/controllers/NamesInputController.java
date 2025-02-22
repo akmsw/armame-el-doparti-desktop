@@ -150,11 +150,11 @@ public class NamesInputController extends Controller<NamesInputView> {
    * Since there can be only one distribution method at a time: if one radio button is selected, the other is unselected automatically. Then, if the
    * conditions are met, the mix button is enabled.
    *
-   * @param e Radio button click event.
+   * @param event Radio button click event.
    */
-  public void radioButtonEvent(ItemEvent e) {
-    if (e.getStateChange() == ItemEvent.SELECTED) {
-      (e.getSource() == view.getRadioButtonRandom() ? view.getRadioButtonBySkillPoints() : view.getRadioButtonRandom()).setSelected(false);
+  public void radioButtonEvent(ItemEvent event) {
+    if (event.getStateChange() == ItemEvent.SELECTED) {
+      (event.getSource() == view.getRadioButtonRandom() ? view.getRadioButtonBySkillPoints() : view.getRadioButtonRandom()).setSelected(false);
     }
 
     validateMixButtonEnable();
@@ -219,25 +219,20 @@ public class NamesInputController extends Controller<NamesInputView> {
                  * If not, a message will be shown and the text field will be reset to the player's name.
                  */
                 try {
-                  textFieldEvent(
-                    textFieldsSet.indexOf(textField),
-                    CommonFields.getPlayersSets()
-                                .get(player),
-                    textField.getText()
-                  );
+                  textFieldEvent(textFieldsSet.indexOf(textField),
+                                 CommonFields.getPlayersSets()
+                                             .get(player),
+                                 textField.getText());
                 } catch (IllegalArgumentException | InvalidNameException exception) {
-                  CommonFunctions.showMessageDialog(
-                    CommonFunctions.getComponentFromEvent(event),
-                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING : Constants.MSG_ERROR_INVALID_NAME,
-                    JOptionPane.INFORMATION_MESSAGE
-                  );
+                  CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event),
+                                                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING
+                                                                                                  : Constants.MSG_ERROR_INVALID_NAME,
+                                                    JOptionPane.INFORMATION_MESSAGE);
 
-                  textField.setText(
-                    CommonFields.getPlayersSets()
-                                .get(player)
-                                .get(textFieldsSet.indexOf(textField))
-                                .getName()
-                  );
+                  textField.setText(CommonFields.getPlayersSets()
+                                                .get(player)
+                                                .get(textFieldsSet.indexOf(textField))
+                                                .getName());
                 }
               }
             )
@@ -252,13 +247,10 @@ public class NamesInputController extends Controller<NamesInputView> {
    */
   @Override
   protected void showView() {
-    updateTextFields(
-      Objects.requireNonNull(
-        view.getComboBox()
-            .getSelectedItem(),
-        Constants.MSG_ERROR_NULL_RESOURCE
-      ).toString()
-    );
+    updateTextFields(Objects.requireNonNull(view.getComboBox()
+                                                .getSelectedItem(),
+                                            Constants.MSG_ERROR_NULL_RESOURCE)
+                            .toString());
     centerView();
     resetComboBox();
 

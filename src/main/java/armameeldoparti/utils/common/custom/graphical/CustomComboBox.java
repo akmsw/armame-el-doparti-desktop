@@ -51,25 +51,25 @@ public class CustomComboBox<E> extends JComboBox<E> {
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
-  protected void paintComponent(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g.create();
+  protected void paintComponent(Graphics graphics) {
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(getBackground());
-    g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
-    g2.dispose();
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setColor(getBackground());
+    graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
+    graphics2d.dispose();
 
-    super.paintComponent(g);
+    super.paintComponent(graphics);
   }
 
   @Override
-  protected void paintBorder(Graphics g) {
-    Graphics2D g2 = (Graphics2D) g.create();
+  protected void paintBorder(Graphics graphics) {
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setColor(getBackground());
-    g2.drawRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
-    g2.dispose();
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setColor(getBackground());
+    graphics2d.drawRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
+    graphics2d.dispose();
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
@@ -106,39 +106,35 @@ public class CustomComboBox<E> extends JComboBox<E> {
             }
 
             @Override
-            protected void paintBorder(Graphics g) {
-              Graphics2D g2 = (Graphics2D) g.create();
+            protected void paintBorder(Graphics graphics) {
+              Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-              g2.setColor(Constants.COLOR_GREEN_MEDIUM);
-              g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-              g2.drawRoundRect(
-                0,
-                0,
-                (getWidth() - 1),
-                (getHeight() - 1),
-                Constants.ROUNDED_BORDER_ARC_GENERAL,
-                Constants.ROUNDED_BORDER_ARC_GENERAL
-              );
-              g2.dispose();
+              graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
+              graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+              graphics2d.drawRoundRect(0,
+                                       0,
+                                       (getWidth() - 1),
+                                       (getHeight() - 1),
+                                       Constants.ROUNDED_BORDER_ARC_GENERAL,
+                                       Constants.ROUNDED_BORDER_ARC_GENERAL);
+              graphics2d.dispose();
             }
 
             @Override
-            protected void paintComponent(Graphics g) {
-              Graphics2D g2 = (Graphics2D) g.create();
+            protected void paintComponent(Graphics graphics) {
+              Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-              g2.setColor(Constants.COLOR_GREEN_MEDIUM);
-              g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-              g2.fillRoundRect(
-                0,
-                0,
-                (getWidth() - 1),
-                (getHeight() - 1),
-                Constants.ROUNDED_BORDER_ARC_GENERAL,
-                Constants.ROUNDED_BORDER_ARC_GENERAL
-              );
-              g2.dispose();
+              graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
+              graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+              graphics2d.fillRoundRect(0,
+                                       0,
+                                       (getWidth() - 1),
+                                       (getHeight() - 1),
+                                       Constants.ROUNDED_BORDER_ARC_GENERAL,
+                                       Constants.ROUNDED_BORDER_ARC_GENERAL);
+              graphics2d.dispose();
 
-              super.paintComponent(g);
+              super.paintComponent(graphics);
             }
           };
         }
@@ -162,15 +158,20 @@ public class CustomComboBox<E> extends JComboBox<E> {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
-      Graphics2D g2 = (Graphics2D) g.create();
+    public void paintComponent(Graphics graphics) {
+      Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-      g2.setColor(getBackground());
-      g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-      g2.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_COMBOBOX, Constants.ROUNDED_BORDER_ARC_COMBOBOX);
-      g2.dispose();
+      graphics2d.setColor(getBackground());
+      graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+      graphics2d.fillRoundRect(0,
+                               0,
+                               (getWidth() - 1),
+                               (getHeight() - 1),
+                               Constants.ROUNDED_BORDER_ARC_COMBOBOX,
+                               Constants.ROUNDED_BORDER_ARC_COMBOBOX);
+      graphics2d.dispose();
 
-      super.paintComponent(g);
+      super.paintComponent(graphics);
     }
   }
 }

@@ -53,7 +53,7 @@ public class CustomSpinner extends JSpinner {
         }
 
         @Override
-        public void setSelectionVisible(boolean vis) {
+        public void setSelectionVisible(boolean visible) {
           // Selection should not be visible
         }
 
@@ -68,23 +68,16 @@ public class CustomSpinner extends JSpinner {
     setBorder(
       new AbstractBorder() {
         @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-          Graphics2D g2 = (Graphics2D) g;
+        public void paintBorder(Component component, Graphics graphics, int x, int y, int width, int height) {
+          Graphics2D graphics2d = (Graphics2D) graphics;
 
-          g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-          g2.setColor(Constants.COLOR_GREEN_LIGHT_WHITE);
-          g2.fillRoundRect(
-            x,
-            y,
-            (width - 1),
-            (height - 1),
-            Constants.ROUNDED_BORDER_ARC_SPINNER,
-            Constants.ROUNDED_BORDER_ARC_SPINNER
-          );
+          graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+          graphics2d.setColor(Constants.COLOR_GREEN_LIGHT_WHITE);
+          graphics2d.fillRoundRect(x, y, (width - 1), (height - 1), Constants.ROUNDED_BORDER_ARC_SPINNER, Constants.ROUNDED_BORDER_ARC_SPINNER);
         }
 
         @Override
-        public Insets getBorderInsets(Component c) {
+        public Insets getBorderInsets(Component component) {
           return Constants.INSETS_GENERAL;
         }
       }

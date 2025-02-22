@@ -25,7 +25,7 @@ import javax.swing.plaf.ToolTipUI;
  */
 public class CustomToolTipUI extends ToolTipUI {
 
-  // ---------- Public methods ---------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
   /**
    * The "java:S1172" warning is suppressed since the argument is intentionally unused.
@@ -40,40 +40,45 @@ public class CustomToolTipUI extends ToolTipUI {
   }
 
   @Override
-  public void paint(Graphics g, JComponent c) {
-    Graphics2D g2 = (Graphics2D) g.create();
+  public void paint(Graphics graphics, JComponent component) {
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    RoundRectangle2D roundedRect = new RoundRectangle2D.Float(0, 0, c.getWidth(), c.getHeight(),
+    RoundRectangle2D roundedRect = new RoundRectangle2D.Float(0,
+                                                              0,
+                                                              component.getWidth(),
+                                                              component.getHeight(),
                                                               Constants.ROUNDED_BORDER_ARC_TOOLTIP,
                                                               Constants.ROUNDED_BORDER_ARC_TOOLTIP);
 
     // Round rectangle configuration
-    g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    g2.setComposite(AlphaComposite.Clear);
-    g2.fill(roundedRect);
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setComposite(AlphaComposite.Clear);
+    graphics2d.fill(roundedRect);
 
     // Background painting
-    g2.setComposite(AlphaComposite.Src);
-    g2.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
-    g2.fill(roundedRect);
+    graphics2d.setComposite(AlphaComposite.Src);
+    graphics2d.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
+    graphics2d.fill(roundedRect);
 
     // Text painting
-    FontMetrics fm = g2.getFontMetrics();
+    FontMetrics fontMetric = graphics2d.getFontMetrics();
 
-    String text = ((JToolTip) c).getTipText();
+    String text = ((JToolTip) component).getTipText();
 
-    g2.setColor(Color.WHITE);
-    g2.drawString(text, (c.getWidth() - fm.stringWidth(text)) / 2, (c.getHeight() - fm.getHeight()) / 2 + fm.getAscent());
-    g2.dispose();
+    graphics2d.setColor(Color.WHITE);
+    graphics2d.drawString(text,
+                          ((component.getWidth() - fontMetric.stringWidth(text)) / 2),
+                          (((component.getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
+    graphics2d.dispose();
   }
 
   @Override
-  public Dimension getPreferredSize(JComponent c) {
-    FontMetrics fm = c.getFontMetrics(c.getFont());
+  public Dimension getPreferredSize(JComponent component) {
+    FontMetrics fontMetric = component.getFontMetrics(component.getFont());
 
-    Insets insets = c.getInsets();
+    Insets insets = component.getInsets();
 
-    return new Dimension(fm.stringWidth(((JToolTip) c).getTipText()) + insets.left + insets.right,
-                         fm.getHeight() + insets.top + insets.bottom);
+    return new Dimension((fontMetric.stringWidth(((JToolTip) component).getTipText()) + insets.left + insets.right),
+                         (fontMetric.getHeight() + insets.top + insets.bottom));
   }
 }

@@ -254,27 +254,23 @@ public final class Constants {
    * Positions to show in the names input view combobox.
    */
   public static final List<String> OPTIONS_POSITIONS_COMBOBOX = Collections.unmodifiableList(
-    Arrays.asList(
-      POSITION_COMBOBOX_1,
-      POSITION_COMBOBOX_2,
-      POSITION_COMBOBOX_3,
-      POSITION_COMBOBOX_4,
-      POSITION_COMBOBOX_5
-    )
+    Arrays.asList(POSITION_COMBOBOX_1,
+                  POSITION_COMBOBOX_2,
+                  POSITION_COMBOBOX_3,
+                  POSITION_COMBOBOX_4,
+                  POSITION_COMBOBOX_5)
   );
 
   /**
    * Anchorages colors list used as background color for the results table cells.
    */
   public static final List<Color> COLORS_ANCHORAGES = Collections.unmodifiableList(
-    Arrays.asList(
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_1),
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_2),
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_3),
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_4),
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_5),
-      Color.decode(HEX_CODE_ANCHORAGE_COLOR_6)
-    )
+    Arrays.asList(Color.decode(HEX_CODE_ANCHORAGE_COLOR_1),
+                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_2),
+                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_3),
+                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_4),
+                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_5),
+                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_6))
   );
 
   /**

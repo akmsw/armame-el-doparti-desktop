@@ -1,7 +1,7 @@
 package armameeldoparti.models.enums;
 
 /**
- * Possible players positions.
+ * Possible player positions.
  *
  * @author Bonino, Francisco Ignacio.
  *

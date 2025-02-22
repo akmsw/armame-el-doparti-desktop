@@ -76,11 +76,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void finishButtonEvent(Component parentComponent) {
     if (!validAnchoragesCombination(0, Arrays.asList(new Team(0), new Team(1)))) {
-      CommonFunctions.showMessageDialog(
-        parentComponent,
-        "Existen conflictos entre anclajes",
-        JOptionPane.WARNING_MESSAGE
-      );
+      CommonFunctions.showMessageDialog(parentComponent, "Existen conflictos entre anclajes", JOptionPane.WARNING_MESSAGE);
 
       return;
     }
@@ -95,11 +91,9 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void newAnchorageButtonEvent(Component parentComponent) {
     if (!validCheckedPlayersPerPosition()) {
-      CommonFunctions.showMessageDialog(
-        parentComponent,
-        "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje",
-        JOptionPane.WARNING_MESSAGE
-      );
+      CommonFunctions.showMessageDialog(parentComponent,
+                                        "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje",
+                                        JOptionPane.WARNING_MESSAGE);
 
       return;
     }
@@ -112,31 +106,27 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                          .count();
 
     if (playersToAnchorCount == 0) {
-      CommonFunctions.showMessageDialog(
-        parentComponent,
-        "No hay jugadores seleccionados para anclar",
-        JOptionPane.INFORMATION_MESSAGE
-      );
+      CommonFunctions.showMessageDialog( parentComponent, "No hay jugadores seleccionados para anclar", JOptionPane.INFORMATION_MESSAGE);
 
       return;
     } else if (!validChecksCount(playersToAnchorCount)) {
-      CommonFunctions.showMessageDialog(
-        parentComponent,
-        "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
-        + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
-        + " jugadores en un mismo anclaje",
-        JOptionPane.WARNING_MESSAGE
-      );
+      CommonFunctions.showMessageDialog(parentComponent,
+                                        "No puede haber más de "
+                                        + Constants.MAX_PLAYERS_PER_ANCHORAGE
+                                        + " ni menos de "
+                                        + Constants.MIN_PLAYERS_PER_ANCHORAGE
+                                        + " jugadores en un mismo anclaje",
+                                        JOptionPane.WARNING_MESSAGE);
 
       return;
     }
 
     if (!validAnchoredPlayersCount(playersToAnchorCount)) {
-      CommonFunctions.showMessageDialog(
-        parentComponent,
-        "No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total",
-        JOptionPane.WARNING_MESSAGE
-      );
+      CommonFunctions.showMessageDialog(parentComponent,
+                                        "No puede haber más de "
+                                        + Constants.MAX_ANCHORED_PLAYERS
+                                        + " jugadores anclados en total",
+                                        JOptionPane.WARNING_MESSAGE);
 
       return;
     }

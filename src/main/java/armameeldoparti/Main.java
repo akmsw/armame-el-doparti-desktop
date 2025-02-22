@@ -123,17 +123,18 @@ public final class Main {
    */
   @SuppressWarnings("java:S1190")
   private static void setPlayersDistribution() {
-    try (BufferedReader buff = new BufferedReader(
-           new InputStreamReader(
-             Objects.requireNonNull(CommonFunctions.class
-                                                   .getClassLoader()
-                                                   .getResourceAsStream(Constants.PATH_DOCS + Constants.FILENAME_PDA))
-           )
-         )
+    try (
+      BufferedReader buffer = new BufferedReader(
+                                new InputStreamReader(
+                                  Objects.requireNonNull(CommonFunctions.class
+                                                                        .getClassLoader()
+                                                                        .getResourceAsStream(Constants.PATH_DOCS + Constants.FILENAME_PDA))
+                                )
+                              )
     ) {
-      List<String> filteredLines = buff.lines()
-                                       .filter(line -> line.matches(Constants.REGEX_PDA_DATA_RETRIEVE))
-                                       .toList();
+      List<String> filteredLines = buffer.lines()
+                                         .filter(line -> line.matches(Constants.REGEX_PDA_DATA_RETRIEVE))
+                                         .toList();
 
       IntStream.range(0, filteredLines.size())
                .forEach(index -> CommonFields.getPlayersLimitPerPosition()
@@ -229,7 +230,7 @@ public final class Main {
     UIManager.getDefaults()
              .keySet()
              .stream()
-             .filter(k -> UIManager.get(k) instanceof FontUIResource)
-             .forEach(k -> UIManager.put(k, font));
+             .filter(key -> UIManager.get(key) instanceof FontUIResource)
+             .forEach(key -> UIManager.put(key, font));
   }
 }

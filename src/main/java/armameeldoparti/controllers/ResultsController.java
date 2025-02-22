@@ -156,17 +156,15 @@ public class ResultsController extends Controller<ResultsView> {
 
     if (CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS) {
       for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
-        table.setValueAt(
-          teams.get(teamIndex)
-               .getTeamPlayers()
-               .values()
-               .stream()
-               .flatMap(List::stream)
-               .mapToInt(Player::getSkillPoints)
-               .reduce(0, Math::addExact),
-          table.getRowCount() - 1,
-          teamIndex + 1
-        );
+        table.setValueAt(teams.get(teamIndex)
+                              .getTeamPlayers()
+                              .values()
+                              .stream()
+                              .flatMap(List::stream)
+                              .mapToInt(Player::getSkillPoints)
+                              .reduce(0, Math::addExact),
+                         table.getRowCount() - 1,
+                         teamIndex + 1);
       }
     }
   }
@@ -291,54 +289,54 @@ public class ResultsController extends Controller<ResultsView> {
           new DefaultTableCellRenderer() {
             @Override
             public Component getTableCellRendererComponent(JTable myTable, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-              JComponent c = (JComponent) super.getTableCellRendererComponent(myTable, value, isSelected, hasFocus, row, column);
+              JComponent component = (JComponent) super.getTableCellRendererComponent(myTable, value, isSelected, hasFocus, row, column);
 
               boolean mixBySkill = CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS && row == view.getTable()
                                                                                                                  .getRowCount() - 1;
 
-              c.setOpaque(false);
-              c.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
+              component.setOpaque(false);
+              component.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
               
               if (row == 0 && column == 0) {
-                c.setBackground(Constants.COLOR_GREEN_MEDIUM);
+                component.setBackground(Constants.COLOR_GREEN_MEDIUM);
                 
-                return c;
+                return component;
               }
 
               if (row == 0) {
-                c.setBackground(Constants.COLOR_GREEN_DARK);
-                c.setForeground(Color.WHITE);
+                component.setBackground(Constants.COLOR_GREEN_DARK);
+                component.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
+                ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.CENTER);
 
-                return c;
+                return component;
               }
 
               if (column == 0) {
                 if (mixBySkill) {
-                  c.setBackground(Constants.COLOR_GREEN_MEDIUM);
-                  c.setForeground(Color.WHITE);
+                  component.setBackground(Constants.COLOR_GREEN_MEDIUM);
+                  component.setForeground(Color.WHITE);
 
-                  ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
+                  ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.CENTER);
 
-                  return c;
+                  return component;
                 }
 
-                c.setBackground(Constants.COLOR_GREEN_DARK);
-                c.setForeground(Color.WHITE);
+                component.setBackground(Constants.COLOR_GREEN_DARK);
+                component.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.LEFT);
+                ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.LEFT);
 
-                return c;
+                return component;
               }
 
               if (mixBySkill) {
-                c.setBackground(Constants.COLOR_GREEN_MEDIUM);
-                c.setForeground(Color.WHITE);
+                component.setBackground(Constants.COLOR_GREEN_MEDIUM);
+                component.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.CENTER);
+                ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.CENTER);
 
-                return c;
+                return component;
               }
 
               Player playerOnCell = CommonFunctions.retrieveOptional(CommonFields.getPlayersSets()
@@ -348,34 +346,32 @@ public class ResultsController extends Controller<ResultsView> {
                                                                                  .filter(player -> player.getName() == value)
                                                                                  .findFirst());
 
-              c.setBackground(playerOnCell.getAnchorageNumber() != 0 ? Constants.COLORS_ANCHORAGES
-                                                                                .get(playerOnCell.getAnchorageNumber() - 1)
-                                                                     : Constants.COLOR_GREEN_LIGHT_WHITE);
-              c.setForeground(Color.BLACK);
+              component.setBackground(playerOnCell.getAnchorageNumber() != 0 ? Constants.COLORS_ANCHORAGES
+                                                                                        .get(playerOnCell.getAnchorageNumber() - 1)
+                                                                             : Constants.COLOR_GREEN_LIGHT_WHITE);
+              component.setForeground(Color.BLACK);
 
-              ((DefaultTableCellRenderer) c).setHorizontalAlignment(SwingConstants.LEFT);
+              ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.LEFT);
 
-              return c;
+              return component;
             }
 
             @Override
-            protected void paintComponent(Graphics g) {
-              Graphics2D g2 = (Graphics2D) g.create();
+            protected void paintComponent(Graphics graphics) {
+              Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-              g2.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-              g2.setColor(getBackground());
-              g2.fillRoundRect(
-                0,
-                0,
-                (getWidth() - 1),
-                (getHeight() - 1),
-                Constants.ROUNDED_BORDER_ARC_TABLE_CELLS,
-                Constants.ROUNDED_BORDER_ARC_TABLE_CELLS
-              );
+              graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+              graphics2d.setColor(getBackground());
+              graphics2d.fillRoundRect(0,
+                                       0,
+                                       (getWidth() - 1),
+                                       (getHeight() - 1),
+                                       Constants.ROUNDED_BORDER_ARC_TABLE_CELLS,
+                                       Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
 
-              super.paintComponent(g2);
+              super.paintComponent(graphics2d);
 
-              g2.dispose();
+              graphics2d.dispose();
             }
           }
         );
