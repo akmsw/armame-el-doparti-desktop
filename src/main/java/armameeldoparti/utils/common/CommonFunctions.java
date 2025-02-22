@@ -155,11 +155,8 @@ public final class CommonFunctions {
   /**
    * Opens a new tab in the default web browser with the specified URL.
    *
-   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
-   *
    * @param url Destination URL.
    */
-  @SuppressWarnings("java:S1190")
   public static void browserRedirect(String url) {
     try {
       Desktop.getDesktop()

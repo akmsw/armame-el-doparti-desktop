@@ -93,11 +93,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     // Body not needed in this particular controller
   }
 
-  /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
-   */
   @Override
-  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getBackButton()
         .addActionListener(_ -> backButtonEvent());

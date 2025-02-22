@@ -210,11 +210,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
 
   /**
    * Sets up the GUI components event listeners.
-   *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
   @Override
-  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getFinishButton()
         .addActionListener(event -> finishButtonEvent(CommonFunctions.getComponentFromEvent(event)));

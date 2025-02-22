@@ -67,11 +67,8 @@ public class Team {
   }
 
   /**
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
-   *
    * @return The number of players per position in the team.
    */
-  @SuppressWarnings({"java:S1190", "java:S117"})
   public Map<Position, Integer> getPlayersCountPerPosition() {
     return teamPlayers.values()
                       .stream()

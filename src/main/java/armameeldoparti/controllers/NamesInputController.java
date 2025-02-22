@@ -192,11 +192,7 @@ public class NamesInputController extends Controller<NamesInputView> {
         .setEnabled(false);
   }
 
-  /**
-   * The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
-   */
   @Override
-  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void setUpListeners() {
     view.getMixButton()
         .addActionListener(_ -> mixButtonEvent(view));

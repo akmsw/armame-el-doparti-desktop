@@ -73,8 +73,6 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    * <p>A minimum button size is forced in order to ensure that the buttons showing only anchorages numbers have the same size, since the font used is
    * not monospaced for user readability matters.
    *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
-   *
    * @param container    A container for the buttons.
    * @param buttons      An array with the strings for each button of the dialog.
    * @param initialIndex An initial index used for validation.
@@ -82,7 +80,6 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    * @see #getButtonsForMessageType(int)
    */
   @Override
-  @SuppressWarnings({"java:S1190", "java:S117"})
   protected void addButtonComponents(Container container, Object[] buttons, int initialIndex) {
     if ((buttons == null) || (buttons.length <= 0)) {
       return;

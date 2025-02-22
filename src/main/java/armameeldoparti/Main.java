@@ -93,10 +93,7 @@ public final class Main {
 
   /**
    * Populates the players sets with empty players.
-   *
-   * <p>The "java:S1190" and "java:S117" warnings are suppressed since JDK22+ allows the use of unnamed variables.
    */
-  @SuppressWarnings({"java:S1190", "java:S117"})
   private static void populatePlayersSets() {
     Arrays.stream(Position.values())
           .forEach(position -> CommonFields.getPlayersSets()
@@ -118,10 +115,7 @@ public final class Main {
    * trusts that what is found corresponds to the order in which the values in the Position enum are declared. Idem, if the order of the Position enum
    * values are changed, it should be noted that {@code Position.values()[index]} trusts the order in which the data will be retrieved from the .pda
    * file and, therefore, you should review the order of the important lines in the file.
-   *
-   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
    */
-  @SuppressWarnings("java:S1190")
   private static void setPlayersDistribution() {
     try (
       BufferedReader buffer = new BufferedReader(
@@ -161,10 +155,7 @@ public final class Main {
 
   /**
    * Sets up the program's GUI properties.
-   *
-   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
    */
-  @SuppressWarnings("java:S1190")
   private static void setUpGeneralGraphicalProperties() {
     UIManager.put("Button.background", Constants.COLOR_GREEN_DARK);
     UIManager.put("Button.foreground", Color.WHITE);

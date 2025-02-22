@@ -41,11 +41,8 @@ public class CustomToolTip extends JToolTip {
 
   /**
    * This method is overridden in order to maintain the tooltip graphical properties outside of the frame boundaries.
-   *
-   * <p>The "java:S1190" warning is suppressed since JDK22+ allows the use of unnamed variables.
    */
   @Override
-  @SuppressWarnings("java:S1190")
   public void addNotify() {
     super.addNotify();
 
