@@ -507,9 +507,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     List<Player> anchorage = CommonFunctions.getAnchorages()
                                             .get(recursiveVerificationIndex);
 
-    for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
-      Team team = teams.get(teamIndex);
-
+    for (Team team : teams) {
       if (!anchoragesConflictExists(team, anchorage)) {
         anchorage.forEach(player -> team.getTeamPlayers()
                                         .get(player.getPosition())
