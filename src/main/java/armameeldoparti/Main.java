@@ -106,10 +106,9 @@ public final class Main {
   /**
    * Gets the number of players for each position per team using regular expressions.
    *
-   * <p>{@code [CLMFG].+>.+}: Retrieves the lines that start with C, L, M, F, or G, followed by at least one '>' character (these are the lines that
+   * <p>{@code REGEX_PDA_DATA_RETRIEVE}: Retrieves the lines that start with C, L, M, F, or G, followed by at least one '>' character (these are the lines that
    * matters in the .pda file).
-   *
-   * <p>{@code (?!(?<=X)\\d).}: Gets the part of the line that is not a number that we are interested in (the number would take the place of the X).
+   * <p>{@code REGEX_PLAYERS_COUNT}: Gets the part of the line that is not a number that we are interested in.
    *
    * <p>If the .pda file is modified in terms of the order of the important lines, it must be taken into account that {@code Position.values()[index]}
    * trusts that what is found corresponds to the order in which the values in the Position enum are declared. Idem, if the order of the Position enum
