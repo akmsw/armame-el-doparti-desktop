@@ -144,10 +144,11 @@ public class ResultsController extends Controller<ResultsView> {
 
     teams.forEach(
       team -> {
-        Arrays.stream(Position.values())
-              .forEach(position -> team.getTeamPlayers()
-                                       .get(position)
-                                       .forEach(player -> table.setValueAt(player.getName(), wrapper.row++, wrapper.column)));
+        for (Position position : Position.values()) {
+          team.getTeamPlayers()
+              .get(position)
+              .forEach(player -> table.setValueAt(player.getName(), wrapper.row++, wrapper.column));
+        }
 
         wrapper.column++;
         wrapper.row = 1;
