@@ -11,14 +11,17 @@ import armameeldoparti.utils.common.custom.graphical.CustomTable;
 import armameeldoparti.utils.mixers.BySkillPointsMixer;
 import armameeldoparti.utils.mixers.RandomMixer;
 import armameeldoparti.views.ResultsView;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;

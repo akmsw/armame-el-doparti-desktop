@@ -4,10 +4,13 @@ import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
+
 import java.awt.Color;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
 import net.miginfocom.layout.CC;
 
 /**

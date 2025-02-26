@@ -1,10 +1,12 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
+
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
+
 import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;

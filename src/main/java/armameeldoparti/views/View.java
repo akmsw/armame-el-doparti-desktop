@@ -1,9 +1,11 @@
 package armameeldoparti.views;
 
 import armameeldoparti.utils.common.Constants;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
+
 import net.miginfocom.swing.MigLayout;
 
 /**

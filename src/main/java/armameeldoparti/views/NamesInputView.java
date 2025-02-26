@@ -13,11 +13,13 @@ import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
 import armameeldoparti.utils.common.custom.graphical.CustomSeparator;
 import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
 import armameeldoparti.utils.common.custom.graphical.CustomTextField;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.IntStream;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -26,6 +28,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
 import net.miginfocom.swing.MigLayout;
 
 /**

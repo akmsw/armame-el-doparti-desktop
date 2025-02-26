@@ -4,10 +4,12 @@ import armameeldoparti.models.enums.Error;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomToolTipUI;
+
 import java.awt.Component;
 import java.awt.IllegalComponentStateException;
 import java.awt.Insets;
 import java.awt.Window;
+
 import javax.swing.JComponent;
 import javax.swing.JToolTip;
 import javax.swing.SwingUtilities;

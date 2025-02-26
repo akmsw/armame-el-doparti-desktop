@@ -6,11 +6,13 @@ import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
 import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
 import net.miginfocom.layout.CC;
 
 /**

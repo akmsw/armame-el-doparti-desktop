@@ -20,19 +20,23 @@ import armameeldoparti.views.MainMenuView;
 import armameeldoparti.views.NamesInputView;
 import armameeldoparti.views.ResultsView;
 import armameeldoparti.views.SkillPointsInputView;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.GraphicsEnvironment;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.TreeMap;
 import java.util.stream.IntStream;
+
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.UIManager;

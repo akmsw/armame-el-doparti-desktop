@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
 import armameeldoparti.utils.common.Constants;
+
 import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,6 +10,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
 import java.awt.geom.RoundRectangle2D;
+
 import javax.swing.JComponent;
 import javax.swing.JToolTip;
 import javax.swing.plaf.ComponentUI;

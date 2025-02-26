@@ -6,14 +6,18 @@ import armameeldoparti.models.enums.Error;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.views.View;
+
 import java.awt.Component;
 import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
+
 import java.io.IOException;
+
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -22,6 +26,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;

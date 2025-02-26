@@ -1,9 +1,11 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
+
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
+
 import javax.swing.JTextField;
 
 /**

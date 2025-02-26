@@ -5,12 +5,17 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.views.HelpView;
+
 import java.awt.Rectangle;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+
 import java.nio.charset.StandardCharsets;
+
 import java.util.Objects;
+
 import javax.swing.JTextArea;
 
 /**

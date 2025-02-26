@@ -2,6 +2,7 @@ package armameeldoparti.models;
 
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.utils.common.CommonFields;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;

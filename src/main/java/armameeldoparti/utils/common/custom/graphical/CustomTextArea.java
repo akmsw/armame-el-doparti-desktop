@@ -1,7 +1,9 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
+
 import java.awt.Insets;
+
 import javax.swing.JTextArea;
 
 /**

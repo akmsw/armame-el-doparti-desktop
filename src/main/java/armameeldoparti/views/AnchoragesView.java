@@ -10,16 +10,19 @@ import armameeldoparti.utils.common.custom.graphical.CustomCheckBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
 import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
+
 import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
+
 import net.miginfocom.swing.MigLayout;
 
 /**

@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
+
 import javax.swing.JCheckBox;
 
 /**

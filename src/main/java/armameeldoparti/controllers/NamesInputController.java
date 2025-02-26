@@ -6,15 +6,19 @@ import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.views.NamesInputView;
+
 import java.awt.Component;
 import java.awt.event.ItemEvent;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
 import java.util.stream.IntStream;
+
 import javax.naming.InvalidNameException;
+
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
