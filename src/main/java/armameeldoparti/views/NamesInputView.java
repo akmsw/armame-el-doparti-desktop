@@ -150,8 +150,8 @@ public class NamesInputView extends View {
       textFieldsMap.get(position)
                    .addAll(IntStream.range(0, CommonFields.getPlayersLimitPerPosition()
                                                           .get(position) * 2)
-                                                          .mapToObj(_ -> new CustomTextField())
-                                                          .toList());
+                                    .mapToObj(_ -> new CustomTextField())
+                                    .toList());
     }
   }
 
