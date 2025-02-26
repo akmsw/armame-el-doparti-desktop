@@ -4,7 +4,6 @@ import armameeldoparti.models.enums.Error;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomToolTipUI;
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.IllegalComponentStateException;
 import java.awt.Insets;
@@ -56,7 +55,7 @@ public class CustomToolTip extends JToolTip {
       Window window = SwingUtilities.windowForComponent(this);
 
       if (window != null) {
-        window.setBackground(new Color(0, 0, 0, 0));
+        window.setBackground(Constants.COLOR_TRANSPARENT);
       }
     } catch (IllegalComponentStateException | UnsupportedOperationException _) {
       CommonFunctions.exitProgram(Error.ERROR_INTERNAL);

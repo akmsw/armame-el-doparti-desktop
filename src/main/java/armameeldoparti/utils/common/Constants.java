@@ -192,6 +192,7 @@ public final class Constants {
   public static final Color COLOR_GREEN_MEDIUM_LIGHT = Color.decode(HEX_CODE_GREEN_MEDIUM_LIGHT);
   public static final Color COLOR_GREEN_LIGHT = Color.decode(HEX_CODE_GREEN_LIGHT);
   public static final Color COLOR_GREEN_LIGHT_WHITE = Color.decode(HEX_CODE_GREEN_LIGHT_WHITE);
+  public static final Color COLOR_TRANSPARENT = new Color(0, 0, 0, 0);
 
   public static final ImageIcon ICON_BACKGROUND = CommonFunctions.createImage(FILENAME_IMAGE_BACKGROUND);
   public static final ImageIcon ICON_CB_D_S = CommonFunctions.createImageIcon(FILENAME_ICON_CB_DISABLED_SELECTED);
