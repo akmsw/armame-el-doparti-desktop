@@ -32,7 +32,7 @@ public final class Constants {
   private static final int EXIT_CODE_ERROR_INTERNAL = -3;
   private static final int EXIT_CODE_ERROR_FILES = -4;
   private static final int SCALE_ICON_DIALOG = 32;
-  private static final int SCALE_ICON_MAIN = 50;
+  private static final int SCALE_ICON_MAIN = 60;
 
   private static final String FILENAME_HELP_PAGE_1 = "helpIntro.hlp";
   private static final String FILENAME_HELP_PAGE_2 = "helpCriteria.hlp";
@@ -218,7 +218,7 @@ public final class Constants {
   public static final ImageIcon ICON_RB_E_US_P = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_UNSELECTED_PRESSED);
   public static final ImageIcon ICON_RB_E_US_UF = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_UNSELECTED_UNFOCUSED);
   public static final ImageIcon ICON_MAIN = CommonFunctions.createImageIcon(FILENAME_ICON_MAIN);
-  public static final ImageIcon ICON_DIALOG = CommonFunctions.scaleImageIcon(ICON_MAIN, SCALE_ICON_MAIN, SCALE_ICON_MAIN, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_MAIN_SCALED = CommonFunctions.scaleImageIcon(ICON_MAIN, SCALE_ICON_MAIN, SCALE_ICON_MAIN, Image.SCALE_SMOOTH);
   public static final ImageIcon ICON_DIALOG_ERROR = CommonFunctions.scaleImageIcon(ICON_OP_ERROR,
                                                                                    SCALE_ICON_DIALOG,
                                                                                    SCALE_ICON_DIALOG,
