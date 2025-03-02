@@ -1,7 +1,7 @@
 package armameeldoparti.models.enums;
 
 /**
- * Possible error codes.
+ * Possible distribution strategies.
  *
  * @author Bonino, Francisco Ignacio.
  *
@@ -9,9 +9,7 @@ package armameeldoparti.models.enums;
  *
  * @since 3.0
  */
-public enum Error {
-  ERROR_BROWSER,
-  ERROR_INTERNAL,
-  ERROR_GUI,
-  ERROR_FILES
+public enum Distribution {
+  MIX_BY_SKILL_POINTS,
+  MIX_RANDOM
 }

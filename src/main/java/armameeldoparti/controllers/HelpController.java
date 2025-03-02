@@ -120,7 +120,7 @@ public class HelpController extends Controller<HelpView> {
                                                                                             + Constants.MAP_HELP_PAGES_FILES
                                                                                                        .get(currentPageNumber)
                                                                                                        .get(Constants.INDEX_HELP_PAGE_FILENAME)),
-                                                         Constants.MSG_ERROR_NULL_RESOURCE),
+                                                         Constants.MSG_ERROR_NULL_GUI_RESOURCE),
                                   StandardCharsets.UTF_8
                                 )
                               )
@@ -128,8 +128,8 @@ public class HelpController extends Controller<HelpView> {
       textArea.read(reader, null);
       textArea.setCaretPosition(0);
       textArea.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
-    } catch (IOException _) {
-      CommonFunctions.exitProgram(Error.ERROR_FILES);
+    } catch (IOException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
     }
   }
 

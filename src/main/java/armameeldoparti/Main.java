@@ -76,7 +76,7 @@ public final class Main {
                                                      .getDefaultScreenDevice());
     CommonFields.setAnchoragesEnabled(false);
     CommonFields.setControllersMap(new EnumMap<>(ProgramView.class));
-    CommonFields.setPlayersLimitPerPosition(new EnumMap<>(Position.class));
+    CommonFields.setPlayerLimitPerPosition(new EnumMap<>(Position.class));
     CommonFields.setPlayersSets(new TreeMap<>());
     CommonFields.setPositionsMap(Map.of(Position.CENTRAL_DEFENDER, Constants.POSITION_CENTRAL_DEFENDERS,
                                         Position.LATERAL_DEFENDER, Constants.POSITION_LATERAL_DEFENDERS,
@@ -100,7 +100,7 @@ public final class Main {
   private static void populatePlayersSets() {
     for (Position position : Position.values()) {
       CommonFields.getPlayersSets()
-                  .put(position, IntStream.range(0, CommonFields.getPlayersLimitPerPosition()
+                  .put(position, IntStream.range(0, CommonFields.getPlayerLimitPerPosition()
                                                                 .get(position) * 2)
                                           .mapToObj(_ -> new Player("", position))
                                           .toList());
@@ -134,12 +134,12 @@ public final class Main {
                                          .toList();
 
       IntStream.range(0, filteredLines.size())
-               .forEach(index -> CommonFields.getPlayersLimitPerPosition()
+               .forEach(index -> CommonFields.getPlayerLimitPerPosition()
                                              .put(Position.values()[index],
                                                   Integer.parseInt(filteredLines.get(index)
                                                                                 .replaceAll(Constants.REGEX_PLAYERS_COUNT, ""))));
-    } catch (IOException _) {
-      CommonFunctions.exitProgram(Error.ERROR_FILES);
+    } catch (IOException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
     }
   }
 
@@ -203,15 +203,15 @@ public final class Main {
                                          Objects.requireNonNull(CommonFunctions.class
                                                                                .getClassLoader()
                                                                                .getResourceAsStream(Constants.PATH_TTF + Constants.FILENAME_FONT),
-                                                                Constants.MSG_ERROR_NULL_RESOURCE))
+                                                                Constants.MSG_ERROR_NULL_GUI_RESOURCE))
                              .deriveFont(Constants.FONT_SIZE);
 
       GraphicsEnvironment.getLocalGraphicsEnvironment()
                          .registerFont(programFont);
 
       setProgramFont(programFont);
-    } catch (IOException | FontFormatException _) {
-      CommonFunctions.exitProgram(Error.ERROR_GUI);
+    } catch (IOException | FontFormatException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_GUI, exception.getStackTrace());
     }
   }
 

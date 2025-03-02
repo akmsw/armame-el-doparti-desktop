@@ -95,7 +95,7 @@ public class Team {
    */
   public boolean isPositionFull(Position position) {
     return teamPlayers.get(position)
-                      .size() == CommonFields.getPlayersLimitPerPosition()
+                      .size() == CommonFields.getPlayerLimitPerPosition()
                                              .get(position);
   }
 

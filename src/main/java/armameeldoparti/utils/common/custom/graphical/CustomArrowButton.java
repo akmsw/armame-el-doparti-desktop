@@ -136,8 +136,8 @@ public class CustomArrowButton extends BasicArrowButton {
       graphics2d.dispose();
 
       super.paintComponent(graphics);
-    } catch (IllegalArgumentException _) {
-      CommonFunctions.exitProgram(Error.ERROR_INTERNAL);
+    } catch (IllegalArgumentException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_INTERNAL, exception.getStackTrace());
     }
   }
 

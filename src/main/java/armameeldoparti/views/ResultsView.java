@@ -1,5 +1,6 @@
 package armameeldoparti.views;
 
+import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
@@ -53,7 +54,7 @@ public class ResultsView extends View {
 
   @Override
   protected void addButtons() {
-    if (CommonFields.getDistribution() == Constants.MIX_RANDOM) {
+    if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
       masterPanel.add(remixButton, Constants.MIG_LAYOUT_GROWX);
     }
 
@@ -69,7 +70,7 @@ public class ResultsView extends View {
    */
   private static String getUpdatedFrameTitle() {
     return String.join(" - ",
-                       CommonFields.getDistribution() == Constants.MIX_RANDOM ? "Aleatorio" : "Por puntuaciones",
+                       CommonFields.getDistribution() == Distribution.MIX_RANDOM ? "Aleatorio" : "Por puntuaciones",
                        CommonFields.isAnchoragesEnabled() ? "Con anclajes" : "Sin anclajes");
   }
 

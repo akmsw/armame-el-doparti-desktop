@@ -2,6 +2,7 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
@@ -394,7 +395,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     hideView();
     clearCheckboxes();
 
-    if (CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS) {
+    if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
       ((SkillPointsInputController) CommonFunctions.getController(ProgramView.SKILL_POINTS)).updateNameLabels();
 
       CommonFunctions.getController(ProgramView.SKILL_POINTS)
@@ -527,7 +528,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     for (Player player : anchorage) {
       int newCount = playersCountPerPosition.getOrDefault(player.getPosition(), 0) + 1;
 
-      if (newCount > CommonFields.getPlayersLimitPerPosition()
+      if (newCount > CommonFields.getPlayerLimitPerPosition()
                                  .get(player.getPosition())) {
         return true;
       }
@@ -545,7 +546,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   private boolean validTeams(List<Team> teams) {
     return teams.stream()
-                .allMatch(team -> CommonFields.getPlayersLimitPerPosition()
+                .allMatch(team -> CommonFields.getPlayerLimitPerPosition()
                                               .entrySet()
                                               .stream()
                                               .noneMatch(positionLimit -> team.getPlayersCountPerPosition()

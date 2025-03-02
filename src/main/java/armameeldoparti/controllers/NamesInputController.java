@@ -1,6 +1,7 @@
 package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
+import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
@@ -81,14 +82,14 @@ public class NamesInputController extends Controller<NamesInputView> {
     hideView();
 
     CommonFields.setDistribution(view.getRadioButtonRandom()
-                                     .isSelected() ? Constants.MIX_RANDOM : Constants.MIX_BY_SKILL_POINTS);
+                                     .isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
 
     if (CommonFields.isAnchoragesEnabled()) {
       ((AnchoragesController) CommonFunctions.getController(ProgramView.ANCHORAGES)).updateCheckboxesText();
 
       CommonFunctions.getController(ProgramView.ANCHORAGES)
                      .showView();
-    } else if (CommonFields.getDistribution() == Constants.MIX_RANDOM) {
+    } else if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
       // Random distribution
       ((ResultsController) CommonFunctions.getController(ProgramView.RESULTS)).setUp();
 
@@ -249,7 +250,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   protected void showView() {
     updateTextFields(Objects.requireNonNull(view.getComboBox()
                                                 .getSelectedItem(),
-                                            Constants.MSG_ERROR_NULL_RESOURCE)
+                                            Constants.MSG_ERROR_NULL_GUI_RESOURCE)
                             .toString());
     centerView();
     resetComboBox();

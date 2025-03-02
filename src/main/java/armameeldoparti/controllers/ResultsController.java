@@ -2,6 +2,7 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
@@ -85,10 +86,10 @@ public class ResultsController extends Controller<ResultsView> {
    * results.
    */
   public void setUp() {
-    teams = (CommonFields.getDistribution() == Constants.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2))
-                                                                    : bySkillPointsMix(Arrays.asList(team1, team2)));
+    teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2))
+                                                                       : bySkillPointsMix(Arrays.asList(team1, team2)));
 
-    view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + CommonFields.getDistribution() + 1, TABLE_COLUMNS));
+    view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 0 : 1), TABLE_COLUMNS));
     view.initializeInterface();
 
     table = (CustomTable) view.getTable();
@@ -111,7 +112,7 @@ public class ResultsController extends Controller<ResultsView> {
 
     ProgramView previousView;
 
-    if (CommonFields.getDistribution() == Constants.MIX_RANDOM) {
+    if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
       previousView = CommonFields.isAnchoragesEnabled() ? ProgramView.ANCHORAGES : ProgramView.NAMES_INPUT;
     } else {
       previousView = ProgramView.SKILL_POINTS;
@@ -158,7 +159,7 @@ public class ResultsController extends Controller<ResultsView> {
       }
     );
 
-    if (CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS) {
+    if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
       for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
         table.setValueAt(teams.get(teamIndex)
                               .getTeamPlayers()
@@ -250,7 +251,7 @@ public class ResultsController extends Controller<ResultsView> {
       );
     }
 
-    if (CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS) {
+    if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
       for (int column = 0; column < teams.size(); column++) {
         table.setValueAt(column == 0 ? positionsMap.get(Position.GOALKEEPER) : "Puntuación del equipo", table.getRowCount() + column - 2, 0);
       }
@@ -291,8 +292,8 @@ public class ResultsController extends Controller<ResultsView> {
             public Component getTableCellRendererComponent(JTable myTable, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
               JComponent component = (JComponent) super.getTableCellRendererComponent(myTable, value, isSelected, hasFocus, row, column);
 
-              boolean mixBySkill = CommonFields.getDistribution() == Constants.MIX_BY_SKILL_POINTS && row == view.getTable()
-                                                                                                                 .getRowCount() - 1;
+              boolean mixBySkill = CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS && row == view.getTable()
+                                                                                                                    .getRowCount() - 1;
 
               component.setOpaque(false);
               component.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));

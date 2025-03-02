@@ -13,11 +13,13 @@ import java.awt.GraphicsEnvironment;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 
+import java.io.FileWriter;
 import java.io.IOException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -54,12 +56,60 @@ public final class CommonFunctions {
 
   // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
 
+  public static void generateErrorReport(Error error, StackTraceElement[] stackTrace) {
+    try (FileWriter dumpFile = new FileWriter(Constants.FILENAME_ERROR_REPORT)) {
+      int playersCount = 0;
+
+      dumpFile.write("-------------- ERROR REPORT --------------" + System.lineSeparator() + System.lineSeparator());
+      dumpFile.write("Report time: " + LocalDateTime.now()
+                                                    .format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + System.lineSeparator());
+      dumpFile.write("Error type: " + error + System.lineSeparator());
+      dumpFile.write("Distribution type: " + CommonFields.getDistribution() + System.lineSeparator());
+      dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + System.lineSeparator() + System.lineSeparator());
+      dumpFile.write("Player limit per position:" + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition()
+                                        .entrySet()
+                                        .toString() + System.lineSeparator() + System.lineSeparator());
+      dumpFile.write("Positions map:" + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getPositionsMap()
+                                        .entrySet()
+                                        .toString() + System.lineSeparator() + System.lineSeparator());
+
+      dumpFile.write("Controllers map:" + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getControllersMap()
+                                        .entrySet()
+                                        .toString() + System.lineSeparator() + System.lineSeparator());
+
+      dumpFile.write("Players:" + System.lineSeparator());
+
+      for (List<Player> playersSet : CommonFields.getPlayersSets()
+                                                 .values()) {
+        for (Player player : playersSet) {
+          dumpFile.write("\t" + (++playersCount) + ":" + System.lineSeparator());
+          dumpFile.write("\t\t" + player.toString());
+        }
+      }
+
+      dumpFile.write(System.lineSeparator() + "Stack trace:" + System.lineSeparator());
+
+      for (StackTraceElement stackTraceElement : stackTrace) {
+        dumpFile.write("\t" + stackTraceElement + System.lineSeparator());
+      }
+
+      dumpFile.write(System.lineSeparator() + "----------- END OF ERROR REPORT ----------");
+    } catch (IOException _) {
+      System.exit(Constants.MAP_ERROR_CODE
+                           .get(Error.ERROR_INTERNAL));
+    }
+  }
+
   /**
    * Exits the program with the corresponding error message and error code according to the occurred exception.
    *
    * @param error The error that caused the program to end.
    */
-  public static void exitProgram(Error error) {
+  public static void exitProgram(Error error, StackTraceElement[] stackTrace) {
+    generateErrorReport(error, stackTrace);
     showMessageDialog(
       null,
       Constants.MAP_ERROR_MESSAGE
@@ -99,7 +149,8 @@ public final class CommonFunctions {
         dialogTitle = Constants.TITLE_MESSAGE_QUESTION;
         dialogIcon = Constants.ICON_DIALOG_QUESTION;
       }
-      default -> CommonFunctions.exitProgram(Error.ERROR_GUI);
+      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, Thread.currentThread()
+                                                                    .getStackTrace());
     }
 
     JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
@@ -166,8 +217,8 @@ public final class CommonFunctions {
     try {
       Desktop.getDesktop()
              .browse(new URI(url));
-    } catch (IOException | URISyntaxException _) {
-      CommonFunctions.exitProgram(Error.ERROR_BROWSER);
+    } catch (IOException | URISyntaxException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_BROWSER, exception.getStackTrace());
     }
   }
 
@@ -289,7 +340,8 @@ public final class CommonFunctions {
    */
   public static <T> T retrieveOptional(Optional<T> optional) {
     if (!optional.isPresent()) {
-      exitProgram(Error.ERROR_INTERNAL);
+      exitProgram(Error.ERROR_INTERNAL, Thread.currentThread()
+                                              .getStackTrace());
     }
 
     return optional.get();

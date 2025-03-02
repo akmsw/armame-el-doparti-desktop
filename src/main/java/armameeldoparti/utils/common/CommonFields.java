@@ -2,6 +2,7 @@ package armameeldoparti.utils.common;
 
 import armameeldoparti.controllers.Controller;
 import armameeldoparti.models.Player;
+import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.views.View;
@@ -24,13 +25,13 @@ public final class CommonFields {
 
   // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
-  private static int distribution;
-
   private static boolean anchoragesEnabled;
+
+  private static Distribution distribution;
 
   private static GraphicsDevice activeMonitor;
 
-  private static Map<Position, Integer> playersLimitPerPosition;
+  private static Map<Position, Integer> playerLimitPerPosition;
   private static Map<Position, List<Player>> playersSets;
   private static Map<Position, String> positionsMap;
   private static Map<ProgramView, Controller<? extends View>> controllersMap;
@@ -46,7 +47,7 @@ public final class CommonFields {
 
   // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
 
-  public static int getDistribution() {
+  public static Distribution getDistribution() {
     return distribution;
   }
 
@@ -58,8 +59,8 @@ public final class CommonFields {
     return activeMonitor;
   }
 
-  public static Map<Position, Integer> getPlayersLimitPerPosition() {
-    return playersLimitPerPosition;
+  public static Map<Position, Integer> getPlayerLimitPerPosition() {
+    return playerLimitPerPosition;
   }
 
   public static Map<Position, List<Player>> getPlayersSets() {
@@ -80,7 +81,7 @@ public final class CommonFields {
 
   // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
 
-  public static void setDistribution(int distribution) {
+  public static void setDistribution(Distribution distribution) {
     CommonFields.distribution = distribution;
   }
 
@@ -92,8 +93,8 @@ public final class CommonFields {
     CommonFields.activeMonitor = activeMonitor;
   }
 
-  public static void setPlayersLimitPerPosition(Map<Position, Integer> playersLimitPerPosition) {
-    CommonFields.playersLimitPerPosition = playersLimitPerPosition;
+  public static void setPlayerLimitPerPosition(Map<Position, Integer> playerLimitPerPosition) {
+    CommonFields.playerLimitPerPosition = playerLimitPerPosition;
   }
 
   public static void setPlayersSets(Map<Position, List<Player>> playersSets) {

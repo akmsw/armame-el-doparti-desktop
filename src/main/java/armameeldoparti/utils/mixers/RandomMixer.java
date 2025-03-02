@@ -152,7 +152,8 @@ public class RandomMixer implements PlayersMixer {
 
                   // If there's no available team at this point, something went wrong
                   if (teamNumber == -1) {
-                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL);
+                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread()
+                                                                            .getStackTrace());
                   }
 
                   player.setTeamNumber(teamNumber + 1);
@@ -241,7 +242,7 @@ public class RandomMixer implements PlayersMixer {
            + anchorage.stream()
                       .filter(player -> player.getPosition() == position)
                       .count()
-           > CommonFields.getPlayersLimitPerPosition()
+           > CommonFields.getPlayerLimitPerPosition()
                          .get(position);
   }
 

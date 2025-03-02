@@ -42,6 +42,23 @@ public class Player {
     setSkillPoints(0);
   }
 
+  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * String representation of a Player object. Format used for error reporting.
+   * 
+   *  @see armameeldoparti.utils.common.CommonFunctions#generateErrorReport(armameeldoparti.models.enums.Error)
+   */
+  @Override
+  public String toString() {
+    return "Position: " + getPosition().toString() + System.lineSeparator()
+           + "\t\tName: " + getName() + System.lineSeparator()
+           + "\t\tIs anchored: " + isAnchored() + System.lineSeparator()
+           + "\t\tAnchorage number: " + getAnchorageNumber() + System.lineSeparator()
+           + "\t\tSkill points: " + getSkillPoints() + System.lineSeparator()
+           + "\t\tTeam number: " + getTeamNumber() + System.lineSeparator();
+  }
+
   // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
 
   public boolean isAnchored() {

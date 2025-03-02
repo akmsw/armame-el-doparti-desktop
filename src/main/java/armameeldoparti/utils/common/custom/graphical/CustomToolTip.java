@@ -59,8 +59,8 @@ public class CustomToolTip extends JToolTip {
       if (window != null) {
         window.setBackground(Constants.COLOR_TRANSPARENT);
       }
-    } catch (IllegalComponentStateException | UnsupportedOperationException _) {
-      CommonFunctions.exitProgram(Error.ERROR_INTERNAL);
+    } catch (IllegalComponentStateException | UnsupportedOperationException exception) {
+      CommonFunctions.exitProgram(Error.ERROR_INTERNAL, exception.getStackTrace());
     }
   }
 
