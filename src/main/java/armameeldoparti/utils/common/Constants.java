@@ -161,6 +161,13 @@ public final class Constants {
                                                       + "\ntener más de " + MAX_NAME_LEN
                                                       + " caracteres, o estar repetido";
   public static final String MSG_ERROR_NULL_RESOURCE = "Error en obtención de recursos gráficos";
+  public static final String MSG_INFO_ANCHORAGES_NO_SELECTION = "No hay jugadores seleccionados para anclar";
+  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
+                                                            + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
+                                                            + " jugadores en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGES_CONFLICTS = "Existen conflictos entre anclajes";
+  public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores\nde una misma posición en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total";
   public static final String PATH_DOCS = "docs/";
   public static final String PATH_HELP_DOCS = PATH_DOCS + "help/";
   public static final String PATH_ICO = "icons/";
