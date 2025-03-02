@@ -118,9 +118,9 @@ public class RandomMixer implements PlayersMixer {
       Collections.shuffle(anchorages);
 
       for (List<Player> anchorage : anchorages) {
-        int teamNumber = getAvailableTeam(teams, team -> anchorageCanBeAdded(team, anchorage));
+        int availableTeamNumber = getAvailableTeam(teams, team -> anchorageCanBeAdded(team, anchorage));
 
-        if (teamNumber == -1) {
+        if (availableTeamNumber == -1) {
           teams.forEach(Team::clear);
 
           successfulDistribution = false;
@@ -129,9 +129,9 @@ public class RandomMixer implements PlayersMixer {
         }
 
         for (Player player : anchorage) {
-          player.setTeamNumber(teamNumber + 1);
+          player.setTeamNumber(availableTeamNumber + 1);
 
-          teams.get(teamNumber)
+          teams.get(availableTeamNumber)
                .getTeamPlayers()
                .get(player.getPosition())
                .add(player);
@@ -148,17 +148,17 @@ public class RandomMixer implements PlayersMixer {
                 .flatMap(List::stream)
                 .filter(player -> player.getTeamNumber() == 0)
                 .forEach(player -> {
-                  int teamNumber = getAvailableTeam(teams, team -> playerCanBeAdded(team, player));
+                  int availableTeamNumber = getAvailableTeam(teams, team -> playerCanBeAdded(team, player));
 
                   // If there's no available team at this point, something went wrong
-                  if (teamNumber == -1) {
+                  if (availableTeamNumber == -1) {
                     CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread()
                                                                             .getStackTrace());
                   }
 
-                  player.setTeamNumber(teamNumber + 1);
+                  player.setTeamNumber(availableTeamNumber + 1);
 
-                  teams.get(teamNumber)
+                  teams.get(availableTeamNumber)
                        .getTeamPlayers()
                        .get(player.getPosition())
                        .add(player);

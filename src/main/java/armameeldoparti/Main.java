@@ -133,11 +133,12 @@ public final class Main {
                                          .filter(line -> line.matches(Constants.REGEX_PDA_DATA_RETRIEVE))
                                          .toList();
 
-      IntStream.range(0, filteredLines.size())
-               .forEach(index -> CommonFields.getPlayerLimitPerPosition()
-                                             .put(Position.values()[index],
-                                                  Integer.parseInt(filteredLines.get(index)
-                                                                                .replaceAll(Constants.REGEX_PLAYERS_COUNT, ""))));
+      for (int lineIndex = 0; lineIndex < filteredLines.size(); lineIndex++) {
+        CommonFields.getPlayerLimitPerPosition()
+                    .put(Position.values()[lineIndex],
+                         Integer.parseInt(filteredLines.get(lineIndex)
+                                                       .replaceAll(Constants.REGEX_PLAYERS_COUNT, "")));
+      }
     } catch (IOException exception) {
       CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
     }

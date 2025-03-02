@@ -14,7 +14,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 /**
  * By-skill-points distribution class.
@@ -179,17 +178,15 @@ public class BySkillPointsMixer implements PlayersMixer {
                                                                    .mapToInt(Player::getSkillPoints)
                                                                    .reduce(0, Math::addExact)));
 
-    IntStream.range(0, teams.size())
-             .forEach(
-               teamIndex -> {
-                 playersSubsets.get(teamIndex)
-                               .forEach(player -> player.setTeamNumber(teamIndex + 1));
+    for (Team team : teams) {
+      for (Player player : playersSubsets.get(team.getTeamNumber() - 1)) {
+        player.setTeamNumber(team.getTeamNumber());
+      }
 
-                 teams.get(teamIndex)
-                      .getTeamPlayers()
-                      .get(position)
-                      .addAll(playersSubsets.get(1 - teamIndex));
-             });
+      team.getTeamPlayers()
+          .get(position)
+          .addAll(playersSubsets.get(team.getTeamNumber() - 1));
+    }
   }
 
   /**

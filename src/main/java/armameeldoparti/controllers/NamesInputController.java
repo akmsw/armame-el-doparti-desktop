@@ -16,7 +16,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 import javax.naming.InvalidNameException;
 
@@ -292,11 +291,12 @@ public class NamesInputController extends Controller<NamesInputView> {
                                                                                     .ordinal()))
                                        .toList();
 
-    IntStream.range(0, players.size())
-             .forEachOrdered(index -> view.getTextArea()
-                                          .append((index + 1) + " - " + players.get(index)
-                                                                               .getName()
-                                                  + (index < Constants.PLAYERS_TOTAL - 1 ? System.lineSeparator() : "")));
+    for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
+      view.getTextArea()
+          .append((playerIndex + 1) + " - " + players.get(playerIndex)
+                                                     .getName()
+                  + (playerIndex < Constants.PLAYERS_TOTAL - 1 ? System.lineSeparator() : ""));
+    }
   }
 
   /**

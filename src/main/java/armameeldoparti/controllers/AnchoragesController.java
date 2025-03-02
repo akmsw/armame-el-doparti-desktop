@@ -58,16 +58,17 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void updateCheckboxesText() {
     for (Position position : Position.values()) {
-      IntStream.range(0, CommonFields.getPlayersSets()
-                                     .get(position)
-                                     .size())
-               .forEach(checkboxIndex -> view.getCheckboxesMap()
-                                             .get(position)
-                                             .get(checkboxIndex)
-                                             .setText(CommonFields.getPlayersSets()
-                                                                  .get(position)
-                                                                  .get(checkboxIndex)
-                                                                  .getName()));
+      for (int checkboxIndex = 0; checkboxIndex < CommonFields.getPlayersSets()
+                                                              .get(position)
+                                                              .size(); checkboxIndex++) {
+        view.getCheckboxesMap()
+            .get(position)
+            .get(checkboxIndex)
+            .setText(CommonFields.getPlayersSets()
+                                 .get(position)
+                                 .get(checkboxIndex)
+                                 .getName());
+      }
     }
 
     view.pack();

@@ -89,7 +89,7 @@ public class ResultsController extends Controller<ResultsView> {
     teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2))
                                                                        : bySkillPointsMix(Arrays.asList(team1, team2)));
 
-    view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 0 : 1), TABLE_COLUMNS));
+    view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
     view.initializeInterface();
 
     table = (CustomTable) view.getTable();
@@ -141,23 +141,20 @@ public class ResultsController extends Controller<ResultsView> {
    * @see armameeldoparti.models.enums.Position
    */
   public void updateTable() {
-    var wrapper = new Object() {
-      int column = 1;
-      int row = 1;
-    };
+    int column = 1;
+    int row = 1;
 
-    teams.forEach(
-      team -> {
-        for (Position position : Position.values()) {
-          team.getTeamPlayers()
-              .get(position)
-              .forEach(player -> table.setValueAt(player.getName(), wrapper.row++, wrapper.column));
+    for (Team team : teams) {
+      for (Position position : Position.values()) {
+        for (Player player : team.getTeamPlayers()
+                                 .get(position)) {
+          table.setValueAt(player.getName(), row++, column);
         }
-
-        wrapper.column++;
-        wrapper.row = 1;
       }
-    );
+
+      column++;
+      row = 1;
+    }
 
     if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
       for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
