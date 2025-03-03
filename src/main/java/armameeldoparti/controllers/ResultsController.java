@@ -294,10 +294,10 @@ public class ResultsController extends Controller<ResultsView> {
 
               component.setOpaque(false);
               component.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
-              
+
               if (row == 0 && column == 0) {
                 component.setBackground(Constants.COLOR_GREEN_MEDIUM);
-                
+
                 return component;
               }
 

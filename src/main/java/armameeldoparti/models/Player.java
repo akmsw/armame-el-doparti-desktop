@@ -46,7 +46,7 @@ public class Player {
 
   /**
    * String representation of a Player object. Format used for error reporting.
-   * 
+   *
    *  @see armameeldoparti.utils.common.CommonFunctions#generateErrorReport(armameeldoparti.models.enums.Error)
    */
   @Override

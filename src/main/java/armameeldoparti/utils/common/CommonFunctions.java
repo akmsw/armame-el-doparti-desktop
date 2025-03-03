@@ -2,6 +2,7 @@ package armameeldoparti.utils.common;
 
 import armameeldoparti.controllers.Controller;
 import armameeldoparti.models.Player;
+import armameeldoparti.models.Team;
 import armameeldoparti.models.enums.Error;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
@@ -158,13 +159,13 @@ public final class CommonFunctions {
 
   /**
    * Builds and displays a dialog window with options for the user to choose.
-   * 
+   *
    * @param parentComponent Graphical component where the dialog windows associated with the event should be displayed.
    * @param dialogMessage   Custom message to show.
    * @param dialogOptions   Options for the user to choose.
-   * 
+   *
    * @return The integer indicating the option chosen by the user.
-   * 
+   *
    * @see JOptionPane#showOptionDialog(Component, Object, String, int, int, Icon, Object[], Object)
    */
   public static int showOptionDialog(Component parentComponent, String dialogMessage, Object[] dialogOptions) {
@@ -178,6 +179,17 @@ public final class CommonFunctions {
       dialogOptions,
       dialogOptions[0]
     );
+  }
+
+  /**
+   * Calculates the difference between the skill points of a given set of teams.
+   *
+   * @param teams Teams to calculate the skill difference.
+   *
+   * @return The difference between the skill points of the given teams.
+   */
+  public static int getTeamsSkillDifference(List<Team> teams) {
+    return Math.abs(teams.get(0).getTeamSkill() - teams.get(1).getTeamSkill());
   }
 
   /**

@@ -77,7 +77,7 @@ public class BySkillPointsMixer implements PlayersMixer {
       }
     }
 
-    if (!teamsSkillPointsAreEqual(teams)) {
+    if (CommonFunctions.getTeamsSkillDifference(teams) != 0) {
       checkPlayerSwaps(teams);
     }
 
@@ -190,24 +190,45 @@ public class BySkillPointsMixer implements PlayersMixer {
   }
 
   /**
-   * @param teams
+   * Checks if the players can be swapped between the teams to reduce the skill difference.
+   *
+   * <p>The "java:S3776" warning is suppressed until a refactor reduces the cognitive complexity of this method from 18 to 15 or less.
+   *
+   * @param teams Teams where to check the players swaps.
    */
+  @SuppressWarnings("java:S3776")
   private void checkPlayerSwaps(List<Team> teams) {
-    // TODO
-  }
+    int currentSkillDifference = CommonFunctions.getTeamsSkillDifference(teams);
 
-  /**
-   * Verifies whether the skill points of the teams are the same. This is done by getting each team skill points from the teams list and checking if
-   * there's more than one unique value.
-   *
-   * @param teams Teams to verify the skill points.
-   *
-   * @return Whether the skill points of the teams are the same.
-   */
-  private boolean teamsSkillPointsAreEqual(List<Team> teams) {
-    return teams.stream()
-                .map(Team::getTeamSkill)
-                .collect(Collectors.toSet())
-                .size() == 1;
+    for (Position position : Position.values()) {
+      List<Player> team1Players = teams.get(0).getTeamPlayers().get(position);
+      List<Player> team2Players = teams.get(1).getTeamPlayers().get(position);
+
+      for (Player playerTeam1 : team1Players) {
+        int playerTeam1Index = team1Players.indexOf(playerTeam1);
+
+        for (Player playerTeam2 : team2Players) {
+          int playerTeam2Index = team2Players.indexOf(playerTeam2);
+
+          team1Players.set(playerTeam1Index, playerTeam2);
+          team2Players.set(playerTeam2Index, playerTeam1);
+
+          int newSkillDifference = CommonFunctions.getTeamsSkillDifference(teams);
+
+          if (newSkillDifference == 0) {
+            return;
+          }
+
+          if (newSkillDifference >= currentSkillDifference) {
+            team1Players.set(playerTeam1Index, playerTeam1);
+            team2Players.set(playerTeam2Index, playerTeam2);
+          }
+
+          if (newSkillDifference < currentSkillDifference) {
+            currentSkillDifference = newSkillDifference;
+          }
+        }
+      }
+    }
   }
 }

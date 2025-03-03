@@ -56,7 +56,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
   @Override
   public void installUI(JComponent component) {
       super.installUI(component);
-  
+
       SwingUtilities.invokeLater(
         () -> {
           if (SwingUtilities.getWindowAncestor(optionPane) instanceof JDialog parentDialog) {
