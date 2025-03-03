@@ -119,8 +119,7 @@ public class NamesInputView extends View {
    * Adds the combobox.
    */
   private void addComboBox() {
-    setComboBox(new CustomComboBox<>(Constants.OPTIONS_POSITIONS_COMBOBOX
-                                              .toArray(new String[0])));
+    setComboBox(new CustomComboBox<>(Constants.OPTIONS_POSITIONS_COMBOBOX.toArray(new String[0])));
 
     leftTopPanel.add(comboBox, Constants.MIG_LAYOUT_GROWX);
   }
@@ -131,9 +130,7 @@ public class NamesInputView extends View {
   private void addTextArea() {
     setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
 
-    rightPanel.add(new CustomScrollPane(textArea), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH,
-                                                                                             Constants.MIG_LAYOUT_GROW,
-                                                                                             Constants.MIG_LAYOUT_SPAN));
+    rightPanel.add(new CustomScrollPane(textArea), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
   }
 
   /**
@@ -151,8 +148,7 @@ public class NamesInputView extends View {
   private void addTextFields() {
     for (Position position : Position.values()) {
       textFieldsMap.get(position)
-                   .addAll(IntStream.range(0, CommonFields.getPlayerLimitPerPosition()
-                                                          .get(position) * 2)
+                   .addAll(IntStream.range(0, CommonFields.getPlayerLimitPerPosition().get(position) * 2)
                                     .mapToObj(_ -> new CustomTextField())
                                     .toList());
     }
@@ -187,8 +183,7 @@ public class NamesInputView extends View {
     setRadioButtonRandom(new CustomRadioButton("Aleatoria"));
     setRadioButtonBySkillPoints(new CustomRadioButton("Por puntajes"));
 
-    leftBottomPanel.add(new CustomLabel("Distribución", null, SwingConstants.CENTER),
-                        CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
+    leftBottomPanel.add(new CustomLabel("Distribución", null, SwingConstants.CENTER), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
     leftBottomPanel.add(radioButtonRandom);
     leftBottomPanel.add(radioButtonBySkillPoints);
     leftBottomPanel.add(new CustomSeparator(), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));

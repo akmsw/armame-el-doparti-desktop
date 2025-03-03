@@ -78,7 +78,7 @@ public class BySkillPointsMixer implements PlayersMixer {
     }
 
     if (CommonFunctions.getTeamsSkillDifference(teams) != 0) {
-      checkPlayerSwaps(teams);
+      checkPlayersSwap(teams);
     }
 
     return teams;
@@ -103,8 +103,7 @@ public class BySkillPointsMixer implements PlayersMixer {
       teams.sort(comparingInt(Team::getTeamSkill));
 
       for (Player player : anchorage) {
-        player.setTeamNumber(teams.get(0)
-                                  .getTeamNumber());
+        player.setTeamNumber(teams.get(0).getTeamNumber());
 
         teams.get(0)
              .getTeamPlayers()
@@ -129,18 +128,14 @@ public class BySkillPointsMixer implements PlayersMixer {
       if (players.size() == 4) {
         teams.sort(comparingInt(Team::getTeamSkill));
 
-        distributeSubsets(teams, players, players.get(0)
-                                                 .getPosition());
+        distributeSubsets(teams, players, players.get(0).getPosition());
       } else {
         for (Player player : players) {
           teams.sort(comparingInt(Team::getTeamSkill));
 
           int teamNumber = 0;
 
-          if (teams.get(teamNumber)
-                   .isPositionFull(player.getPosition())
-              || teams.get(teamNumber)
-                      .getPlayersCount() + 1 > Constants.PLAYERS_PER_TEAM) {
+          if (teams.get(teamNumber).isPositionFull(player.getPosition()) || (teams.get(teamNumber).getPlayersCount() + 1) > Constants.PLAYERS_PER_TEAM) {
             teamNumber = 1;
           }
 
@@ -169,7 +164,7 @@ public class BySkillPointsMixer implements PlayersMixer {
   private void distributeSubsets(List<Team> teams, List<Player> playersSet, Position position) {
     List<List<Player>> playersSubsets = new ArrayList<>();
 
-    for (int playerIndex = 0; playerIndex < playersSet.size() / 2; playerIndex++) {
+    for (int playerIndex = 0; playerIndex < (playersSet.size() / 2); playerIndex++) {
       playersSubsets.add(Arrays.asList(playersSet.get(playerIndex), playersSet.get(playersSet.size() - 1 - playerIndex)));
     }
 
@@ -197,7 +192,7 @@ public class BySkillPointsMixer implements PlayersMixer {
    * @param teams Teams where to check the players swaps.
    */
   @SuppressWarnings("java:S3776")
-  private void checkPlayerSwaps(List<Team> teams) {
+  private void checkPlayersSwap(List<Team> teams) {
     int currentSkillDifference = CommonFunctions.getTeamsSkillDifference(teams);
 
     for (Position position : Position.values()) {

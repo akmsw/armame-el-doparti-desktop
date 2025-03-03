@@ -109,7 +109,7 @@ public class HelpController extends Controller<HelpView> {
 
     textArea.setText("");
 
-    updateLabel();
+    updateReadingProgressLabel();
 
     try (
       BufferedReader reader = new BufferedReader(
@@ -165,7 +165,7 @@ public class HelpController extends Controller<HelpView> {
   /**
    * Updates the reading progress label text.
    */
-  private void updateLabel() {
+  private void updateReadingProgressLabel() {
     view.getPagesCounter()
         .setText(currentPageNumber + 1 + "/" + TOTAL_HELP_PAGES);
   }

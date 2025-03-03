@@ -113,12 +113,7 @@ public class CustomComboBox<E> extends JComboBox<E> {
 
               graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
               graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-              graphics2d.drawRoundRect(0,
-                                       0,
-                                       (getWidth() - 1),
-                                       (getHeight() - 1),
-                                       Constants.ROUNDED_BORDER_ARC_GENERAL,
-                                       Constants.ROUNDED_BORDER_ARC_GENERAL);
+              graphics2d.drawRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
               graphics2d.dispose();
             }
 
@@ -128,12 +123,7 @@ public class CustomComboBox<E> extends JComboBox<E> {
 
               graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
               graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-              graphics2d.fillRoundRect(0,
-                                       0,
-                                       (getWidth() - 1),
-                                       (getHeight() - 1),
-                                       Constants.ROUNDED_BORDER_ARC_GENERAL,
-                                       Constants.ROUNDED_BORDER_ARC_GENERAL);
+              graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_GENERAL, Constants.ROUNDED_BORDER_ARC_GENERAL);
               graphics2d.dispose();
 
               super.paintComponent(graphics);
@@ -165,12 +155,7 @@ public class CustomComboBox<E> extends JComboBox<E> {
 
       graphics2d.setColor(getBackground());
       graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-      graphics2d.fillRoundRect(0,
-                               0,
-                               (getWidth() - 1),
-                               (getHeight() - 1),
-                               Constants.ROUNDED_BORDER_ARC_COMBOBOX,
-                               Constants.ROUNDED_BORDER_ARC_COMBOBOX);
+      graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_COMBOBOX, Constants.ROUNDED_BORDER_ARC_COMBOBOX);
       graphics2d.dispose();
 
       super.paintComponent(graphics);

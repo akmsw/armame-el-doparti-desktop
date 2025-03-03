@@ -133,8 +133,7 @@ public class AnchoragesView extends View {
     CommonFields.getPlayersSets()
                 .forEach((position, playersSet) -> {
                   fillCheckboxesSet(playersSet, checkboxesMap.get(position));
-                  addCheckboxesSet(checkboxesMap.get(position), CommonFunctions.capitalize(CommonFields.getPositionsMap()
-                                                                                                       .get(position)));
+                  addCheckboxesSet(checkboxesMap.get(position), CommonFunctions.capitalize(CommonFields.getPositionsMap().get(position)));
                 });
   }
 
@@ -142,9 +141,7 @@ public class AnchoragesView extends View {
    * Adds the text area where to display the anchorages.
    */
   private void addTextArea() {
-    rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_SPAN2,
-                                                                         Constants.MIG_LAYOUT_PUSH,
-                                                                         Constants.MIG_LAYOUT_GROW));
+    rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_SPAN2, Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW));
   }
 
   /**
@@ -164,11 +161,9 @@ public class AnchoragesView extends View {
    * @param labelText Label text.
    */
   private void addCheckboxesSet(List<JCheckBox> cbSet, String labelText) {
-    leftPanel.add(new CustomLabel(labelText, null, SwingConstants.CENTER),
-                  CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN));
+    leftPanel.add(new CustomLabel(labelText, null, SwingConstants.CENTER), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN));
 
-    cbSet.forEach(checkbox -> leftPanel.add(checkbox, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_ALIGN_LEFT,
-                                                                                                Constants.MIG_LAYOUT_PUSHX)));
+    cbSet.forEach(checkbox -> leftPanel.add(checkbox, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_ALIGN_LEFT, Constants.MIG_LAYOUT_PUSHX)));
   }
 
   // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------

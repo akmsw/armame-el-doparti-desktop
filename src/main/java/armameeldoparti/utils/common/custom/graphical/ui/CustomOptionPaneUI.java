@@ -60,8 +60,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
       SwingUtilities.invokeLater(
         () -> {
           if (SwingUtilities.getWindowAncestor(optionPane) instanceof JDialog parentDialog) {
-            parentDialog.setIconImage(Constants.ICON_MAIN
-                                               .getImage());
+            parentDialog.setIconImage(Constants.ICON_MAIN.getImage());
           }
         }
       );
@@ -108,8 +107,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
       customButton.setMinimumSize(new Dimension(Constants.SIZE_BUTTON_DIALOG_MIN_WIDTH, Constants.SIZE_BUTTON_DIALOG_MIN_HEIGHT));
       customButton.addActionListener(_ -> {
         if (initialIndex >= 0 && initialIndex < buttonsNumber) {
-          ((JOptionPane) SwingUtilities.getAncestorOfClass(JOptionPane.class, container))
-                                       .setValue(buttonText);
+          ((JOptionPane) SwingUtilities.getAncestorOfClass(JOptionPane.class, container)).setValue(buttonText);
         }
       });
 

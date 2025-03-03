@@ -80,8 +80,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   public void mixButtonEvent(Component parentComponent) {
     hideView();
 
-    CommonFields.setDistribution(view.getRadioButtonRandom()
-                                     .isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
+    CommonFields.setDistribution(view.getRadioButtonRandom().isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
 
     if (CommonFields.isAnchoragesEnabled()) {
       ((AnchoragesController) CommonFunctions.getController(ProgramView.ANCHORAGES)).updateCheckboxesText();
@@ -116,8 +115,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    * @throws IllegalArgumentException When the input is an invalid string.
    * @throws InvalidNameException     When the input is an invalid name.
    */
-  public void textFieldEvent(int playerIndex, List<Player> playersSet, String text) throws IllegalArgumentException,
-                                                                                           InvalidNameException {
+  public void textFieldEvent(int playerIndex, List<Player> playersSet, String text) throws IllegalArgumentException, InvalidNameException {
     if (text.isBlank()) {
       throw new InvalidNameException();
     }
@@ -219,10 +217,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                  * If not, a message will be shown and the text field will be reset to the player's name.
                  */
                 try {
-                  textFieldEvent(textFieldsSet.indexOf(textField),
-                                 CommonFields.getPlayersSets()
-                                             .get(player),
-                                 textField.getText());
+                  textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), textField.getText());
                 } catch (IllegalArgumentException | InvalidNameException exception) {
                   CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event),
                                                     exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING
@@ -247,10 +242,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    */
   @Override
   protected void showView() {
-    updateTextFields(Objects.requireNonNull(view.getComboBox()
-                                                .getSelectedItem(),
-                                            Constants.MSG_ERROR_NULL_GUI_RESOURCE)
-                            .toString());
+    updateTextFields(Objects.requireNonNull(view.getComboBox().getSelectedItem(), Constants.MSG_ERROR_NULL_GUI_RESOURCE).toString());
     centerView();
     resetComboBox();
 
@@ -285,17 +277,13 @@ public class NamesInputController extends Controller<NamesInputView> {
                                        .stream()
                                        .flatMap(playersSet -> playersSet.getValue()
                                                                         .stream()
-                                                                        .filter(player -> !player.getName()
-                                                                                                 .equals("")))
-                                       .sorted(Comparator.comparing(player -> player.getPosition()
-                                                                                    .ordinal()))
+                                                                        .filter(player -> !player.getName().equals("")))
+                                       .sorted(Comparator.comparing(player -> player.getPosition().ordinal()))
                                        .toList();
 
     for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
       view.getTextArea()
-          .append((playerIndex + 1) + " - " + players.get(playerIndex)
-                                                     .getName()
-                  + (playerIndex < Constants.PLAYERS_TOTAL - 1 ? System.lineSeparator() : ""));
+          .append((playerIndex + 1) + " - " + players.get(playerIndex).getName() + (playerIndex < (Constants.PLAYERS_TOTAL - 1) ? System.lineSeparator() : ""));
     }
   }
 
@@ -351,8 +339,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                        .values()
                        .stream()
                        .flatMap(Collection::stream)
-                       .anyMatch(player -> player.getName()
-                                                 .equals(name));
+                       .anyMatch(player -> player.getName().equals(name));
   }
 
   /**
@@ -370,10 +357,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    * @return Whether the user has chosen a players distribution method.
    */
   private boolean distributionMethodHasBeenChosen() {
-    return view.getRadioButtonRandom()
-               .isSelected()
-           || view.getRadioButtonBySkillPoints()
-                  .isSelected();
+    return view.getRadioButtonRandom().isSelected() || view.getRadioButtonBySkillPoints().isSelected();
   }
 
   /**

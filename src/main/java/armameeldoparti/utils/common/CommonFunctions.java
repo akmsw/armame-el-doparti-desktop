@@ -62,29 +62,19 @@ public final class CommonFunctions {
       int playersCount = 0;
 
       dumpFile.write("-------------- ERROR REPORT --------------" + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Report time: " + LocalDateTime.now()
-                                                    .format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + System.lineSeparator());
+      dumpFile.write("Report time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + System.lineSeparator());
       dumpFile.write("Error type: " + error + System.lineSeparator());
       dumpFile.write("Distribution type: " + CommonFields.getDistribution() + System.lineSeparator());
       dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Player limit per position:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition()
-                                        .entrySet()
-                                        .toString() + System.lineSeparator() + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Positions map:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getPositionsMap()
-                                        .entrySet()
-                                        .toString() + System.lineSeparator() + System.lineSeparator());
-
+      dumpFile.write("\t" + CommonFields.getPositionsMap().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Controllers map:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getControllersMap()
-                                        .entrySet()
-                                        .toString() + System.lineSeparator() + System.lineSeparator());
-
+      dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Players:" + System.lineSeparator());
 
-      for (List<Player> playersSet : CommonFields.getPlayersSets()
-                                                 .values()) {
+      for (List<Player> playersSet : CommonFields.getPlayersSets().values()) {
         for (Player player : playersSet) {
           dumpFile.write("\t" + (++playersCount) + ":" + System.lineSeparator());
           dumpFile.write("\t\t" + player.toString());
@@ -99,8 +89,7 @@ public final class CommonFunctions {
 
       dumpFile.write(System.lineSeparator() + "----------- END OF ERROR REPORT ----------");
     } catch (IOException _) {
-      System.exit(Constants.MAP_ERROR_CODE
-                           .get(Error.ERROR_INTERNAL));
+      System.exit(Constants.MAP_ERROR_CODE.get(Error.ERROR_INTERNAL));
     }
   }
 
@@ -111,15 +100,9 @@ public final class CommonFunctions {
    */
   public static void exitProgram(Error error, StackTraceElement[] stackTrace) {
     generateErrorReport(error, stackTrace);
-    showMessageDialog(
-      null,
-      Constants.MAP_ERROR_MESSAGE
-               .get(error),
-      JOptionPane.ERROR_MESSAGE
-    );
+    showMessageDialog(null, Constants.MAP_ERROR_MESSAGE.get(error), JOptionPane.ERROR_MESSAGE);
 
-    System.exit(Constants.MAP_ERROR_CODE
-                         .get(error));
+    System.exit(Constants.MAP_ERROR_CODE.get(error));
   }
 
   /**
@@ -150,8 +133,7 @@ public final class CommonFunctions {
         dialogTitle = Constants.TITLE_MESSAGE_QUESTION;
         dialogIcon = Constants.ICON_DIALOG_QUESTION;
       }
-      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, Thread.currentThread()
-                                                                    .getStackTrace());
+      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, Thread.currentThread().getStackTrace());
     }
 
     JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
@@ -200,8 +182,7 @@ public final class CommonFunctions {
   public static void updateActiveMonitorFromView(View view) {
     CommonFields.setActiveMonitor(
       retrieveOptional(
-        Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment()
-                                         .getScreenDevices())
+        Arrays.stream(GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices())
               .filter(screen -> !screen.getDefaultConfiguration()
                                        .getBounds()
                                        .intersection(view.getBounds())
@@ -227,8 +208,7 @@ public final class CommonFunctions {
    */
   public static void browserRedirect(String url) {
     try {
-      Desktop.getDesktop()
-             .browse(new URI(url));
+      Desktop.getDesktop().browse(new URI(url));
     } catch (IOException | URISyntaxException exception) {
       CommonFunctions.exitProgram(Error.ERROR_BROWSER, exception.getStackTrace());
     }
@@ -264,10 +244,7 @@ public final class CommonFunctions {
    * @return The given string with the first letter uppercase and the rest lowercase.
    */
   public static String capitalize(String input) {
-    return input.isBlank() ? input : input.substring(0, 1)
-                                          .toUpperCase()
-                                     + input.substring(1)
-                                            .toLowerCase();
+    return input.isBlank() ? input : (input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase());
   }
 
   /**
@@ -278,9 +255,7 @@ public final class CommonFunctions {
    * @return The ImageIcon of the specified file.
    */
   public static ImageIcon createImage(String imageFileName) {
-    return Objects.requireNonNull(new ImageIcon(Constants.class
-                                                         .getClassLoader()
-                                                         .getResource(Constants.PATH_IMG + imageFileName)));
+    return Objects.requireNonNull(new ImageIcon(Constants.class.getClassLoader().getResource(Constants.PATH_IMG + imageFileName)));
   }
 
   /**
@@ -307,8 +282,7 @@ public final class CommonFunctions {
    * @return The scaled icon.
    */
   public static ImageIcon scaleImageIcon(ImageIcon icon, int width, int height, int hints) {
-    return new ImageIcon(icon.getImage()
-                             .getScaledInstance(width, height, hints));
+    return new ImageIcon(icon.getImage().getScaledInstance(width, height, hints));
   }
 
   /**
@@ -322,8 +296,7 @@ public final class CommonFunctions {
    */
   @SuppressWarnings("java:S1452")
   public static Controller<? extends View> getController(ProgramView view) {
-    return CommonFields.getControllersMap()
-                       .get(view);
+    return CommonFields.getControllersMap().get(view);
   }
 
   /**
@@ -352,8 +325,7 @@ public final class CommonFunctions {
    */
   public static <T> T retrieveOptional(Optional<T> optional) {
     if (!optional.isPresent()) {
-      exitProgram(Error.ERROR_INTERNAL, Thread.currentThread()
-                                              .getStackTrace());
+      exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
     }
 
     return optional.get();
@@ -371,8 +343,7 @@ public final class CommonFunctions {
   public static <T> Position getCorrespondingPosition(Map<Position, T> map, T search) {
     return retrieveOptional(map.entrySet()
                                .stream()
-                               .filter(entry -> entry.getValue()
-                                                     .equals(search))
+                               .filter(entry -> entry.getValue().equals(search))
                                .map(Map.Entry::getKey)
                                .findFirst());
   }

@@ -73,8 +73,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
       CommonFields.getPlayersSets()
                   .get(position)
                   .forEach(player -> view.getLabelsMap()
-                                         .get(view.getSpinnersMap()
-                                                  .get(player))
+                                         .get(view.getSpinnersMap().get(player))
                                          .setText(player.getName()));
     }
 

@@ -57,8 +57,7 @@ public class RandomMixer implements PlayersMixer {
     shuffleTeamNumbers(teams.size());
 
     for (Position position : Position.values()) {
-      List<Player> playersAtPosition = new ArrayList<>(CommonFields.getPlayersSets()
-                                                                   .get(position));
+      List<Player> playersAtPosition = new ArrayList<>(CommonFields.getPlayersSets().get(position));
 
       Collections.shuffle(playersAtPosition);
 
@@ -152,8 +151,7 @@ public class RandomMixer implements PlayersMixer {
 
                   // If there's no available team at this point, something went wrong
                   if (availableTeamNumber == -1) {
-                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread()
-                                                                            .getStackTrace());
+                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
                   }
 
                   player.setTeamNumber(availableTeamNumber + 1);
@@ -222,9 +220,7 @@ public class RandomMixer implements PlayersMixer {
    * @return Whether the number of anchored players to be added to a team would exceed the limit of players per team in any position set.
    */
   private boolean anchorageOverflowsAnyPositionSet(Team team, List<Player> anchorage) {
-    return anchorage.stream()
-                    .anyMatch(player -> team.isPositionFull(player.getPosition())
-                                        || anchorageOverflowsPositionSet(team, anchorage, player.getPosition()));
+    return anchorage.stream().anyMatch(player -> team.isPositionFull(player.getPosition()) || anchorageOverflowsPositionSet(team, anchorage, player.getPosition()));
   }
 
   /**
@@ -236,14 +232,7 @@ public class RandomMixer implements PlayersMixer {
    *         particular position.
    */
   private boolean anchorageOverflowsPositionSet(Team team, List<Player> anchorage, Position position) {
-    return team.getTeamPlayers()
-               .get(position)
-               .size()
-           + anchorage.stream()
-                      .filter(player -> player.getPosition() == position)
-                      .count()
-           > CommonFields.getPlayerLimitPerPosition()
-                         .get(position);
+    return (team.getTeamPlayers().get(position).size() + anchorage.stream().filter(player -> player.getPosition() == position).count()) > CommonFields.getPlayerLimitPerPosition().get(position);
   }
 
   /**

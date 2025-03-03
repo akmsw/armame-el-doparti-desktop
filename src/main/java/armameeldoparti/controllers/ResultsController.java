@@ -86,8 +86,7 @@ public class ResultsController extends Controller<ResultsView> {
    * results.
    */
   public void setUp() {
-    teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2))
-                                                                       : bySkillPointsMix(Arrays.asList(team1, team2)));
+    teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2)) : bySkillPointsMix(Arrays.asList(team1, team2)));
 
     view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
     view.initializeInterface();
@@ -146,8 +145,7 @@ public class ResultsController extends Controller<ResultsView> {
 
     for (Team team : teams) {
       for (Position position : Position.values()) {
-        for (Player player : team.getTeamPlayers()
-                                 .get(position)) {
+        for (Player player : team.getTeamPlayers().get(position)) {
           table.setValueAt(player.getName(), row++, column);
         }
       }
@@ -289,8 +287,7 @@ public class ResultsController extends Controller<ResultsView> {
             public Component getTableCellRendererComponent(JTable myTable, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
               JComponent component = (JComponent) super.getTableCellRendererComponent(myTable, value, isSelected, hasFocus, row, column);
 
-              boolean mixBySkill = CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS && row == view.getTable()
-                                                                                                                    .getRowCount() - 1;
+              boolean mixBySkill = (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) && (row == (view.getTable().getRowCount() - 1));
 
               component.setOpaque(false);
               component.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
@@ -344,9 +341,7 @@ public class ResultsController extends Controller<ResultsView> {
                                                                                  .filter(player -> player.getName() == value)
                                                                                  .findFirst());
 
-              component.setBackground(playerOnCell.getAnchorageNumber() != 0 ? Constants.COLORS_ANCHORAGES
-                                                                                        .get(playerOnCell.getAnchorageNumber() - 1)
-                                                                             : Constants.COLOR_GREEN_LIGHT_WHITE);
+              component.setBackground(playerOnCell.getAnchorageNumber() != 0 ? Constants.COLORS_ANCHORAGES.get(playerOnCell.getAnchorageNumber() - 1) : Constants.COLOR_GREEN_LIGHT_WHITE);
               component.setForeground(Color.BLACK);
 
               ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.LEFT);
@@ -360,12 +355,7 @@ public class ResultsController extends Controller<ResultsView> {
 
               graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
               graphics2d.setColor(getBackground());
-              graphics2d.fillRoundRect(0,
-                                       0,
-                                       (getWidth() - 1),
-                                       (getHeight() - 1),
-                                       Constants.ROUNDED_BORDER_ARC_TABLE_CELLS,
-                                       Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
+              graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_TABLE_CELLS, Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
 
               super.paintComponent(graphics2d);
 

@@ -129,8 +129,8 @@ public final class Constants {
   public static final int SKILL_MIN = 1;
   public static final int SKILL_STEP = 1;
   public static final int STROKE_BUTTON_ARROW = 5;
-  public static final int TOOLTIP_INITIAL_DELAY = 300;
   public static final int TOOLTIP_DISMISS_DELAY = 5000;
+  public static final int TOOLTIP_INITIAL_DELAY = 300;
 
   public static final float FONT_SIZE = 18f;
 
@@ -157,13 +157,10 @@ public final class Constants {
   public static final String MIG_LAYOUT_WRAP = "wrap";
   public static final String MIG_LAYOUT_WRAP_2 = MIG_LAYOUT_WRAP + " 2";
   public static final String MSG_ERROR_INVALID_STRING = "El nombre del jugador debe estar formado por letras de la A a la Z";
-  public static final String MSG_ERROR_INVALID_NAME = "El nombre del jugador no puede estar vacío," + System.lineSeparator()
-                                                      + "tener más de " + MAX_NAME_LEN + " caracteres, o estar repetido";
+  public static final String MSG_ERROR_INVALID_NAME = "El nombre del jugador no puede estar vacío," + System.lineSeparator() + "tener más de " + MAX_NAME_LEN + " caracteres, o estar repetido";
   public static final String MSG_ERROR_NULL_GUI_RESOURCE = "Error en obtención de recursos gráficos";
   public static final String MSG_INFO_ANCHORAGES_NO_SELECTION = "No hay jugadores seleccionados para anclar";
-  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE
-                                                            + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE
-                                                            + " jugadores en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE + " jugadores en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_CONFLICTS = "Existen conflictos entre anclajes";
   public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores" + System.lineSeparator() + "de una misma posición en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total";
@@ -191,6 +188,7 @@ public final class Constants {
   public static final String TITLE_MESSAGE_INFORMATION = "Información";
   public static final String TITLE_MESSAGE_QUESTION = "Seleccione una opción";
   public static final String TITLE_MESSAGE_WARNING = "¡Advertencia!";
+  public static final String TOOLTIP_MSG_PROGRAM_VERSION = "Versión del programa";
   public static final String URL_CONTACT = "https://github.com/" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String URL_ISSUES = URL_CONTACT + "/" + PROGRAM_TITLE.replace(" ", "-") + "/issues";
 
@@ -225,22 +223,10 @@ public final class Constants {
   public static final ImageIcon ICON_RB_E_US_UF = CommonFunctions.createImageIcon(FILENAME_ICON_RB_ENABLED_UNSELECTED_UNFOCUSED);
   public static final ImageIcon ICON_MAIN = CommonFunctions.createImageIcon(FILENAME_ICON_MAIN);
   public static final ImageIcon ICON_MAIN_SCALED = CommonFunctions.scaleImageIcon(ICON_MAIN, SCALE_ICON_MAIN, SCALE_ICON_MAIN, Image.SCALE_SMOOTH);
-  public static final ImageIcon ICON_DIALOG_ERROR = CommonFunctions.scaleImageIcon(ICON_OP_ERROR,
-                                                                                   SCALE_ICON_DIALOG,
-                                                                                   SCALE_ICON_DIALOG,
-                                                                                   Image.SCALE_SMOOTH);
-  public static final ImageIcon ICON_DIALOG_INFORMATION = CommonFunctions.scaleImageIcon(ICON_OP_INFORMATION,
-                                                                                         SCALE_ICON_DIALOG,
-                                                                                         SCALE_ICON_DIALOG,
-                                                                                         Image.SCALE_SMOOTH);
-  public static final ImageIcon ICON_DIALOG_QUESTION = CommonFunctions.scaleImageIcon(ICON_OP_QUESTION,
-                                                                                      SCALE_ICON_DIALOG,
-                                                                                      SCALE_ICON_DIALOG,
-                                                                                      Image.SCALE_SMOOTH);
-  public static final ImageIcon ICON_DIALOG_WARNING = CommonFunctions.scaleImageIcon(ICON_OP_WARNING,
-                                                                                     SCALE_ICON_DIALOG,
-                                                                                     SCALE_ICON_DIALOG,
-                                                                                     Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_ERROR = CommonFunctions.scaleImageIcon(ICON_OP_ERROR, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_INFORMATION = CommonFunctions.scaleImageIcon(ICON_OP_INFORMATION, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_QUESTION = CommonFunctions.scaleImageIcon(ICON_OP_QUESTION, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
+  public static final ImageIcon ICON_DIALOG_WARNING = CommonFunctions.scaleImageIcon(ICON_OP_WARNING, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
 
   public static final Insets INSETS_COMBOBOX = new Insets(Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
                                                           Constants.ROUNDED_BORDER_INSETS_COMBOBOX,

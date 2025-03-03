@@ -45,12 +45,7 @@ public class CustomToolTipUI extends ToolTipUI {
   public void paint(Graphics graphics, JComponent component) {
     Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    RoundRectangle2D roundedRect = new RoundRectangle2D.Float(0,
-                                                              0,
-                                                              component.getWidth(),
-                                                              component.getHeight(),
-                                                              Constants.ROUNDED_BORDER_ARC_TOOLTIP,
-                                                              Constants.ROUNDED_BORDER_ARC_TOOLTIP);
+    RoundRectangle2D roundedRect = new RoundRectangle2D.Float(0, 0, component.getWidth(), component.getHeight(), Constants.ROUNDED_BORDER_ARC_TOOLTIP, Constants.ROUNDED_BORDER_ARC_TOOLTIP);
 
     // Round rectangle configuration
     graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
@@ -68,9 +63,7 @@ public class CustomToolTipUI extends ToolTipUI {
     String text = ((JToolTip) component).getTipText();
 
     graphics2d.setColor(Color.WHITE);
-    graphics2d.drawString(text,
-                          ((component.getWidth() - fontMetric.stringWidth(text)) / 2),
-                          (((component.getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
+    graphics2d.drawString(text, ((component.getWidth() - fontMetric.stringWidth(text)) / 2), (((component.getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
     graphics2d.dispose();
   }
 
@@ -80,7 +73,6 @@ public class CustomToolTipUI extends ToolTipUI {
 
     Insets insets = component.getInsets();
 
-    return new Dimension((fontMetric.stringWidth(((JToolTip) component).getTipText()) + insets.left + insets.right),
-                         (fontMetric.getHeight() + insets.top + insets.bottom));
+    return new Dimension((fontMetric.stringWidth(((JToolTip) component).getTipText()) + insets.left + insets.right), (fontMetric.getHeight() + insets.top + insets.bottom));
   }
 }

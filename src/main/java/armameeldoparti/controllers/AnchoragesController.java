@@ -58,9 +58,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   public void updateCheckboxesText() {
     for (Position position : Position.values()) {
-      for (int checkboxIndex = 0; checkboxIndex < CommonFields.getPlayersSets()
-                                                              .get(position)
-                                                              .size(); checkboxIndex++) {
+      for (int checkboxIndex = 0; checkboxIndex < CommonFields.getPlayersSets().get(position).size(); checkboxIndex++) {
         view.getCheckboxesMap()
             .get(position)
             .get(checkboxIndex)
@@ -233,8 +231,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     view.getCheckboxesMap()
         .values()
         .stream()
-        .filter(checkboxesSet -> checkboxesSet.stream()
-                                              .anyMatch(JCheckBox::isSelected))
+        .filter(checkboxesSet -> checkboxesSet.stream().anyMatch(JCheckBox::isSelected))
         .forEach(this::setAnchorages);
 
     anchoredPlayersCount = (int) CommonFields.getPlayersSets()
@@ -267,8 +264,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                                     .flatMap(players -> players.getValue()
                                                                                .stream()
                                                                                .filter(player -> player.getAnchorageNumber() == anchorageNumber + 1))
-                                                    .sorted(Comparator.comparing(player -> player.getPosition()
-                                                                                                 .ordinal()))
+                                                    .sorted(Comparator.comparing(player -> player.getPosition().ordinal()))
                                                     .toList();
 
                for (Player player : anchorage) {
@@ -378,8 +374,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                       CommonFunctions.retrieveOptional(view.getCheckboxesMap()
                                                            .get(player.getPosition())
                                                            .stream()
-                                                           .filter(checkbox -> checkbox.getText()
-                                                                                       .equals(player.getName()))
+                                                           .filter(checkbox -> checkbox.getText().equals(player.getName()))
                                                            .findFirst())
                                      .setVisible(true);
 
@@ -420,8 +415,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                 .stream()
                 .filter(player -> cbSet.stream()
                                        .filter(JCheckBox::isSelected)
-                                       .anyMatch(checkbox -> checkbox.getText()
-                                                                     .equals(player.getName())))
+                                       .anyMatch(checkbox -> checkbox.getText().equals(player.getName())))
                 .forEach(player -> {
                   player.setAnchorageNumber(anchoragesCount);
                   player.setAnchored(true);
@@ -465,7 +459,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                .stream()
                .noneMatch(checkboxesSet -> checkboxesSet.stream()
                                                         .filter(JCheckBox::isSelected)
-                                                        .count() > checkboxesSet.size() / 2);
+                                                        .count() > (checkboxesSet.size() / 2));
   }
 
   /**
@@ -529,8 +523,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     for (Player player : anchorage) {
       int newCount = playersCountPerPosition.getOrDefault(player.getPosition(), 0) + 1;
 
-      if (newCount > CommonFields.getPlayerLimitPerPosition()
-                                 .get(player.getPosition())) {
+      if (newCount > CommonFields.getPlayerLimitPerPosition().get(player.getPosition())) {
         return true;
       }
 

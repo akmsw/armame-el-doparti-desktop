@@ -73,10 +73,8 @@ public class HelpView extends View {
     setNextPageButton(new CustomButton("Siguiente", Constants.ROUNDED_BORDER_ARC_GENERAL));
     setBackButton(new CustomButton("Volver al menú principal", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
-    masterPanel.add(previousPageButton, new CC().width("50%")
-                                                .split());
-    masterPanel.add(nextPageButton, new CC().width("50%")
-                                            .wrap());
+    masterPanel.add(previousPageButton, new CC().width("50%").split());
+    masterPanel.add(nextPageButton, new CC().width("50%").wrap());
     masterPanel.add(backButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN));
   }
 

@@ -81,12 +81,7 @@ public class CustomScrollPane extends JScrollPane {
 
         graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
         graphics2d.setColor(Constants.COLOR_GREEN_DARK);
-        graphics2d.fillRoundRect(thumbBounds.x,
-                                 thumbBounds.y,
-                                 thumbBounds.width,
-                                 thumbBounds.height,
-                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
-                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
+        graphics2d.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, Constants.ROUNDED_BORDER_ARC_SCROLLBAR, Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
         graphics2d.dispose();
       }
 
@@ -96,12 +91,7 @@ public class CustomScrollPane extends JScrollPane {
 
         graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
         graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
-        graphics2d.fillRoundRect(trackBounds.x,
-                                 trackBounds.y,
-                                 trackBounds.width,
-                                 trackBounds.height,
-                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR,
-                                 Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
+        graphics2d.fillRoundRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, Constants.ROUNDED_BORDER_ARC_SCROLLBAR, Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
         graphics2d.dispose();
       }
     });

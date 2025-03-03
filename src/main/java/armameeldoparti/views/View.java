@@ -39,8 +39,7 @@ public abstract class View extends JFrame {
     setFrameTitle(frameTitle);
     setTitle(getFrameTitle());
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setIconImage(Constants.ICON_MAIN_SCALED
-                          .getImage());
+    setIconImage(Constants.ICON_MAIN_SCALED.getImage());
   }
 
   // ---------- Abstract protected methods -----------------------------------------------------------------------------------------------------------

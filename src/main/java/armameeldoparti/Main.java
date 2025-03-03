@@ -71,9 +71,7 @@ public final class Main {
    * @param args Program arguments (not used).
    */
   public static void main(String[] args) {
-    // Establishes the main monitor as the active monitor by default
-    CommonFields.setActiveMonitor(GraphicsEnvironment.getLocalGraphicsEnvironment()
-                                                     .getDefaultScreenDevice());
+    CommonFields.setActiveMonitor(GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice()); // Establishes the main monitor as the active monitor by default
     CommonFields.setAnchoragesEnabled(false);
     CommonFields.setControllersMap(new EnumMap<>(ProgramView.class));
     CommonFields.setPlayerLimitPerPosition(new EnumMap<>(Position.class));
@@ -100,8 +98,7 @@ public final class Main {
   private static void populatePlayersSets() {
     for (Position position : Position.values()) {
       CommonFields.getPlayersSets()
-                  .put(position, IntStream.range(0, CommonFields.getPlayerLimitPerPosition()
-                                                                .get(position) * 2)
+                  .put(position, IntStream.range(0, CommonFields.getPlayerLimitPerPosition().get(position) * 2)
                                           .mapToObj(_ -> new Player("", position))
                                           .toList());
     }
@@ -120,24 +117,13 @@ public final class Main {
    * file and, therefore, you should review the order of the important lines in the file.
    */
   private static void setPlayersDistribution() {
-    try (
-      BufferedReader buffer = new BufferedReader(
-                                new InputStreamReader(
-                                  Objects.requireNonNull(CommonFunctions.class
-                                                                        .getClassLoader()
-                                                                        .getResourceAsStream(Constants.PATH_DOCS + Constants.FILENAME_PDA))
-                                )
-                              )
-    ) {
+    try (BufferedReader buffer = new BufferedReader(new InputStreamReader(Objects.requireNonNull(CommonFunctions.class.getClassLoader().getResourceAsStream(Constants.PATH_DOCS + Constants.FILENAME_PDA))))) {
       List<String> filteredLines = buffer.lines()
                                          .filter(line -> line.matches(Constants.REGEX_PDA_DATA_RETRIEVE))
                                          .toList();
 
       for (int lineIndex = 0; lineIndex < filteredLines.size(); lineIndex++) {
-        CommonFields.getPlayerLimitPerPosition()
-                    .put(Position.values()[lineIndex],
-                         Integer.parseInt(filteredLines.get(lineIndex)
-                                                       .replaceAll(Constants.REGEX_PLAYERS_COUNT, "")));
+        CommonFields.getPlayerLimitPerPosition().put(Position.values()[lineIndex], Integer.parseInt(filteredLines.get(lineIndex).replaceAll(Constants.REGEX_PLAYERS_COUNT, "")));
       }
     } catch (IOException exception) {
       CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
@@ -169,8 +155,7 @@ public final class Main {
     UIManager.put("ComboBox.foreground", Color.WHITE);
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.selectionForeground", Color.WHITE);
-    UIManager.put("OptionPaneUI", CustomOptionPaneUI.class
-                                                    .getName());
+    UIManager.put("OptionPaneUI", CustomOptionPaneUI.class.getName());
     UIManager.put("OptionPane.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("OptionPane.cancelButtonText", Constants.TEXT_BUTTON_DIALOG_CANCEL);
     UIManager.put("OptionPane.noButtonText", Constants.TEXT_BUTTON_DIALOG_NO);

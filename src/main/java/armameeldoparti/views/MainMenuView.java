@@ -61,8 +61,7 @@ public class MainMenuView extends View {
 
     masterPanel.add(startButton, Constants.MIG_LAYOUT_GROWX);
     masterPanel.add(helpButton, Constants.MIG_LAYOUT_GROWX);
-    masterPanel.add(contactButton, new CC().width("50%")
-                                           .split());
+    masterPanel.add(contactButton, new CC().width("50%").split());
     masterPanel.add(issuesButton, new CC().width("50%"));
   }
 
@@ -73,24 +72,9 @@ public class MainMenuView extends View {
    */
   private void addBackground() {
     addBackgroundImage();
-    addLabel(Constants.PROGRAM_TITLE,
-             null,
-             Constants.MIG_LAYOUT_ALIGN_CENTER,
-             Constants.COLOR_GREEN_LIGHT,
-             Constants.COLOR_GREEN_DARK,
-             Constants.SIZE_FONT_TITLE_LABEL);
-    addLabel(Constants.PROGRAM_AUTHOR,
-             null,
-             Constants.MIG_LAYOUT_ALIGN_CENTER,
-             Constants.COLOR_GREEN_LIGHT,
-             Color.WHITE,
-             Constants.SIZE_FONT_AUTHOR_LABEL);
-    addLabel(Constants.PROGRAM_VERSION,
-             "Versión del programa",
-             Constants.MIG_LAYOUT_ALIGN_RIGHT,
-             Constants.COLOR_GREEN_LIGHT,
-             Constants.COLOR_GREEN_DARK,
-             Constants.SIZE_FONT_VERSION_LABEL);
+    addLabel(Constants.PROGRAM_TITLE, null, Constants.MIG_LAYOUT_ALIGN_CENTER, Constants.COLOR_GREEN_LIGHT, Constants.COLOR_GREEN_DARK, Constants.SIZE_FONT_TITLE_LABEL);
+    addLabel(Constants.PROGRAM_AUTHOR, null, Constants.MIG_LAYOUT_ALIGN_CENTER, Constants.COLOR_GREEN_LIGHT, Color.WHITE, Constants.SIZE_FONT_AUTHOR_LABEL);
+    addLabel(Constants.PROGRAM_VERSION, Constants.TOOLTIP_MSG_PROGRAM_VERSION, Constants.MIG_LAYOUT_ALIGN_RIGHT, Constants.COLOR_GREEN_LIGHT, Constants.COLOR_GREEN_DARK, Constants.SIZE_FONT_VERSION_LABEL);
   }
 
   /**
