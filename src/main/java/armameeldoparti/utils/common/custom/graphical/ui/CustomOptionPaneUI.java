@@ -30,7 +30,7 @@ import net.miginfocom.swing.MigLayout;
  */
 public class CustomOptionPaneUI extends BasicOptionPaneUI {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Creates the custom option pane UI according to the overall program aesthetics.
@@ -39,7 +39,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
     super();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * The "java:S1172" warning is suppressed since the argument is intentionally unused.
@@ -66,15 +66,13 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
       );
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Creates a button for each string in {@code buttons} and adds them to {@code container}. If {@code buttons} does not contain any string-instance
-   * object, an array is retrieved using the message type for the dialog. This array contains the strings that will be used in the buttons to be
-   * placed in the dialog.
+   * Creates a button for each string in {@code buttons} and adds them to {@code container}. If {@code buttons} does not contain any string-instance object, an array is retrieved using the message type for the
+   * dialog. This array contains the strings that will be used in the buttons to be placed in the dialog.
    *
-   * <p>A minimum button size is forced in order to ensure that the buttons showing only anchorages numbers have the same size, since the font used is
-   * not monospaced for user readability matters.
+   * <p>A minimum button size is forced in order to ensure that the buttons showing only anchorages numbers have the same size, since the font used is not monospaced for user readability matters.
    *
    * @param container    A container for the buttons.
    * @param buttons      An array with the strings for each button of the dialog.
@@ -88,9 +86,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
       return;
     }
 
-    if (Arrays.asList(buttons)
-              .stream()
-              .noneMatch(String.class::isInstance)) {
+    if (Arrays.asList(buttons).stream().noneMatch(String.class::isInstance)) {
       buttons = getButtonsForMessageType(optionPane.getMessageType());
     }
 
@@ -117,7 +113,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
     container.add(buttonPanel, Constants.MIG_LAYOUT_SOUTH);
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * @param messageType The type of the message to be shown in the dialog.
@@ -126,8 +122,7 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    */
   private Object[] getButtonsForMessageType(int messageType) {
     return switch (messageType) {
-      case JOptionPane.QUESTION_MESSAGE -> new Object[] { UIManager.getString("OptionPane.yesButtonText"),
-                                                          UIManager.getString("OptionPane.noButtonText") };
+      case JOptionPane.QUESTION_MESSAGE -> new Object[] { UIManager.getString("OptionPane.yesButtonText"), UIManager.getString("OptionPane.noButtonText") };
       default -> new Object[] { UIManager.getString("OptionPane.okButtonText") };
     };
   }

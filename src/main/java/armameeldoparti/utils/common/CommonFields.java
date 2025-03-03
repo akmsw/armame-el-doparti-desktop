@@ -23,7 +23,7 @@ import java.util.Map;
  */
 public final class CommonFields {
 
-  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   private static boolean anchoragesEnabled;
 
@@ -36,7 +36,7 @@ public final class CommonFields {
   private static Map<Position, String> positionsMap;
   private static Map<ProgramView, Controller<? extends View>> controllersMap;
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Empty, private constructor.
@@ -45,7 +45,7 @@ public final class CommonFields {
     // Body not needed
   }
 
-  // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------
+  // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   public static Distribution getDistribution() {
     return distribution;
@@ -71,7 +71,7 @@ public final class CommonFields {
     return positionsMap;
   }
 
-  /*
+  /**
    * The "java:S1452" warning is suppressed since the Java compiler can't know at runtime the type of the controlled view.
    */
   @SuppressWarnings("java:S1452")
@@ -79,7 +79,7 @@ public final class CommonFields {
     return controllersMap;
   }
 
-  // ---------- Setters ------------------------------------------------------------------------------------------------------------------------------
+  // ---------- Setters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   public static void setDistribution(Distribution distribution) {
     CommonFields.distribution = distribution;

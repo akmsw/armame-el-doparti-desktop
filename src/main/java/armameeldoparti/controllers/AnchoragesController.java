@@ -32,12 +32,12 @@ import javax.swing.JOptionPane;
  */
 public class AnchoragesController extends Controller<AnchoragesView> {
 
-  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   private int anchoragesCount;
   private int anchoredPlayersCount;
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the anchorages view controller.
@@ -51,7 +51,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     toggleButtons();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Updates the checkboxes text with the players names.
@@ -169,8 +169,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * Makes the controlled view invisible, deletes every anchorage made, resets the controlled view to its default state and shows the names input
-   * view.
+   * Makes the controlled view invisible, deletes every anchorage made, resets the controlled view to its default state and shows the names input view.
    */
   public void backButtonEvent() {
     hideView();
@@ -179,13 +178,12 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     CommonFunctions.getController(ProgramView.NAMES_INPUT).showView();
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Resets the controlled view to its default values.
    *
-   * <p>Clears every anchorage made, updating the text area and the state of the buttons, and the checkboxes that were selected whose players were not
-   * anchored, are deselected.
+   * <p>Clears every anchorage made, updating the text area and the state of the buttons, and the checkboxes that were selected whose players were not anchored, are deselected.
    */
   @Override
   protected void resetView() {
@@ -216,7 +214,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     view.getBackButton().addActionListener(_ -> backButtonEvent());
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets a new anchorage based on the players checked.
@@ -321,8 +319,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Deletes a specific anchorage.
    *
-   * <p>The players that have the specified anchorage now will have anchorage number 0. If the anchorage number to delete is not the last one, then
-   * the remaining players (from {@code anchorageToDelete + 1} up to {@code anchoragesCount}) will have their anchorage number decreased by 1.
+   * <p>The players that have the specified anchorage now will have anchorage number 0. If the anchorage number to delete is not the last one, then the remaining players (from {@code anchorageToDelete + 1} up to
+   * {@code anchoragesCount}) will have their anchorage number decreased by 1.
    *
    * @param anchorageToDelete Anchorage number to delete.
    */
@@ -341,8 +339,8 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   /**
    * Changes the anchorage number of certain players.
    *
-   * <p>If the replacement is 0 (an anchorage must be removed), then those players will be set as not-anchored, the players corresponding checkboxes
-   * will be visible and enabled again, and the anchored players count will be decreased as needed.
+   * <p>If the replacement is 0 (an anchorage must be removed), then those players will be set as not-anchored, the players corresponding checkboxes will be visible and enabled again, and the anchored players count
+   * will be decreased as needed.
    *
    * @param target      Anchorage number to replace.
    * @param replacement New anchorage number to set.
@@ -441,12 +439,10 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * Verifies recursively if the existing anchorages combination is possible to distribute (i.e.: no anchorages conflict exists) prior to perform the
-   * distribution itself.
+   * Verifies recursively if the existing anchorages combination is possible to distribute (i.e.: no anchorages conflict exists) prior to perform the distribution itself.
    *
-   * <p>It starts by gathering the first anchorage: if there's no conflict in the first team, then it is added to it. If not, it tries to add it to
-   * the second team. If the anchorage can't be added successfully to any team, then an anchorages conflict exists. This procedure is repeated
-   * recursively with every anchorage. When the final anchorage is reached, the resulting temporary teams are validated to return that as the
+   * <p>It starts by gathering the first anchorage: if there's no conflict in the first team, then it is added to it. If not, it tries to add it to the second team. If the anchorage can't be added successfully to
+   * any team, then an anchorages conflict exists. This procedure is repeated recursively with every anchorage. When the final anchorage is reached, the resulting temporary teams are validated to return that as the
    * recursion break condition.
    *
    * @param recursiveVerificationIndex Recursive index used to iterate through the existing anchorages.

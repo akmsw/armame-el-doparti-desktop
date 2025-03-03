@@ -25,7 +25,7 @@ import javax.swing.SwingUtilities;
  */
 public class CustomToolTip extends JToolTip {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic tooltip using the established program aesthetics.
@@ -38,7 +38,7 @@ public class CustomToolTip extends JToolTip {
     setUI(new CustomToolTipUI());
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * This method is overridden in order to maintain the tooltip graphical properties outside of the frame boundaries.

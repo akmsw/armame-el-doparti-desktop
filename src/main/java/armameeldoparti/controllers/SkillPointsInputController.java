@@ -18,7 +18,7 @@ import armameeldoparti.views.SkillPointsInputView;
  */
 public class SkillPointsInputController extends Controller<SkillPointsInputView> {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the skill points input view controller.
@@ -30,7 +30,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     setUpListeners();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets the entered skill points for each player, makes the controlled view invisible and shows the results view.
@@ -75,7 +75,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     view.pack();
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void showView() {
@@ -102,7 +102,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     view.getResetSkillPointsButton().addActionListener(_ -> resetSkillPointsButtonEvent());
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Sets 0 skill points to every player and resets every spinner value to the minimum skill point.

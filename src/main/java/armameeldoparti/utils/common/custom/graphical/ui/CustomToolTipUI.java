@@ -27,7 +27,7 @@ import javax.swing.plaf.ToolTipUI;
  */
 public class CustomToolTipUI extends ToolTipUI {
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * The "java:S1172" warning is suppressed since the argument is intentionally unused.

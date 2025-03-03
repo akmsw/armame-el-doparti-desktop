@@ -15,7 +15,7 @@ import javax.swing.JRadioButton;
  */
 public class CustomRadioButton extends JRadioButton {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic radio button using the established program aesthetics.
@@ -27,7 +27,7 @@ public class CustomRadioButton extends JRadioButton {
     setUpGraphicalProperties();
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Configures the graphical properties of the radio button in order to fit the program aesthetics.

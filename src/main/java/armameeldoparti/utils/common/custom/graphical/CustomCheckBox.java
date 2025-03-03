@@ -15,7 +15,7 @@ import javax.swing.JCheckBox;
  */
 public class CustomCheckBox extends JCheckBox {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic checkbox using the established program aesthetics.
@@ -27,7 +27,7 @@ public class CustomCheckBox extends JCheckBox {
     setUpGraphicalProperties();
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Configures the graphical properties of the checkbox in order to fit the program aesthetics.

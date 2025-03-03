@@ -16,7 +16,7 @@ import armameeldoparti.views.MainMenuView;
  */
 public class MainMenuController extends Controller<MainMenuView> {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the main menu view controller.
@@ -28,7 +28,7 @@ public class MainMenuController extends Controller<MainMenuView> {
     setUpListeners();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   public void showView() {
@@ -52,8 +52,7 @@ public class MainMenuController extends Controller<MainMenuView> {
   public void startButtonEvent() {
     hideView();
 
-    CommonFunctions.getController(ProgramView.NAMES_INPUT)
-                   .showView();
+    CommonFunctions.getController(ProgramView.NAMES_INPUT).showView();
   }
 
   /**
@@ -70,7 +69,7 @@ public class MainMenuController extends Controller<MainMenuView> {
     CommonFunctions.browserRedirect(Constants.URL_ISSUES);
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {

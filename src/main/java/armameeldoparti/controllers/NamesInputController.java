@@ -34,7 +34,7 @@ import javax.swing.JPanel;
  */
 public class NamesInputController extends Controller<NamesInputView> {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the names input view controller.
@@ -47,7 +47,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     setUpInitialState();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Resets the combobox to the initial state and gives it the view focus.
@@ -60,8 +60,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * Resets the controlled view to its default values, turns the anchorages flags to false, makes the controlled view invisible and shows the main
-   * menu view.
+   * Resets the controlled view to its default values, turns the anchorages flags to false, makes the controlled view invisible and shows the main menu view.
    */
   public void backButtonEvent() {
     resetView();
@@ -103,8 +102,9 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * Validates the user input with a regular expression that checks if the string contains only latin characters from A to Z including Ñ, uppercase or
-   * lowercase, with or without accent mark, with or without spaces. If the input is not valid or already exists, the program asks for a new input.
+   * Validates the user input with a regular expression that checks if the string contains only latin characters from A to Z including Ñ, uppercase or lowercase, with or without accent mark, with or without spaces.
+   *
+   * <p>If the input is not valid or already exists, the program asks for a new input.
    *
    * <p>If the input is valid, it will be applied as a player name in the players set corresponding to the combobox selected option.
    *
@@ -149,8 +149,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * Since there can be only one distribution method at a time: if one radio button is selected, the other is unselected automatically. Then, if the
-   * conditions are met, the mix button is enabled.
+   * Since there can be only one distribution method at a time: if one radio button is selected, the other is unselected automatically. Then, if the conditions are met, the mix button is enabled.
    *
    * @param event Radio button click event.
    */
@@ -162,30 +161,22 @@ public class NamesInputController extends Controller<NamesInputView> {
     validateMixButtonEnable();
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void resetView() {
     hideView();
     clearPlayersNames();
 
-    view.getAnchoragesCheckbox()
-        .setSelected(false);
-    view.getComboBox()
-        .setSelectedIndex(0);
-    view.getComboBox()
-        .requestFocusInWindow();
-    view.getTextArea()
-        .setText("");
-    view.getMixButton()
-        .setEnabled(false);
-    view.getRadioButtonRandom()
-        .setSelected(false);
-    view.getRadioButtonBySkillPoints()
-        .setSelected(false);
+    view.getAnchoragesCheckbox().setSelected(false);
+    view.getComboBox().setSelectedIndex(0);
+    view.getComboBox().requestFocusInWindow();
+    view.getTextArea().setText("");
+    view.getMixButton().setEnabled(false);
+    view.getRadioButtonRandom().setSelected(false);
+    view.getRadioButtonBySkillPoints().setSelected(false);
 
-    updateTextFields(view.getComboBox()
-                         .getItemAt(0));
+    updateTextFields(view.getComboBox().getItemAt(0));
   }
 
   @Override
@@ -214,8 +205,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                   textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), textField.getText());
                 } catch (IllegalArgumentException | InvalidNameException exception) {
                   CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event),
-                                                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING
-                                                                                                  : Constants.MSG_ERROR_INVALID_NAME,
+                                                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING: Constants.MSG_ERROR_INVALID_NAME,
                                                     JOptionPane.INFORMATION_MESSAGE);
 
                   textField.setText(CommonFields.getPlayersSets()
@@ -243,7 +233,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.setVisible(true);
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * The mix button is enabled only when every condition needed to distribute the players is met.

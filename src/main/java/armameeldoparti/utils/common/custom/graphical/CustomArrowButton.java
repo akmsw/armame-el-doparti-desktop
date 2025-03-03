@@ -24,7 +24,7 @@ import javax.swing.plaf.basic.BasicArrowButton;
  */
 public class CustomArrowButton extends BasicArrowButton {
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic arrow button pointing up or down, using the established program aesthetics.
@@ -36,7 +36,7 @@ public class CustomArrowButton extends BasicArrowButton {
     setUpGraphicalProperties();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   public Insets getInsets() {
@@ -141,7 +141,7 @@ public class CustomArrowButton extends BasicArrowButton {
     }
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Configures the graphical properties of the arrow button in order to fit the program aesthetics.

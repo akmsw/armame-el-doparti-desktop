@@ -40,11 +40,11 @@ import javax.swing.table.DefaultTableCellRenderer;
  */
 public class ResultsController extends Controller<ResultsView> {
 
-  // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
+  // ---------- Private constants -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   private static final int TABLE_COLUMNS = 3;
 
-  // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private fields ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   private BySkillPointsMixer bySkillPointsMixer;
 
@@ -57,7 +57,7 @@ public class ResultsController extends Controller<ResultsView> {
 
   private List<Team> teams;
 
-  // ---------- Constructor --------------------------------------------------------------------------------------------------------------------------
+  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds the results view controller.
@@ -79,11 +79,10 @@ public class ResultsController extends Controller<ResultsView> {
     setUpListeners();
   }
 
-  // ---------- Public methods -----------------------------------------------------------------------------------------------------------------------
+  // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Creates the teams and the results table, applies the needed table format, fills the non-variable table cells and displays the distribution
-   * results.
+   * Creates the teams and the results table, applies the needed table format, fills the non-variable table cells and displays the distribution results.
    */
   private void setUp() {
     teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2)) : bySkillPointsMix(Arrays.asList(team1, team2)));
@@ -188,7 +187,7 @@ public class ResultsController extends Controller<ResultsView> {
     return CommonFields.isAnchoragesEnabled() ? bySkillPointsMixer.withAnchorages(teams) : bySkillPointsMixer.withoutAnchorages(teams);
   }
 
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+  // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   @Override
   protected void showView() {
@@ -220,7 +219,7 @@ public class ResultsController extends Controller<ResultsView> {
     view.getRemixButton().addActionListener(_ -> remixButtonEvent());
   }
 
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Fills the table cells whose texts do not change.
@@ -276,10 +275,12 @@ public class ResultsController extends Controller<ResultsView> {
   /**
    * Overrides the table cells format in order to fit the program aesthetics, including text alignment and background and foreground colors.
    *
+   * <p>Cell (0,0) is unused and has a medium green background.
+   *
    * <p>Row 0 and column 0 have dark green background and white foreground. The remaining cells will have black foreground.
    *
-   * <p>The background color will be medium green if the cell shows any skill points related information. If the cell contains an anchored player
-   * name, its background will be the corresponding from the anchorages colors array. If not, its background will be light green.
+   * <p>The background color will be medium green if the cell shows any skill points related information. If the cell contains an anchored player name, its background will be the corresponding from the anchorages
+   * colors array. If not, its background will be light green.
    *
    * <p>The cell text will be centered if it shows any skill points related information or a team name. Otherwise, it will be left-aligned.
    */
