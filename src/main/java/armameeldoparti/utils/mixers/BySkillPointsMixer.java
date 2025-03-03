@@ -187,6 +187,16 @@ public class BySkillPointsMixer implements PlayersMixer {
   /**
    * Checks if the players can be swapped between the teams to reduce the skill difference.
    *
+   * <p>Starts by calculating the current skill difference between the teams. Then, iterates over the players of each position, swapping them between
+   * the teams and recalculating the skill difference.
+   *
+   * <p>If the new skill difference is 0, the method returns (the best distribution has been found).
+   *
+   * <p>If the new skill difference is greater than or equal to the current skill difference, the players are swapped back.
+   *
+   * <p>If the new skill difference is less than the current skill difference, the current skill difference is updated and it continues trying to find
+   * a better distribution.
+   *
    * <p>The "java:S3776" warning is suppressed until a refactor reduces the cognitive complexity of this method from 18 to 15 or less.
    *
    * @param teams Teams where to check the players swaps.
