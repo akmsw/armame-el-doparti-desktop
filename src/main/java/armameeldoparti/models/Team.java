@@ -2,6 +2,7 @@ package armameeldoparti.models;
 
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.utils.common.CommonFields;
+import armameeldoparti.utils.common.Constants;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -51,7 +52,7 @@ public class Team {
     teamPlayers.values()
                .stream()
                .flatMap(List::stream)
-               .forEach(player -> player.setTeamNumber(0));
+               .forEach(player -> player.setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED));
 
     teamPlayers.values()
                .forEach(List::clear);

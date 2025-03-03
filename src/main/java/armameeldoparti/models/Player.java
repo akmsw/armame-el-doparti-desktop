@@ -1,6 +1,7 @@
 package armameeldoparti.models;
 
 import armameeldoparti.models.enums.Position;
+import armameeldoparti.utils.common.Constants;
 
 /**
  * Players class.
@@ -37,7 +38,7 @@ public class Player {
     setName(name);
     setPosition(position);
     setAnchored(false);
-    setTeamNumber(0);
+    setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED);
     setAnchorageNumber(0);
     setSkillPoints(0);
   }

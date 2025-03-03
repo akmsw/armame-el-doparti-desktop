@@ -78,7 +78,7 @@ public class RandomMixer implements PlayersMixer {
                 .values()
                 .stream()
                 .flatMap(List::stream)
-                .filter(player -> player.getTeamNumber() == 0)
+                .filter(player -> player.getTeamNumber() == Constants.PLAYER_NO_TEAM_ASSIGNED)
                 .forEach(player -> {
                   teams.get(randomTeam2)
                        .getTeamPlayers()
@@ -126,9 +126,9 @@ public class RandomMixer implements PlayersMixer {
         }
 
         for (Player player : anchorage) {
-          player.setTeamNumber(availableTeamNumber + 1);
+          player.setTeamNumber(availableTeamNumber);
 
-          teams.get(availableTeamNumber)
+          teams.get(1 - availableTeamNumber)
                .getTeamPlayers()
                .get(player.getPosition())
                .add(player);
@@ -143,7 +143,7 @@ public class RandomMixer implements PlayersMixer {
                 .values()
                 .stream()
                 .flatMap(List::stream)
-                .filter(player -> player.getTeamNumber() == 0)
+                .filter(player -> player.getTeamNumber() == Constants.PLAYER_NO_TEAM_ASSIGNED)
                 .forEach(player -> {
                   int availableTeamNumber = getAvailableTeam(teams, team -> playerCanBeAdded(team, player));
 
@@ -152,7 +152,7 @@ public class RandomMixer implements PlayersMixer {
                     CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
                   }
 
-                  player.setTeamNumber(availableTeamNumber + 1);
+                  player.setTeamNumber(availableTeamNumber);
 
                   teams.get(availableTeamNumber)
                        .getTeamPlayers()

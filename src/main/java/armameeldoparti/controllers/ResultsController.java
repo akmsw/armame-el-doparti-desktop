@@ -71,8 +71,8 @@ public class ResultsController extends Controller<ResultsView> {
 
     randomMixer = new RandomMixer();
 
-    team1 = new Team(1);
-    team2 = new Team(2);
+    team1 = new Team(0);
+    team2 = new Team(1);
 
     teams = new ArrayList<>();
 
@@ -269,7 +269,7 @@ public class ResultsController extends Controller<ResultsView> {
                 .values()
                 .stream()
                 .flatMap(List::stream)
-                .forEach(player -> player.setTeamNumber(0));
+                .forEach(player -> player.setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED));
   }
 
   /**
