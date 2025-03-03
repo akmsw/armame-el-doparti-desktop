@@ -37,7 +37,7 @@ public class MainMenuView extends View {
    * Builds the main menu view.
    */
   public MainMenuView() {
-    super(CommonFunctions.capitalize(Constants.PROGRAM_TITLE), Constants.MIG_LAYOUT_WRAP);
+    super(CommonFunctions.capitalize(Constants.PROGRAM_TITLE) + " " + Constants.PROGRAM_VERSION, Constants.MIG_LAYOUT_WRAP);
 
     initializeInterface();
   }
