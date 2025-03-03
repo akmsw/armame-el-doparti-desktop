@@ -193,7 +193,7 @@ public class BySkillPointsMixer implements PlayersMixer {
   /**
    * Checks if the players can be swapped between the teams to reduce the skill difference.
    *
-   * <p>Starts by calculating the current skill difference between the teams. Then, iterates over the players of each position, swapping them between the teams and recalculating the skill difference.
+   * <p>Starts by calculating the current skill difference between the teams. Then, iterates over the unanchored players of each position, swapping them between the teams and recalculating the skill difference.
    *
    * <p>If the new skill difference is 0, the method returns (the best distribution has been found).
    *
@@ -201,11 +201,8 @@ public class BySkillPointsMixer implements PlayersMixer {
    *
    * <p>If the new skill difference is less than the current skill difference, the current skill difference is updated and it continues trying to find a better distribution.
    *
-   * <p>The "java:S3776" warning is suppressed until a refactor reduces the cognitive complexity of this method from 18 to 15 or less.
-   *
    * @param teams Teams where to check the players swaps.
    */
-  @SuppressWarnings("java:S3776")
   private void checkPlayersSwap(List<Team> teams) {
     int currentSkillDifference = CommonFunctions.getTeamsSkillDifference(teams);
 
@@ -213,10 +210,10 @@ public class BySkillPointsMixer implements PlayersMixer {
       List<Player> team1Players = teams.get(0).getTeamPlayers().get(position);
       List<Player> team2Players = teams.get(1).getTeamPlayers().get(position);
 
-      for (Player playerTeam1 : team1Players) {
+      for (Player playerTeam1 : team1Players.stream().filter(player -> !player.isAnchored()).toList()) {
         int playerTeam1Index = team1Players.indexOf(playerTeam1);
 
-        for (Player playerTeam2 : team2Players) {
+        for (Player playerTeam2 : team2Players.stream().filter(player -> !player.isAnchored()).toList()) {
           int playerTeam2Index = team2Players.indexOf(playerTeam2);
 
           team1Players.set(playerTeam1Index, playerTeam2);
@@ -231,11 +228,11 @@ public class BySkillPointsMixer implements PlayersMixer {
           if (newSkillDifference >= currentSkillDifference) {
             team1Players.set(playerTeam1Index, playerTeam1);
             team2Players.set(playerTeam2Index, playerTeam2);
+
+            continue;
           }
 
-          if (newSkillDifference < currentSkillDifference) {
-            currentSkillDifference = newSkillDifference;
-          }
+          currentSkillDifference = newSkillDifference;
         }
       }
     }
