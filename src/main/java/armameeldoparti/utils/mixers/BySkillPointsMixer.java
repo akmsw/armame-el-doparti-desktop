@@ -72,12 +72,14 @@ public class BySkillPointsMixer implements PlayersMixer {
                .get(position)
                .add(playersSet.get(teamIndex));
         }
-      } else {
-        distributeSubsets(teams, playersSet, position);
+
+        continue;
       }
+
+      distributeSubsets(teams, playersSet, position);
     }
 
-    if (CommonFunctions.getTeamsSkillDifference(teams) != 0) {
+    if (!CommonFunctions.teamsSkillPointsAreEqual(teams)) {
       checkPlayersSwap(teams);
     }
 
@@ -129,24 +131,30 @@ public class BySkillPointsMixer implements PlayersMixer {
         teams.sort(comparingInt(Team::getTeamSkill));
 
         distributeSubsets(teams, players, players.get(0).getPosition());
-      } else {
-        for (Player player : players) {
-          teams.sort(comparingInt(Team::getTeamSkill));
 
-          int teamNumber = 0;
-
-          if (teams.get(teamNumber).isPositionFull(player.getPosition()) || (teams.get(teamNumber).getPlayersCount() + 1) > Constants.PLAYERS_PER_TEAM) {
-            teamNumber = 1;
-          }
-
-          player.setTeamNumber(teamNumber + 1);
-
-          teams.get(teamNumber)
-               .getTeamPlayers()
-               .get(player.getPosition())
-               .add(player);
-        }
+        continue;
       }
+
+      for (Player player : players) {
+        teams.sort(comparingInt(Team::getTeamSkill));
+
+        int teamNumber = 0;
+
+        if (teams.get(teamNumber).isPositionFull(player.getPosition()) || (teams.get(teamNumber).getPlayersCount() + 1) > Constants.PLAYERS_PER_TEAM) {
+          teamNumber = 1;
+        }
+
+        player.setTeamNumber(teamNumber + 1);
+
+        teams.get(teamNumber)
+              .getTeamPlayers()
+              .get(player.getPosition())
+              .add(player);
+      }
+    }
+
+    if (!CommonFunctions.teamsSkillPointsAreEqual(teams)) {
+      checkPlayersSwap(teams);
     }
 
     return teams;

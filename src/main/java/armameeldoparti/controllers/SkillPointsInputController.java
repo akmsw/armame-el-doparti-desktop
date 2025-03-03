@@ -38,13 +38,9 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
   public void finishButtonEvent() {
     hideView();
 
-    view.getSpinnersMap()
-        .forEach((player, spinner) -> player.setSkillPoints((int) spinner.getValue()));
+    view.getSpinnersMap().forEach((player, spinner) -> player.setSkillPoints((int) spinner.getValue()));
 
-    ((ResultsController) CommonFunctions.getController(ProgramView.RESULTS)).setUp();
-
-    CommonFunctions.getController(ProgramView.RESULTS)
-                   .showView();
+    CommonFunctions.getController(ProgramView.RESULTS).showView();
   }
 
   /**
@@ -61,8 +57,7 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
     resetView();
     hideView();
 
-    CommonFunctions.getController(CommonFields.isAnchoragesEnabled() ? ProgramView.ANCHORAGES : ProgramView.NAMES_INPUT)
-                   .showView();
+    CommonFunctions.getController(CommonFields.isAnchoragesEnabled() ? ProgramView.ANCHORAGES : ProgramView.NAMES_INPUT).showView();
   }
 
   /**
@@ -83,6 +78,14 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
   @Override
+  protected void showView() {
+    centerView();
+    updateNameLabels();
+
+    view.setVisible(true);
+  }
+
+  @Override
   protected void resetView() {
     resetSkillPoints();
   }
@@ -94,12 +97,9 @@ public class SkillPointsInputController extends Controller<SkillPointsInputView>
 
   @Override
   protected void setUpListeners() {
-    view.getBackButton()
-        .addActionListener(_ -> backButtonEvent());
-    view.getFinishButton()
-        .addActionListener(_ -> finishButtonEvent());
-    view.getResetSkillPointsButton()
-        .addActionListener(_ -> resetSkillPointsButtonEvent());
+    view.getBackButton().addActionListener(_ -> backButtonEvent());
+    view.getFinishButton().addActionListener(_ -> finishButtonEvent());
+    view.getResetSkillPointsButton().addActionListener(_ -> resetSkillPointsButtonEvent());
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------

@@ -43,7 +43,6 @@ public class MainMenuController extends Controller<MainMenuView> {
 
     hideView();
 
-    controller.updatePage();
     controller.showView();
   }
 
@@ -85,13 +84,9 @@ public class MainMenuController extends Controller<MainMenuView> {
 
   @Override
   protected void setUpListeners() {
-    view.getStartButton()
-        .addActionListener(_ -> startButtonEvent());
-    view.getHelpButton()
-        .addActionListener(_ -> helpButtonEvent());
-    view.getContactButton()
-        .addActionListener(_ -> contactButtonEvent());
-    view.getIssuesButton()
-        .addActionListener(_ -> issuesButtonEvent());
+    view.getStartButton().addActionListener(_ -> startButtonEvent());
+    view.getHelpButton().addActionListener(_ -> helpButtonEvent());
+    view.getContactButton().addActionListener(_ -> contactButtonEvent());
+    view.getIssuesButton().addActionListener(_ -> issuesButtonEvent());
   }
 }

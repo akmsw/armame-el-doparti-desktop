@@ -82,24 +82,24 @@ public class NamesInputController extends Controller<NamesInputView> {
 
     CommonFields.setDistribution(view.getRadioButtonRandom().isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
 
+    // Distribution with anchorages
     if (CommonFields.isAnchoragesEnabled()) {
       ((AnchoragesController) CommonFunctions.getController(ProgramView.ANCHORAGES)).updateCheckboxesText();
 
-      CommonFunctions.getController(ProgramView.ANCHORAGES)
-                     .showView();
-    } else if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
-      // Random distribution
-      ((ResultsController) CommonFunctions.getController(ProgramView.RESULTS)).setUp();
+      CommonFunctions.getController(ProgramView.ANCHORAGES).showView();
 
-      CommonFunctions.getController(ProgramView.RESULTS)
-                     .showView();
-    } else {
-      // By skill points distribution
-      ((SkillPointsInputController) CommonFunctions.getController(ProgramView.SKILL_POINTS)).updateNameLabels();
-
-      CommonFunctions.getController(ProgramView.SKILL_POINTS)
-                     .showView();
+      return;
     }
+
+    // Random distribution without anchorages
+    if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
+      CommonFunctions.getController(ProgramView.RESULTS).showView();
+
+      return;
+    }
+
+    // By skill points distribution without anchorages
+    CommonFunctions.getController(ProgramView.SKILL_POINTS).showView();
   }
 
   /**
@@ -120,7 +120,7 @@ public class NamesInputController extends Controller<NamesInputView> {
       throw new InvalidNameException();
     }
 
-    if (!validString(text)) {
+    if (!isValidString(text)) {
       throw new IllegalArgumentException();
     }
 
@@ -128,7 +128,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                       .toUpperCase()
                       .replace(" ", "_");
 
-    if (!validName(name)) {
+    if (!isValidName(name)) {
       throw new InvalidNameException();
     }
 
@@ -196,18 +196,12 @@ public class NamesInputController extends Controller<NamesInputView> {
 
   @Override
   protected void setUpListeners() {
-    view.getMixButton()
-        .addActionListener(_ -> mixButtonEvent(view));
-    view.getBackButton()
-        .addActionListener(_ -> backButtonEvent());
-    view.getRadioButtonRandom()
-        .addItemListener(this::radioButtonEvent);
-    view.getRadioButtonBySkillPoints()
-        .addItemListener(this::radioButtonEvent);
-    view.getComboBox()
-        .addActionListener(event -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) event.getSource()).getSelectedItem())));
-    view.getAnchoragesCheckbox()
-        .addActionListener(_ -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
+    view.getMixButton().addActionListener(_ -> mixButtonEvent(view));
+    view.getBackButton().addActionListener(_ -> backButtonEvent());
+    view.getRadioButtonRandom().addItemListener(this::radioButtonEvent);
+    view.getRadioButtonBySkillPoints().addItemListener(this::radioButtonEvent);
+    view.getComboBox().addActionListener(event -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) event.getSource()).getSelectedItem())));
+    view.getAnchoragesCheckbox().addActionListener(_ -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
     view.getTextFieldsMap()
         .forEach((player, textFieldsSet) ->
           textFieldsSet.forEach(textField ->
@@ -367,7 +361,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    *
    * @return Whether the given string matches the string validation regex.
    */
-  private boolean validString(String string) {
+  private boolean isValidString(String string) {
     return Pattern.matches(Constants.REGEX_NAMES_VALIDATION, string);
   }
 
@@ -378,7 +372,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    *
    * @return Whether the given name is valid.
    */
-  private boolean validName(String name) {
+  private boolean isValidName(String name) {
     return name.length() <= Constants.MAX_NAME_LEN && !alreadyExists(name);
   }
 }

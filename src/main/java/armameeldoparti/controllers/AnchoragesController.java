@@ -84,7 +84,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       return;
     }
 
-    finish();
+    // The checkboxes that were selected whose players were not anchored, are deselected. Then, the corresponding following view is shown.
+    hideView();
+    clearCheckboxes();
+
+    CommonFunctions.getController((CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) ? ProgramView.SKILL_POINTS : ProgramView.RESULTS).showView();
   }
 
   /**
@@ -110,7 +114,9 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       CommonFunctions.showMessageDialog(parentComponent, Constants.MSG_INFO_ANCHORAGES_NO_SELECTION, JOptionPane.INFORMATION_MESSAGE);
 
       return;
-    } else if (!validChecksCount(playersToAnchorCount)) {
+    }
+
+    if (!validChecksCount(playersToAnchorCount)) {
       CommonFunctions.showMessageDialog(parentComponent, Constants.MSG_WARNING_ANCHORAGE_LIMITS, JOptionPane.WARNING_MESSAGE);
 
       return;
@@ -170,8 +176,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     hideView();
     resetView();
 
-    CommonFunctions.getController(ProgramView.NAMES_INPUT)
-                   .showView();
+    CommonFunctions.getController(ProgramView.NAMES_INPUT).showView();
   }
 
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
@@ -195,8 +200,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
     anchoragesCount = 0;
     anchoredPlayersCount = 0;
 
-    view.getFinishButton()
-        .setEnabled(false);
+    view.getFinishButton().setEnabled(false);
   }
 
   /**
@@ -204,18 +208,12 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    */
   @Override
   protected void setUpListeners() {
-    view.getFinishButton()
-        .addActionListener(event -> finishButtonEvent(CommonFunctions.getComponentFromEvent(event)));
-    view.getNewAnchorageButton()
-        .addActionListener(event -> newAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
-    view.getDeleteAnchorageButton()
-        .addActionListener(event -> deleteAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
-    view.getDeleteLastAnchorageButton()
-        .addActionListener(_ -> deleteLastAnchorageButtonEvent());
-    view.getClearAnchoragesButton()
-        .addActionListener(_ -> clearAnchoragesButtonEvent());
-    view.getBackButton()
-        .addActionListener(_ -> backButtonEvent());
+    view.getFinishButton().addActionListener(event -> finishButtonEvent(CommonFunctions.getComponentFromEvent(event)));
+    view.getNewAnchorageButton().addActionListener(event -> newAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
+    view.getDeleteAnchorageButton().addActionListener(event -> deleteAnchorageButtonEvent(CommonFunctions.getComponentFromEvent(event)));
+    view.getDeleteLastAnchorageButton().addActionListener(_ -> deleteLastAnchorageButtonEvent());
+    view.getClearAnchoragesButton().addActionListener(_ -> clearAnchoragesButtonEvent());
+    view.getBackButton().addActionListener(_ -> backButtonEvent());
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
@@ -250,13 +248,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @see armameeldoparti.models.enums.Position
    */
   private void updateTextArea() {
-    view.getTextArea()
-        .setText("");
+    view.getTextArea().setText("");
 
     IntStream.range(0, anchoragesCount)
              .forEach(anchorageNumber -> {
-               view.getTextArea()
-                   .append("ANCLAJE " + (anchorageNumber + 1) + System.lineSeparator());
+               view.getTextArea().append("ANCLAJE " + (anchorageNumber + 1) + System.lineSeparator());
 
                List<Player> anchorage = CommonFields.getPlayersSets()
                                                     .entrySet()
@@ -268,13 +264,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                                     .toList();
 
                for (Player player : anchorage) {
-                 view.getTextArea()
-                     .append((anchorage.indexOf(player) + 1) + ". " + player.getName() + System.lineSeparator());
+                 view.getTextArea().append((anchorage.indexOf(player) + 1) + ". " + player.getName() + System.lineSeparator());
                }
 
                if ((anchorageNumber + 1) != anchoragesCount) {
-                 view.getTextArea()
-                     .append(System.lineSeparator());
+                 view.getTextArea().append(System.lineSeparator());
                }
              });
   }
@@ -283,39 +277,34 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * Toggles the buttons and checkboxes states.
    */
   private void toggleButtons() {
-    view.getAnchorageButtons()
-        .forEach(button -> button.setEnabled(false));
+    view.getAnchorageButtons().forEach(button -> button.setEnabled(false));
 
     if (anchoragesCount == 1) {
-      view.getFinishButton()
-          .setEnabled(true);
-      view.getDeleteLastAnchorageButton()
-          .setEnabled(true);
-      view.getClearAnchoragesButton()
-          .setEnabled(true);
+      view.getFinishButton().setEnabled(true);
+      view.getDeleteLastAnchorageButton().setEnabled(true);
+      view.getClearAnchoragesButton().setEnabled(true);
     } else if (anchoragesCount > 1) {
-      view.getAnchorageButtons()
-          .forEach(button -> button.setEnabled(true));
+      view.getAnchorageButtons().forEach(button -> button.setEnabled(true));
     }
 
     if (Constants.MAX_ANCHORED_PLAYERS - anchoredPlayersCount < 2) {
-      view.getNewAnchorageButton()
-          .setEnabled(false);
+      view.getNewAnchorageButton().setEnabled(false);
       view.getCheckboxesMap()
           .values()
           .stream()
           .flatMap(List::stream)
           .forEach(checkbox -> checkbox.setEnabled(!checkbox.isEnabled()));
-    } else {
-      view.getNewAnchorageButton()
-          .setEnabled(true);
-      view.getCheckboxesMap()
-          .values()
-          .stream()
-          .flatMap(List::stream)
-          .filter(checkbox -> !checkbox.isEnabled() && !checkbox.isSelected())
-          .forEach(checkbox -> checkbox.setEnabled(true));
+
+      return;
     }
+
+    view.getNewAnchorageButton().setEnabled(true);
+    view.getCheckboxesMap()
+        .values()
+        .stream()
+        .flatMap(List::stream)
+        .filter(checkbox -> !checkbox.isEnabled() && !checkbox.isSelected())
+        .forEach(checkbox -> checkbox.setEnabled(true));
   }
 
   /**
@@ -385,26 +374,6 @@ public class AnchoragesController extends Controller<AnchoragesView> {
   }
 
   /**
-   * The checkboxes that were selected whose players were not anchored, are deselected. Then, shows the corresponding following view.
-   */
-  private void finish() {
-    hideView();
-    clearCheckboxes();
-
-    if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
-      ((SkillPointsInputController) CommonFunctions.getController(ProgramView.SKILL_POINTS)).updateNameLabels();
-
-      CommonFunctions.getController(ProgramView.SKILL_POINTS)
-                     .showView();
-    } else {
-      ((ResultsController) CommonFunctions.getController(ProgramView.RESULTS)).setUp();
-
-      CommonFunctions.getController(ProgramView.RESULTS)
-                     .showView();
-    }
-  }
-
-  /**
    * Sets the corresponding anchorage number to the selected players. Then, unchecks their checkboxes and makes them invisible.
    *
    * @param cbSet Check boxes set with players checked.
@@ -468,7 +437,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @return Whether the number of selected players is at most the maximum allowed per anchorage.
    */
   private boolean validAnchoredPlayersCount(int playersToAnchorCount) {
-    return anchoredPlayersCount + playersToAnchorCount <= Constants.MAX_ANCHORED_PLAYERS;
+    return (anchoredPlayersCount + playersToAnchorCount) <= Constants.MAX_ANCHORED_PLAYERS;
   }
 
   /**
@@ -486,13 +455,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @return Whether the existing anchorages combination is possible to distribute.
    */
   private boolean validAnchoragesCombination(int recursiveVerificationIndex, List<Team> teams) {
-    if (recursiveVerificationIndex == CommonFunctions.getAnchorages()
-                                                     .size()) {
-      return validTeams(teams);
+    if (recursiveVerificationIndex == CommonFunctions.getAnchorages().size()) {
+      return areValidTeams(teams);
     }
 
-    List<Player> anchorage = CommonFunctions.getAnchorages()
-                                            .get(recursiveVerificationIndex);
+    List<Player> anchorage = CommonFunctions.getAnchorages().get(recursiveVerificationIndex);
 
     for (Team team : teams) {
       if (!anchoragesConflictExists(team, anchorage)) {
@@ -538,7 +505,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    *
    * @return Whether any of the given teams has any position set with more than its allowed players limit.
    */
-  private boolean validTeams(List<Team> teams) {
+  private boolean areValidTeams(List<Team> teams) {
     return teams.stream()
                 .allMatch(team -> CommonFields.getPlayerLimitPerPosition()
                                               .entrySet()

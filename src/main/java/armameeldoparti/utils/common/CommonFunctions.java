@@ -175,6 +175,17 @@ public final class CommonFunctions {
   }
 
   /**
+   * Checks if the skill points of the given teams are equal.
+   *
+   * @param teams Teams to check if their skill points are equal.
+   *
+   * @return Whether the skill points of the given teams are equal.
+   */
+  public static boolean teamsSkillPointsAreEqual(List<Team> teams) {
+    return getTeamsSkillDifference(teams) == 0;
+  }
+
+  /**
    * Determines the monitor on which the majority of the given view is displayed and sets it as the active monitor.
    *
    * @param view Reference view from which the active monitor will be determined.

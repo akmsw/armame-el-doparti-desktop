@@ -31,8 +31,7 @@ public class HelpController extends Controller<HelpView> {
 
   // ---------- Private constants --------------------------------------------------------------------------------------------------------------------
 
-  private static final int TOTAL_HELP_PAGES = Constants.MAP_HELP_PAGES_FILES
-                                                       .size();
+  private static final int TOTAL_HELP_PAGES = Constants.MAP_HELP_PAGES_FILES.size();
 
   // ---------- Private fields -----------------------------------------------------------------------------------------------------------------------
 
@@ -60,38 +59,71 @@ public class HelpController extends Controller<HelpView> {
     hideView();
     resetView();
 
-    CommonFunctions.getController(ProgramView.MAIN_MENU)
-                   .showView();
+    CommonFunctions.getController(ProgramView.MAIN_MENU).showView();
   }
 
   /**
    * Increments the page number updating the state of the buttons, the displayed page in the text area and the reading progress label.
    */
   public void nextPageButtonEvent() {
-    if (++currentPageNumber < TOTAL_HELP_PAGES - 1) {
-      view.getPreviousPageButton()
-          .setEnabled(true);
-    } else {
-      view.getNextPageButton()
-          .setEnabled(false);
-    }
+    currentPageNumber++;
 
-    updatePage();
+    updateView();
   }
 
   /**
    * Decrements the page number updating the state of the buttons, the displayed page in the text area and the reading progress label.
    */
   public void previousPageButtonEvent() {
-    if (--currentPageNumber > 0) {
-      view.getNextPageButton()
-          .setEnabled(true);
-    } else {
-      view.getPreviousPageButton()
-          .setEnabled(false);
-    }
+    currentPageNumber--;
 
+    updateView();
+  }
+
+  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
+
+  @Override
+  protected void setUpInitialState() {
+    resetView();
+  }
+
+  @Override
+  protected void resetView() {
+    setCurrentPageNumber(0);
+    updateView();
+  }
+
+  @Override
+  protected void setUpListeners() {
+    view.getPreviousPageButton().addActionListener(_ -> previousPageButtonEvent());
+    view.getNextPageButton().addActionListener(_ -> nextPageButtonEvent());
+    view.getBackButton().addActionListener(_ -> backButtonEvent());
+  }
+
+  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * Updates the view state according to the current page number.
+   */
+  private void updateView() {
+    updateNavigationButtons();
+    updateReadingProgressLabel();
     updatePage();
+  }
+
+  /**
+   * Updates the state of the navigation buttons according to the current page number.
+   */
+  private void updateNavigationButtons() {
+    view.getPreviousPageButton().setEnabled(currentPageNumber > 0);
+    view.getNextPageButton().setEnabled(currentPageNumber < TOTAL_HELP_PAGES - 1);
+  }
+
+  /**
+   * Updates the reading progress label text according to the current page number.
+   */
+  private void updateReadingProgressLabel() {
+    view.getPagesCounter().setText((currentPageNumber + 1) + "/" + TOTAL_HELP_PAGES);
   }
 
   /**
@@ -99,13 +131,10 @@ public class HelpController extends Controller<HelpView> {
    *
    * <p>Finds the text file corresponding to the page number and displays its content.
    */
-  public void updatePage() {
+  private void updatePage() {
     JTextArea textArea = view.getTextArea();
 
-    view.getPageTitleTextField()
-        .setText(Constants.MAP_HELP_PAGES_FILES
-                          .get(currentPageNumber)
-                          .get(Constants.INDEX_HELP_PAGE_TITLE));
+    view.getPageTitleTextField().setText(Constants.MAP_HELP_PAGES_FILES.get(currentPageNumber).get(Constants.INDEX_HELP_PAGE_TITLE));
 
     textArea.setText("");
 
@@ -116,10 +145,9 @@ public class HelpController extends Controller<HelpView> {
                                 new InputStreamReader(
                                   Objects.requireNonNull(HelpController.class
                                                                        .getClassLoader()
-                                                                       .getResourceAsStream(Constants.PATH_HELP_DOCS
-                                                                                            + Constants.MAP_HELP_PAGES_FILES
-                                                                                                       .get(currentPageNumber)
-                                                                                                       .get(Constants.INDEX_HELP_PAGE_FILENAME)),
+                                                                       .getResourceAsStream(Constants.PATH_HELP_DOCS + Constants.MAP_HELP_PAGES_FILES
+                                                                                                                                .get(currentPageNumber)
+                                                                                                                                .get(Constants.INDEX_HELP_PAGE_FILENAME)),
                                                          Constants.MSG_ERROR_NULL_GUI_RESOURCE),
                                   StandardCharsets.UTF_8
                                 )
@@ -131,53 +159,6 @@ public class HelpController extends Controller<HelpView> {
     } catch (IOException exception) {
       CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
     }
-  }
-
-  // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
-
-  @Override
-  protected void resetView() {
-    setCurrentPageNumber(0);
-    updatePage();
-    resetButtons();
-  }
-
-  @Override
-  protected void setUpInitialState() {
-    setCurrentPageNumber(0);
-
-    view.getPreviousPageButton()
-        .setEnabled(false);
-  }
-
-  @Override
-  protected void setUpListeners() {
-    view.getPreviousPageButton()
-        .addActionListener(_ -> previousPageButtonEvent());
-    view.getNextPageButton()
-        .addActionListener(_ -> nextPageButtonEvent());
-    view.getBackButton()
-        .addActionListener(_ -> backButtonEvent());
-  }
-
-  // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * Updates the reading progress label text.
-   */
-  private void updateReadingProgressLabel() {
-    view.getPagesCounter()
-        .setText(currentPageNumber + 1 + "/" + TOTAL_HELP_PAGES);
-  }
-
-  /**
-   * Resets the navigation buttons to their initial state.
-   */
-  private void resetButtons() {
-    view.getPreviousPageButton()
-        .setEnabled(false);
-    view.getNextPageButton()
-        .setEnabled(true);
   }
 
   // ---------- Getters ------------------------------------------------------------------------------------------------------------------------------

@@ -85,7 +85,7 @@ public class ResultsController extends Controller<ResultsView> {
    * Creates the teams and the results table, applies the needed table format, fills the non-variable table cells and displays the distribution
    * results.
    */
-  public void setUp() {
+  private void setUp() {
     teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2)) : bySkillPointsMix(Arrays.asList(team1, team2)));
 
     view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
@@ -109,16 +109,13 @@ public class ResultsController extends Controller<ResultsView> {
     resetTeams();
     resetView();
 
-    ProgramView previousView;
+    ProgramView previousView = ProgramView.SKILL_POINTS;
 
     if (CommonFields.getDistribution() == Distribution.MIX_RANDOM) {
       previousView = CommonFields.isAnchoragesEnabled() ? ProgramView.ANCHORAGES : ProgramView.NAMES_INPUT;
-    } else {
-      previousView = ProgramView.SKILL_POINTS;
     }
 
-    CommonFunctions.getController(previousView)
-                   .showView();
+    CommonFunctions.getController(previousView).showView();
   }
 
   /**
@@ -193,6 +190,14 @@ public class ResultsController extends Controller<ResultsView> {
 
   // ---------- Protected methods --------------------------------------------------------------------------------------------------------------------
 
+  @Override
+  protected void showView() {
+    setUp();
+    centerView();
+
+    view.setVisible(true);
+  }
+
   /**
    * Disposes the controlled view and creates a new one to control.
    */
@@ -211,10 +216,8 @@ public class ResultsController extends Controller<ResultsView> {
 
   @Override
   protected void setUpListeners() {
-    view.getBackButton()
-        .addActionListener(_ -> backButtonEvent());
-    view.getRemixButton()
-        .addActionListener(_ -> remixButtonEvent());
+    view.getBackButton().addActionListener(_ -> backButtonEvent());
+    view.getRemixButton().addActionListener(_ -> remixButtonEvent());
   }
 
   // ---------- Private methods ----------------------------------------------------------------------------------------------------------------------
@@ -250,9 +253,11 @@ public class ResultsController extends Controller<ResultsView> {
       for (int column = 0; column < teams.size(); column++) {
         table.setValueAt(column == 0 ? positionsMap.get(Position.GOALKEEPER) : "Puntuación del equipo", table.getRowCount() + column - 2, 0);
       }
-    } else {
-      table.setValueAt(positionsMap.get(Position.GOALKEEPER), table.getRowCount() - 1, 0);
+
+      return;
     }
+
+    table.setValueAt(positionsMap.get(Position.GOALKEEPER), table.getRowCount() - 1, 0);
   }
 
   /**
@@ -341,7 +346,7 @@ public class ResultsController extends Controller<ResultsView> {
                                                                                  .filter(player -> player.getName() == value)
                                                                                  .findFirst());
 
-              component.setBackground(playerOnCell.getAnchorageNumber() != 0 ? Constants.COLORS_ANCHORAGES.get(playerOnCell.getAnchorageNumber() - 1) : Constants.COLOR_GREEN_LIGHT_WHITE);
+              component.setBackground(playerOnCell.isAnchored() ? Constants.COLORS_ANCHORAGES.get(playerOnCell.getAnchorageNumber() - 1) : Constants.COLOR_GREEN_LIGHT_WHITE);
               component.setForeground(Color.BLACK);
 
               ((DefaultTableCellRenderer) component).setHorizontalAlignment(SwingConstants.LEFT);
