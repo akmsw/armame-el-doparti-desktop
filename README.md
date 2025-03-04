@@ -103,6 +103,12 @@ No se pueden anclar a un mismo equipo todos los jugadores de un mismo tipo (por 
 - Importantes cambios generales de refactorización.
 
 ## 🛠️ Solución a problemas frecuentes
+### En Windows
+- Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, probá esto:
+  - Entrá a [esta página](https://johann.loefflmann.net/en/software/jarfix/index.html)
+  - Descargá el archivo ejecutable llamado **jarfix.exe**
+  - Abrí el ejecutable y dejá que solucione el problema automáticamente
+  - Probá abrirlo con doble click nuevamente
 ### 🐧 En Linux
 - Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, probá esto:
   - Click derecho sobre el archivo descargado
