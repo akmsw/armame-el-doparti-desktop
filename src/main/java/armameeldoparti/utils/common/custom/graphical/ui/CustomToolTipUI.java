@@ -1,5 +1,6 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
+import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.Constants;
 
 import java.awt.AlphaComposite;
@@ -45,25 +46,25 @@ public class CustomToolTipUI extends ToolTipUI {
   public void paint(Graphics graphics, JComponent component) {
     Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-    RoundRectangle2D roundedRect = new RoundRectangle2D.Float(0, 0, component.getWidth(), component.getHeight(), Constants.ROUNDED_BORDER_ARC_TOOLTIP, Constants.ROUNDED_BORDER_ARC_TOOLTIP);
-
-    // Round rectangle configuration
-    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    graphics2d.setComposite(AlphaComposite.Clear);
-    graphics2d.fill(roundedRect);
-
-    // Background painting
-    graphics2d.setComposite(AlphaComposite.Src);
-    graphics2d.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
-    graphics2d.fill(roundedRect);
-
-    // Text painting
     FontMetrics fontMetric = graphics2d.getFontMetrics();
 
-    String text = ((JToolTip) component).getTipText();
+    String tooltipText = ((JToolTip) component).getTipText();
 
+    CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, (component.getWidth()), (component.getHeight()), (Constants.ROUNDED_BORDER_ARC_TOOLTIP), (Constants.ROUNDED_BORDER_ARC_TOOLTIP)));
+
+    // Transparent background painting
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setComposite(AlphaComposite.Clear);
+    graphics2d.fillRect(0, 0, component.getWidth(), component.getHeight());
+
+    // Rounded rectangle background painting
+    graphics2d.setComposite(AlphaComposite.SrcOver);
+    graphics2d.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
+    graphics2d.fill(CommonFields.getTooltipRectangle());
+
+    // Text painting
     graphics2d.setColor(Color.WHITE);
-    graphics2d.drawString(text, ((component.getWidth() - fontMetric.stringWidth(text)) / 2), (((component.getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
+    graphics2d.drawString(tooltipText, ((component.getWidth() - fontMetric.stringWidth(tooltipText)) / 2), (((component.getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
     graphics2d.dispose();
   }
 

@@ -8,7 +8,7 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.views.View;
 
 import java.awt.GraphicsDevice;
-
+import java.awt.geom.RoundRectangle2D;
 import java.util.List;
 import java.util.Map;
 
@@ -31,6 +31,8 @@ public final class CommonFields {
 
   private static GraphicsDevice activeMonitor;
 
+  private static RoundRectangle2D tooltipRectangle;
+
   private static Map<Position, Integer> playerLimitPerPosition;
   private static Map<Position, List<Player>> playersSets;
   private static Map<Position, String> positionsMap;
@@ -47,16 +49,20 @@ public final class CommonFields {
 
   // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  public static Distribution getDistribution() {
-    return distribution;
-  }
-
   public static boolean isAnchoragesEnabled() {
     return anchoragesEnabled;
   }
 
+  public static Distribution getDistribution() {
+    return distribution;
+  }
+
   public static GraphicsDevice getActiveMonitor() {
     return activeMonitor;
+  }
+
+  public static RoundRectangle2D getTooltipRectangle() {
+    return tooltipRectangle;
   }
 
   public static Map<Position, Integer> getPlayerLimitPerPosition() {
@@ -81,16 +87,20 @@ public final class CommonFields {
 
   // ---------- Setters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  public static void setDistribution(Distribution distribution) {
-    CommonFields.distribution = distribution;
-  }
-
   public static void setAnchoragesEnabled(boolean anchoragesEnabled) {
     CommonFields.anchoragesEnabled = anchoragesEnabled;
   }
 
+  public static void setDistribution(Distribution distribution) {
+    CommonFields.distribution = distribution;
+  }
+
   public static void setActiveMonitor(GraphicsDevice activeMonitor) {
     CommonFields.activeMonitor = activeMonitor;
+  }
+
+  public static void setTooltipRectangle(RoundRectangle2D tooltipRectangle) {
+    CommonFields.tooltipRectangle = tooltipRectangle;
   }
 
   public static void setPlayerLimitPerPosition(Map<Position, Integer> playerLimitPerPosition) {

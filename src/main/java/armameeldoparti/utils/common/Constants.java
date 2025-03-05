@@ -114,7 +114,7 @@ public final class Constants {
   public static final int ROUNDED_BORDER_ARC_SEPARATOR = 4;
   public static final int ROUNDED_BORDER_ARC_SPINNER = 10;
   public static final int ROUNDED_BORDER_ARC_TABLE_CELLS = 15;
-  public static final int ROUNDED_BORDER_ARC_TOOLTIP = 15;
+  public static final int ROUNDED_BORDER_ARC_TOOLTIP = 20;
   public static final int ROUNDED_BORDER_INSETS_COMBOBOX = 6;
   public static final int ROUNDED_BORDER_INSETS_GENERAL = 8;
   public static final int ROUNDED_BORDER_INSETS_LABEL = 8;
