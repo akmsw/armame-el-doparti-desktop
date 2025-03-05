@@ -25,8 +25,9 @@
 - [Nuevas funcionalidades](https://github.com/akmsw/armame-el-doparti#-nuevas-funcionalidades)
   - [Anclaje de jugadores](https://github.com/akmsw/armame-el-doparti#-anclaje-de-jugadores)
 - [Mejoras](https://github.com/akmsw/armame-el-doparti#-mejoras)
-- [Solución a problemas frecuentes](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-soluci%C3%B3n-de-problemas-comunes)
-  - [En Linux](https://github.com/akmsw/armame-el-doparti#-en-Linux)
+- [Solución a problemas frecuentes](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-soluci%C3%B3n-a-problemas-frecuentes)
+  - [En Windows](https://github.com/akmsw/armame-el-doparti#-en-windows)
+  - [En Linux](https://github.com/akmsw/armame-el-doparti#-en-linux)
 - [Próximamente](https://github.com/akmsw/armame-el-doparti#-pr%C3%B3ximamente)
 - [Reportes y sugerencias](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-reportes-y-sugerencias)
 - [Capturas de pantalla](https://github.com/akmsw/armame-el-doparti#-capturas-de-pantalla)
@@ -103,14 +104,13 @@ No se pueden anclar a un mismo equipo todos los jugadores de un mismo tipo (por 
 - Importantes cambios generales de refactorización.
 
 ## 🛠️ Solución a problemas frecuentes
-### En Windows
-- Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, probá esto:
+Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, acá te dejo algunas posibles soluciones.
+### 🪟 En Windows
   - Entrá a [esta página](https://johann.loefflmann.net/en/software/jarfix/index.html)
   - Descargá el archivo ejecutable llamado **jarfix.exe**
   - Abrí el ejecutable y dejá que solucione el problema automáticamente
   - Probá abrirlo con doble click nuevamente
 ### 🐧 En Linux
-- Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, probá esto:
   - Click derecho sobre el archivo descargado
   - Propiedades
   - Abrir con...
