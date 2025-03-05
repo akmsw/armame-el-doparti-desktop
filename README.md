@@ -53,7 +53,8 @@ Podés consultar el historial de versiones estables y betas en la sección [rele
 
 ## ▶️ Instalación y ejecución
 Más allá de los requisitos listados, no hace falta ninguna instalación para correr este programa.\
-Una vez descargado el archivo `.jar`, e independientemente del sistema operativo que uses, podés dirigirte a la carpeta donde está situado y abrirlo con un simple *doble click*. En caso de estar en Linux y que el programa no se abra, revisá la sección de [solución a problemas frecuentes en Linux](https://github.com/akmsw/armame-el-doparti#-en-Linux).\
+Una vez descargado el archivo `.jar`, e independientemente del sistema operativo que uses, podés dirigirte a la carpeta donde está situado y abrirlo con un simple *doble click*. En caso de que el programa no se abra, revisá la sección de [solución a problemas frecuentes](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-soluci%C3%B3n-a-problemas-frecuentes).\
+Si estás en Windows podés descargar el archivo `.exe` y abrirlo directamente con *doble click* también, ignorando el archivo `.jar`.\
 Una alternativa es abrir una terminal dentro de la carpeta contenedora del archivo y ejecutar el comando:
 ```bash
 java -jar armameeldoparti-3.0.jar
@@ -104,19 +105,21 @@ No se pueden anclar a un mismo equipo todos los jugadores de un mismo tipo (por 
 - Importantes cambios generales de refactorización.
 
 ## 🛠️ Solución a problemas frecuentes
-Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, acá te dejo algunas posibles soluciones.
+Si instalaste correctamente [una versión válida del JDK de Java](https://github.com/akmsw/armame-el-doparti#-java) y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, acá te dejo algunas posibles soluciones:
 ### 🪟 En Windows
-  - Entrá a [esta página](https://johann.loefflmann.net/en/software/jarfix/index.html)
-  - Descargá el archivo ejecutable llamado **jarfix.exe**
-  - Abrí el ejecutable y dejá que solucione el problema automáticamente
-  - Probá abrirlo con doble click nuevamente
+  - Corregir programa asociado a ejecución de archivos `.jar`
+    - Entrá a [esta página](https://johann.loefflmann.net/en/software/jarfix/index.html)
+    - Descargá el archivo ejecutable llamado **jarfix.exe**
+    - Hacele doble click al `.exe` descargado y dejá que solucione el problema automáticamente
 ### 🐧 En Linux
-  - Click derecho sobre el archivo descargado
-  - Propiedades
-  - Abrir con...
-  - En el campo de ingreso de comando personalizado, poné: `java -jar`
-  - Seleccionalo como opción predeterminada para la ejecución de archivos `.jar`
-  - Probá abrirlo con doble click nuevamente
+  - Configurar comando personalizado para la ejecución de archivos `.jar`
+    - Hacé click derecho sobre el archivo descargado
+    - Hacé click en *Propiedades*
+    - Hacé click en *Abrir con...*
+    - En el campo de ingreso de comando personalizado, poné: `java -jar`
+    - Hacé click en *Establecer como comando predeterminado* para que quede asociado a la ejecución de archivos `.jar`
+
+Luego de seguir estos pasos, probá abrir el archivo `.jar` con doble click nuevamente. Si el problema persiste, 
 
 ## 🔜 Próximamente
 Si querés estar al tanto de qué cambios están planeados para las próximas versiones, [acá](https://github.com/akmsw/armame-el-doparti/projects?query=is%3Aopen?type=new&query=is:open%20sort:title-asc) vas a poder ver los detalles y metas planificadas.
