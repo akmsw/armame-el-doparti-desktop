@@ -62,7 +62,7 @@
   </summary>
 
   Más allá de los requisitos listados, no hace falta ninguna instalación para correr este programa.\
-  Una vez descargado el archivo `.jar`, e independientemente del sistema operativo que uses, podés dirigirte a la carpeta donde está situado y abrirlo con un simple *doble click*. En caso de que el programa no se abra, revisá la sección de [solución a problemas frecuentes](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-soluci%C3%B3n-a-problemas-frecuentes).\
+  Una vez descargado el archivo `.jar`, e independientemente del sistema operativo que uses, podés dirigirte a la carpeta donde está situado y abrirlo con un simple *doble click*. En caso de que el programa no se abra, revisá la sección de solución a problemas frecuentes.\
   Si estás en Windows podés descargar el archivo `.exe` y abrirlo directamente con *doble click* también, ignorando el archivo `.jar`.\
   Una alternativa es abrir una terminal dentro de la carpeta contenedora del archivo y ejecutar el comando:
   ```bash
@@ -77,7 +77,7 @@
     <h2 style="display:inline-block; border-bottom:none">🛠️ Compilación manual y ejecución</h2>
   </summary>
 
-  Para compilar manualmente el programa, asumiendo que instalaste correctamente tanto los [requisitos generales](https://github.com/akmsw/armame-el-doparti#-requisitos-generales) como los [requisitos para compilación manual](https://github.com/akmsw/armame-el-doparti#%EF%B8%8F-requisitos-para-compilaci%C3%B3n-manual), tenés que [descargar el proyecto en formato ZIP](https://github.com/akmsw/armame-el-doparti/archive/refs/heads/develop-v3.0.zip), extraer el archivo y, dentro de la carpeta extraída, ejecutar Apache Maven haciendo uso del archivo `pom.xml` mediante la terminal, con el siguiente comando:
+  Para compilar manualmente el programa, asumiendo que instalaste correctamente tanto los requisitos generales como los requisitos para compilación manual, tenés que [descargar el proyecto en formato ZIP](https://github.com/akmsw/armame-el-doparti/archive/refs/heads/develop-v3.0.zip), extraer el archivo y, dentro de la carpeta extraída, ejecutar Apache Maven haciendo uso del archivo `pom.xml` mediante la terminal, con el siguiente comando:
   ```bash
   mvn package --file pom.xml
   ```
@@ -147,7 +147,8 @@
   <summary>
     <h2 style="display:inline-block; border-bottom:none">🛠️ Solución a problemas frecuentes</h2>
   </summary>
-  Si instalaste correctamente [una versión válida del JDK de Java](https://github.com/akmsw/armame-el-doparti#-java) y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, acá te dejo algunas posibles soluciones:
+
+  Si instalaste correctamente una versión válida del JDK de Java y el archivo `.jar` no se ejecuta automáticamente al hacerle doble click, acá te dejo algunas posibles soluciones:
 
   <details style="margin-left:2em">
     <summary>
