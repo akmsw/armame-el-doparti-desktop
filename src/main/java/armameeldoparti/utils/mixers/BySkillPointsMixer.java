@@ -142,7 +142,7 @@ public class BySkillPointsMixer implements PlayersMixer {
           teamNumber = 1;
         }
 
-        player.setTeamNumber(teamNumber);
+        player.setTeamNumber(teamNumber + 1);
 
         teams.get(teamNumber)
               .getTeamPlayers()
@@ -180,13 +180,13 @@ public class BySkillPointsMixer implements PlayersMixer {
                                                                    .reduce(0, Math::addExact)));
 
     for (Team team : teams) {
-      for (Player player : playersSubsets.get(team.getTeamNumber())) {
+      for (Player player : playersSubsets.get(team.getTeamNumber() - 1)) {
         player.setTeamNumber(team.getTeamNumber());
       }
 
       team.getTeamPlayers()
           .get(position)
-          .addAll(playersSubsets.get(team.getTeamNumber()));
+          .addAll(playersSubsets.get(team.getTeamNumber() - 1));
     }
   }
 

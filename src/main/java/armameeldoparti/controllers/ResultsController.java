@@ -71,8 +71,8 @@ public class ResultsController extends Controller<ResultsView> {
 
     randomMixer = new RandomMixer();
 
-    team1 = new Team(0);
-    team2 = new Team(1);
+    team1 = new Team(1);
+    team2 = new Team(2);
 
     teams = new ArrayList<>();
 
@@ -105,7 +105,8 @@ public class ResultsController extends Controller<ResultsView> {
    * Resets the teams, resets the controlled view to its default values and makes it invisible, and shows the corresponding previous view.
    */
   public void backButtonEvent() {
-    resetTeams();
+    teams.forEach(Team::clear);
+
     resetView();
 
     ProgramView previousView = ProgramView.SKILL_POINTS;
@@ -121,7 +122,7 @@ public class ResultsController extends Controller<ResultsView> {
    * Resets the teams, redistributes the players with the specified method and updates the results table.
    */
   public void remixButtonEvent() {
-    resetTeams();
+    teams.forEach(Team::clear);
 
     teams = randomMix(Arrays.asList(team1, team2));
 
@@ -257,19 +258,6 @@ public class ResultsController extends Controller<ResultsView> {
     }
 
     table.setValueAt(positionsMap.get(Position.GOALKEEPER), table.getRowCount() - 1, 0);
-  }
-
-  /**
-   * Resets both teams.
-   */
-  private void resetTeams() {
-    teams.forEach(Team::clear);
-
-    CommonFields.getPlayersSets()
-                .values()
-                .stream()
-                .flatMap(List::stream)
-                .forEach(player -> player.setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED));
   }
 
   /**

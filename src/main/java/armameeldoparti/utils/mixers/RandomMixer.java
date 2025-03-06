@@ -126,9 +126,9 @@ public class RandomMixer implements PlayersMixer {
         }
 
         for (Player player : anchorage) {
-          player.setTeamNumber(availableTeamNumber);
+          player.setTeamNumber(availableTeamNumber + 1);
 
-          teams.get(1 - availableTeamNumber)
+          teams.get(availableTeamNumber)
                .getTeamPlayers()
                .get(player.getPosition())
                .add(player);
@@ -152,7 +152,7 @@ public class RandomMixer implements PlayersMixer {
                     CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
                   }
 
-                  player.setTeamNumber(availableTeamNumber);
+                  player.setTeamNumber(availableTeamNumber + 1);
 
                   teams.get(availableTeamNumber)
                        .getTeamPlayers()
