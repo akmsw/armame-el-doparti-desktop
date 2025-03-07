@@ -94,8 +94,9 @@ public class HelpView extends View {
    */
   private void addTextArea() {
     setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setScrollPane(new CustomScrollPane(textArea));
 
-    masterPanel.add(new CustomScrollPane(textArea));
+    masterPanel.add(getScrollPane());
   }
 
   /**
