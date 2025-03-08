@@ -79,7 +79,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   public void mixButtonEvent(Component parentComponent) {
     hideView();
 
-    CommonFields.setDistribution(view.getRadioButtonRandom().isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
+    CommonFields.setDistribution(view.getRandomRadioButton().isSelected() ? Distribution.MIX_RANDOM : Distribution.MIX_BY_SKILL_POINTS);
 
     // Distribution with anchorages
     if (CommonFields.isAnchoragesEnabled()) {
@@ -155,7 +155,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    */
   public void radioButtonEvent(ItemEvent event) {
     if (event.getStateChange() == ItemEvent.SELECTED) {
-      (event.getSource() == view.getRadioButtonRandom() ? view.getRadioButtonBySkillPoints() : view.getRadioButtonRandom()).setSelected(false);
+      (event.getSource() == view.getRandomRadioButton() ? view.getBySkillPointsRadioButton() : view.getRandomRadioButton()).setSelected(false);
     }
 
     validateMixButtonEnable();
@@ -173,8 +173,8 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.getComboBox().requestFocusInWindow();
     view.getTextArea().setText("");
     view.getMixButton().setEnabled(false);
-    view.getRadioButtonRandom().setSelected(false);
-    view.getRadioButtonBySkillPoints().setSelected(false);
+    view.getRandomRadioButton().setSelected(false);
+    view.getBySkillPointsRadioButton().setSelected(false);
 
     updateTextFields(view.getComboBox().getItemAt(0));
   }
@@ -189,8 +189,8 @@ public class NamesInputController extends Controller<NamesInputView> {
   protected void setUpListeners() {
     view.getMixButton().addActionListener(_ -> mixButtonEvent(view));
     view.getBackButton().addActionListener(_ -> backButtonEvent());
-    view.getRadioButtonRandom().addItemListener(this::radioButtonEvent);
-    view.getRadioButtonBySkillPoints().addItemListener(this::radioButtonEvent);
+    view.getRandomRadioButton().addItemListener(this::radioButtonEvent);
+    view.getBySkillPointsRadioButton().addItemListener(this::radioButtonEvent);
     view.getComboBox().addActionListener(event -> comboBoxEvent((String) Objects.requireNonNull(((JComboBox<?>) event.getSource()).getSelectedItem())));
     view.getAnchoragesCheckbox().addActionListener(_ -> CommonFields.setAnchoragesEnabled(!CommonFields.isAnchoragesEnabled()));
     view.getTextFieldsMap()
@@ -341,7 +341,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    * @return Whether the user has chosen a players distribution method.
    */
   private boolean distributionMethodHasBeenChosen() {
-    return view.getRadioButtonRandom().isSelected() || view.getRadioButtonBySkillPoints().isSelected();
+    return view.getRandomRadioButton().isSelected() || view.getBySkillPointsRadioButton().isSelected();
   }
 
   /**

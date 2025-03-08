@@ -27,6 +27,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSeparator;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -65,8 +66,10 @@ public class NamesInputView extends View {
   private JPanel leftBottomPanel;
   private JPanel rightPanel;
 
-  private JRadioButton radioButtonBySkillPoints;
-  private JRadioButton radioButtonRandom;
+  private JRadioButton bySkillPointsRadioButton;
+  private JRadioButton randomRadioButton;
+
+  private JSeparator separator;
 
   private JScrollPane scrollPane;
 
@@ -103,6 +106,7 @@ public class NamesInputView extends View {
     addComboBox();
     addTextFields();
     addRadioButtons();
+    addSeparator();
     addAnchoragesCheckbox();
     addTextArea();
     addButtons();
@@ -166,14 +170,22 @@ public class NamesInputView extends View {
    * <p>The event handler could be written in this class, but for the sake of the MVC design pattern good practices, the controller should be the responsible for events handling.
    */
   private void addRadioButtons() {
-    setRadioButtonRandom(new CustomRadioButton("Aleatoria"));
-    setRadioButtonBySkillPoints(new CustomRadioButton("Por puntajes"));
+    setRandomRadioButton(new CustomRadioButton("Aleatoria"));
+    setBySkillPointsRadioButton(new CustomRadioButton("Por puntajes"));
     setDistributionLabel(new CustomLabel("Distribución", null, SwingConstants.CENTER));
 
     leftBottomPanel.add(distributionLabel, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
-    leftBottomPanel.add(radioButtonRandom);
-    leftBottomPanel.add(radioButtonBySkillPoints);
-    leftBottomPanel.add(new CustomSeparator(), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
+    leftBottomPanel.add(randomRadioButton);
+    leftBottomPanel.add(bySkillPointsRadioButton);
+  }
+
+  /**
+   * Adds the custom separator to divide the radio buttons and the anchorages checkbox.
+   */
+  private void addSeparator() {
+    setSeparator(new CustomSeparator());
+
+    leftBottomPanel.add(separator, Constants.MIG_LAYOUT_GROWX);
   }
 
   /**
@@ -233,12 +245,16 @@ public class NamesInputView extends View {
     return rightPanel;
   }
 
-  public JRadioButton getRadioButtonBySkillPoints() {
-    return radioButtonBySkillPoints;
+  public JRadioButton getBySkillPointsRadioButton() {
+    return bySkillPointsRadioButton;
   }
 
-  public JRadioButton getRadioButtonRandom() {
-    return radioButtonRandom;
+  public JRadioButton getRandomRadioButton() {
+    return randomRadioButton;
+  }
+
+  public JSeparator getSeparator() {
+    return separator;
   }
 
   public JScrollPane getScrollPane() {
@@ -291,6 +307,10 @@ public class NamesInputView extends View {
     this.rightPanel = rightPanel;
   }
 
+  public void setSeparator(JSeparator separator) {
+    this.separator = separator;
+  }
+
   public void setScrollPane(JScrollPane scrollPane) {
     this.scrollPane = scrollPane;
   }
@@ -303,11 +323,11 @@ public class NamesInputView extends View {
     this.textFieldsMap = textFieldsMap;
   }
 
-  public void setRadioButtonBySkillPoints(JRadioButton radioButtonBySkillPoints) {
-    this.radioButtonBySkillPoints = radioButtonBySkillPoints;
+  public void setBySkillPointsRadioButton(JRadioButton radioButtonBySkillPoints) {
+    this.bySkillPointsRadioButton = radioButtonBySkillPoints;
   }
 
-  public void setRadioButtonRandom(JRadioButton radioButtonRandom) {
-    this.radioButtonRandom = radioButtonRandom;
+  public void setRandomRadioButton(JRadioButton radioButtonRandom) {
+    this.randomRadioButton = radioButtonRandom;
   }
 }
