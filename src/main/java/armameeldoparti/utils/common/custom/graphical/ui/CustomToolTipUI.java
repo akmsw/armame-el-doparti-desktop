@@ -55,7 +55,7 @@ public class CustomToolTipUI extends ToolTipUI {
     // Transparent background painting
     graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
     graphics2d.setComposite(AlphaComposite.Clear);
-    graphics2d.setBackground(Constants.COLOR_TRANSPARENT);
+    graphics2d.setColor(Constants.COLOR_TRANSPARENT);
     graphics2d.fillRect(0, 0, component.getWidth(), component.getHeight());
 
     // Rounded rectangle background painting
