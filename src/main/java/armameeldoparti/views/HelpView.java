@@ -1,6 +1,5 @@
 package armameeldoparti.views;
 
-import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
@@ -75,7 +74,7 @@ public class HelpView extends View {
 
     masterPanel.add(previousPageButton, new CC().width("50%").split());
     masterPanel.add(nextPageButton, new CC().width("50%").wrap());
-    masterPanel.add(backButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_SPAN));
+    masterPanel.add(backButton, Constants.MIG_LAYOUT_GROWX);
   }
 
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
