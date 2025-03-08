@@ -68,9 +68,9 @@ public class HelpView extends View {
 
   @Override
   protected void addButtons() {
-    setPreviousPageButton(new CustomButton("Anterior", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setNextPageButton(new CustomButton("Siguiente", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setBackButton(new CustomButton("Volver al menú principal", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setPreviousPageButton(new CustomButton("Anterior"));
+    setNextPageButton(new CustomButton("Siguiente"));
+    setBackButton(new CustomButton("Volver al menú principal"));
 
     masterPanel.add(previousPageButton, new CC().width("50%").split());
     masterPanel.add(nextPageButton, new CC().width("50%").wrap());

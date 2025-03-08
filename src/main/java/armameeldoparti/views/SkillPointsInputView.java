@@ -68,9 +68,9 @@ public class SkillPointsInputView extends View {
 
   @Override
   protected void addButtons() {
-    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setFinishButton(new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setResetSkillPointsButton(new CustomButton("Reiniciar puntuaciones", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setBackButton(new CustomButton("Atrás"));
+    setFinishButton(new CustomButton("Finalizar"));
+    setResetSkillPointsButton(new CustomButton("Reiniciar puntuaciones"));
 
     masterPanel.add(finishButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
     masterPanel.add(resetSkillPointsButton, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));

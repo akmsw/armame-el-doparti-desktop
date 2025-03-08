@@ -35,8 +35,8 @@ public class ResultsView extends View {
   public ResultsView() {
     super(getUpdatedFrameTitle(), Constants.MIG_LAYOUT_WRAP);
 
-    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setRemixButton(new CustomButton("Redistribuir", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setBackButton(new CustomButton("Atrás"));
+    setRemixButton(new CustomButton("Redistribuir"));
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

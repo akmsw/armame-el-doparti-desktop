@@ -54,10 +54,10 @@ public class MainMenuView extends View {
 
   @Override
   protected void addButtons() {
-    setStartButton(new CustomButton("Comenzar", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setHelpButton(new CustomButton("Ayuda", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setContactButton(new CustomButton("Contacto", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setIssuesButton(new CustomButton("Reportes y sugerencias", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setStartButton(new CustomButton("Comenzar"));
+    setHelpButton(new CustomButton("Ayuda"));
+    setContactButton(new CustomButton("Contacto"));
+    setIssuesButton(new CustomButton("Reportes y sugerencias"));
 
     masterPanel.add(startButton, Constants.MIG_LAYOUT_GROWX);
     masterPanel.add(helpButton, Constants.MIG_LAYOUT_GROWX);

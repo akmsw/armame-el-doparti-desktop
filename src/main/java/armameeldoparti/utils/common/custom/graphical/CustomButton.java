@@ -29,6 +29,17 @@ public class CustomButton extends JButton {
    * Builds a basic rounded button using the established program aesthetics.
    *
    * @param text The text to display on the button.
+   */
+  public CustomButton(String text) {
+    super(text);
+    setArc(Constants.ROUNDED_BORDER_ARC_GENERAL);
+    setUpGraphicalProperties();
+  }
+
+  /**
+   * Builds a basic rounded button using the established program aesthetics.
+   *
+   * @param text The text to display on the button.
    * @param arc  The round borders arc.
    */
   public CustomButton(String text, int arc) {

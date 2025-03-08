@@ -132,8 +132,8 @@ public final class Constants {
   public static final int SKILL_MIN = 1;
   public static final int SKILL_STEP = 1;
   public static final int STROKE_BUTTON_ARROW = 5;
-  public static final int TOOLTIP_DISMISS_DELAY = 5000;
-  public static final int TOOLTIP_INITIAL_DELAY = 300;
+  public static final int DELAY_TOOLTIP_DISMISS = 5000;
+  public static final int DELAY_TOOLTIP_INITIAL = 300;
 
   public static final float SIZE_FONT_DEFAULT = 18f;
 

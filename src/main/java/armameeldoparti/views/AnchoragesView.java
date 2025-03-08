@@ -97,12 +97,12 @@ public class AnchoragesView extends View {
 
   @Override
   protected void addButtons() {
-    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setClearAnchoragesButton(new CustomButton("Limpiar anclajes", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setDeleteAnchorageButton(new CustomButton("Borrar un anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setDeleteLastAnchorageButton(new CustomButton("Borrar último anclaje", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setFinishButton(new CustomButton("Finalizar", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setNewAnchorageButton(new CustomButton("Anclar", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setBackButton(new CustomButton("Atrás"));
+    setClearAnchoragesButton(new CustomButton("Limpiar anclajes"));
+    setDeleteAnchorageButton(new CustomButton("Borrar un anclaje"));
+    setDeleteLastAnchorageButton(new CustomButton("Borrar último anclaje"));
+    setFinishButton(new CustomButton("Finalizar"));
+    setNewAnchorageButton(new CustomButton("Anclar"));
 
     anchorageButtons.add(finishButton);
     anchorageButtons.add(newAnchorageButton);

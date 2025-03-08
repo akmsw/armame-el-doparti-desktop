@@ -172,8 +172,8 @@ public final class Main {
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);
 
-    ToolTipManager.sharedInstance().setInitialDelay(Constants.TOOLTIP_INITIAL_DELAY);
-    ToolTipManager.sharedInstance().setDismissDelay(Constants.TOOLTIP_DISMISS_DELAY);
+    ToolTipManager.sharedInstance().setInitialDelay(Constants.DELAY_TOOLTIP_INITIAL);
+    ToolTipManager.sharedInstance().setDismissDelay(Constants.DELAY_TOOLTIP_DISMISS);
 
     try {
       Font programFont = Font.createFont(Font.TRUETYPE_FONT,

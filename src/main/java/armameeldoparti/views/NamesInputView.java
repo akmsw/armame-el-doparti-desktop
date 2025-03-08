@@ -116,8 +116,8 @@ public class NamesInputView extends View {
 
   @Override
   protected void addButtons() {
-    setMixButton(new CustomButton("Distribuir", Constants.ROUNDED_BORDER_ARC_GENERAL));
-    setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
+    setMixButton(new CustomButton("Distribuir"));
+    setBackButton(new CustomButton("Atrás"));
 
     rightPanel.add(mixButton, Constants.MIG_LAYOUT_GROWX);
     rightPanel.add(backButton, Constants.MIG_LAYOUT_GROWX);
