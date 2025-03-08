@@ -135,7 +135,7 @@ public final class Constants {
   public static final int TOOLTIP_DISMISS_DELAY = 5000;
   public static final int TOOLTIP_INITIAL_DELAY = 300;
 
-  public static final float FONT_SIZE = 18f;
+  public static final float SIZE_FONT_DEFAULT = 18f;
 
   public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
   public static final String FILENAME_ERROR_REPORT = "errorReport.txt";

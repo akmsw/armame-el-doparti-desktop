@@ -181,7 +181,7 @@ public final class Main {
                                                                                .getClassLoader()
                                                                                .getResourceAsStream(Constants.PATH_TTF + Constants.FILENAME_FONT),
                                                                 Constants.MSG_ERROR_NULL_GUI_RESOURCE))
-                             .deriveFont(Constants.FONT_SIZE);
+                             .deriveFont(Constants.SIZE_FONT_DEFAULT);
 
       GraphicsEnvironment.getLocalGraphicsEnvironment()
                          .registerFont(programFont);

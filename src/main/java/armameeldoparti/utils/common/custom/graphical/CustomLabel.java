@@ -38,7 +38,7 @@ public class CustomLabel extends JLabel {
     setBorder(new EmptyBorder(Constants.INSETS_LABEL));
     setBackground(Constants.COLOR_GREEN_MEDIUM_LIGHT);
     setForeground(getForeground());
-    setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.FONT_SIZE));
+    setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.SIZE_FONT_DEFAULT));
     setToolTipText(tooltipText);
   }
 
