@@ -63,9 +63,7 @@ public class ResultsView extends View {
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Updates and returns the frame title based on the chosen distribution and the anchorages option.
-   *
-   * @return The updated frame title.
+   * @return The updated frame title based on the chosen distribution and the anchorages option.
    */
   private static String getUpdatedFrameTitle() {
     return String.join(" - ", (CommonFields.getDistribution() == Distribution.MIX_RANDOM) ? "Aleatorio" : "Por puntuaciones", CommonFields.isAnchoragesEnabled() ? "Con anclajes" : "Sin anclajes");
