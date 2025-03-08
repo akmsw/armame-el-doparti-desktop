@@ -26,6 +26,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -66,6 +67,8 @@ public class NamesInputView extends View {
 
   private JRadioButton radioButtonBySkillPoints;
   private JRadioButton radioButtonRandom;
+
+  private JScrollPane scrollPane;
 
   private JTextArea textArea;
 
@@ -112,8 +115,8 @@ public class NamesInputView extends View {
     setMixButton(new CustomButton("Distribuir", Constants.ROUNDED_BORDER_ARC_GENERAL));
     setBackButton(new CustomButton("Atrás", Constants.ROUNDED_BORDER_ARC_GENERAL));
 
-    rightPanel.add(mixButton, Constants.MIG_LAYOUT_GROW);
-    rightPanel.add(backButton, Constants.MIG_LAYOUT_GROW);
+    rightPanel.add(mixButton, Constants.MIG_LAYOUT_GROWX);
+    rightPanel.add(backButton, Constants.MIG_LAYOUT_GROWX);
   }
 
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -132,8 +135,9 @@ public class NamesInputView extends View {
    */
   private void addTextArea() {
     setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setScrollPane(new CustomScrollPane(textArea));
 
-    rightPanel.add(new CustomScrollPane(textArea), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
+    rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
   }
 
   /**
@@ -237,6 +241,10 @@ public class NamesInputView extends View {
     return radioButtonRandom;
   }
 
+  public JScrollPane getScrollPane() {
+    return scrollPane;
+  }
+
   public JTextArea getTextArea() {
     return textArea;
   }
@@ -281,6 +289,10 @@ public class NamesInputView extends View {
 
   public void setRightPanel(JPanel rightPanel) {
     this.rightPanel = rightPanel;
+  }
+
+  public void setScrollPane(JScrollPane scrollPane) {
+    this.scrollPane = scrollPane;
   }
 
   public void setTextArea(JTextArea textArea) {

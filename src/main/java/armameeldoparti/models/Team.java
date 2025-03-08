@@ -59,6 +59,15 @@ public class Team {
   }
 
   /**
+   * @param position The position of the set to check.
+   *
+   * @return Whether the specified position set in the team is full.
+   */
+  public boolean isPositionFull(Position position) {
+    return teamPlayers.get(position).size() == CommonFields.getPlayerLimitPerPosition().get(position);
+  }
+
+  /**
    * @return The number of players in the team.
    */
   public int getPlayersCount() {
@@ -66,16 +75,6 @@ public class Team {
                       .stream()
                       .mapToInt(List::size)
                       .sum();
-  }
-
-  /**
-   * @return The number of players per position in the team.
-   */
-  public Map<Position, Integer> getPlayersCountPerPosition() {
-    return teamPlayers.values()
-                      .stream()
-                      .flatMap(List::stream)
-                      .collect(Collectors.toMap(Player::getPosition, _ -> 1, Integer::sum, () -> new EnumMap<>(Position.class)));
   }
 
   /**
@@ -90,12 +89,13 @@ public class Team {
   }
 
   /**
-   * @param position The position of the set to check.
-   *
-   * @return Whether the specified position set in the team is full.
+   * @return The number of players per position in the team.
    */
-  public boolean isPositionFull(Position position) {
-    return teamPlayers.get(position).size() == CommonFields.getPlayerLimitPerPosition().get(position);
+  public Map<Position, Integer> getPlayersCountPerPosition() {
+    return teamPlayers.values()
+                      .stream()
+                      .flatMap(List::stream)
+                      .collect(Collectors.toMap(Player::getPosition, _ -> 1, Integer::sum, () -> new EnumMap<>(Position.class)));
   }
 
   // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
