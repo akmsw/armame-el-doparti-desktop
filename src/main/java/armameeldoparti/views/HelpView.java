@@ -37,8 +37,8 @@ public class HelpView extends View {
   private JButton nextPageButton;
   private JButton backButton;
 
-  private JLabel pageTitleTextField;
-  private JLabel pagesCounter;
+  private JLabel pageTitleLabel;
+  private JLabel readingProgressLabel;
 
   private JScrollPane scrollPane;
 
@@ -59,7 +59,7 @@ public class HelpView extends View {
 
   @Override
   protected void initializeInterface() {
-    addPageTitleTextField();
+    addPageTitleLabel();
     addTextArea();
     addPagesLabel();
     addButtons();
@@ -83,10 +83,10 @@ public class HelpView extends View {
   /**
    * Adds the text field where to display the current page title.
    */
-  private void addPageTitleTextField() {
-    setPageTitleTextField(new CustomLabel(null, null, SwingConstants.CENTER));
+  private void addPageTitleLabel() {
+    setPageTitleLabel(new CustomLabel(null, null, SwingConstants.CENTER));
 
-    masterPanel.add(pageTitleTextField, Constants.MIG_LAYOUT_GROW);
+    masterPanel.add(pageTitleLabel, Constants.MIG_LAYOUT_GROWX);
   }
 
   /**
@@ -103,9 +103,9 @@ public class HelpView extends View {
    * Adds the reading progress label.
    */
   private void addPagesLabel() {
-    setPagesCounter(new CustomLabel(null, null, SwingConstants.CENTER));
+    setReadingProgressLabel(new CustomLabel(null, null, SwingConstants.CENTER));
 
-    masterPanel.add(pagesCounter, Constants.MIG_LAYOUT_GROWX);
+    masterPanel.add(readingProgressLabel, Constants.MIG_LAYOUT_GROWX);
   }
 
   // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -122,12 +122,12 @@ public class HelpView extends View {
     return backButton;
   }
 
-  public JLabel getPageTitleTextField() {
-    return pageTitleTextField;
+  public JLabel getPageTitleLabel() {
+    return pageTitleLabel;
   }
 
-  public JLabel getPagesCounter() {
-    return pagesCounter;
+  public JLabel getReadingProgressLabel() {
+    return readingProgressLabel;
   }
 
   public JScrollPane getScrollPane() {
@@ -152,12 +152,12 @@ public class HelpView extends View {
     this.backButton = backButton;
   }
 
-  public void setPageTitleTextField(JLabel pageTitleTextField) {
-    this.pageTitleTextField = pageTitleTextField;
+  public void setPageTitleLabel(JLabel pageTitleTextField) {
+    this.pageTitleLabel = pageTitleTextField;
   }
 
-  public void setPagesCounter(JLabel pagesCounter) {
-    this.pagesCounter = pagesCounter;
+  public void setReadingProgressLabel(JLabel pagesCounter) {
+    this.readingProgressLabel = pagesCounter;
   }
 
   public void setScrollPane(JScrollPane scrollPane) {

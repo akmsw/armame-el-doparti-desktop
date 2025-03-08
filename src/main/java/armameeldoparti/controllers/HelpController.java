@@ -123,7 +123,7 @@ public class HelpController extends Controller<HelpView> {
    * Updates the reading progress label text according to the current page number.
    */
   private void updateReadingProgressLabel() {
-    view.getPagesCounter().setText((currentPageNumber + 1) + "/" + TOTAL_HELP_PAGES);
+    view.getReadingProgressLabel().setText((currentPageNumber + 1) + "/" + TOTAL_HELP_PAGES);
   }
 
   /**
@@ -134,7 +134,7 @@ public class HelpController extends Controller<HelpView> {
   private void updatePage() {
     JTextArea textArea = view.getTextArea();
 
-    view.getPageTitleTextField().setText(Constants.MAP_HELP_PAGES_FILES.get(currentPageNumber).get(Constants.INDEX_HELP_PAGE_TITLE));
+    view.getPageTitleLabel().setText(Constants.MAP_HELP_PAGES_FILES.get(currentPageNumber).get(Constants.INDEX_HELP_PAGE_TITLE));
 
     textArea.setText("");
 
