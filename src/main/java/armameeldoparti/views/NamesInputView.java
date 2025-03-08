@@ -122,31 +122,23 @@ public class NamesInputView extends View {
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
+   * Initializes the text fields map.
+   */
+  private void initializeTextFieldsMap() {
+    setTextFieldsMap(new EnumMap<>(Position.class));
+
+    for (Position position : Position.values()) {
+      textFieldsMap.put(position, new ArrayList<>());
+    }
+  }
+
+  /**
    * Adds the combobox.
    */
   private void addComboBox() {
     setComboBox(new CustomComboBox<>(Constants.OPTIONS_POSITIONS_COMBOBOX.toArray(new String[0])));
 
     leftTopPanel.add(comboBox, Constants.MIG_LAYOUT_GROWX);
-  }
-
-  /**
-   * Adds the read-only text area where the entered player names will be displayed in real time.
-   */
-  private void addTextArea() {
-    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
-    setScrollPane(new CustomScrollPane(textArea));
-
-    rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
-  }
-
-  /**
-   * Adds the anchorages enablement checkbox.
-   */
-  private void addAnchoragesCheckbox() {
-    setAnchoragesCheckbox(new CustomCheckBox("Anclar jugadores"));
-
-    leftBottomPanel.add(anchoragesCheckbox, Constants.MIG_LAYOUT_GROWX);
   }
 
   /**
@@ -158,17 +150,6 @@ public class NamesInputView extends View {
                    .addAll(IntStream.range(0, CommonFields.getPlayerLimitPerPosition().get(position) * 2)
                                     .mapToObj(_ -> new CustomTextField())
                                     .toList());
-    }
-  }
-
-  /**
-   * Initializes the text fields map.
-   */
-  private void initializeTextFieldsMap() {
-    setTextFieldsMap(new EnumMap<>(Position.class));
-
-    for (Position position : Position.values()) {
-      textFieldsMap.put(position, new ArrayList<>());
     }
   }
 
@@ -193,6 +174,25 @@ public class NamesInputView extends View {
     leftBottomPanel.add(radioButtonRandom);
     leftBottomPanel.add(radioButtonBySkillPoints);
     leftBottomPanel.add(new CustomSeparator(), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
+  }
+
+  /**
+   * Adds the anchorages enablement checkbox.
+   */
+  private void addAnchoragesCheckbox() {
+    setAnchoragesCheckbox(new CustomCheckBox("Anclar jugadores"));
+
+    leftBottomPanel.add(anchoragesCheckbox, Constants.MIG_LAYOUT_GROWX);
+  }
+
+  /**
+   * Adds the read-only text area where the entered player names will be displayed in real time.
+   */
+  private void addTextArea() {
+    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setScrollPane(new CustomScrollPane(textArea));
+
+    rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));
   }
 
   // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
