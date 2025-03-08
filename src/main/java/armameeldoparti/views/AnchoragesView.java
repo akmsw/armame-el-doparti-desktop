@@ -77,12 +77,7 @@ public class AnchoragesView extends View {
     setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
     setScrollPane(new CustomScrollPane(textArea));
     setAnchorageButtons(new ArrayList<>());
-    setCheckboxesMap(new EnumMap<>(Position.class));
-
-    for (Position position : Position.values()) {
-      checkboxesMap.put(position, new ArrayList<>());
-    }
-
+    initializeCheckBoxesMap();
     initializeInterface();
   }
 
@@ -125,6 +120,17 @@ public class AnchoragesView extends View {
   }
 
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * Initializes the checkboxes map.
+   */
+  private void initializeCheckBoxesMap() {
+    setCheckboxesMap(new EnumMap<>(Position.class));
+
+    for (Position position : Position.values()) {
+      checkboxesMap.put(position, new ArrayList<>());
+    }
+  }
 
   /**
    * Adds the players checkboxes and their position labels.
