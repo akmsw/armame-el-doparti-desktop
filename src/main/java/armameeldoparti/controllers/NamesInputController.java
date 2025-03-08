@@ -287,7 +287,7 @@ public class NamesInputController extends Controller<NamesInputView> {
         .filter(textField -> textField.getParent() == leftTopPanel)
         .forEach(leftTopPanel::remove);
     view.getTextFieldsMap()
-        .get(CommonFunctions.getCorrespondingPosition(CommonFields.getPositionsMap(), selectedOption.toUpperCase()))
+        .get(CommonFunctions.getCorrespondingPosition(Constants.MAP_POSITIONS, selectedOption.toUpperCase()))
         .forEach(textField -> leftTopPanel.add(textField, Constants.MIG_LAYOUT_GROWX));
 
     leftTopPanel.revalidate();

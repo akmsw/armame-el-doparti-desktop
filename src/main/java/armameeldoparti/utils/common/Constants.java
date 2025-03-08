@@ -13,6 +13,7 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 
 import armameeldoparti.models.enums.Error;
+import armameeldoparti.models.enums.Position;
 
 /**
  * Common-use constants class.
@@ -268,6 +269,14 @@ public final class Constants {
                   Color.decode(HEX_CODE_ANCHORAGE_COLOR_4),
                   Color.decode(HEX_CODE_ANCHORAGE_COLOR_5),
                   Color.decode(HEX_CODE_ANCHORAGE_COLOR_6))
+  );
+
+  public static final Map<Position, String> MAP_POSITIONS = Map.of(
+    Position.CENTRAL_DEFENDER, POSITION_CENTRAL_DEFENDERS,
+    Position.LATERAL_DEFENDER, POSITION_LATERAL_DEFENDERS,
+    Position.MIDFIELDER, POSITION_MIDFIELDERS,
+    Position.FORWARD, POSITION_FORWARDS,
+    Position.GOALKEEPER, POSITION_GOALKEEPERS
   );
 
   /**

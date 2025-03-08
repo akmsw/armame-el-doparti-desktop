@@ -35,7 +35,6 @@ public final class CommonFields {
 
   private static Map<Position, Integer> playerLimitPerPosition;
   private static Map<Position, List<Player>> playersSets;
-  private static Map<Position, String> positionsMap;
   private static Map<ProgramView, Controller<? extends View>> controllersMap;
 
   // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,10 +72,6 @@ public final class CommonFields {
     return playersSets;
   }
 
-  public static Map<Position, String> getPositionsMap() {
-    return positionsMap;
-  }
-
   /**
    * The "java:S1452" warning is suppressed since the Java compiler can't know at runtime the type of the controlled view.
    */
@@ -109,10 +104,6 @@ public final class CommonFields {
 
   public static void setPlayersSets(Map<Position, List<Player>> playersSets) {
     CommonFields.playersSets = playersSets;
-  }
-
-  public static void setPositionsMap(Map<Position, String> positionsMap) {
-    CommonFields.positionsMap = positionsMap;
   }
 
   public static void setControllersMap(Map<ProgramView, Controller<? extends View>> controllerMap) {

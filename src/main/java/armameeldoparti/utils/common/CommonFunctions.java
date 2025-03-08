@@ -75,7 +75,7 @@ public final class CommonFunctions {
       dumpFile.write("Player limit per position:" + System.lineSeparator());
       dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Positions map:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getPositionsMap().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
+      dumpFile.write("\t" + Constants.MAP_POSITIONS.entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Controllers map:" + System.lineSeparator());
       dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
       dumpFile.write("Players:" + System.lineSeparator());

@@ -139,7 +139,7 @@ public class AnchoragesView extends View {
     CommonFields.getPlayersSets()
                 .forEach((position, playersSet) -> {
                   fillCheckboxesSet(playersSet, checkboxesMap.get(position));
-                  addCheckboxesSet(checkboxesMap.get(position), CommonFunctions.capitalize(CommonFields.getPositionsMap().get(position)));
+                  addCheckboxesSet(checkboxesMap.get(position), CommonFunctions.capitalize(Constants.MAP_POSITIONS.get(position)));
                 });
   }
 

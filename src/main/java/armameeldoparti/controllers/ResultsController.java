@@ -21,7 +21,6 @@ import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
@@ -228,15 +227,13 @@ public class ResultsController extends Controller<ResultsView> {
   private void fillTableFields() {
     int rowCount = table.getRowCount() - 1;
 
-    Map<Position, String> positionsMap = CommonFields.getPositionsMap();
-
     for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
       table.setValueAt("EQUIPO " + (teamIndex + 1), 0, teamIndex + 1);
     }
 
     for (int row = 1; row < rowCount; row++) {
       table.setValueAt(
-        positionsMap.get(
+        Constants.MAP_POSITIONS.get(
           switch (row) {
             case 1 -> Position.CENTRAL_DEFENDER;
             case 2, 3 -> Position.LATERAL_DEFENDER;
@@ -251,13 +248,13 @@ public class ResultsController extends Controller<ResultsView> {
 
     if (CommonFields.getDistribution() == Distribution.MIX_BY_SKILL_POINTS) {
       for (int column = 0; column < teams.size(); column++) {
-        table.setValueAt(column == 0 ? positionsMap.get(Position.GOALKEEPER) : "Puntuación del equipo", table.getRowCount() + column - 2, 0);
+        table.setValueAt(column == 0 ? Constants.MAP_POSITIONS.get(Position.GOALKEEPER) : "Puntuación del equipo", table.getRowCount() + column - 2, 0);
       }
 
       return;
     }
 
-    table.setValueAt(positionsMap.get(Position.GOALKEEPER), table.getRowCount() - 1, 0);
+    table.setValueAt(Constants.MAP_POSITIONS.get(Position.GOALKEEPER), table.getRowCount() - 1, 0);
   }
 
   /**

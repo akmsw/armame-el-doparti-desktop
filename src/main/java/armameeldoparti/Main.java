@@ -76,11 +76,6 @@ public final class Main {
     CommonFields.setControllersMap(new EnumMap<>(ProgramView.class));
     CommonFields.setPlayerLimitPerPosition(new EnumMap<>(Position.class));
     CommonFields.setPlayersSets(new TreeMap<>());
-    CommonFields.setPositionsMap(Map.of(Position.CENTRAL_DEFENDER, Constants.POSITION_CENTRAL_DEFENDERS,
-                                        Position.LATERAL_DEFENDER, Constants.POSITION_LATERAL_DEFENDERS,
-                                        Position.MIDFIELDER, Constants.POSITION_MIDFIELDERS,
-                                        Position.FORWARD, Constants.POSITION_FORWARDS,
-                                        Position.GOALKEEPER, Constants.POSITION_GOALKEEPERS));
 
     setUpGeneralGraphicalProperties();
     setPlayersDistribution();
