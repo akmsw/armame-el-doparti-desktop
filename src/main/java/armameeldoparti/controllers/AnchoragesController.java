@@ -355,9 +355,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                   player -> {
                     player.setAnchorageNumber(replacement);
 
-                    if (replacement == 0) {
-                      player.setAnchored(false);
-
+                    if (replacement == Constants.PLAYER_NO_ANCHORAGE_ASSIGNED) {
                       CommonFunctions.retrieveOptional(view.getCheckboxesMap()
                                                            .get(player.getPosition())
                                                            .stream()
@@ -383,10 +381,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                 .filter(player -> cbSet.stream()
                                        .filter(JCheckBox::isSelected)
                                        .anyMatch(checkbox -> checkbox.getText().equals(player.getName())))
-                .forEach(player -> {
-                  player.setAnchorageNumber(anchoragesCount);
-                  player.setAnchored(true);
-                });
+                .forEach(player -> player.setAnchorageNumber(anchoragesCount));
 
     cbSet.stream()
          .filter(JCheckBox::isSelected)

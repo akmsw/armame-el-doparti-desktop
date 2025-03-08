@@ -16,8 +16,6 @@ public class Player {
 
   // ---------- Private fields ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  private boolean isAnchored;
-
   private int anchorageNumber;
   private int skillPoints;
   private int teamNumber;
@@ -37,9 +35,8 @@ public class Player {
   public Player(String name, Position position) {
     setName(name);
     setPosition(position);
-    setAnchored(false);
     setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED);
-    setAnchorageNumber(0);
+    setAnchorageNumber(Constants.PLAYER_NO_ANCHORAGE_ASSIGNED);
     setSkillPoints(0);
   }
 
@@ -56,18 +53,19 @@ public class Player {
   public String toString() {
     return "Position: " + getPosition().toString() + System.lineSeparator()
            + "\t\tName: " + getName() + System.lineSeparator()
-           + "\t\tIs anchored: " + isAnchored() + System.lineSeparator()
            + "\t\tAnchorage number: " + getAnchorageNumber() + System.lineSeparator()
            + "\t\tSkill points: " + getSkillPoints() + System.lineSeparator()
            + "\t\tTeam number: " + getTeamNumber() + System.lineSeparator();
   }
 
-  // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
+  /**
+   * @return Whether the player has an anchoraged assigned or not.
+   */
   public boolean isAnchored() {
-    return isAnchored;
+    return anchorageNumber != Constants.PLAYER_NO_ANCHORAGE_ASSIGNED;
   }
 
+  // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   public int getAnchorageNumber() {
     return anchorageNumber;
   }
@@ -89,10 +87,6 @@ public class Player {
   }
 
   // ---------- Setters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  public void setAnchored(boolean isAnchored) {
-    this.isAnchored = isAnchored;
-  }
 
   public void setAnchorageNumber(int anchorageNumber) {
     this.anchorageNumber = anchorageNumber;
