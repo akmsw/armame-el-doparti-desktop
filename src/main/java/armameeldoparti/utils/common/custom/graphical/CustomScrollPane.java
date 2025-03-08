@@ -61,8 +61,8 @@ public class CustomScrollPane extends JScrollPane {
     getVerticalScrollBar().setUI(new BasicScrollBarUI() {
       @Override
       protected void configureScrollBarColors() {
-        this.thumbColor = Constants.COLOR_GREEN_DARK;
-        this.trackColor = Constants.COLOR_GREEN_MEDIUM;
+        thumbColor = Constants.COLOR_GREEN_DARK;
+        trackColor = Constants.COLOR_GREEN_MEDIUM;
       }
 
       @Override

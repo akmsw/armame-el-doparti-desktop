@@ -91,7 +91,7 @@ public class CustomSpinner extends JSpinner {
 
         previousButton.setName("Spinner.previousButton");
 
-        this.installPreviousButtonListeners(previousButton);
+        installPreviousButtonListeners(previousButton);
 
         return previousButton;
       }
@@ -102,7 +102,7 @@ public class CustomSpinner extends JSpinner {
 
         nextButton.setName("Spinner.nextButton");
 
-        this.installNextButtonListeners(nextButton);
+        installNextButtonListeners(nextButton);
 
         return nextButton;
       }
