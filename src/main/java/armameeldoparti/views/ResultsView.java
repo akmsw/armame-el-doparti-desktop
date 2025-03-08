@@ -43,8 +43,7 @@ public class ResultsView extends View {
 
   @Override
   public void initializeInterface() {
-    setFrameTitle(getUpdatedFrameTitle());
-    setTitle(frameTitle);
+    setTitle(getUpdatedFrameTitle());
     addTable();
     addButtons();
     add(masterPanel);

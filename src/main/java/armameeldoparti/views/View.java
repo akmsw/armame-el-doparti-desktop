@@ -21,8 +21,6 @@ public abstract class View extends JFrame {
 
   // ---------- Protected fields --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  protected String frameTitle;
-
   protected JPanel masterPanel;
 
   // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -36,8 +34,7 @@ public abstract class View extends JFrame {
   protected View(String frameTitle, String masterPanelLayoutConstraints) {
     setMasterPanel(new JPanel(new MigLayout(masterPanelLayoutConstraints)));
     setResizable(false);
-    setFrameTitle(frameTitle);
-    setTitle(getFrameTitle());
+    setTitle(frameTitle);
     setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     setIconImage(Constants.ICON_MAIN_SCALED.getImage());
   }
@@ -56,19 +53,11 @@ public abstract class View extends JFrame {
 
   // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-  public String getFrameTitle() {
-    return frameTitle;
-  }
-
   public JPanel getMasterPanel() {
     return masterPanel;
   }
 
   // ---------- Setters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  public void setFrameTitle(String frameTitle) {
-    this.frameTitle = frameTitle;
-  }
 
   public void setMasterPanel(JPanel masterPanel) {
     this.masterPanel = masterPanel;
