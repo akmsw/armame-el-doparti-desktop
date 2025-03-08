@@ -23,6 +23,7 @@ import java.util.stream.IntStream;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -55,6 +56,8 @@ public class NamesInputView extends View {
   private JCheckBox anchoragesCheckbox;
 
   private JComboBox<String> comboBox;
+
+  private JLabel distributionLabel;
 
   private JPanel leftPanel;
   private JPanel leftTopPanel;
@@ -180,8 +183,9 @@ public class NamesInputView extends View {
   private void addRadioButtons() {
     setRadioButtonRandom(new CustomRadioButton("Aleatoria"));
     setRadioButtonBySkillPoints(new CustomRadioButton("Por puntajes"));
+    setDistributionLabel(new CustomLabel("Distribución", null, SwingConstants.CENTER));
 
-    leftBottomPanel.add(new CustomLabel("Distribución", null, SwingConstants.CENTER), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
+    leftBottomPanel.add(distributionLabel, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
     leftBottomPanel.add(radioButtonRandom);
     leftBottomPanel.add(radioButtonBySkillPoints);
     leftBottomPanel.add(new CustomSeparator(), CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
@@ -203,6 +207,10 @@ public class NamesInputView extends View {
 
   public JComboBox<String> getComboBox() {
     return comboBox;
+  }
+
+  public JLabel getDistributionLabel() {
+    return distributionLabel;
   }
 
   public JPanel getLeftPanel() {
@@ -253,6 +261,10 @@ public class NamesInputView extends View {
 
   public void setComboBox(JComboBox<String> comboBox) {
     this.comboBox = comboBox;
+  }
+
+  public void setDistributionLabel(JLabel distributionLabel) {
+    this.distributionLabel = distributionLabel;
   }
 
   public void setLeftPanel(JPanel leftPanel) {
