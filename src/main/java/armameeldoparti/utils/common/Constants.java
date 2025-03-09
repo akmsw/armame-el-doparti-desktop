@@ -92,6 +92,13 @@ public final class Constants {
   private static final String TITLE_HELP_PAGE_7 = "Distribución por puntuaciones";
   private static final String TITLE_HELP_PAGE_8 = "Sugerencias, reportes y contacto";
 
+  private static final Color COLOR_ANCHORAGE_1 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_1);
+  private static final Color COLOR_ANCHORAGE_2 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_2);
+  private static final Color COLOR_ANCHORAGE_3 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_3);
+  private static final Color COLOR_ANCHORAGE_4 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_4);
+  private static final Color COLOR_ANCHORAGE_5 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_5);
+  private static final Color COLOR_ANCHORAGE_6 = Color.decode(HEX_CODE_ANCHORAGE_COLOR_6);
+
   // ---------- Public constants --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   public static final int INDEX_HELP_PAGE_FILENAME = 1;
@@ -258,12 +265,12 @@ public final class Constants {
    * Anchorages colors list used as background color for the results table cells.
    */
   public static final List<Color> COLORS_ANCHORAGES = Collections.unmodifiableList(
-    Arrays.asList(Color.decode(HEX_CODE_ANCHORAGE_COLOR_1),
-                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_2),
-                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_3),
-                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_4),
-                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_5),
-                  Color.decode(HEX_CODE_ANCHORAGE_COLOR_6))
+    Arrays.asList(COLOR_ANCHORAGE_1,
+                  COLOR_ANCHORAGE_2,
+                  COLOR_ANCHORAGE_3,
+                  COLOR_ANCHORAGE_4,
+                  COLOR_ANCHORAGE_5,
+                  COLOR_ANCHORAGE_6)
   );
 
   public static final Map<Position, String> MAP_POSITIONS = Map.of(
