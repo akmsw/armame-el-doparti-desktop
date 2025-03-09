@@ -82,11 +82,6 @@ public final class Constants {
   private static final String MSG_ERROR_FILES = "ERROR DE LECTURA DE ARCHIVOS INTERNOS";
   private static final String MSG_ERROR_GUI = "ERROR DE INTERFAZ GRÁFICA";
   private static final String MSG_ERROR_INTERNAL = "ERROR FATAL INTERNO";
-  private static final String POSITION_COMBOBOX_1 = "Defensores centrales";
-  private static final String POSITION_COMBOBOX_2 = "Defensores laterales";
-  private static final String POSITION_COMBOBOX_3 = "Mediocampistas";
-  private static final String POSITION_COMBOBOX_4 = "Delanteros";
-  private static final String POSITION_COMBOBOX_5 = "Arqueros";
   private static final String PROGRAM_AUTHOR_GITHUB_USERNAME = "akmsw";
   private static final String TITLE_HELP_PAGE_1 = "Introducción";
   private static final String TITLE_HELP_PAGE_2 = "Criterios establecidos";
@@ -252,11 +247,11 @@ public final class Constants {
    * Positions to show in the names input view combobox.
    */
   public static final List<String> OPTIONS_POSITIONS_COMBOBOX = Collections.unmodifiableList(
-    Arrays.asList(POSITION_COMBOBOX_1,
-                  POSITION_COMBOBOX_2,
-                  POSITION_COMBOBOX_3,
-                  POSITION_COMBOBOX_4,
-                  POSITION_COMBOBOX_5)
+    Arrays.asList(CommonFunctions.capitalize(POSITION_CENTRAL_DEFENDERS),
+                  CommonFunctions.capitalize(POSITION_LATERAL_DEFENDERS),
+                  CommonFunctions.capitalize(POSITION_MIDFIELDERS),
+                  CommonFunctions.capitalize(POSITION_FORWARDS),
+                  CommonFunctions.capitalize(POSITION_GOALKEEPERS))
   );
 
   /**
