@@ -55,15 +55,15 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
 
   @Override
   public void installUI(JComponent component) {
-      super.installUI(component);
+    super.installUI(component);
 
-      SwingUtilities.invokeLater(
-        () -> {
-          if (SwingUtilities.getWindowAncestor(optionPane) instanceof JDialog parentDialog) {
-            parentDialog.setIconImage(Constants.ICON_MAIN.getImage());
-          }
+    SwingUtilities.invokeLater(
+      () -> {
+        if (SwingUtilities.getWindowAncestor(optionPane) instanceof JDialog parentDialog) {
+          parentDialog.setIconImage(Constants.ICON_MAIN.getImage());
         }
-      );
+      }
+    );
   }
 
   // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
