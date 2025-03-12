@@ -83,13 +83,19 @@ public class ResultsController extends Controller<ResultsView> {
   /**
    * Creates the teams and the results table, applies the needed table format, fills the non-variable table cells and displays the distribution results.
    */
-  private void setUp() {
+  private void setUpView() {
     teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2)) : bySkillPointsMix(Arrays.asList(team1, team2)));
 
     view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
     view.initializeInterface();
 
     table = (CustomTable) view.getTable();
+
+    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    table.setCellSelectionEnabled(false);
+    table.setRowSelectionAllowed(false);
+    table.setColumnSelectionAllowed(false);
+    table.setEnabled(false);
 
     overrideTableFormat();
     fillTableFields();
@@ -191,7 +197,7 @@ public class ResultsController extends Controller<ResultsView> {
 
   @Override
   protected void showView() {
-    setUp();
+    setUpView();
     centerView();
 
     view.setVisible(true);

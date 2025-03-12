@@ -79,8 +79,8 @@ public final class Main {
 
     setUpGeneralGraphicalProperties();
     setPlayersDistribution();
-    populatePlayersSets();
-    setUpControllers();
+    initializePlayersSetsMap();
+    initializeControllersMap();
 
     SwingUtilities.invokeLater(((MainMenuController) CommonFunctions.getController(ProgramView.MAIN_MENU))::showView);
   }
@@ -90,7 +90,7 @@ public final class Main {
   /**
    * Populates the players sets with empty players.
    */
-  private static void populatePlayersSets() {
+  private static void initializePlayersSetsMap() {
     for (Position position : Position.values()) {
       CommonFields.getPlayersSets()
                   .put(position, IntStream.range(0, CommonFields.getPlayerLimitPerPosition().get(position) * 2)
@@ -126,7 +126,7 @@ public final class Main {
   /**
    * Creates the controllers and assigns their corresponding view to control.
    */
-  private static void setUpControllers() {
+  private static void initializeControllersMap() {
     CommonFields.getControllersMap()
                 .putAll(Map.of(ProgramView.MAIN_MENU, new MainMenuController(new MainMenuView()),
                                ProgramView.HELP, new HelpController(new HelpView()),

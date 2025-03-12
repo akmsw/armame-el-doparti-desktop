@@ -73,12 +73,6 @@ public class ResultsView extends View {
    * Adds the results table in the view panel.
    */
   private void addTable() {
-    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-    table.setCellSelectionEnabled(false);
-    table.setRowSelectionAllowed(false);
-    table.setColumnSelectionAllowed(false);
-    table.setEnabled(false);
-
     masterPanel.add(table, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN, Constants.MIG_LAYOUT_CENTER));
   }
 
