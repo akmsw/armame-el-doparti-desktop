@@ -91,12 +91,6 @@ public class ResultsController extends Controller<ResultsView> {
 
     table = (CustomTable) view.getTable();
 
-    table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-    table.setCellSelectionEnabled(false);
-    table.setRowSelectionAllowed(false);
-    table.setColumnSelectionAllowed(false);
-    table.setEnabled(false);
-
     overrideTableFormat();
     fillTableFields();
     updateTable();
@@ -264,7 +258,7 @@ public class ResultsController extends Controller<ResultsView> {
   }
 
   /**
-   * Overrides the table cells format in order to fit the program aesthetics, including text alignment and background and foreground colors.
+   * Overrides only the default table cells renderer in order to fit the program aesthetics, including text alignment and background and foreground colors.
    *
    * <p>Cell (0,0) is unused and has a medium green background.
    *

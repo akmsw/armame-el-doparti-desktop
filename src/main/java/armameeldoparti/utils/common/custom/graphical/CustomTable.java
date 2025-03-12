@@ -72,55 +72,60 @@ public class CustomTable extends JTable {
    */
   private void setUpGraphicalProperties() {
     setOpaque(false);
+    setCellSelectionEnabled(false);
+    setRowSelectionAllowed(false);
+    setColumnSelectionAllowed(false);
+    setEnabled(false);
     setGridColor(Constants.COLOR_GREEN_LIGHT);
+    setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     setDefaultRenderer(
-        Object.class,
-        new DefaultTableCellRenderer() {
-          @Override
-          public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+      Object.class,
+      new DefaultTableCellRenderer() {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+          Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
 
-            if (component instanceof JComponent tableCellRenderer) {
-              tableCellRenderer.setOpaque(false);
-              tableCellRenderer.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
+          if (component instanceof JComponent tableCellRenderer) {
+            tableCellRenderer.setOpaque(false);
+            tableCellRenderer.setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
 
-              if (row == 0) {
-                tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
-                tableCellRenderer.setForeground(Color.WHITE);
+            if (row == 0) {
+              tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
+              tableCellRenderer.setForeground(Color.WHITE);
 
-                ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.CENTER);
+              ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.CENTER);
 
-                return tableCellRenderer;
-              }
-
-              if (column == 0) {
-                tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
-                tableCellRenderer.setForeground(Color.WHITE);
-
-                ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.LEFT);
-
-                return tableCellRenderer;
-              }
-
-              tableCellRenderer.setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
-              tableCellRenderer.setForeground(Color.BLACK);
+              return tableCellRenderer;
             }
 
-            return component;
+            if (column == 0) {
+              tableCellRenderer.setBackground(Constants.COLOR_GREEN_DARK);
+              tableCellRenderer.setForeground(Color.WHITE);
+
+              ((DefaultTableCellRenderer) tableCellRenderer).setHorizontalAlignment(SwingConstants.LEFT);
+
+              return tableCellRenderer;
+            }
+
+            tableCellRenderer.setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
+            tableCellRenderer.setForeground(Color.BLACK);
           }
 
-          @Override
-          protected void paintComponent(Graphics graphics) {
-            Graphics2D graphics2d = (Graphics2D) graphics.create();
+          return component;
+        }
 
-            graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-            graphics2d.setColor(getBackground());
-            graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_TABLE_CELLS, Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
+        @Override
+        protected void paintComponent(Graphics graphics) {
+          Graphics2D graphics2d = (Graphics2D) graphics.create();
 
-            super.paintComponent(graphics2d);
+          graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+          graphics2d.setColor(getBackground());
+          graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_TABLE_CELLS, Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
 
-            graphics2d.dispose();
-          }
+          super.paintComponent(graphics2d);
+
+          graphics2d.dispose();
+        }
       }
     );
   }
