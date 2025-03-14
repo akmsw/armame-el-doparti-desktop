@@ -22,45 +22,51 @@ import javax.swing.border.EmptyBorder;
  */
 public class CustomLabel extends JLabel {
 
+  private int alignment;
+  private int fontSize;
+
+  private String hoverText;
+
+  private Color backgroundColor;
+  private Color foregroundColor;
+
   // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
    * Builds a basic label using the established program aesthetics.
    *
-   * @param text        The label text.
-   * @param tooltipText The label tooltip text
-   * @param alignment   The label text alignment.
+   * @param text      The label text.
+   * @param hoverText The label tooltip text.
+   * @param alignment The label text alignment.
    */
-  public CustomLabel(String text, String tooltipText, int alignment) {
+  public CustomLabel(String text, String hoverText, int alignment) {
     super(text);
-    setOpaque(false);
-    setHorizontalAlignment(alignment);
-    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
-    setBackground(Constants.COLOR_GREEN_MEDIUM_LIGHT);
-    setForeground(getForeground());
-    setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.SIZE_FONT_DEFAULT));
-    setToolTipText(tooltipText);
+    setAlignment(alignment);
+    setBackgroundColor(Constants.COLOR_GREEN_MEDIUM_LIGHT);
+    setForegroundColor(getForeground());
+    setFontSize((int) Constants.SIZE_FONT_DEFAULT);
+    setHoverText(hoverText);
+    setUpGraphicalProperties();
   }
 
   /**
    * Builds a basic label using the established program aesthetics.
    *
    * @param text            The label text.
-   * @param tooltipText     The label tooltip text
+   * @param hoverText       The label tooltip text.
    * @param backgroundColor The background color for the label.
    * @param foregroundColor The fireground color for the label.
    * @param alignment       The label text alignment.
    * @param fontSize        The font size for the label text.
    */
-  public CustomLabel(String text, String tooltipText, Color backgroundColor, Color foregroundColor, int alignment, int fontSize) {
+  public CustomLabel(String text, String hoverText, Color backgroundColor, Color foregroundColor, int alignment, int fontSize) {
     super(text);
-    setOpaque(false);
-    setHorizontalAlignment(alignment);
-    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
-    setBackground(backgroundColor);
-    setForeground(foregroundColor);
-    setFont(new Font(getFont().getName(), Font.PLAIN, fontSize));
-    setToolTipText(tooltipText);
+    setAlignment(alignment);
+    setBackgroundColor(backgroundColor);
+    setForegroundColor(foregroundColor);
+    setFontSize(fontSize);
+    setHoverText(hoverText);
+    setUpGraphicalProperties();
   }
 
   // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,5 +86,64 @@ public class CustomLabel extends JLabel {
   @Override
   public JToolTip createToolTip() {
     return new CustomToolTip(this);
+  }
+
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * Configures the graphical properties of the label in order to fit the program aesthetics.
+   */
+  private void setUpGraphicalProperties() {
+    setOpaque(false);
+    setHorizontalAlignment(alignment);
+    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
+    setFont(new Font(getFont().getName(), Font.PLAIN, fontSize));
+    setBackground(backgroundColor);
+    setForeground(foregroundColor);
+    setToolTipText(hoverText);
+  }
+
+  // ---------- Getters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  public int getAlignment() {
+    return alignment;
+  }
+
+  public int getFontSize() {
+    return fontSize;
+  }
+
+  public String getHoverText() {
+    return hoverText;
+  }
+
+  public Color getBackgroundColor() {
+    return backgroundColor;
+  }
+
+  public Color getForegroundColor() {
+    return foregroundColor;
+  }
+
+  // ---------- Setters -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  public void setAlignment(int alignment) {
+    this.alignment = alignment;
+  }
+
+  public void setFontSize(int fontSize) {
+    this.fontSize = fontSize;
+  }
+
+  public void setHoverText(String tooltipText) {
+    this.hoverText = tooltipText;
+  }
+
+  public void setBackgroundColor(Color backgroundColor) {
+    this.backgroundColor = backgroundColor;
+  }
+
+  public void setForegroundColor(Color foregroundColor) {
+    this.foregroundColor = foregroundColor;
   }
 }
