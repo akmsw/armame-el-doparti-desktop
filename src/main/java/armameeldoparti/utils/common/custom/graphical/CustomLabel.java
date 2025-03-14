@@ -33,13 +33,12 @@ public class CustomLabel extends JLabel {
    */
   public CustomLabel(String text, String tooltipText, int alignment) {
     super(text);
-    setOpaque(false);
     setHorizontalAlignment(alignment);
-    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
     setBackground(Constants.COLOR_GREEN_MEDIUM_LIGHT);
     setForeground(getForeground());
     setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.SIZE_FONT_DEFAULT));
     setToolTipText(tooltipText);
+    setUpGraphicalProperties();
   }
 
   /**
@@ -54,13 +53,12 @@ public class CustomLabel extends JLabel {
    */
   public CustomLabel(String text, String tooltipText, Color backgroundColor, Color foregroundColor, int alignment, int fontSize) {
     super(text);
-    setOpaque(false);
     setHorizontalAlignment(alignment);
-    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
     setBackground(backgroundColor);
     setForeground(foregroundColor);
     setFont(new Font(getFont().getName(), Font.PLAIN, fontSize));
     setToolTipText(tooltipText);
+    setUpGraphicalProperties();
   }
 
   // ---------- Protected methods -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -80,5 +78,15 @@ public class CustomLabel extends JLabel {
   @Override
   public JToolTip createToolTip() {
     return new CustomToolTip(this);
+  }
+
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+    /**
+   * Configures the graphical properties of the label in order to fit the program aesthetics.
+   */
+  private void setUpGraphicalProperties() {
+    setOpaque(false);
+    setBorder(new EmptyBorder(Constants.INSETS_LABEL));
   }
 }
