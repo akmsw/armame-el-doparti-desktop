@@ -82,9 +82,8 @@ public class CustomButton extends JButton {
    * Configures the graphical properties of the button in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
-    setOpaque(false);
-    setFocusPainted(false);
     setContentAreaFilled(false);
+    setFocusPainted(false);
     setBorderPainted(false);
   }
 
