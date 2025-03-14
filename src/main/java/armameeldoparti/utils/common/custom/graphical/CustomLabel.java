@@ -35,7 +35,6 @@ public class CustomLabel extends JLabel {
     super(text);
     setHorizontalAlignment(alignment);
     setBackground(Constants.COLOR_GREEN_MEDIUM_LIGHT);
-    setForeground(getForeground());
     setFont(new Font(getFont().getName(), Font.PLAIN, (int) Constants.SIZE_FONT_DEFAULT));
     setToolTipText(tooltipText);
     setUpGraphicalProperties();
@@ -82,7 +81,7 @@ public class CustomLabel extends JLabel {
 
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-    /**
+  /**
    * Configures the graphical properties of the label in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
