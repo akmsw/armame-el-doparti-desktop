@@ -121,8 +121,6 @@ public final class Constants {
   public static final int ROUNDED_BORDER_ARC_TOOLTIP = 20;
   public static final int ROUNDED_BORDER_INSETS_COMBOBOX = 6;
   public static final int ROUNDED_BORDER_INSETS_GENERAL = 8;
-  public static final int ROUNDED_BORDER_INSETS_LABEL = 8;
-  public static final int ROUNDED_BORDER_INSETS_SCROLLPANE = 18;
   public static final int ROUNDED_BORDER_INSETS_TOOLTIP = 6;
   public static final int SIZE_BUTTON_DIALOG_MIN_WIDTH = 28;
   public static final int SIZE_BUTTON_DIALOG_MIN_HEIGHT = 36;
@@ -241,10 +239,10 @@ public final class Constants {
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL,
                                                          Constants.ROUNDED_BORDER_INSETS_GENERAL);
-  public static final Insets INSETS_LABEL = new Insets(Constants.ROUNDED_BORDER_INSETS_LABEL,
-                                                       Constants.ROUNDED_BORDER_INSETS_LABEL,
-                                                       Constants.ROUNDED_BORDER_INSETS_LABEL,
-                                                       Constants.ROUNDED_BORDER_INSETS_LABEL);
+  public static final Insets INSETS_LABEL = new Insets(Constants.ROUNDED_BORDER_INSETS_GENERAL,
+                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL,
+                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL,
+                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL);
   public static final Insets INSETS_TOOLTIP = new Insets(Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
                                                          Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
                                                          Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
