@@ -4,10 +4,14 @@ import armameeldoparti.models.enums.Error;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
-import armameeldoparti.utils.common.custom.graphical.ui.CustomToolTipUI;
 
+import java.awt.AlphaComposite;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.IllegalComponentStateException;
 import java.awt.Insets;
 import java.awt.Window;
@@ -17,6 +21,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JToolTip;
 import javax.swing.SwingUtilities;
+import javax.swing.border.EmptyBorder;
 
 /**
  * A custom tooltip that fits the overall program aesthetics.
@@ -49,9 +54,18 @@ public class CustomToolTip extends JToolTip {
       CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, roundRectangleInitialWidth, roundRectangleInitialHeight, (Constants.ROUNDED_BORDER_ARC_TOOLTIP), (Constants.ROUNDED_BORDER_ARC_TOOLTIP)));
     }
 
-    setOpaque(false);
     setComponent(component);
-    setUI(new CustomToolTipUI());
+    setUpGraphicalProperties();
+  }
+
+  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  /**
+   * Configures the graphical properties for the tooltip in order to fit the program aesthetics.
+   */
+  private void setUpGraphicalProperties() {
+    setOpaque(false);
+    setBorder(new EmptyBorder(Constants.INSETS_TOOLTIP));
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +95,43 @@ public class CustomToolTip extends JToolTip {
   }
 
   @Override
+  public void paintComponent(Graphics graphics) {
+    Graphics2D graphics2d = (Graphics2D) graphics.create();
+
+    FontMetrics fontMetric = graphics2d.getFontMetrics();
+
+    String tooltipText = getTipText();
+
+    CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), (Constants.ROUNDED_BORDER_ARC_TOOLTIP), (Constants.ROUNDED_BORDER_ARC_TOOLTIP)));
+
+    // Transparent background painting
+    graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
+    graphics2d.setComposite(AlphaComposite.Clear);
+    graphics2d.setColor(Constants.COLOR_TRANSPARENT);
+    graphics2d.fillRect(0, 0, getWidth(), getHeight());
+
+    // Rounded rectangle background painting
+    graphics2d.setComposite(AlphaComposite.SrcOver);
+    graphics2d.setColor(Constants.COLOR_GREEN_DARK_MEDIUM);
+    graphics2d.fill(CommonFields.getTooltipRectangle());
+
+    // Text painting
+    graphics2d.setColor(Color.WHITE);
+    graphics2d.drawString(tooltipText, ((getWidth() - fontMetric.stringWidth(tooltipText)) / 2), (((getHeight() - fontMetric.getHeight()) / 2) + fontMetric.getAscent()));
+    graphics2d.dispose();
+  }
+
+  @Override
   public Insets getInsets() {
     return Constants.INSETS_TOOLTIP;
+  }
+
+  @Override
+  public Dimension getPreferredSize() {
+    FontMetrics fontMetric = getFontMetrics(getFont());
+
+    Insets insets = getInsets();
+
+    return new Dimension((fontMetric.stringWidth(getTipText()) + insets.left + insets.right), (fontMetric.getHeight() + insets.top + insets.bottom));
   }
 }
