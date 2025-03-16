@@ -89,7 +89,7 @@ public class CustomSpinnerUI extends BasicSpinnerUI {
     Graphics2D graphics2d = (Graphics2D) graphics;
 
     graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-    graphics2d.fillRoundRect(0, (component.getHeight() / 2), component.getWidth(), 5, Constants.ROUNDED_BORDER_ARC_SEPARATOR, Constants.ROUNDED_BORDER_ARC_SEPARATOR);
+    graphics2d.fillRoundRect(0, 0, component.getWidth(), component.getHeight(), Constants.ROUNDED_BORDER_ARC_SPINNER, Constants.ROUNDED_BORDER_ARC_SPINNER);
     graphics2d.dispose();
   }
 
