@@ -146,7 +146,6 @@ public final class Main {
     UIManager.put("Button.background", Constants.COLOR_GREEN_DARK);
     UIManager.put("Button.foreground", Color.WHITE);
     UIManager.put("CheckBox.background", Constants.COLOR_GREEN_LIGHT);
-    UIManager.put("CheckBox.focus", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("ComboBox.background", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.foreground", Color.WHITE);
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
@@ -162,7 +161,6 @@ public final class Main {
     UIManager.put("OptionPane.warningIcon", Constants.ICON_DIALOG_WARNING);
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);
-    UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("ScrollBarUI", CustomScrollBarUI.class.getName());
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("SpinnerUI", CustomSpinnerUI.class.getName());

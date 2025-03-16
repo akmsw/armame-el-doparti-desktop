@@ -33,6 +33,7 @@ public class CustomRadioButton extends JRadioButton {
    * Configures the graphical properties of the radio button in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
+    setFocusable(false);
     setIcon(Constants.ICON_RB_E_US_UF);
     setSelectedIcon(Constants.ICON_RB_E_S_UF);
     setDisabledIcon(Constants.ICON_RB_D_US);
