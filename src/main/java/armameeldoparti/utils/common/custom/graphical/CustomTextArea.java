@@ -53,6 +53,7 @@ public class CustomTextArea extends JTextArea {
    * Configures the graphical properties for the text area in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
+    setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
     setLineWrap(true);
     setWrapStyleWord(true);
     setEditable(false);

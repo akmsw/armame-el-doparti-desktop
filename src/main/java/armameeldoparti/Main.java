@@ -163,7 +163,6 @@ public final class Main {
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("Spinner.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("FormattedTextField.background", Constants.COLOR_GREEN_LIGHT_WHITE);
-    UIManager.put("TextArea.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);
 
