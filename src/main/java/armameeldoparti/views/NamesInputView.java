@@ -10,7 +10,6 @@ import armameeldoparti.utils.common.custom.graphical.CustomComboBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomRadioButton;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
-import armameeldoparti.utils.common.custom.graphical.CustomSeparator;
 import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
 import armameeldoparti.utils.common.custom.graphical.CustomTextField;
 
@@ -183,7 +182,7 @@ public class NamesInputView extends View {
    * Adds the custom separator to divide the radio buttons and the anchorages checkbox.
    */
   private void addSeparator() {
-    setSeparator(new CustomSeparator());
+    setSeparator(new JSeparator());
 
     leftBottomPanel.add(separator, Constants.MIG_LAYOUT_GROWX);
   }

@@ -14,6 +14,7 @@ import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomSeparatorUI;
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
 import armameeldoparti.views.MainMenuView;
@@ -149,7 +150,6 @@ public final class Main {
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.selectionForeground", Color.WHITE);
     UIManager.put("OptionPaneUI", CustomOptionPaneUI.class.getName());
-    UIManager.put("OptionPane.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("OptionPane.cancelButtonText", Constants.TEXT_BUTTON_DIALOG_CANCEL);
     UIManager.put("OptionPane.noButtonText", Constants.TEXT_BUTTON_DIALOG_NO);
     UIManager.put("OptionPane.okButtonText", Constants.TEXT_BUTTON_DIALOG_OK);
@@ -161,8 +161,7 @@ public final class Main {
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);
-    UIManager.put("Separator.background", Constants.COLOR_GREEN_LIGHT);
-    UIManager.put("Separator.foreground", Constants.COLOR_GREEN_MEDIUM);
+    UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("Spinner.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("ToolTip.background", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("ToolTip.border", new EmptyBorder(Constants.INSETS_TOOLTIP));

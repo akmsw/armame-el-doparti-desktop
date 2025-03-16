@@ -30,26 +30,17 @@ import net.miginfocom.swing.MigLayout;
  */
 public class CustomOptionPaneUI extends BasicOptionPaneUI {
 
-  // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * Creates the custom option pane UI according to the overall program aesthetics.
-   */
-  public CustomOptionPaneUI() {
-    super();
-  }
-
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * The "java:S1172" warning is suppressed since the argument is intentionally unused.
-   *
-   * @param component Intentionally unused argument.
+   * @param component Component to which to apply the custom UI.
    *
    * @return A new custom option pane UI.
    */
   @SuppressWarnings("java:S1172")
   public static ComponentUI createUI(JComponent component) {
+    component.setBackground(Constants.COLOR_GREEN_LIGHT);
+
     return new CustomOptionPaneUI();
   }
 
