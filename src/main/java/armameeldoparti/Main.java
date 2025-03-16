@@ -41,7 +41,6 @@ import java.util.stream.IntStream;
 import javax.swing.SwingUtilities;
 import javax.swing.ToolTipManager;
 import javax.swing.UIManager;
-import javax.swing.border.EmptyBorder;
 import javax.swing.plaf.FontUIResource;
 
 /**
@@ -163,9 +162,6 @@ public final class Main {
     UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("Spinner.background", Constants.COLOR_GREEN_LIGHT_WHITE);
-    UIManager.put("ToolTip.background", Constants.COLOR_GREEN_DARK_MEDIUM);
-    UIManager.put("ToolTip.border", new EmptyBorder(Constants.INSETS_TOOLTIP));
-    UIManager.put("ToolTip.foreground", Color.WHITE);
     UIManager.put("FormattedTextField.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextArea.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
