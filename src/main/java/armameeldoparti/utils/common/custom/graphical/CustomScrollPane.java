@@ -4,15 +4,11 @@ import armameeldoparti.utils.common.Constants;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 
-import javax.swing.JButton;
-import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.basic.BasicScrollBarUI;
 
 /**
  * A custom scroll pane that fits the overall program aesthetics.
@@ -58,43 +54,6 @@ public class CustomScrollPane extends JScrollPane {
     setOpaque(false);
     setBorder(new EmptyBorder(Constants.INSETS_GENERAL));
     getViewport().setBackground(Constants.COLOR_GREEN_LIGHT_WHITE);
-    getVerticalScrollBar().setUI(new BasicScrollBarUI() {
-      @Override
-      protected void configureScrollBarColors() {
-        thumbColor = Constants.COLOR_GREEN_DARK;
-        trackColor = Constants.COLOR_GREEN_MEDIUM;
-      }
-
-      @Override
-      protected JButton createDecreaseButton(int orientation) {
-        return new CustomArrowButton(orientation);
-      }
-
-      @Override
-      protected JButton createIncreaseButton(int orientation) {
-        return new CustomArrowButton(orientation);
-      }
-
-      @Override
-      protected void paintThumb(Graphics graphics, JComponent component, Rectangle thumbBounds) {
-        Graphics2D graphics2d = (Graphics2D) graphics.create();
-
-        graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-        graphics2d.setColor(Constants.COLOR_GREEN_DARK);
-        graphics2d.fillRoundRect(thumbBounds.x, thumbBounds.y, thumbBounds.width, thumbBounds.height, Constants.ROUNDED_BORDER_ARC_SCROLLBAR, Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
-        graphics2d.dispose();
-      }
-
-      @Override
-      protected void paintTrack(Graphics graphics, JComponent component, Rectangle trackBounds) {
-        Graphics2D graphics2d = (Graphics2D) graphics.create();
-
-        graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);
-        graphics2d.setColor(Constants.COLOR_GREEN_MEDIUM);
-        graphics2d.fillRoundRect(trackBounds.x, trackBounds.y, trackBounds.width, trackBounds.height, Constants.ROUNDED_BORDER_ARC_SCROLLBAR, Constants.ROUNDED_BORDER_ARC_SCROLLBAR);
-        graphics2d.dispose();
-      }
-    });
     getVerticalScrollBar().setOpaque(false);
   }
 }

@@ -37,7 +37,6 @@ public class CustomOptionPaneUI extends BasicOptionPaneUI {
    *
    * @return A new custom option pane UI.
    */
-  @SuppressWarnings("java:S1172")
   public static ComponentUI createUI(JComponent component) {
     component.setBackground(Constants.COLOR_GREEN_LIGHT);
 
