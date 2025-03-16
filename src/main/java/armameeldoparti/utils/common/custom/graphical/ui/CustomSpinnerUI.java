@@ -19,7 +19,7 @@ import javax.swing.plaf.basic.BasicSpinnerUI;
 import javax.swing.text.DefaultCaret;
 
 /**
- * A custom spinner that fits the overall program aesthetics.
+ * A custom spinner UI that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *

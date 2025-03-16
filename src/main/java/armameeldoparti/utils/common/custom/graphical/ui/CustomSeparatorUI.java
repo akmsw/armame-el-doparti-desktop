@@ -10,7 +10,7 @@ import javax.swing.plaf.ComponentUI;
 import javax.swing.plaf.SeparatorUI;
 
 /**
- * A custom separator that fits the overall program aesthetics.
+ * A custom separator UI that fits the overall program aesthetics.
  *
  * @author Bonino, Francisco Ignacio.
  *
