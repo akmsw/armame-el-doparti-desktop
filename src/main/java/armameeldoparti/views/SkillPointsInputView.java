@@ -7,7 +7,6 @@ import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
-import armameeldoparti.utils.common.custom.graphical.CustomSpinner;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -92,7 +91,7 @@ public class SkillPointsInputView extends View {
       players.sort(Comparator.comparing(player -> player.getPosition().ordinal()));
 
       for (Player player : players) {
-        spinnersMap.put(player, new CustomSpinner(new SpinnerNumberModel(Constants.SKILL_INI, Constants.SKILL_MIN, Constants.SKILL_MAX, Constants.SKILL_STEP)));
+        spinnersMap.put(player, new JSpinner(new SpinnerNumberModel(Constants.SKILL_INI, Constants.SKILL_MIN, Constants.SKILL_MAX, Constants.SKILL_STEP)));
 
         labelsMap.put(spinnersMap.get(player), new JLabel(player.getName()));
 

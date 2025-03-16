@@ -15,6 +15,7 @@ import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSeparatorUI;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomSpinnerUI;
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
 import armameeldoparti.views.MainMenuView;
@@ -161,7 +162,7 @@ public final class Main {
     UIManager.put("RadioButton.background", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("RadioButton.focus", Constants.COLOR_GREEN_LIGHT);
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
-    UIManager.put("Spinner.background", Constants.COLOR_GREEN_LIGHT_WHITE);
+    UIManager.put("SpinnerUI", CustomSpinnerUI.class.getName());
     UIManager.put("FormattedTextField.background", Constants.COLOR_GREEN_LIGHT_WHITE);
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);
