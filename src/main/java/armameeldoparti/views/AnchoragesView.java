@@ -9,7 +9,6 @@ import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomCheckBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
-import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -74,7 +73,7 @@ public class AnchoragesView extends View {
 
     setLeftPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP_2)));
     setRightPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
-    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setTextArea(new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
     setScrollPane(new CustomScrollPane(textArea));
     setAnchorageButtons(new ArrayList<>());
     initializeCheckBoxesMap();

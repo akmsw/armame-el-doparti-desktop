@@ -10,7 +10,6 @@ import armameeldoparti.utils.common.custom.graphical.CustomComboBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomRadioButton;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
-import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
 import armameeldoparti.utils.common.custom.graphical.CustomTextField;
 
 import java.util.ArrayList;
@@ -200,7 +199,7 @@ public class NamesInputView extends View {
    * Adds the read-only text area where the entered player names will be displayed in real time.
    */
   private void addTextArea() {
-    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setTextArea(new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
     setScrollPane(new CustomScrollPane(textArea));
 
     rightPanel.add(scrollPane, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_PUSH, Constants.MIG_LAYOUT_GROW, Constants.MIG_LAYOUT_SPAN));

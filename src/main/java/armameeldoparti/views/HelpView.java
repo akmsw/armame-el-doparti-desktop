@@ -4,7 +4,6 @@ import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
-import armameeldoparti.utils.common.custom.graphical.CustomTextArea;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -92,7 +91,7 @@ public class HelpView extends View {
    * Adds the text area where to display the instructions of the program.
    */
   private void addTextArea() {
-    setTextArea(new CustomTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
+    setTextArea(new JTextArea(TEXT_AREA_ROWS, TEXT_AREA_COLUMNS));
     setScrollPane(new CustomScrollPane(textArea));
 
     masterPanel.add(scrollPane);
