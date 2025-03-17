@@ -90,8 +90,8 @@ public class ResultsController extends Controller<ResultsView> {
 
     table = view.getTable();
 
-    overrideTableFormat();
-    fillTableFields();
+    overrideTableCellRenderer();
+    fillTableHeaders();
     updateTableData();
     adjustTableCells();
 
@@ -220,9 +220,9 @@ public class ResultsController extends Controller<ResultsView> {
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
   /**
-   * Fills the table cells whose texts do not change.
+   * Fills the table cells whose texts indicates a position or a team.
    */
-  private void fillTableFields() {
+  private void fillTableHeaders() {
     int rowCount = table.getRowCount() - 1;
 
     for (int teamIndex = 0; teamIndex < teams.size(); teamIndex++) {
@@ -256,7 +256,7 @@ public class ResultsController extends Controller<ResultsView> {
   }
 
   /**
-   * Overrides only the default table cells renderer in order to fit the program aesthetics, including text alignment and background and foreground colors.
+   * Overrides the default table cell renderer in order to fit the program aesthetics, including text alignment and background & foreground colors.
    *
    * <p>Cell (0,0) is unused and has a medium green background.
    *
@@ -267,7 +267,7 @@ public class ResultsController extends Controller<ResultsView> {
    *
    * <p>The cell text will be centered if it shows any skill points related information or a team name. Otherwise, it will be left-aligned.
    */
-  private void overrideTableFormat() {
+  private void overrideTableCellRenderer() {
     view.getTable()
         .setDefaultRenderer(
           Object.class,
