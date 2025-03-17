@@ -37,7 +37,7 @@ public class Player {
     setPosition(position);
     setTeamNumber(Constants.PLAYER_NO_TEAM_ASSIGNED);
     setAnchorageNumber(Constants.PLAYER_NO_ANCHORAGE_ASSIGNED);
-    setSkillPoints(0);
+    setSkillPoints(Constants.PLAYER_NO_SKILL_POINTS_ASSIGNED);
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

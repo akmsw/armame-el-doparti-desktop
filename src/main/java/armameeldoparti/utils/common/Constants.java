@@ -109,8 +109,9 @@ public final class Constants {
   public static final int MAX_PLAYERS_PER_ANCHORAGE = PLAYERS_PER_TEAM - 1;
   public static final int MAX_ANCHORED_PLAYERS = 2 * MAX_PLAYERS_PER_ANCHORAGE;
   public static final int MIN_PLAYERS_PER_ANCHORAGE = 2;
-  public static final int PLAYER_NO_TEAM_ASSIGNED = 0;
   public static final int PLAYER_NO_ANCHORAGE_ASSIGNED = 0;
+  public static final int PLAYER_NO_SKILL_POINTS_ASSIGNED = 0;
+  public static final int PLAYER_NO_TEAM_ASSIGNED = 0;
   public static final int ROUNDED_BORDER_ARC_BUTTON_DIALOG = 15;
   public static final int ROUNDED_BORDER_ARC_COMBOBOX_SELECTOR = 10;
   public static final int ROUNDED_BORDER_ARC_GENERAL = 30;
