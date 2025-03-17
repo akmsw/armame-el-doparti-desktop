@@ -6,7 +6,6 @@ import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
-import armameeldoparti.utils.common.custom.graphical.CustomCheckBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
 
@@ -156,7 +155,7 @@ public class AnchoragesView extends View {
    * @param cbSet      Check boxes set to fill.
    */
   private void fillCheckboxesSet(List<Player> playersSet, List<JCheckBox> cbSet) {
-    playersSet.forEach(player -> cbSet.add(new CustomCheckBox(player.getName())));
+    playersSet.forEach(player -> cbSet.add(new JCheckBox(player.getName())));
   }
 
   /**

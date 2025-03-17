@@ -5,7 +5,6 @@ import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
-import armameeldoparti.utils.common.custom.graphical.CustomCheckBox;
 import armameeldoparti.utils.common.custom.graphical.CustomComboBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
@@ -189,7 +188,7 @@ public class NamesInputView extends View {
    * Adds the anchorages enablement checkbox.
    */
   private void addAnchoragesCheckbox() {
-    setAnchoragesCheckbox(new CustomCheckBox("Anclar jugadores"));
+    setAnchoragesCheckbox(new JCheckBox("Anclar jugadores"));
 
     leftBottomPanel.add(anchoragesCheckbox, Constants.MIG_LAYOUT_GROWX);
   }

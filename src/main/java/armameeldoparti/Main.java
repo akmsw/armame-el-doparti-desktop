@@ -13,6 +13,7 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomCheckBoxUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomRadioButtonUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomScrollBarUI;
@@ -145,6 +146,7 @@ public final class Main {
    * Sets up the program's GUI properties.
    */
   private static void setUpGeneralGraphicalProperties() {
+    UIManager.put("CheckBoxUI", CustomCheckBoxUI.class.getName());
     UIManager.put("ComboBox.background", Constants.COLOR_GREEN_MEDIUM);
     UIManager.put("ComboBox.foreground", Color.WHITE);
     UIManager.put("ComboBox.selectionBackground", Constants.COLOR_GREEN_MEDIUM);
