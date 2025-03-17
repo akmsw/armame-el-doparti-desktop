@@ -60,8 +60,7 @@ public class CustomTable extends JTable {
     }
 
     for (int column = 0; column < getColumnCount(); column++) {
-      getColumnModel().getColumn(column)
-                      .setPreferredWidth(maxCellWidth);
+      getColumnModel().getColumn(column).setPreferredWidth(maxCellWidth);
     }
   }
 

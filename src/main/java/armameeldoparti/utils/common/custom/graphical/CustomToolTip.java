@@ -51,7 +51,7 @@ public class CustomToolTip extends JToolTip {
       float roundRectangleInitialWidth = (fontMetrics.stringWidth(tooltipText) + Constants.INSETS_TOOLTIP.left + Constants.INSETS_TOOLTIP.right);
       float roundRectangleInitialHeight = (fontMetrics.getHeight() + Constants.INSETS_TOOLTIP.top + Constants.INSETS_TOOLTIP.bottom);
 
-      CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, roundRectangleInitialWidth, roundRectangleInitialHeight, (Constants.ROUNDED_BORDER_ARC_TOOLTIP), (Constants.ROUNDED_BORDER_ARC_TOOLTIP)));
+      CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, roundRectangleInitialWidth, roundRectangleInitialHeight, Constants.ROUNDED_BORDER_ARC_TOOLTIP, Constants.ROUNDED_BORDER_ARC_TOOLTIP));
     }
 
     setComponent(component);
@@ -102,7 +102,7 @@ public class CustomToolTip extends JToolTip {
 
     String tooltipText = getTipText();
 
-    CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), (Constants.ROUNDED_BORDER_ARC_TOOLTIP), (Constants.ROUNDED_BORDER_ARC_TOOLTIP)));
+    CommonFields.setTooltipRectangle(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), Constants.ROUNDED_BORDER_ARC_TOOLTIP, Constants.ROUNDED_BORDER_ARC_TOOLTIP));
 
     // Transparent background painting
     graphics2d.setRenderingHints(Constants.MAP_RENDERING_HINTS);

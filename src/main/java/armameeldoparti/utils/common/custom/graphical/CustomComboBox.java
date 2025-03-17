@@ -2,7 +2,6 @@ package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -133,10 +132,8 @@ public class CustomComboBox<E> extends JComboBox<E> {
     public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
       JLabel renderer = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 
-      Color fillColor = isSelected ? Constants.COLOR_GREEN_DARK_MEDIUM : list.getBackground();
-
       renderer.setOpaque(false);
-      renderer.setBackground(fillColor);
+      renderer.setBackground(isSelected ? Constants.COLOR_GREEN_DARK_MEDIUM : list.getBackground());
       renderer.setForeground(list.getForeground());
       renderer.setBorder(new EmptyBorder(Constants.INSETS_COMBOBOX));
 

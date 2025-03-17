@@ -120,6 +120,7 @@ public final class CommonFunctions {
    */
   public static void showMessageDialog(Component parentComponent, String dialogMessage, int dialogMessageType) {
     String dialogTitle = null;
+
     Icon dialogIcon = null;
 
     switch (dialogMessageType) {
