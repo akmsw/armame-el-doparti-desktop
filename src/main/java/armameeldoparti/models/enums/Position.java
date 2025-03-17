@@ -7,7 +7,7 @@ package armameeldoparti.models.enums;
  *
  * @version 3.0.0
  *
- * @since 1.0
+ * @since 1.0.0
  */
 public enum Position {
   CENTRAL_DEFENDER,

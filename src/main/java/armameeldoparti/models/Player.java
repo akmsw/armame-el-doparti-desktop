@@ -10,7 +10,7 @@ import armameeldoparti.utils.common.Constants;
  *
  * @version 3.0.0
  *
- * @since 1.0
+ * @since 1.0.0
  */
 public class Player {
 
