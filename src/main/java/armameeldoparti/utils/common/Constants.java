@@ -112,7 +112,7 @@ public final class Constants {
   public static final int PLAYER_NO_TEAM_ASSIGNED = 0;
   public static final int PLAYER_NO_ANCHORAGE_ASSIGNED = 0;
   public static final int ROUNDED_BORDER_ARC_BUTTON_DIALOG = 15;
-  public static final int ROUNDED_BORDER_ARC_COMBOBOX = 10;
+  public static final int ROUNDED_BORDER_ARC_COMBOBOX_SELECTOR = 10;
   public static final int ROUNDED_BORDER_ARC_GENERAL = 30;
   public static final int ROUNDED_BORDER_ARC_SCROLLBAR = 20;
   public static final int ROUNDED_BORDER_ARC_SEPARATOR = 4;
@@ -163,10 +163,10 @@ public final class Constants {
   public static final String MSG_ERROR_INVALID_NAME = "El nombre del jugador no puede estar vacío," + System.lineSeparator() + "tener más de " + MAX_NAME_LEN + " caracteres, o estar repetido";
   public static final String MSG_ERROR_NULL_GUI_RESOURCE = "Error en obtención de recursos gráficos";
   public static final String MSG_INFO_ANCHORAGES_NO_SELECTION = "No hay jugadores seleccionados para anclar";
-  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + Constants.MAX_PLAYERS_PER_ANCHORAGE + " ni menos de " + Constants.MIN_PLAYERS_PER_ANCHORAGE + " jugadores en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + MAX_PLAYERS_PER_ANCHORAGE + " ni menos de " + MIN_PLAYERS_PER_ANCHORAGE + " jugadores en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_CONFLICTS = "Existen conflictos entre anclajes";
   public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores" + System.lineSeparator() + "de una misma posición en un mismo anclaje";
-  public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + Constants.MAX_ANCHORED_PLAYERS + " jugadores anclados en total";
+  public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + MAX_ANCHORED_PLAYERS + " jugadores anclados en total";
   public static final String PATH_DOCS = "docs/";
   public static final String PATH_HELP_DOCS = PATH_DOCS + "help/";
   public static final String PATH_ICO = "icons/";
@@ -231,22 +231,22 @@ public final class Constants {
   public static final ImageIcon ICON_DIALOG_QUESTION = CommonFunctions.scaleImageIcon(ICON_OP_QUESTION, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
   public static final ImageIcon ICON_DIALOG_WARNING = CommonFunctions.scaleImageIcon(ICON_OP_WARNING, SCALE_ICON_DIALOG, SCALE_ICON_DIALOG, Image.SCALE_SMOOTH);
 
-  public static final Insets INSETS_COMBOBOX = new Insets(Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
-                                                          Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
-                                                          Constants.ROUNDED_BORDER_INSETS_COMBOBOX,
-                                                          Constants.ROUNDED_BORDER_INSETS_COMBOBOX);
-  public static final Insets INSETS_GENERAL = new Insets(Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                         Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                         Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                         Constants.ROUNDED_BORDER_INSETS_GENERAL);
-  public static final Insets INSETS_LABEL = new Insets(Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL,
-                                                       Constants.ROUNDED_BORDER_INSETS_GENERAL);
-  public static final Insets INSETS_TOOLTIP = new Insets(Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
-                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
-                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP,
-                                                         Constants.ROUNDED_BORDER_INSETS_TOOLTIP);
+  public static final Insets INSETS_COMBOBOX = new Insets(ROUNDED_BORDER_INSETS_COMBOBOX,
+                                                          ROUNDED_BORDER_INSETS_COMBOBOX,
+                                                          ROUNDED_BORDER_INSETS_COMBOBOX,
+                                                          ROUNDED_BORDER_INSETS_COMBOBOX);
+  public static final Insets INSETS_GENERAL = new Insets(ROUNDED_BORDER_INSETS_GENERAL,
+                                                         ROUNDED_BORDER_INSETS_GENERAL,
+                                                         ROUNDED_BORDER_INSETS_GENERAL,
+                                                         ROUNDED_BORDER_INSETS_GENERAL);
+  public static final Insets INSETS_LABEL = new Insets(ROUNDED_BORDER_INSETS_GENERAL,
+                                                       ROUNDED_BORDER_INSETS_GENERAL,
+                                                       ROUNDED_BORDER_INSETS_GENERAL,
+                                                       ROUNDED_BORDER_INSETS_GENERAL);
+  public static final Insets INSETS_TOOLTIP = new Insets(ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         ROUNDED_BORDER_INSETS_TOOLTIP,
+                                                         ROUNDED_BORDER_INSETS_TOOLTIP);
 
   /**
    * Positions to show in the names input view combobox.
