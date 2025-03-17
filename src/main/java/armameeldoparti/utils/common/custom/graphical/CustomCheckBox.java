@@ -9,9 +9,9 @@ import javax.swing.JCheckBox;
  *
  * @author Bonino, Francisco Ignacio.
  *
- * @version 0.0.1
+ * @version 1.0.0
  *
- * @since 3.0
+ * @since 3.0.0
  */
 public class CustomCheckBox extends JCheckBox {
 

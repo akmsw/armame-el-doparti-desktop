@@ -20,9 +20,9 @@ import armameeldoparti.models.enums.Position;
  *
  * @author Bonino, Francisco Ignacio.
  *
- * @version 0.0.1
+ * @version 1.0.0
  *
- * @since 3.0
+ * @since 3.0.0
  */
 public final class Constants {
 
@@ -179,7 +179,7 @@ public final class Constants {
   public static final String POSITION_LATERAL_DEFENDERS = "DEFENSORES LATERALES";
   public static final String POSITION_MIDFIELDERS = "MEDIOCAMPISTAS";
   public static final String PROGRAM_TITLE = "armame el doparti"; // Must be on lowercase
-  public static final String PROGRAM_VERSION = "v3.0";
+  public static final String PROGRAM_VERSION = "v3.0.0";
   public static final String PROGRAM_AUTHOR = "@" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String REGEX_NAMES_VALIDATION = "[a-z\sA-ZÁÉÍÓÚáéíóúñÑ]+";
   public static final String REGEX_PDA_DATA_RETRIEVE = "[CLMFG].+>.+";

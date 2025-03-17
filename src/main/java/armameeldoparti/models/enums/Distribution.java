@@ -5,9 +5,9 @@ package armameeldoparti.models.enums;
  *
  * @author Bonino, Francisco Ignacio.
  *
- * @version 0.0.1
+ * @version 1.0.0
  *
- * @since 3.0
+ * @since 3.0.0
  */
 public enum Distribution {
   MIX_BY_SKILL_POINTS,

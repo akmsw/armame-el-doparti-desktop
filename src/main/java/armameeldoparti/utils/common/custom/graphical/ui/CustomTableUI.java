@@ -15,6 +15,15 @@ import javax.swing.table.DefaultTableCellRenderer;
 
 import armameeldoparti.utils.common.Constants;
 
+/**
+ * A custom table UI that fits the overall program aesthetics.
+ *
+ * @author Bonino, Francisco Ignacio.
+ *
+ * @version 1.0.0
+ *
+ * @since 3.0.0
+ */
 public class CustomTableUI extends BasicTableUI {
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -22,7 +31,7 @@ public class CustomTableUI extends BasicTableUI {
   /**
    * @param component Component to which to apply the custom UI.
    *
-   * @return A new custom separator UI.
+   * @return A new custom table UI.
    */
   public static ComponentUI createUI(JComponent component) {
     JTable table = (JTable) component;
