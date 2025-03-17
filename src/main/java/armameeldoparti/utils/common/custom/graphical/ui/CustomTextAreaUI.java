@@ -23,7 +23,7 @@ public class CustomTextAreaUI extends BasicTextAreaUI {
   /**
    * @param component Component to which to apply the custom UI.
    *
-   * @return A new custom separator UI.
+   * @return A new custom text area UI.
    */
   public static ComponentUI createUI(JComponent component) {
     JTextArea textArea = (JTextArea) component;
