@@ -17,6 +17,7 @@ import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomScrollBarUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSeparatorUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSpinnerUI;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomTableUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomTextAreaUI;
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
@@ -165,6 +166,7 @@ public final class Main {
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("SpinnerUI", CustomSpinnerUI.class.getName());
     UIManager.put("FormattedTextField.background", Constants.COLOR_GREEN_LIGHT_WHITE);
+    UIManager.put("TableUI", CustomTableUI.class.getName());
     UIManager.put("TextAreaUI", CustomTextAreaUI.class.getName());
     UIManager.put("TextField.selectionBackground", Constants.COLOR_GREEN_DARK_MEDIUM);
     UIManager.put("TextField.selectionForeground", Constants.COLOR_GREEN_LIGHT_WHITE);

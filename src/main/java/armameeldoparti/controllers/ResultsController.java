@@ -8,7 +8,6 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
-import armameeldoparti.utils.common.custom.graphical.CustomTable;
 import armameeldoparti.utils.mixers.BySkillPointsMixer;
 import armameeldoparti.utils.mixers.RandomMixer;
 import armameeldoparti.views.ResultsView;
@@ -49,7 +48,7 @@ public class ResultsController extends Controller<ResultsView> {
 
   private RandomMixer randomMixer;
 
-  private CustomTable table;
+  private JTable table;
 
   private Team team1;
   private Team team2;
@@ -86,16 +85,15 @@ public class ResultsController extends Controller<ResultsView> {
   private void setUpView() {
     teams = (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? randomMix(Arrays.asList(team1, team2)) : bySkillPointsMix(Arrays.asList(team1, team2)));
 
-    view.setTable(new CustomTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
+    view.setTable(new JTable(Constants.PLAYERS_PER_TEAM + (CommonFields.getDistribution() == Distribution.MIX_RANDOM ? 1 : 2), TABLE_COLUMNS));
     view.initializeInterface();
 
-    table = (CustomTable) view.getTable();
+    table = view.getTable();
 
     overrideTableFormat();
     fillTableFields();
-    updateTable();
-
-    table.adjustCells();
+    updateTableData();
+    adjustTableCells();
 
     view.pack();
   }
@@ -125,7 +123,7 @@ public class ResultsController extends Controller<ResultsView> {
 
     teams = randomMix(Arrays.asList(team1, team2));
 
-    updateTable();
+    updateTableData();
   }
 
   /**
@@ -135,7 +133,7 @@ public class ResultsController extends Controller<ResultsView> {
    *
    * @see armameeldoparti.models.enums.Position
    */
-  public void updateTable() {
+  public void updateTableData() {
     int column = 1;
     int row = 1;
 
@@ -349,10 +347,33 @@ public class ResultsController extends Controller<ResultsView> {
               graphics2d.fillRoundRect(0, 0, (getWidth() - 1), (getHeight() - 1), Constants.ROUNDED_BORDER_ARC_TABLE_CELLS, Constants.ROUNDED_BORDER_ARC_TABLE_CELLS);
 
               super.paintComponent(graphics2d);
-
-              graphics2d.dispose();
             }
           }
         );
+  }
+
+  /**
+   * Adjusts the cells size to fit the biggest content shown in the table.
+   */
+  private void adjustTableCells() {
+    int maxCellWidth = 0;
+    int maxCellHeight = 0;
+
+    for (int row = 0; row < table.getRowCount(); row++) {
+      for (int column = 0; column < table.getColumnCount(); column++) {
+        Component cellComponent = table.prepareRenderer(table.getCellRenderer(row, column), row, column);
+
+        maxCellWidth = Math.max(maxCellWidth, (cellComponent.getPreferredSize().width + table.getIntercellSpacing().width));
+        maxCellHeight = Math.max(maxCellHeight, (cellComponent.getPreferredSize().height + table.getIntercellSpacing().height));
+      }
+    }
+
+    for (int row = 0; row < table.getRowCount(); row++) {
+      table.setRowHeight(row, maxCellHeight);
+    }
+
+    for (int column = 0; column < table.getColumnCount(); column++) {
+      table.getColumnModel().getColumn(column).setPreferredWidth(maxCellWidth);
+    }
   }
 }
