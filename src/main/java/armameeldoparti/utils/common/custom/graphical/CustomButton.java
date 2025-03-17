@@ -2,6 +2,7 @@ package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.utils.common.Constants;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Insets;
@@ -82,6 +83,8 @@ public class CustomButton extends JButton {
    * Configures the graphical properties of the button in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
+    setBackground(Constants.COLOR_GREEN_DARK);
+    setForeground(Color.WHITE);
     setContentAreaFilled(false);
     setFocusPainted(false);
     setBorderPainted(false);
