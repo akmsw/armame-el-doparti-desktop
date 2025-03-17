@@ -14,6 +14,7 @@ import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomOptionPaneUI;
+import armameeldoparti.utils.common.custom.graphical.ui.CustomRadioButtonUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomScrollBarUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSeparatorUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSpinnerUI;
@@ -158,6 +159,7 @@ public final class Main {
     UIManager.put("OptionPane.questionIcon", Constants.ICON_DIALOG_QUESTION);
     UIManager.put("OptionPane.warningIcon", Constants.ICON_DIALOG_WARNING);
     UIManager.put("Panel.background", Constants.COLOR_GREEN_LIGHT);
+    UIManager.put("RadioButtonUI", CustomRadioButtonUI.class.getName());
     UIManager.put("ScrollBarUI", CustomScrollBarUI.class.getName());
     UIManager.put("SeparatorUI", CustomSeparatorUI.class.getName());
     UIManager.put("SpinnerUI", CustomSpinnerUI.class.getName());

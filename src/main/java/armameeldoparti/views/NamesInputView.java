@@ -8,7 +8,6 @@ import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomCheckBox;
 import armameeldoparti.utils.common.custom.graphical.CustomComboBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
-import armameeldoparti.utils.common.custom.graphical.CustomRadioButton;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;
 import armameeldoparti.utils.common.custom.graphical.CustomTextField;
 
@@ -168,8 +167,8 @@ public class NamesInputView extends View {
    * <p>The event handler could be written in this class, but for the sake of the MVC design pattern good practices, the controller should be the responsible for events handling.
    */
   private void addRadioButtons() {
-    setRandomRadioButton(new CustomRadioButton("Aleatoria"));
-    setBySkillPointsRadioButton(new CustomRadioButton("Por puntajes"));
+    setRandomRadioButton(new JRadioButton("Aleatoria"));
+    setBySkillPointsRadioButton(new JRadioButton("Por puntajes"));
     setDistributionLabel(new CustomLabel("Distribución", null, SwingConstants.CENTER));
 
     leftBottomPanel.add(distributionLabel, CommonFunctions.buildMigLayoutConstraints(Constants.MIG_LAYOUT_GROWX, Constants.MIG_LAYOUT_PUSHX));
