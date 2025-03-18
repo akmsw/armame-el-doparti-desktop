@@ -100,7 +100,7 @@ public final class Main {
     for (Position position : Position.values()) {
       CommonFields.getPlayersSets()
                   .put(position, IntStream.range(0, CommonFields.getPlayerLimitPerPosition().get(position) * 2)
-                                          .mapToObj(_ -> new Player("", position))
+                                          .mapToObj(_ -> new Player(Constants.PLAYER_NO_NAME_ASSIGNED, position))
                                           .toList());
     }
   }
@@ -125,7 +125,7 @@ public final class Main {
         CommonFields.getPlayerLimitPerPosition().put(Position.values()[lineIndex], Integer.parseInt(filteredLines.get(lineIndex).replaceAll(Constants.REGEX_PLAYERS_COUNT, "")));
       }
     } catch (IOException exception) {
-      CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
+      CommonFunctions.exitProgram(Error.ERROR_FILES, exception);
     }
   }
 
@@ -187,7 +187,7 @@ public final class Main {
 
       setProgramFont(programFont);
     } catch (IOException | FontFormatException exception) {
-      CommonFunctions.exitProgram(Error.ERROR_GUI, exception.getStackTrace());
+      CommonFunctions.exitProgram(Error.ERROR_GUI, exception);
     }
   }
 

@@ -149,7 +149,7 @@ public class RandomMixer implements PlayersMixer {
 
                   // If there's no available team at this point, something went wrong
                   if (availableTeamNumber == -1) {
-                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
+                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, null);
                   }
 
                   player.setTeamNumber(availableTeamNumber + 1);

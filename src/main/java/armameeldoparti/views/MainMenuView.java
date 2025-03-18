@@ -81,7 +81,7 @@ public class MainMenuView extends View {
    * Adds the background image to the panel.
    */
   private void addBackgroundImage() {
-    masterPanel.add(new JLabel("", Constants.ICON_BACKGROUND, SwingConstants.CENTER), Constants.MIG_LAYOUT_GROWX);
+    masterPanel.add(new JLabel(null, Constants.ICON_BACKGROUND, SwingConstants.CENTER), Constants.MIG_LAYOUT_GROWX);
   }
 
   /**

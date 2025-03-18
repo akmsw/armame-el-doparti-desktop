@@ -46,7 +46,7 @@ public class SkillPointsInputView extends View {
    * Builds the skill points input view.
    */
   public SkillPointsInputView() {
-    super("Ingreso de puntuaciones", "");
+    super("Ingreso de puntuaciones", null);
 
     setSpinnersMap(new HashMap<>());
     setLabelsMap(new HashMap<>());

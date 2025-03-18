@@ -6,6 +6,8 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+import armameeldoparti.utils.common.custom.exceptions.BlankStringException;
+import armameeldoparti.utils.common.custom.exceptions.NumericStringException;
 import armameeldoparti.views.NamesInputView;
 
 import java.awt.Component;
@@ -18,7 +20,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import javax.naming.InvalidNameException;
-
+import javax.naming.LimitExceededException;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -102,41 +104,50 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * Validates the user input with a regular expression that checks if the string contains only latin characters from A to Z including Ñ, uppercase or lowercase, with or without accent mark, with or without spaces.
+   * Applies the user input as the name of the player associated to the text field.
    *
-   * <p>If the input is not valid or already exists, the program asks for a new input.
-   *
-   * <p>If the input is valid, it will be applied as a player name in the players set corresponding to the combobox selected option.
-   *
-   * @param playerIndex The index of the player which name will be the text filed input.
+   * @param playerIndex The index of the player which name will be the text field input.
    * @param playersSet  The set of players corresponding to the selected combobox option.
-   * @param text        The user input in the text field.
-   *
-   * @throws IllegalArgumentException When the input is an invalid string.
-   * @throws InvalidNameException     When the input is an invalid name.
+   * @param text        The user input.
    */
-  public void textFieldEvent(int playerIndex, List<Player> playersSet, String text) throws IllegalArgumentException, InvalidNameException {
-    if (text.isBlank()) {
-      throw new InvalidNameException();
-    }
-
-    if (!isValidString(text)) {
-      throw new IllegalArgumentException();
-    }
-
-    String name = text.trim()
-                      .toUpperCase()
-                      .replace(" ", "_");
-
-    if (!isValidName(name)) {
-      throw new InvalidNameException();
-    }
-
-    playersSet.get(playerIndex)
-              .setName(name);
+  public void textFieldEvent(int playerIndex, List<Player> playersSet, String text) {
+    playersSet.get(playerIndex).setName(text);
 
     updateTextArea();
     validateMixButtonEnable();
+  }
+
+  /**
+   * Validates the user input given that it cannot be blank, contain only numbers, have more than {@code Constants.MAX_NAME_LEN} characters or be repeated.
+   *
+   * @param string The string to validate.
+   *
+   * @throws BlankStringException     When the input is blank.
+   * @throws NumericStringException   When the input is numeric-only.
+   * @throws LimitExceededException   When the input exceeds the maximum number of characters allowed.
+   * @throws IllegalArgumentException When the input contains special characters.
+   * @throws InvalidNameException     When the input is an already existing name.
+   */
+  private void validateUserInput(String string) throws IllegalArgumentException, InvalidNameException, LimitExceededException {
+    if (string.isBlank()) {
+      throw new BlankStringException();
+    }
+
+    if (isNumericString(string.replace("\s", ""))) {
+      throw new NumericStringException();
+    }
+
+    if (string.length() > Constants.MAX_NAME_LEN) {
+      throw new LimitExceededException();
+    }
+
+    if (containsSpecialCharacters(string)) {
+      throw new IllegalArgumentException();
+    }
+
+    if (alreadyExists(string)) {
+      throw new InvalidNameException();
+    }
   }
 
   /**
@@ -171,7 +182,7 @@ public class NamesInputController extends Controller<NamesInputView> {
     view.getAnchoragesCheckbox().setSelected(false);
     view.getComboBox().setSelectedIndex(0);
     view.getComboBox().requestFocusInWindow();
-    view.getTextArea().setText("");
+    view.getTextArea().setText(null);
     view.getMixButton().setEnabled(false);
     view.getRandomRadioButton().setSelected(false);
     view.getBySkillPointsRadioButton().setSelected(false);
@@ -197,16 +208,21 @@ public class NamesInputController extends Controller<NamesInputView> {
         .forEach((player, textFieldsSet) ->
           textFieldsSet.forEach(textField ->
             textField.addActionListener(event -> {
-                /*
-                 * If the entered text is both a valid string and name, it will be applied to the corresponding player.
-                 * If not, a message will be shown and the text field will be reset to the player's name.
-                 */
+                String text = textField.getText().trim();
+
                 try {
-                  textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), textField.getText());
-                } catch (IllegalArgumentException | InvalidNameException exception) {
-                  CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event),
-                                                    exception instanceof IllegalArgumentException ? Constants.MSG_ERROR_INVALID_STRING: Constants.MSG_ERROR_INVALID_NAME,
-                                                    JOptionPane.INFORMATION_MESSAGE);
+                  validateUserInput(text);
+                  textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), text.toUpperCase());
+                } catch (IllegalArgumentException | LimitExceededException | InvalidNameException exception) {
+                  String errorMessage = switch(exception) {
+                    case BlankStringException _ -> Constants.MSG_ERROR_STRING_BLANK;
+                    case NumericStringException _ -> Constants.MSG_ERROR_STRING_NUMERIC;
+                    case LimitExceededException _ -> Constants.MSG_ERROR_NAME_LENGTH;
+                    case InvalidNameException _ -> Constants.MSG_ERROR_NAME_ALREADY_EXISTS;
+                    default -> Constants.MSG_ERROR_NAME_INVALID;
+                  };
+
+                  CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event), errorMessage, JOptionPane.INFORMATION_MESSAGE);
 
                   textField.setText(CommonFields.getPlayersSets()
                                                 .get(player)
@@ -254,20 +270,19 @@ public class NamesInputController extends Controller<NamesInputView> {
    */
   private void updateTextArea() {
     view.getTextArea()
-        .setText("");
+        .setText(null);
 
     List<Player> players = CommonFields.getPlayersSets()
                                        .entrySet()
                                        .stream()
                                        .flatMap(playersSet -> playersSet.getValue()
                                                                         .stream()
-                                                                        .filter(player -> !player.getName().equals("")))
+                                                                        .filter(player -> !player.getName().equals(Constants.PLAYER_NO_NAME_ASSIGNED)))
                                        .sorted(Comparator.comparing(player -> player.getPosition().ordinal()))
                                        .toList();
 
     for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
-      view.getTextArea()
-          .append((playerIndex + 1) + " - " + players.get(playerIndex).getName() + (playerIndex < (Constants.PLAYERS_TOTAL - 1) ? System.lineSeparator() : ""));
+      view.getTextArea().append((playerIndex + 1) + " - " + players.get(playerIndex).getName() + (playerIndex < (Constants.PLAYERS_TOTAL - 1) ? Constants.SYSTEM_NEWLINE : ""));
     }
   }
 
@@ -308,7 +323,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                 .values()
                 .stream()
                 .flatMap(List::stream)
-                .forEach(player -> player.setName(""));
+                .forEach(player -> player.setName(Constants.PLAYER_NO_NAME_ASSIGNED));
   }
 
   /**
@@ -323,7 +338,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                        .values()
                        .stream()
                        .flatMap(Collection::stream)
-                       .anyMatch(player -> player.getName().equals(name));
+                       .anyMatch(player -> player.getName().equalsIgnoreCase(name));
   }
 
   /**
@@ -332,7 +347,7 @@ public class NamesInputController extends Controller<NamesInputView> {
    * @return Whether every condition needed to distribute the players is met.
    */
   private boolean readyToDistribute() {
-    return !alreadyExists("") && distributionMethodHasBeenChosen();
+    return !alreadyExists(Constants.PLAYER_NO_NAME_ASSIGNED) && distributionMethodHasBeenChosen();
   }
 
   /**
@@ -345,24 +360,24 @@ public class NamesInputController extends Controller<NamesInputView> {
   }
 
   /**
-   * Checks if the given string matches the string validation regex.
+   * Checks if the given string contains only numbers.
    *
-   * @param string The string to validate.
+   * @param name The string to validate.
    *
-   * @return Whether the given string matches the string validation regex.
+   * @return Whether the given string contains only numbers.
    */
-  private boolean isValidString(String string) {
-    return Pattern.matches(Constants.REGEX_NAMES_VALIDATION, string);
+  private boolean isNumericString(String string) {
+    return Pattern.matches(Constants.REGEX_NUMERIC_STRING, string);
   }
 
   /**
-   * Checks if the given name is not null/empty/blank, has at most MAX_NAME_LEN characters, and if there isn't already a player with that name.
+   * Checks if the given string contains special characters.
    *
-   * @param name The name to validate.
+   * @param name The string to validate.
    *
-   * @return Whether the given name is valid.
+   * @return Whether the given string contains special characters.
    */
-  private boolean isValidName(String name) {
-    return name.length() <= Constants.MAX_NAME_LEN && !alreadyExists(name);
+  private boolean containsSpecialCharacters(String string) {
+    return Pattern.matches(Constants.REGEX_SPECIAL_CHARACTERS, string);
   }
 }

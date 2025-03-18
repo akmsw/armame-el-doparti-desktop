@@ -246,11 +246,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @see armameeldoparti.models.enums.Position
    */
   private void updateTextArea() {
-    view.getTextArea().setText("");
+    view.getTextArea().setText(null);
 
     IntStream.range(0, anchoragesCount)
              .forEach(anchorageNumber -> {
-               view.getTextArea().append("ANCLAJE " + (anchorageNumber + 1) + System.lineSeparator());
+               view.getTextArea().append("ANCLAJE " + (anchorageNumber + 1) + Constants.SYSTEM_NEWLINE);
 
                List<Player> anchorage = CommonFields.getPlayersSets()
                                                     .entrySet()
@@ -262,11 +262,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                                     .toList();
 
                for (Player player : anchorage) {
-                 view.getTextArea().append((anchorage.indexOf(player) + 1) + ". " + player.getName() + System.lineSeparator());
+                 view.getTextArea().append((anchorage.indexOf(player) + 1) + " - " + player.getName() + Constants.SYSTEM_NEWLINE);
                }
 
                if ((anchorageNumber + 1) != anchoragesCount) {
-                 view.getTextArea().append(System.lineSeparator());
+                 view.getTextArea().append(Constants.SYSTEM_NEWLINE);
                }
              });
   }
@@ -285,7 +285,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       view.getAnchorageButtons().forEach(button -> button.setEnabled(true));
     }
 
-    if (Constants.MAX_ANCHORED_PLAYERS - anchoredPlayersCount < 2) {
+    if (Constants.MAX_TOTAL_ANCHORED_PLAYERS - anchoredPlayersCount < 2) {
       view.getNewAnchorageButton().setEnabled(false);
       view.getCheckboxesMap()
           .values()
@@ -409,7 +409,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @return Whether the number of selected players is at least 2 and at most MAX_PLAYERS_PER_ANCHORAGE.
    */
   private boolean validChecksCount(int playersToAnchorCount) {
-    return playersToAnchorCount <= Constants.MAX_PLAYERS_PER_ANCHORAGE && playersToAnchorCount >= 2;
+    return playersToAnchorCount <= Constants.MAX_ANCHORAGE_SIZE && playersToAnchorCount >= 2;
   }
 
   /**
@@ -430,7 +430,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
    * @return Whether the number of selected players is at most the maximum allowed per anchorage.
    */
   private boolean validAnchoredPlayersCount(int playersToAnchorCount) {
-    return (anchoredPlayersCount + playersToAnchorCount) <= Constants.MAX_ANCHORED_PLAYERS;
+    return (anchoredPlayersCount + playersToAnchorCount) <= Constants.MAX_TOTAL_ANCHORED_PLAYERS;
   }
 
   /**

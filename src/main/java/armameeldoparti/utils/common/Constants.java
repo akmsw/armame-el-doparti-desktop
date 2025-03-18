@@ -4,7 +4,6 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -106,9 +105,9 @@ public final class Constants {
   public static final int PLAYERS_PER_TEAM = 7;
   public static final int PLAYERS_TOTAL = PLAYERS_PER_TEAM * 2;
   public static final int MAX_NAME_LEN = 10;
-  public static final int MAX_PLAYERS_PER_ANCHORAGE = PLAYERS_PER_TEAM - 1;
-  public static final int MAX_ANCHORED_PLAYERS = 2 * MAX_PLAYERS_PER_ANCHORAGE;
-  public static final int MIN_PLAYERS_PER_ANCHORAGE = 2;
+  public static final int MAX_ANCHORAGE_SIZE = PLAYERS_PER_TEAM - 1;
+  public static final int MAX_TOTAL_ANCHORED_PLAYERS = 2 * MAX_ANCHORAGE_SIZE;
+  public static final int MIN_ANCHORAGE_SIZE = 2;
   public static final int PLAYER_NO_ANCHORAGE_ASSIGNED = 0;
   public static final int PLAYER_NO_SKILL_POINTS_ASSIGNED = 0;
   public static final int PLAYER_NO_TEAM_ASSIGNED = 0;
@@ -138,6 +137,7 @@ public final class Constants {
 
   public static final float SIZE_FONT_DEFAULT = 18f;
 
+  public static final String SYSTEM_NEWLINE = System.lineSeparator();
   public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
   public static final String FILENAME_ERROR_REPORT = "errorReport.txt";
   public static final String FILENAME_FONT = "comfortaa.ttf";
@@ -160,19 +160,23 @@ public final class Constants {
   public static final String MIG_LAYOUT_WEST = "west";
   public static final String MIG_LAYOUT_WRAP = "wrap";
   public static final String MIG_LAYOUT_WRAP_2 = MIG_LAYOUT_WRAP + " 2";
-  public static final String MSG_ERROR_INVALID_STRING = "El nombre del jugador debe estar formado por letras de la A a la Z";
-  public static final String MSG_ERROR_INVALID_NAME = "El nombre del jugador no puede estar vacío," + System.lineSeparator() + "tener más de " + MAX_NAME_LEN + " caracteres, o estar repetido";
+  public static final String MSG_ERROR_NAME_ALREADY_EXISTS = "El nombre del jugador no puede estar repetido";
+  public static final String MSG_ERROR_NAME_INVALID = "El nombre del jugador no puede tener caracteres especiales";
+  public static final String MSG_ERROR_NAME_LENGTH = "El nombre del jugador no puede" + SYSTEM_NEWLINE + "tener más de " + MAX_NAME_LEN + " caracteres";
   public static final String MSG_ERROR_NULL_GUI_RESOURCE = "Error en obtención de recursos gráficos";
+  public static final String MSG_ERROR_STRING_BLANK = "El nombre del jugador no puede estar vacío";
+  public static final String MSG_ERROR_STRING_NUMERIC = "El nombre del jugador debe tener" + SYSTEM_NEWLINE + "al menos una letra de la A a la Z";
   public static final String MSG_INFO_ANCHORAGES_NO_SELECTION = "No hay jugadores seleccionados para anclar";
-  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + MAX_PLAYERS_PER_ANCHORAGE + " ni menos de " + MIN_PLAYERS_PER_ANCHORAGE + " jugadores en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + MAX_ANCHORAGE_SIZE + SYSTEM_NEWLINE + " ni menos de " + MIN_ANCHORAGE_SIZE + " jugadores en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_CONFLICTS = "Existen conflictos entre anclajes";
-  public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores" + System.lineSeparator() + "de una misma posición en un mismo anclaje";
-  public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + MAX_ANCHORED_PLAYERS + " jugadores anclados en total";
+  public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores" + SYSTEM_NEWLINE + "de una misma posición en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + MAX_TOTAL_ANCHORED_PLAYERS + " jugadores anclados en total";
   public static final String PATH_DOCS = "docs/";
   public static final String PATH_HELP_DOCS = PATH_DOCS + "help/";
   public static final String PATH_ICO = "icons/";
   public static final String PATH_IMG = "img/";
   public static final String PATH_TTF = "fonts/";
+  public static final String PLAYER_NO_NAME_ASSIGNED = "";
   public static final String POSITION_CENTRAL_DEFENDERS = "DEFENSORES CENTRALES";
   public static final String POSITION_FORWARDS = "DELANTEROS";
   public static final String POSITION_GOALKEEPERS = "ARQUEROS";
@@ -181,9 +185,10 @@ public final class Constants {
   public static final String PROGRAM_TITLE = "armame el doparti"; // Must be on lowercase
   public static final String PROGRAM_VERSION = "v3.0.0";
   public static final String PROGRAM_AUTHOR = "@" + PROGRAM_AUTHOR_GITHUB_USERNAME;
-  public static final String REGEX_NAMES_VALIDATION = "[a-z\sA-ZÁÉÍÓÚáéíóúñÑ]+";
+  public static final String REGEX_NUMERIC_STRING = "\\d+$";
   public static final String REGEX_PDA_DATA_RETRIEVE = "[CLMFG].+>.+";
   public static final String REGEX_PLAYERS_COUNT = "(?!(?<=" + PLAYERS_PER_TEAM + ")\\d).";
+  public static final String REGEX_SPECIAL_CHARACTERS = ".*[^a-z\sA-ZÁÉÍÓÚáéíóúñÑ\\d]+.*";
   public static final String TEXT_BUTTON_DIALOG_CANCEL = "Cancelar";
   public static final String TEXT_BUTTON_DIALOG_NO = "No";
   public static final String TEXT_BUTTON_DIALOG_OK = "Aceptar";

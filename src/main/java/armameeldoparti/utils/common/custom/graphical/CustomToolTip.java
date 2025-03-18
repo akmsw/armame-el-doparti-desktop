@@ -89,7 +89,7 @@ public class CustomToolTip extends JToolTip {
       try {
         window.setShape(CommonFields.getTooltipRectangle());
       } catch (IllegalComponentStateException | UnsupportedOperationException exception) {
-        CommonFunctions.exitProgram(Error.ERROR_INTERNAL, exception.getStackTrace());
+        CommonFunctions.exitProgram(Error.ERROR_INTERNAL, exception);
       }
     }
   }

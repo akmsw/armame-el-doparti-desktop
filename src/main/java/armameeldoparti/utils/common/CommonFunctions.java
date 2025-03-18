@@ -63,37 +63,48 @@ public final class CommonFunctions {
    * @param error      The error type that caused the program to end.
    * @param stackTrace The stack trace of the error.
    */
-  public static void generateErrorReport(Error error, StackTraceElement[] stackTrace) {
+  public static void generateErrorReport(Error error, Exception exception) {
+    if (exception == null) {
+      exception = new IllegalStateException();
+
+      exception.setStackTrace(Thread.currentThread().getStackTrace());
+    }
+
     try (FileWriter dumpFile = new FileWriter(Constants.FILENAME_ERROR_REPORT)) {
       int playersCount = 0;
 
-      dumpFile.write("-------------- ERROR REPORT --------------" + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Report time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + System.lineSeparator());
-      dumpFile.write("Error type: " + error + System.lineSeparator());
-      dumpFile.write("Distribution type: " + CommonFields.getDistribution() + System.lineSeparator());
-      dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Player limit per position:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Positions map:" + System.lineSeparator());
-      dumpFile.write("\t" + Constants.MAP_POSITIONS.entrySet().toString() + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Controllers map:" + System.lineSeparator());
-      dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + System.lineSeparator() + System.lineSeparator());
-      dumpFile.write("Players:" + System.lineSeparator());
+      dumpFile.write("-------------- ERROR REPORT --------------" + Constants.SYSTEM_NEWLINE.repeat(2));
+      dumpFile.write("Report time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("Error type: " + error + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("Distribution type: " + CommonFields.getDistribution() + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + Constants.SYSTEM_NEWLINE.repeat(2));
+      dumpFile.write("Player limit per position:" + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + Constants.SYSTEM_NEWLINE.repeat(2));
+      dumpFile.write("Positions map:" + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("\t" + Constants.MAP_POSITIONS.entrySet().toString() + Constants.SYSTEM_NEWLINE .repeat(2));
+      dumpFile.write("Controllers map:" + Constants.SYSTEM_NEWLINE);
+      dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + Constants.SYSTEM_NEWLINE.repeat(2));
+      dumpFile.write("Players:" + Constants.SYSTEM_NEWLINE.repeat(2));
 
       for (List<Player> playersSet : CommonFields.getPlayersSets().values()) {
         for (Player player : playersSet) {
-          dumpFile.write("\t" + (++playersCount) + ":" + System.lineSeparator());
+          dumpFile.write("\t" + (++playersCount) + ":" + Constants.SYSTEM_NEWLINE);
           dumpFile.write("\t\t" + player.toString());
         }
       }
 
-      dumpFile.write(System.lineSeparator() + "Stack trace:" + System.lineSeparator());
-
-      for (StackTraceElement stackTraceElement : stackTrace) {
-        dumpFile.write("\t" + stackTraceElement + System.lineSeparator());
+      if (exception.getMessage() != null) {
+        dumpFile.write(Constants.SYSTEM_NEWLINE + "Error message:" + Constants.SYSTEM_NEWLINE);
+        dumpFile.write("\t" + exception.getMessage());
       }
 
-      dumpFile.write(System.lineSeparator() + "----------- END OF ERROR REPORT ----------");
+      dumpFile.write(Constants.SYSTEM_NEWLINE + "Stack trace:" + Constants.SYSTEM_NEWLINE);
+
+      for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
+        dumpFile.write("\t" + stackTraceElement + Constants.SYSTEM_NEWLINE);
+      }
+
+      dumpFile.write(Constants.SYSTEM_NEWLINE + "----------- END OF ERROR REPORT ----------");
     } catch (IOException _) {
       System.exit(Constants.MAP_ERROR_CODE.get(Error.ERROR_INTERNAL));
     }
@@ -104,8 +115,8 @@ public final class CommonFunctions {
    *
    * @param error The error that caused the program to end.
    */
-  public static void exitProgram(Error error, StackTraceElement[] stackTrace) {
-    generateErrorReport(error, stackTrace);
+  public static void exitProgram(Error error, Exception exception) {
+    generateErrorReport(error, exception);
     showMessageDialog(null, Constants.MAP_ERROR_MESSAGE.get(error), JOptionPane.ERROR_MESSAGE);
 
     System.exit(Constants.MAP_ERROR_CODE.get(error));
@@ -140,7 +151,7 @@ public final class CommonFunctions {
         dialogTitle = Constants.TITLE_MESSAGE_QUESTION;
         dialogIcon = Constants.ICON_DIALOG_QUESTION;
       }
-      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, Thread.currentThread().getStackTrace());
+      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, null);
     }
 
     JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
@@ -228,7 +239,7 @@ public final class CommonFunctions {
     try {
       Desktop.getDesktop().browse(new URI(url));
     } catch (IOException | URISyntaxException exception) {
-      CommonFunctions.exitProgram(Error.ERROR_BROWSER, exception.getStackTrace());
+      CommonFunctions.exitProgram(Error.ERROR_BROWSER, exception);
     }
   }
 
@@ -342,7 +353,7 @@ public final class CommonFunctions {
    */
   public static <T> T retrieveOptional(Optional<T> optional) {
     if (!optional.isPresent()) {
-      exitProgram(Error.ERROR_INTERNAL, Thread.currentThread().getStackTrace());
+      exitProgram(Error.ERROR_INTERNAL, null);
     }
 
     return optional.get();

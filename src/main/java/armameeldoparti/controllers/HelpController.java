@@ -136,7 +136,7 @@ public class HelpController extends Controller<HelpView> {
 
     view.getPageTitleLabel().setText(Constants.MAP_HELP_PAGES_FILES.get(currentPageNumber).get(Constants.INDEX_HELP_PAGE_TITLE));
 
-    textArea.setText("");
+    textArea.setText(null);
 
     updateReadingProgressLabel();
 
@@ -157,7 +157,7 @@ public class HelpController extends Controller<HelpView> {
       textArea.setCaretPosition(0);
       textArea.scrollRectToVisible(new Rectangle(0, 0, 1, 1));
     } catch (IOException exception) {
-      CommonFunctions.exitProgram(Error.ERROR_FILES, exception.getStackTrace());
+      CommonFunctions.exitProgram(Error.ERROR_FILES, exception);
     }
   }
 
