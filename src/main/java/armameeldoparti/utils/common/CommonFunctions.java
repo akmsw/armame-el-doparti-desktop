@@ -73,38 +73,38 @@ public final class CommonFunctions {
     try (FileWriter dumpFile = new FileWriter(Constants.FILENAME_ERROR_REPORT)) {
       int playersCount = 0;
 
-      dumpFile.write("-------------- ERROR REPORT --------------" + Constants.SYSTEM_NEWLINE.repeat(2));
-      dumpFile.write("Report time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("Error type: " + error + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("Distribution type: " + CommonFields.getDistribution() + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + Constants.SYSTEM_NEWLINE.repeat(2));
-      dumpFile.write("Player limit per position:" + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + Constants.SYSTEM_NEWLINE.repeat(2));
-      dumpFile.write("Positions map:" + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("\t" + Constants.MAP_POSITIONS.entrySet().toString() + Constants.SYSTEM_NEWLINE .repeat(2));
-      dumpFile.write("Controllers map:" + Constants.SYSTEM_NEWLINE);
-      dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + Constants.SYSTEM_NEWLINE.repeat(2));
-      dumpFile.write("Players:" + Constants.SYSTEM_NEWLINE.repeat(2));
+      dumpFile.write("-------------- ERROR REPORT --------------" + System.lineSeparator().repeat(2));
+      dumpFile.write("Report time: " + LocalDateTime.now().format(DateTimeFormatter.ofPattern(Constants.DATE_FORMAT)) + System.lineSeparator());
+      dumpFile.write("Error type: " + error + System.lineSeparator());
+      dumpFile.write("Distribution type: " + CommonFields.getDistribution() + System.lineSeparator());
+      dumpFile.write("Anchorages enabled: " + CommonFields.isAnchoragesEnabled() + System.lineSeparator().repeat(2));
+      dumpFile.write("Player limit per position:" + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getPlayerLimitPerPosition().entrySet().toString() + System.lineSeparator().repeat(2));
+      dumpFile.write("Positions map:" + System.lineSeparator());
+      dumpFile.write("\t" + Constants.MAP_POSITIONS.entrySet().toString() + System.lineSeparator() .repeat(2));
+      dumpFile.write("Controllers map:" + System.lineSeparator());
+      dumpFile.write("\t" + CommonFields.getControllersMap().entrySet().toString() + System.lineSeparator().repeat(2));
+      dumpFile.write("Players:" + System.lineSeparator().repeat(2));
 
       for (List<Player> playersSet : CommonFields.getPlayersSets().values()) {
         for (Player player : playersSet) {
-          dumpFile.write("\t" + (++playersCount) + ":" + Constants.SYSTEM_NEWLINE);
+          dumpFile.write("\t" + (++playersCount) + ":" + System.lineSeparator());
           dumpFile.write("\t\t" + player.toString());
         }
       }
 
       if (exception.getMessage() != null) {
-        dumpFile.write(Constants.SYSTEM_NEWLINE + "Error message:" + Constants.SYSTEM_NEWLINE);
+        dumpFile.write(System.lineSeparator() + "Error message:" + System.lineSeparator());
         dumpFile.write("\t" + exception.getMessage());
       }
 
-      dumpFile.write(Constants.SYSTEM_NEWLINE + "Stack trace:" + Constants.SYSTEM_NEWLINE);
+      dumpFile.write(System.lineSeparator() + "Stack trace:" + System.lineSeparator());
 
       for (StackTraceElement stackTraceElement : exception.getStackTrace()) {
-        dumpFile.write("\t" + stackTraceElement + Constants.SYSTEM_NEWLINE);
+        dumpFile.write("\t" + stackTraceElement + System.lineSeparator());
       }
 
-      dumpFile.write(Constants.SYSTEM_NEWLINE + "----------- END OF ERROR REPORT ----------");
+      dumpFile.write(System.lineSeparator() + "----------- END OF ERROR REPORT ----------");
     } catch (IOException _) {
       System.exit(Constants.MAP_ERROR_CODE.get(Error.ERROR_INTERNAL));
     }

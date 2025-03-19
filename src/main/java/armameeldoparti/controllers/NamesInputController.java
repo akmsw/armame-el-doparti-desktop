@@ -282,7 +282,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                                        .toList();
 
     for (int playerIndex = 0; playerIndex < players.size(); playerIndex++) {
-      view.getTextArea().append((playerIndex + 1) + " - " + players.get(playerIndex).getName() + (playerIndex < (Constants.PLAYERS_TOTAL - 1) ? Constants.SYSTEM_NEWLINE : ""));
+      view.getTextArea().append((playerIndex + 1) + " - " + players.get(playerIndex).getName() + (playerIndex < (Constants.PLAYERS_TOTAL - 1) ? System.lineSeparator() : ""));
     }
   }
 

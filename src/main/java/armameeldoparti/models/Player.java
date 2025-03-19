@@ -51,11 +51,11 @@ public class Player {
    */
   @Override
   public String toString() {
-    return "Position: " + getPosition().toString() + Constants.SYSTEM_NEWLINE
-           + "\t\tName: " + getName() + Constants.SYSTEM_NEWLINE
-           + "\t\tAnchorage number: " + getAnchorageNumber() + Constants.SYSTEM_NEWLINE
-           + "\t\tSkill points: " + getSkillPoints() + Constants.SYSTEM_NEWLINE
-           + "\t\tTeam number: " + getTeamNumber() + Constants.SYSTEM_NEWLINE;
+    return "Position: " + getPosition().toString() + System.lineSeparator()
+           + "\t\tName: " + getName() + System.lineSeparator()
+           + "\t\tAnchorage number: " + getAnchorageNumber() + System.lineSeparator()
+           + "\t\tSkill points: " + getSkillPoints() + System.lineSeparator()
+           + "\t\tTeam number: " + getTeamNumber() + System.lineSeparator();
   }
 
   /**

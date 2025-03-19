@@ -250,7 +250,7 @@ public class AnchoragesController extends Controller<AnchoragesView> {
 
     IntStream.range(0, anchoragesCount)
              .forEach(anchorageNumber -> {
-               view.getTextArea().append("ANCLAJE " + (anchorageNumber + 1) + Constants.SYSTEM_NEWLINE);
+               view.getTextArea().append("ANCLAJE " + (anchorageNumber + 1) + System.lineSeparator());
 
                List<Player> anchorage = CommonFields.getPlayersSets()
                                                     .entrySet()
@@ -262,11 +262,11 @@ public class AnchoragesController extends Controller<AnchoragesView> {
                                                     .toList();
 
                for (Player player : anchorage) {
-                 view.getTextArea().append((anchorage.indexOf(player) + 1) + " - " + player.getName() + Constants.SYSTEM_NEWLINE);
+                 view.getTextArea().append((anchorage.indexOf(player) + 1) + " - " + player.getName() + System.lineSeparator());
                }
 
                if ((anchorageNumber + 1) != anchoragesCount) {
-                 view.getTextArea().append(Constants.SYSTEM_NEWLINE);
+                 view.getTextArea().append(System.lineSeparator());
                }
              });
   }
