@@ -60,8 +60,8 @@ public final class CommonFunctions {
   /**
    * Generates an error report with the current overall program context and stack trace.
    *
-   * @param error      The error type that caused the program to end.
-   * @param stackTrace The stack trace of the error.
+   * @param error     The error type that caused the program to end.
+   * @param exception The thrown exception. If null, a new {@code IllegalStateException} is created with the current thread stack trace.
    */
   public static void generateErrorReport(Error error, Exception exception) {
     if (exception == null) {

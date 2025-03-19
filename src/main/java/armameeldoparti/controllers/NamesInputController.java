@@ -214,7 +214,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                   validateUserInput(text);
                   textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), text.toUpperCase());
                 } catch (IllegalArgumentException | LimitExceededException | InvalidNameException exception) {
-                  String errorMessage = switch(exception) {
+                  String errorMessage = switch (exception) {
                     case BlankStringException _ -> Constants.MSG_ERROR_STRING_BLANK;
                     case NumericStringException _ -> Constants.MSG_ERROR_STRING_NUMERIC;
                     case LimitExceededException _ -> Constants.MSG_ERROR_NAME_LENGTH;
@@ -362,7 +362,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   /**
    * Checks if the given string contains only numbers.
    *
-   * @param name The string to validate.
+   * @param string The string to validate.
    *
    * @return Whether the given string contains only numbers.
    */
@@ -373,7 +373,7 @@ public class NamesInputController extends Controller<NamesInputView> {
   /**
    * Checks if the given string contains special characters.
    *
-   * @param name The string to validate.
+   * @param string The string to validate.
    *
    * @return Whether the given string contains special characters.
    */
