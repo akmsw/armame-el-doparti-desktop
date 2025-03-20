@@ -4,7 +4,7 @@ import armameeldoparti.models.enums.Position;
 import armameeldoparti.utils.common.Constants;
 
 /**
- * Players class.
+ * Player class.
  *
  * @author Bonino, Francisco Ignacio.
  *

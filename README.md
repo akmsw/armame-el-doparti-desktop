@@ -5,7 +5,7 @@
 [![buildBadge](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml/badge.svg?branch=develop-v3.0)](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml)
 [![issuesBadge](https://img.shields.io/github/issues/akmsw/armame-el-doparti.svg?logo=github)](https://github.com/akmsw/armame-el-doparti/issues)
 
-[![openJDKTargetBadge](https://img.shields.io/badge/jdk-23%2B-red?logo=openjdk)](https://openjdk.org/projects/jdk/23/)
+[![openJDKTargetBadge](https://img.shields.io/badge/jdk-23%2B-red?logo=openjdk)](https://openjdk.org/projects/jdk/)
 [![operatingSystemBadge](https://img.shields.io/badge/os-cross--platform-blueviolet?logo=windows-terminal)](https://en.wikipedia.org/wiki/Cross-platform_software)
 [![licenseBadge](https://img.shields.io/badge/gpl-3.0-blue?logo=gnu)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
@@ -29,7 +29,7 @@
   - #### Versión mínima
       🟡 [Java 23](https://jdk.java.net/23/)
   - #### Versión recomendada
-      🟢 [Java 23](https://jdk.java.net/23/) *(o más reciente)*
+      🟢 [Java 24](https://jdk.java.net/24/) *(o más reciente)*
 </details>
 
 ---
