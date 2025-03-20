@@ -8,7 +8,7 @@
   <version>3.0.0</version>
 
   <properties>
-    <java.version>24</java.version>
+    <java.version>23</java.version>
     <maven.version>3.9.9</maven.version>
     <maven-compiler.version>3.14.0</maven-compiler.version>
     <maven-enforcer.version>3.5.0</maven-enforcer.version>
