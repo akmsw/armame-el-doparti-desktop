@@ -151,7 +151,7 @@ public final class CommonFunctions {
         dialogTitle = Constants.TITLE_MESSAGE_QUESTION;
         dialogIcon = Constants.ICON_DIALOG_QUESTION;
       }
-      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, null);
+      default -> CommonFunctions.exitProgram(Error.ERROR_GUI, new IllegalStateException(Constants.MSG_ERROR_ILLEGAL_DIALOG_TYPE));
     }
 
     JOptionPane.showMessageDialog(parentComponent, dialogMessage, dialogTitle, dialogMessageType, dialogIcon);
@@ -353,7 +353,7 @@ public final class CommonFunctions {
    */
   public static <T> T retrieveOptional(Optional<T> optional) {
     if (!optional.isPresent()) {
-      exitProgram(Error.ERROR_INTERNAL, null);
+      exitProgram(Error.ERROR_INTERNAL, new IllegalArgumentException(Constants.MSG_ERROR_NO_OPTIONAL_CONTENT));
     }
 
     return optional.get();

@@ -140,7 +140,7 @@ public class RandomMixer extends BasicPlayersMixer {
 
                   // If there's no available team at this point, something went wrong
                   if (availableTeamNumber == -1) {
-                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, null);
+                    CommonFunctions.exitProgram(Error.ERROR_INTERNAL, new IllegalStateException(Constants.MSG_ERROR_NO_AVAILABLE_TEAM));
                   }
 
                   player.setTeamNumber(availableTeamNumber + 1);

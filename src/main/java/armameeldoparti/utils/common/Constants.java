@@ -159,9 +159,12 @@ public final class Constants {
   public static final String MIG_LAYOUT_WEST = "west";
   public static final String MIG_LAYOUT_WRAP = "wrap";
   public static final String MIG_LAYOUT_WRAP_2 = MIG_LAYOUT_WRAP + " 2";
+  public static final String MSG_ERROR_ILLEGAL_DIALOG_TYPE = "Invalid dialog message type received.";
   public static final String MSG_ERROR_NAME_ALREADY_EXISTS = "El nombre del jugador no puede estar repetido";
   public static final String MSG_ERROR_NAME_INVALID = "El nombre del jugador no puede tener caracteres especiales";
   public static final String MSG_ERROR_NAME_LENGTH = "El nombre del jugador no puede" + System.lineSeparator() + "tener más de " + MAX_NAME_LEN + " caracteres";
+  public static final String MSG_ERROR_NO_AVAILABLE_TEAM = "No available team for current players configuration.";
+  public static final String MSG_ERROR_NO_OPTIONAL_CONTENT = "No available content to retrieve in Optional object.";
   public static final String MSG_ERROR_NULL_GUI_RESOURCE = "Error en obtención de recursos gráficos";
   public static final String MSG_ERROR_STRING_BLANK = "El nombre del jugador no puede estar vacío";
   public static final String MSG_ERROR_STRING_NUMERIC = "El nombre del jugador debe tener" + System.lineSeparator() + "al menos una letra de la A a la Z";
