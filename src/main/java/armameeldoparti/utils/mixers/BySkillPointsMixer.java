@@ -109,7 +109,7 @@ public class BySkillPointsMixer extends BasicPlayersMixer {
        * At this point, the anchorages are guaranteed to be possible to distribute by {@link armameeldoparti.controllers.AnchoragesController}. Therefore, if at this point we can't find any available team to add the
        * current anchorage, then something went wrong.
        */
-      if (availableTeamNumber == -1) {
+      if (availableTeamNumber == Constants.ERROR_CODE_NO_AVAILABLE_TEAM) {
         CommonFunctions.exitProgram(Error.ERROR_INTERNAL, new IllegalStateException(Constants.MSG_ERROR_NO_AVAILABLE_TEAM));
       }
 

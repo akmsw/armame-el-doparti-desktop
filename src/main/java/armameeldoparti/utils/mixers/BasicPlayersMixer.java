@@ -101,7 +101,7 @@ public abstract class BasicPlayersMixer implements PlayersMixer {
       return randomTeam2;
     }
 
-    return -1;
+    return Constants.ERROR_CODE_NO_AVAILABLE_TEAM;
   }
 
   // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

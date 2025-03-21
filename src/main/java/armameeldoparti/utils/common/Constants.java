@@ -100,6 +100,7 @@ public final class Constants {
 
   // ---------- Public constants --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+  public static final int ERROR_CODE_NO_AVAILABLE_TEAM = -1;
   public static final int INDEX_HELP_PAGE_FILENAME = 1;
   public static final int INDEX_HELP_PAGE_TITLE = 0;
   public static final int PLAYERS_PER_TEAM = 7;

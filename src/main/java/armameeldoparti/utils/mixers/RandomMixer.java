@@ -108,7 +108,7 @@ public class RandomMixer extends BasicPlayersMixer {
       for (List<Player> anchorage : anchorages) {
         int availableTeamNumber = getAvailableTeam(teams, team -> anchorageCanBeAdded(team, anchorage));
 
-        if (availableTeamNumber == -1) {
+        if (availableTeamNumber == Constants.ERROR_CODE_NO_AVAILABLE_TEAM) {
           teams.forEach(Team::clear);
 
           successfulDistribution = false;
@@ -139,7 +139,7 @@ public class RandomMixer extends BasicPlayersMixer {
                   int availableTeamNumber = getAvailableTeam(teams, team -> playerCanBeAdded(team, player));
 
                   // If there's no available team at this point, something went wrong
-                  if (availableTeamNumber == -1) {
+                  if (availableTeamNumber == Constants.ERROR_CODE_NO_AVAILABLE_TEAM) {
                     CommonFunctions.exitProgram(Error.ERROR_INTERNAL, new IllegalStateException(Constants.MSG_ERROR_NO_AVAILABLE_TEAM));
                   }
 
