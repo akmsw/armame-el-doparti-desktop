@@ -116,8 +116,14 @@ public class AnchoragesController extends Controller<AnchoragesView> {
       return;
     }
 
-    if (!validChecksCount(playersToAnchorCount)) {
-      CommonFunctions.showMessageDialog(parentComponent, Constants.MSG_WARNING_ANCHORAGE_LIMITS, JOptionPane.WARNING_MESSAGE);
+    if (playersToAnchorCount < Constants.MIN_ANCHORAGE_SIZE) {
+      CommonFunctions.showMessageDialog(parentComponent, Constants.MSG_WARNING_ANCHORAGE_LOWER_LIMIT, JOptionPane.WARNING_MESSAGE);
+
+      return;
+    }
+
+    if (playersToAnchorCount > Constants.MAX_ANCHORAGE_SIZE) {
+      CommonFunctions.showMessageDialog(parentComponent, Constants.MSG_WARNING_ANCHORAGE_UPPER_LIMIT, JOptionPane.WARNING_MESSAGE);
 
       return;
     }
@@ -401,15 +407,6 @@ public class AnchoragesController extends Controller<AnchoragesView> {
         .flatMap(List::stream)
         .filter(checkbox -> checkbox.isSelected() && checkbox.isVisible())
         .forEach(checkbox -> checkbox.setSelected(false));
-  }
-
-  /**
-   * @param playersToAnchorCount Selected players to anchor.
-   *
-   * @return Whether the number of selected players is at least 2 and at most MAX_PLAYERS_PER_ANCHORAGE.
-   */
-  private boolean validChecksCount(int playersToAnchorCount) {
-    return playersToAnchorCount <= Constants.MAX_ANCHORAGE_SIZE && playersToAnchorCount >= 2;
   }
 
   /**

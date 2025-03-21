@@ -170,7 +170,8 @@ public final class Constants {
   public static final String MSG_ERROR_STRING_BLANK = "El nombre del jugador no puede estar vacío";
   public static final String MSG_ERROR_STRING_NUMERIC = "El nombre del jugador debe tener" + System.lineSeparator() + "al menos una letra de la A a la Z";
   public static final String MSG_INFO_ANCHORAGES_NO_SELECTION = "No hay jugadores seleccionados para anclar";
-  public static final String MSG_WARNING_ANCHORAGE_LIMITS = "No puede haber más de " + MAX_ANCHORAGE_SIZE + System.lineSeparator() + " ni menos de " + MIN_ANCHORAGE_SIZE + " jugadores en un mismo anclaje";
+  public static final String MSG_WARNING_ANCHORAGE_LOWER_LIMIT = "No puede haber menos de " + MIN_ANCHORAGE_SIZE + " jugadores en un anclaje";
+  public static final String MSG_WARNING_ANCHORAGE_UPPER_LIMIT = "No puede haber más de " + MAX_ANCHORAGE_SIZE + " jugadores en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_CONFLICTS = "Existen conflictos entre anclajes";
   public static final String MSG_WARNING_ANCHORAGES_HALF_SET_LIMIT = "No puede haber más de la mitad de jugadores" + System.lineSeparator() + "de una misma posición en un mismo anclaje";
   public static final String MSG_WARNING_ANCHORAGES_TOTAL_LIMITS = "No puede haber más de " + MAX_TOTAL_ANCHORED_PLAYERS + " jugadores anclados en total";
