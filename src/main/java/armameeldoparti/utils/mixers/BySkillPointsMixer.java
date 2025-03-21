@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
  *
  * @since 3.0.0
  */
-public class BySkillPointsMixer implements PlayersMixer {
+public class BySkillPointsMixer extends BasicPlayersMixer {
 
   // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 

@@ -11,8 +11,6 @@ import armameeldoparti.utils.common.Constants;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
-import java.util.function.Predicate;
 
 /**
  * Random distribution class.
@@ -23,14 +21,7 @@ import java.util.function.Predicate;
  *
  * @since 3.0.0
  */
-public class RandomMixer implements PlayersMixer {
-
-  // ---------- Private fields ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  private int randomTeam1;
-  private int randomTeam2;
-
-  private Random randomGenerator;
+public class RandomMixer extends BasicPlayersMixer {
 
   // ---------- Constructor -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -38,7 +29,7 @@ public class RandomMixer implements PlayersMixer {
    * Builds the random distributor.
    */
   public RandomMixer() {
-    randomGenerator = new Random();
+    // Body not needed.
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -161,104 +152,5 @@ public class RandomMixer implements PlayersMixer {
                 });
 
     return teams;
-  }
-
-  // ---------- Private methods ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-  /**
-   * Randomly shuffles the team numbers.
-   *
-   * @param range Upper limit (exclusive) for the random number generator.
-   */
-  private void shuffleTeamNumbers(int range) {
-    randomTeam1 = randomGenerator.nextInt(range);
-    randomTeam2 = 1 - randomTeam1;
-  }
-
-  /**
-   * @param team   Team where the player should be added.
-   * @param player The players to add.
-   *
-   * @return Whether a player can be added to the specified team.
-   */
-  private boolean playerCanBeAdded(Team team, Player player) {
-    return !team.isPositionFull(player.getPosition());
-  }
-
-  /**
-   * Checks if a set of anchored players can be added to a team.
-   *
-   * <p>First, checks if any of the positions of the anchored players in the destination team is already complete. If not, checks if adding them does not exceed the number of players allowed per position per team.
-   *
-   * <p>This is done in order to avoid more than half of the registered players of the same position remaining on the same team.
-   *
-   * @param team      Team where the anchored players should be added.
-   * @param anchorage List containing the players with the same anchorage number.
-   *
-   * @return Whether a set of anchored players can be added to a team.
-   */
-  private boolean anchorageCanBeAdded(Team team, List<Player> anchorage) {
-    return !(anchorageOverflowsTeamSize(team, anchorage) || anchorageOverflowsAnyPositionSet(team, anchorage));
-  }
-
-  /**
-   * @param team      Team to check if the anchored players can be added.
-   * @param anchorage Anchored players to check.
-   *
-   * @return Whether the number of anchored players to be added to a team would exceed the limit of players per team.
-   */
-  private boolean anchorageOverflowsTeamSize(Team team, List<Player> anchorage) {
-    return team.getPlayersCount() + anchorage.size() > Constants.PLAYERS_PER_TEAM;
-  }
-
-  /**
-   * @param team      Team to check if the anchored players can be added.
-   * @param anchorage Anchored players to check.
-   *
-   * @return Whether the number of anchored players to be added to a team would exceed the limit of players per team in any position set.
-   */
-  private boolean anchorageOverflowsAnyPositionSet(Team team, List<Player> anchorage) {
-    return anchorage.stream().anyMatch(player -> team.isPositionFull(player.getPosition()) || anchorageOverflowsPositionSet(team, anchorage, player.getPosition()));
-  }
-
-  /**
-   * @param team      Team to check if the anchored players can be added.
-   * @param anchorage Anchored players to check.
-   * @param position  Anchored players position.
-   *
-   * @return Whether the number of anchored players to be added to a position set in a team would exceed the limit of players per team for that
-   *         particular position.
-   */
-  private boolean anchorageOverflowsPositionSet(Team team, List<Player> anchorage, Position position) {
-    return (team.getTeamPlayers().get(position).size() + anchorage.stream().filter(player -> player.getPosition() == position).count()) > CommonFields.getPlayerLimitPerPosition().get(position);
-  }
-
-  /**
-   * Checks which team a given player can be added to.
-   *
-   * @param teams               The possible teams where to add the player.
-   * @param validationPredicate The predicate that will validate if the player can be added to a team, or not.
-   *
-   * @return The only available team index, a random team index if the player can be added in every team, or -1 if there's no available team for the player.
-   */
-  private int getAvailableTeam(List<Team> teams, Predicate<Team> validationPredicate) {
-    shuffleTeamNumbers(teams.size());
-
-    boolean isRandomTeam1Available = validationPredicate.test(teams.get(randomTeam1));
-    boolean isRandomTeam2Available = validationPredicate.test(teams.get(randomTeam2));
-
-    if (isRandomTeam1Available && isRandomTeam2Available) {
-      return randomGenerator.nextInt(teams.size());
-    }
-
-    if (isRandomTeam1Available) {
-      return randomTeam1;
-    }
-
-    if (isRandomTeam2Available) {
-      return randomTeam2;
-    }
-
-    return -1;
   }
 }
