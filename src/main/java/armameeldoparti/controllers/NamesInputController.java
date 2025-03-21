@@ -6,8 +6,6 @@ import armameeldoparti.models.enums.ProgramView;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
-import armameeldoparti.utils.common.custom.exceptions.BlankStringException;
-import armameeldoparti.utils.common.custom.exceptions.NumericStringException;
 import armameeldoparti.views.NamesInputView;
 
 import java.awt.Component;
@@ -122,31 +120,29 @@ public class NamesInputController extends Controller<NamesInputView> {
    *
    * @param string The string to validate.
    *
-   * @throws BlankStringException     When the input is blank.
-   * @throws NumericStringException   When the input is numeric-only.
    * @throws LimitExceededException   When the input exceeds the maximum number of characters allowed.
    * @throws IllegalArgumentException When the input contains special characters.
    * @throws InvalidNameException     When the input is an already existing name.
    */
   private void validateUserInput(String string) throws IllegalArgumentException, InvalidNameException, LimitExceededException {
     if (string.isBlank()) {
-      throw new BlankStringException();
+      throw new IllegalArgumentException(Constants.MSG_ERROR_STRING_BLANK);
     }
 
     if (isNumericString(string.replace("\s", ""))) {
-      throw new NumericStringException();
-    }
-
-    if (string.length() > Constants.MAX_NAME_LEN) {
-      throw new LimitExceededException();
+      throw new IllegalArgumentException(Constants.MSG_ERROR_STRING_NUMERIC);
     }
 
     if (containsSpecialCharacters(string)) {
-      throw new IllegalArgumentException();
+      throw new IllegalArgumentException(Constants.MSG_ERROR_NAME_INVALID);
+    }
+
+    if (string.length() > Constants.MAX_NAME_LEN) {
+      throw new LimitExceededException(Constants.MSG_ERROR_NAME_LENGTH);
     }
 
     if (alreadyExists(string)) {
-      throw new InvalidNameException();
+      throw new InvalidNameException(Constants.MSG_ERROR_NAME_ALREADY_EXISTS);
     }
   }
 
@@ -214,15 +210,7 @@ public class NamesInputController extends Controller<NamesInputView> {
                   validateUserInput(text);
                   textFieldEvent(textFieldsSet.indexOf(textField), CommonFields.getPlayersSets().get(player), text.toUpperCase());
                 } catch (IllegalArgumentException | LimitExceededException | InvalidNameException exception) {
-                  String errorMessage = switch (exception) {
-                    case BlankStringException _ -> Constants.MSG_ERROR_STRING_BLANK;
-                    case NumericStringException _ -> Constants.MSG_ERROR_STRING_NUMERIC;
-                    case LimitExceededException _ -> Constants.MSG_ERROR_NAME_LENGTH;
-                    case InvalidNameException _ -> Constants.MSG_ERROR_NAME_ALREADY_EXISTS;
-                    default -> Constants.MSG_ERROR_NAME_INVALID;
-                  };
-
-                  CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event), errorMessage, JOptionPane.INFORMATION_MESSAGE);
+                  CommonFunctions.showMessageDialog(CommonFunctions.getComponentFromEvent(event), exception.getMessage(), JOptionPane.INFORMATION_MESSAGE);
 
                   textField.setText(CommonFields.getPlayersSets()
                                                 .get(player)
