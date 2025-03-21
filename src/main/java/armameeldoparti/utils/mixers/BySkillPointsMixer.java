@@ -4,6 +4,7 @@ import static java.util.Comparator.comparingInt;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+import armameeldoparti.models.enums.Error;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
@@ -102,10 +103,20 @@ public class BySkillPointsMixer extends BasicPlayersMixer {
     for (List<Player> anchorage : CommonFunctions.getAnchorages()) {
       teams.sort(comparingInt(Team::getTeamSkill));
 
-      for (Player player : anchorage) {
-        player.setTeamNumber(teams.get(0).getTeamNumber());
+      int availableTeamNumber = getAvailableTeam(teams, team -> anchorageCanBeAdded(team, anchorage));
 
-        teams.get(0)
+      /*
+       * At this point, the anchorages are guaranteed to be possible to distribute by {@link armameeldoparti.controllers.AnchoragesController}. Therefore, if at this point we can't find any available team to add the
+       * current anchorage, then something went wrong.
+       */
+      if (availableTeamNumber == -1) {
+        CommonFunctions.exitProgram(Error.ERROR_INTERNAL, new IllegalStateException(Constants.MSG_ERROR_NO_AVAILABLE_TEAM));
+      }
+
+      for (Player player : anchorage) {
+        player.setTeamNumber(teams.get(availableTeamNumber).getTeamNumber());
+
+        teams.get(availableTeamNumber)
              .getTeamPlayers()
              .get(player.getPosition())
              .add(player);
