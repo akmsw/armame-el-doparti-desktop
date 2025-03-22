@@ -1,11 +1,11 @@
 name: build
 
-# La acción se va a correr ante un 'push' o 'pull request' en la rama 'develop-v3.0'.
+# La acción se va a correr ante un 'push' o 'pull request' en la rama 'develop'.
 on:
   push:
-    branches: [ "develop-v3.0" ]
+    branches: [ "develop" ]
   pull_request:
-    branches: [ "develop-v3.0" ]
+    branches: [ "develop" ]
 
 jobs:
   build:

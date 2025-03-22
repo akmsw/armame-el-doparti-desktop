@@ -134,8 +134,6 @@ public class CustomArrowButton extends BasicArrowButton {
       graphics2d.drawPolygon(triangle);
       graphics2d.fillPolygon(triangle);
       graphics2d.dispose();
-
-      super.paintComponent(graphics);
     } catch (IllegalArgumentException exception) {
       CommonFunctions.exitProgram(Error.ERROR_INTERNAL, exception);
     }

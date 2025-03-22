@@ -29,7 +29,7 @@ public class RandomMixer extends BasicPlayersMixer {
    * Builds the random distributor.
    */
   public RandomMixer() {
-    // Body not needed.
+    // Body not needed
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

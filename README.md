@@ -2,7 +2,7 @@
 
 ![portada](./src/main/res/img/readme/cover.png)
 
-[![buildBadge](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml/badge.svg?branch=develop-v3.0)](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml)
+[![buildBadge](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml/badge.svg?branch=develop)](https://github.com/akmsw/armame-el-doparti/actions/workflows/maven.yml)
 [![issuesBadge](https://img.shields.io/github/issues/akmsw/armame-el-doparti.svg?logo=github)](https://github.com/akmsw/armame-el-doparti/issues)
 
 [![openJDKTargetBadge](https://img.shields.io/badge/jdk-23%2B-red?logo=openjdk)](https://openjdk.org/projects/jdk/)
@@ -77,7 +77,7 @@
     <h2 style="display:inline-block; border-bottom:none">🛠️ Compilación manual y ejecución</h2>
   </summary>
 
-  Para compilar manualmente el programa, asumiendo que instalaste correctamente tanto los requisitos generales como los requisitos para compilación manual, tenés que [descargar el proyecto en formato ZIP](https://github.com/akmsw/armame-el-doparti/archive/refs/heads/develop-v3.0.zip), extraer el archivo y, dentro de la carpeta extraída, ejecutar Apache Maven haciendo uso del archivo `pom.xml` mediante la terminal, con el siguiente comando:
+  Para compilar manualmente el programa, asumiendo que instalaste correctamente tanto los requisitos generales como los requisitos para compilación manual, tenés que [descargar el proyecto en formato ZIP](https://github.com/akmsw/armame-el-doparti/archive/refs/heads/develop.zip), extraer el archivo y, dentro de la carpeta extraída, ejecutar Apache Maven haciendo uso del archivo `pom.xml` mediante la terminal, con el siguiente comando:
   ```bash
   mvn package --file pom.xml
   ```
