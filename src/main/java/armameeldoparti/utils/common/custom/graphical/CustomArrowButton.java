@@ -145,9 +145,8 @@ public class CustomArrowButton extends BasicArrowButton {
    * Configures the graphical properties of the arrow button in order to fit the program aesthetics.
    */
   private void setUpGraphicalProperties() {
-    setOpaque(false);
-    setFocusPainted(false);
     setContentAreaFilled(false);
+    setFocusPainted(false);
     setBorderPainted(false);
     setBackground(Constants.COLOR_GREEN_DARK);
   }
