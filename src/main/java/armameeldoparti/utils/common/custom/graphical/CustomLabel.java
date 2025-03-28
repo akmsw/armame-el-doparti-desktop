@@ -9,6 +9,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 import javax.swing.JToolTip;
+
 import javax.swing.border.EmptyBorder;
 
 /**

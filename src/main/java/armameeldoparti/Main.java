@@ -6,10 +6,12 @@ import armameeldoparti.controllers.MainMenuController;
 import armameeldoparti.controllers.NamesInputController;
 import armameeldoparti.controllers.ResultsController;
 import armameeldoparti.controllers.SkillPointsInputController;
+
 import armameeldoparti.models.Player;
 import armameeldoparti.models.enums.Error;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
@@ -21,6 +23,7 @@ import armameeldoparti.utils.common.custom.graphical.ui.CustomSeparatorUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomSpinnerUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomTableUI;
 import armameeldoparti.utils.common.custom.graphical.ui.CustomTextAreaUI;
+
 import armameeldoparti.views.AnchoragesView;
 import armameeldoparti.views.HelpView;
 import armameeldoparti.views.MainMenuView;

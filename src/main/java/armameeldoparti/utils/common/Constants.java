@@ -1,19 +1,18 @@
 package armameeldoparti.utils.common;
 
+import armameeldoparti.models.enums.Error;
+import armameeldoparti.models.enums.Position;
+
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.Insets;
 import java.awt.RenderingHints;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import javax.swing.ImageIcon;
-
-import armameeldoparti.models.enums.Error;
-import armameeldoparti.models.enums.Position;
 
 /**
  * Common-use constants class.
@@ -189,7 +188,7 @@ public final class Constants {
   public static final String POSITION_GOALKEEPERS = "ARQUEROS";
   public static final String POSITION_LATERAL_DEFENDERS = "DEFENSORES LATERALES";
   public static final String POSITION_MIDFIELDERS = "MEDIOCAMPISTAS";
-  public static final String PROGRAM_TITLE = "armame el doparti"; // Must be on lowercase
+  public static final String PROGRAM_TITLE = "armame el doparti";
   public static final String PROGRAM_VERSION = "v3.0.0";
   public static final String PROGRAM_AUTHOR = "@" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String REGEX_NUMERIC_STRING = "\\d+$";

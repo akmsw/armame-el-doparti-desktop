@@ -2,12 +2,15 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+
 import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.views.AnchoragesView;
 
 import java.awt.Component;
@@ -16,6 +19,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+
 import java.util.stream.IntStream;
 
 import javax.swing.JCheckBox;

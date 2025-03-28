@@ -1,6 +1,7 @@
 package armameeldoparti.views;
 
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;

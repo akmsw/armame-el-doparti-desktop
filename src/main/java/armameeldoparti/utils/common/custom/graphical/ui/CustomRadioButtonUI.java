@@ -1,11 +1,13 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
+import armameeldoparti.utils.common.Constants;
+
 import javax.swing.JComponent;
 import javax.swing.JRadioButton;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicRadioButtonUI;
 
-import armameeldoparti.utils.common.Constants;
+import javax.swing.plaf.ComponentUI;
+
+import javax.swing.plaf.basic.BasicRadioButtonUI;
 
 /**
  * A custom radio button UI that fits the overall program aesthetics.

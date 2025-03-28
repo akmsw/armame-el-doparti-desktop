@@ -1,5 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
+import armameeldoparti.utils.common.Constants;
+
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
@@ -8,12 +10,14 @@ import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTableUI;
-import javax.swing.table.DefaultTableCellRenderer;
 
-import armameeldoparti.utils.common.Constants;
+import javax.swing.border.EmptyBorder;
+
+import javax.swing.plaf.ComponentUI;
+
+import javax.swing.plaf.basic.BasicTableUI;
+
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  * A custom table UI that fits the overall program aesthetics.

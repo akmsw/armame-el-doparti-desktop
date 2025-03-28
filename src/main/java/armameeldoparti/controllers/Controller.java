@@ -2,6 +2,7 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
+
 import armameeldoparti.views.View;
 
 import java.awt.Rectangle;

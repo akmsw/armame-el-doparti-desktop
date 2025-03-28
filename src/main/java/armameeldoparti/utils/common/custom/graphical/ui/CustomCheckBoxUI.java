@@ -1,11 +1,13 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
+import armameeldoparti.utils.common.Constants;
+
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicCheckBoxUI;
 
-import armameeldoparti.utils.common.Constants;
+import javax.swing.plaf.ComponentUI;
+
+import javax.swing.plaf.basic.BasicCheckBoxUI;
 
 /**
  * A custom checkbox UI that fits the overall program aesthetics.

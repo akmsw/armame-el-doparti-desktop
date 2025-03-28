@@ -1,10 +1,13 @@
 package armameeldoparti.views;
 
 import armameeldoparti.models.Player;
+
 import armameeldoparti.models.enums.Position;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
 import armameeldoparti.utils.common.custom.graphical.CustomScrollPane;

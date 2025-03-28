@@ -1,11 +1,14 @@
 package armameeldoparti.utils.common;
 
 import armameeldoparti.controllers.Controller;
+
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+
 import armameeldoparti.models.enums.Error;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.views.View;
 
 import java.awt.Component;
@@ -19,8 +22,10 @@ import java.io.IOException;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;

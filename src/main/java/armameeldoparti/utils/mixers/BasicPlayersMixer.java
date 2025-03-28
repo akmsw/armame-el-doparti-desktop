@@ -2,12 +2,15 @@ package armameeldoparti.utils.mixers;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+
 import armameeldoparti.models.enums.Position;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.Constants;
 
 import java.util.List;
 import java.util.Random;
+
 import java.util.function.Predicate;
 
 /**

@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 
 import java.awt.Container;
@@ -14,7 +15,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+
 import javax.swing.plaf.ComponentUI;
+
 import javax.swing.plaf.basic.BasicOptionPaneUI;
 
 import net.miginfocom.swing.MigLayout;

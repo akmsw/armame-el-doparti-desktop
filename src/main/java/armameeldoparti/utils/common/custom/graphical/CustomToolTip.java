@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical;
 
 import armameeldoparti.models.enums.Error;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
@@ -21,6 +22,7 @@ import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JToolTip;
 import javax.swing.SwingUtilities;
+
 import javax.swing.border.EmptyBorder;
 
 /**

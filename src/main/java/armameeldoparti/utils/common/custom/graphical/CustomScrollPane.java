@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
+
 import javax.swing.border.EmptyBorder;
 
 /**

@@ -1,14 +1,18 @@
 package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
+
 import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.views.NamesInputView;
 
 import java.awt.Component;
+
 import java.awt.event.ItemEvent;
 
 import java.util.Collection;
@@ -19,6 +23,7 @@ import java.util.regex.Pattern;
 
 import javax.naming.InvalidNameException;
 import javax.naming.LimitExceededException;
+
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;

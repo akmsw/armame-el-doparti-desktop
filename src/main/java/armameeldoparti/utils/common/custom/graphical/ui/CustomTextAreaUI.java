@@ -1,11 +1,13 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
+import armameeldoparti.utils.common.Constants;
+
 import javax.swing.JComponent;
 import javax.swing.JTextArea;
-import javax.swing.plaf.ComponentUI;
-import javax.swing.plaf.basic.BasicTextAreaUI;
 
-import armameeldoparti.utils.common.Constants;
+import javax.swing.plaf.ComponentUI;
+
+import javax.swing.plaf.basic.BasicTextAreaUI;
 
 /**
  * A custom text area UI that fits the overall program aesthetics.

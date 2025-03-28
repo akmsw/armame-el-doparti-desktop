@@ -1,6 +1,7 @@
 package armameeldoparti.utils.common.custom.graphical.ui;
 
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.common.custom.graphical.CustomArrowButton;
 
 import java.awt.Component;
@@ -13,9 +14,13 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JSpinner;
 import javax.swing.JSpinner.DefaultEditor;
 import javax.swing.SwingConstants;
+
 import javax.swing.border.AbstractBorder;
+
 import javax.swing.plaf.ComponentUI;
+
 import javax.swing.plaf.basic.BasicSpinnerUI;
+
 import javax.swing.text.DefaultCaret;
 
 /**

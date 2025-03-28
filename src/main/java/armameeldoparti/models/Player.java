@@ -1,6 +1,7 @@
 package armameeldoparti.models;
 
 import armameeldoparti.models.enums.Position;
+
 import armameeldoparti.utils.common.Constants;
 
 /**

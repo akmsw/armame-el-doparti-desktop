@@ -2,14 +2,18 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.models.Player;
 import armameeldoparti.models.Team;
+
 import armameeldoparti.models.enums.Distribution;
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.mixers.BySkillPointsMixer;
 import armameeldoparti.utils.mixers.RandomMixer;
+
 import armameeldoparti.views.ResultsView;
 
 import java.awt.Color;
@@ -24,7 +28,9 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
+
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**

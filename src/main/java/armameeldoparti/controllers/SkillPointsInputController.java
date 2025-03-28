@@ -2,9 +2,11 @@ package armameeldoparti.controllers;
 
 import armameeldoparti.models.enums.Position;
 import armameeldoparti.models.enums.ProgramView;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.views.SkillPointsInputView;
 
 /**

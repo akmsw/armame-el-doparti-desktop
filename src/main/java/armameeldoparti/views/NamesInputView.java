@@ -1,9 +1,11 @@
 package armameeldoparti.views;
 
 import armameeldoparti.models.enums.Position;
+
 import armameeldoparti.utils.common.CommonFields;
 import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
+
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomComboBox;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
