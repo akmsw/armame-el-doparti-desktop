@@ -115,7 +115,8 @@ public final class CommonFunctions {
   /**
    * Exits the program with the corresponding error message and error code according to the occurred exception.
    *
-   * @param error The error that caused the program to end.
+   * @param error     The error that caused the program to end.
+   * @param exception The exception thrown.
    */
   public static void exitProgram(Error error, Exception exception) {
     generateErrorReport(error, exception);
