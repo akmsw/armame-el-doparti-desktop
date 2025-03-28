@@ -34,14 +34,16 @@ public final class Constants {
   private static final int SCALE_ICON_DIALOG = 32;
   private static final int SCALE_ICON_MAIN = 60;
 
-  private static final String FILENAME_HELP_PAGE_1 = "helpIntro.hlp";
-  private static final String FILENAME_HELP_PAGE_2 = "helpCriteria.hlp";
-  private static final String FILENAME_HELP_PAGE_3 = "helpNames.hlp";
-  private static final String FILENAME_HELP_PAGE_4 = "helpAnchorages.hlp";
-  private static final String FILENAME_HELP_PAGE_5 = "helpScores.hlp";
-  private static final String FILENAME_HELP_PAGE_6 = "helpRandomMix.hlp";
-  private static final String FILENAME_HELP_PAGE_7 = "helpBySkillPointsMix.hlp";
-  private static final String FILENAME_HELP_PAGE_8 = "helpContact.hlp";
+  private static final String FILE_EXTENSION_HELP = ".hlp";
+  private static final String FILE_EXTENSION_PDA = ".pda";
+  private static final String FILENAME_HELP_PAGE_1 = "helpIntro" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_2 = "helpCriteria" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_3 = "helpNames" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_4 = "helpAnchorages" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_5 = "helpScores" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_6 = "helpRandomMix" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_7 = "helpBySkillPointsMix" + FILE_EXTENSION_HELP;
+  private static final String FILENAME_HELP_PAGE_8 = "helpContact" + FILE_EXTENSION_HELP;
   private static final String FILENAME_ICON_CB_DISABLED_SELECTED = "cb_d_s.png";
   private static final String FILENAME_ICON_CB_DISABLED_UNSELECTED = "cb_d_us.png";
   private static final String FILENAME_ICON_CB_ENABLED_SELECTED_FOCUSED = "cb_e_s_f.png";
@@ -141,7 +143,7 @@ public final class Constants {
   public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
   public static final String FILENAME_ERROR_REPORT = "errorReport.txt";
   public static final String FILENAME_FONT = "comfortaa.ttf";
-  public static final String FILENAME_PDA = "dist.pda";
+  public static final String FILENAME_PDA = "dist" + FILE_EXTENSION_PDA;
   public static final String MIG_LAYOUT_CENTER = "center";
   public static final String MIG_LAYOUT_EAST = "east";
   public static final String MIG_LAYOUT_GROW = "grow";
