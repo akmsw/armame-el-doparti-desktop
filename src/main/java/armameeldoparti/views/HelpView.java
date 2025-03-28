@@ -48,7 +48,7 @@ public class HelpView extends View {
    * Builds the help view.
    */
   public HelpView() {
-    super("Ayuda", Constants.MIG_LAYOUT_WRAP);
+    super(Constants.TITLE_VIEW_HELP, Constants.MIG_LAYOUT_WRAP);
 
     initializeInterface();
   }

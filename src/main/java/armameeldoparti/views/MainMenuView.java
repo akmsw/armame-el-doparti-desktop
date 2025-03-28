@@ -1,6 +1,5 @@
 package armameeldoparti.views;
 
-import armameeldoparti.utils.common.CommonFunctions;
 import armameeldoparti.utils.common.Constants;
 import armameeldoparti.utils.common.custom.graphical.CustomButton;
 import armameeldoparti.utils.common.custom.graphical.CustomLabel;
@@ -37,7 +36,7 @@ public class MainMenuView extends View {
    * Builds the main menu view.
    */
   public MainMenuView() {
-    super(CommonFunctions.capitalize(Constants.PROGRAM_TITLE) + " " + Constants.PROGRAM_VERSION, Constants.MIG_LAYOUT_WRAP);
+    super(Constants.TITLE_VIEW_MAIN_MENU, Constants.MIG_LAYOUT_WRAP);
 
     initializeInterface();
   }

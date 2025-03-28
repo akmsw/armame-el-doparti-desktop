@@ -84,7 +84,7 @@ public final class Constants {
   private static final String PROGRAM_AUTHOR_GITHUB_USERNAME = "akmsw";
   private static final String TITLE_HELP_PAGE_1 = "Introducción";
   private static final String TITLE_HELP_PAGE_2 = "Criterios establecidos";
-  private static final String TITLE_HELP_PAGE_3 = "Ingreso de jugadores";
+  private static final String TITLE_HELP_PAGE_3 = "Jugadores";
   private static final String TITLE_HELP_PAGE_4 = "Anclajes";
   private static final String TITLE_HELP_PAGE_5 = "Puntuaciones";
   private static final String TITLE_HELP_PAGE_6 = "Distribución aleatoria";
@@ -201,6 +201,11 @@ public final class Constants {
   public static final String TITLE_MESSAGE_INFORMATION = "Información";
   public static final String TITLE_MESSAGE_QUESTION = "Seleccione una opción";
   public static final String TITLE_MESSAGE_WARNING = "¡Advertencia!";
+  public static final String TITLE_VIEW_MAIN_MENU = CommonFunctions.capitalize(Constants.PROGRAM_TITLE) + " " + Constants.PROGRAM_VERSION;
+  public static final String TITLE_VIEW_HELP = "Ayuda";
+  public static final String TITLE_VIEW_NAMES_INPUT = "Ingreso de jugadores";
+  public static final String TITLE_VIEW_ANCHORAGES = "Anclaje de jugadores";
+  public static final String TITLE_VIEW_SKILL_POINTS_INPUT = "Ingreso de puntuaciones";
   public static final String TOOLTIP_MSG_PROGRAM_VERSION = "Versión del programa";
   public static final String URL_CONTACT = "https://github.com/" + PROGRAM_AUTHOR_GITHUB_USERNAME;
   public static final String URL_ISSUES = URL_CONTACT + "/" + PROGRAM_TITLE.replace(" ", "-") + "/issues";

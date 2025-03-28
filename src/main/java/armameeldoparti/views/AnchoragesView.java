@@ -68,7 +68,7 @@ public class AnchoragesView extends View {
    * Builds the anchorages view.
    */
   public AnchoragesView() {
-    super("Anclaje de jugadores", Constants.MIG_LAYOUT_WRAP_2);
+    super(Constants.TITLE_VIEW_ANCHORAGES, Constants.MIG_LAYOUT_WRAP_2);
 
     setLeftPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP_2)));
     setRightPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
