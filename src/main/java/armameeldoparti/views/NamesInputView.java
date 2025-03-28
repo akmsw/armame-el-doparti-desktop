@@ -79,7 +79,7 @@ public class NamesInputView extends View {
    * Builds the names input view.
    */
   public NamesInputView() {
-    super("Ingreso de jugadores", Constants.MIG_LAYOUT_WRAP_2);
+    super(Constants.TITLE_VIEW_NAMES_INPUT, Constants.MIG_LAYOUT_WRAP_2);
 
     setLeftPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP, Constants.MIG_LAYOUT_GROW)));
     setLeftTopPanel(new JPanel(new MigLayout(Constants.MIG_LAYOUT_WRAP)));
