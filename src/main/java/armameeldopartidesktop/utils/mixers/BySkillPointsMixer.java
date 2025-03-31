@@ -205,7 +205,7 @@ public class BySkillPointsMixer extends BasicPlayersMixer {
   /**
    * Checks if the players can be swapped between the teams to reduce the skill difference.
    *
-   * <p>Starts by calculating the current skill difference between the teams. Then, iterates over the unanchored players of each position, swapping them between the teams and recalculating the skill difference.
+   * <p>Starts by calculating the current skill difference between the teams. Then, iterates over the non-anchored players of each position, swapping them between the teams and recalculating the skill difference.
    *
    * <p>If the new skill difference is 0, the method returns (the best distribution has been found).
    *
