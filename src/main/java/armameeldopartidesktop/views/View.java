@@ -10,11 +10,11 @@ import net.miginfocom.swing.MigLayout;
 /**
  * Abstract class that specifies the basic view methods and fields.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public abstract class View extends JFrame {
 

@@ -32,11 +32,11 @@ import net.miginfocom.swing.MigLayout;
 /**
  * Names input view class.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 3.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public class NamesInputView extends View {
 

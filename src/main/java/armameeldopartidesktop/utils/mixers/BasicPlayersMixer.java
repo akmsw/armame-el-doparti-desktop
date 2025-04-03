@@ -14,11 +14,11 @@ import armameeldopartidesktop.utils.common.Constants;
 /**
  * Abstract players mixer that provides basic distribution utilities.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public abstract class BasicPlayersMixer implements PlayersMixer {
 

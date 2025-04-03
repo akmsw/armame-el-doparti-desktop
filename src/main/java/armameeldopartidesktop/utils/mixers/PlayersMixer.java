@@ -7,11 +7,11 @@ import armameeldopartidesktop.models.Team;
 /**
  * Interface that specifies the players distribution methods.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public interface PlayersMixer {
 

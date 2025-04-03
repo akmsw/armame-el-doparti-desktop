@@ -17,11 +17,11 @@ import armameeldopartidesktop.utils.common.custom.graphical.CustomArrowButton;
 /**
  * A custom scrollbar UI that fits the overall program aesthetics.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public class CustomScrollBarUI extends BasicScrollBarUI {
 

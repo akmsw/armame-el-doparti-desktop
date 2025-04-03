@@ -6,11 +6,11 @@ import armameeldopartidesktop.utils.common.Constants;
 /**
  * Player class.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 1.0.0
  *
  * @version 3.0.0
  *
- * @since 1.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public class Player {
 

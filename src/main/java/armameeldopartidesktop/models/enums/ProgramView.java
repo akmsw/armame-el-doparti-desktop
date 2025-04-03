@@ -3,11 +3,11 @@ package armameeldopartidesktop.models.enums;
 /**
  * Possible program views.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public enum ProgramView {
   MAIN_MENU,

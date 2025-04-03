@@ -9,11 +9,11 @@ import armameeldopartidesktop.views.View;
 /**
  * Abstract class that specifies the basic methods for interaction between controllers and their assigned views.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public abstract class Controller<T extends View> {
 

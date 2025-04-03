@@ -10,11 +10,11 @@ import armameeldopartidesktop.views.SkillPointsInputView;
 /**
  * Skill points input view controller class.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public class SkillPointsInputController extends Controller<SkillPointsInputView> {
 

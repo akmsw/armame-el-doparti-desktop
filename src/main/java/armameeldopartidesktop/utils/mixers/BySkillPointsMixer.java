@@ -20,11 +20,11 @@ import armameeldopartidesktop.utils.common.Constants;
 /**
  * By-skill-points distribution class.
  *
- * @author Bonino, Francisco Ignacio.
+ * @since 3.0.0
  *
  * @version 1.0.0
  *
- * @since 3.0.0
+ * @author Bonino, Francisco Ignacio.
  */
 public class BySkillPointsMixer extends BasicPlayersMixer {
 
