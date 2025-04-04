@@ -1,6 +1,7 @@
 package armameeldopartidesktop.models;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,8 @@ public class Team {
     setTeamNumber(teamNumber);
     setTeamPlayers(new EnumMap<>(Position.class));
 
-    for (Position position : Position.values()) {
-      teamPlayers.put(position, new ArrayList<>());
-    }
+    Arrays.stream(Position.values())
+          .forEach(position -> teamPlayers.put(position, new ArrayList<>()));
   }
 
   // ---------- Public methods ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
