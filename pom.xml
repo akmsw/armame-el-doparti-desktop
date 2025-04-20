@@ -91,7 +91,7 @@
           <shadedClassifierName>shaded</shadedClassifierName>
           <transformers>
             <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-              <mainClass>armameeldoparti.Main</mainClass>
+              <mainClass>armameeldopartidesktop.Main</mainClass>
             </transformer>
           </transformers>
         </configuration>
